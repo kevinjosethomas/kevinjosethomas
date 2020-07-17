@@ -6,4 +6,4 @@
 - Currently working on https://disbots.gg
 - Currently learning business and marketing fundamentals and NodeJS
 - Aiming to make a world-class portfolio
-- Contact Me on Discord
+- Reach me on Discord (TrustedMercury#1953)
