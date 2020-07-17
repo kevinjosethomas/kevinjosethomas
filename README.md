@@ -6,4 +6,4 @@
 - Currently working on https://disbots.gg
 - Currently learning business and marketing fundamentals and NodeJS
 - His / Him
-- Always on Discord
+- Contact Me on Discord
