@@ -5,5 +5,5 @@
 
 - Currently working on https://disbots.gg
 - Currently learning business and marketing fundamentals and NodeJS
-- His / Him
+- Aiming to make a world-class portfolio
 - Contact Me on Discord
