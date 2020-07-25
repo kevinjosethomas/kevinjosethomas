@@ -9,5 +9,5 @@
 - Aiming to make a world-class portfolio
 - Reach me on Discord (TrustedMercury#1953)
 
-![My GitHub stats](https://github-readme-stats.vercel.app/api?username=TrustedMercury&count_private=true&show_icons=true&theme=tokyonight)
-
+![My GitHub stats](https://github-readme-stats.vercel.app/api?username=TrustedMercury&count_private=true&show_icons=true&theme=tokyonight)  
+![My Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=TrustedMercury)
