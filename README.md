@@ -1,4 +1,5 @@
-# Hello there! I'm TrustedMercury 👋
+[![!My Banner](https://i.ibb.co/DfsN5Wp/github-Banner.png)](https://im-kev.in)
+
 [![kevin](https://img.shields.io/badge/website-im--kevin.in-blue)](https://im-kev.in)
 
 ### 13 y/o aspiring entrepreneur, software engineer, author and more.
