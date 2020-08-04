@@ -1,4 +1,5 @@
 [![!My Banner](https://i.ibb.co/X34pzQm/github-Banner.png)]()
+[![!My Banner](https://i.ibb.co/WFTTGvW/semi-transparent.png)]()
 
 [![kevin](https://img.shields.io/badge/website-im--kevin.in-blue)](https://im-kev.in)
 
