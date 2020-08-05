@@ -1,6 +1,7 @@
 <center>
-  [![Top Banner](https://i.ibb.co/jbcHQNT/top-Banner.png)]()
-  [![Website Banner](https://i.ibb.co/bsxFGPs/website-Banner.png)](https://im-kev.in)
+  [![Top Banner]()]()
+  <img src="https://i.ibb.co/jbcHQNT/top-Banner.png" width="800px">
+  <a href="https://im-kev.in/" target="_blank"><img src="https://i.ibb.co/bsxFGPs/website-Banner.png" width="800px"></a>
 </center>
 
 [![kevin](https://img.shields.io/badge/website-im--kevin.in-blue)](https://im-kev.in)
