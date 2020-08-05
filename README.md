@@ -1,5 +1,5 @@
-<img src="https://i.ibb.co/jbcHQNT/top-Banner.png" width="800px">
-<img src="https://i.ibb.co/Gczp0FV/website.png" width="800px">
+[![Top Banner](https://i.ibb.co/jbcHQNT/top-Banner.png)]()
+[![Top Banner](https://i.ibb.co/Gczp0FV/website.png)]()
 
 
 [![kevin](https://img.shields.io/badge/website-im--kevin.in-blue)](https://im-kev.in)
