@@ -1,5 +1,7 @@
 [![Top Banner](https://i.ibb.co/jbcHQNT/top-Banner.png)]()
 [![Website Banner](https://i.ibb.co/bsxFGPs/website-Banner.png)](https://im-kev.in)
+[![disbots Banner](https://i.ibb.co/X39MRHn/disbots-Banner.png)](https://disbots.gg/)
+[![Camelot Banner](https://i.ibb.co/R2nxzZX/camelot-Banner.png)](https://camelot.fm/)
 
 [![kevin](https://img.shields.io/badge/website-im--kevin.in-blue)](https://im-kev.in)
 
