@@ -1,5 +1,5 @@
 # Hello! I'm TrustedMercury 👋
-#### I'm a 13 y/o developer, aspiring tech entrepreneur, student and a lot more! 
+#### I'm a 13 y/o developer, student and an aspiring tech entrepreneur.
 
 ---
 
