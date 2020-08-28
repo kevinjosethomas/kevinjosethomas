@@ -34,6 +34,10 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 
 ---
 
+<!-- 
+[![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=NAME_HERE&logoColor=white)]()
+-->
+
 <!-- Ignore the indentation -->
 <details open>
 <summary>:hammer_and_wrench: <b>Software</b></summary>
@@ -42,6 +46,7 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
 [![NodeJS](https://img.shields.io/badge/NodeJS-529f44?style=for-the-badge&logo=node.js&logoColor=white)]()
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=PostgreSQL&logoColor=white)]()
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)]()
 [![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=Windows&logoColor=white)]()
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white)]()
 [![VueJS](https://img.shields.io/badge/VueJS-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white)]() 
@@ -51,7 +56,10 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 [![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)]()
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=Tailwind%20CSS&logoColor=white)]()
 [![JavaScript](https://img.shields.io/badge/JavaScript-D8C31A?style=for-the-badge&logo=javascript&logoColor=white)]()
+[![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jQuery&logoColor=white)]()
+[![PyPI](https://img.shields.io/badge/PyPI-3775A9?style=for-the-badge&logo=PyPI&logoColor=white)]()
 [![NPM](https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=NPM&logoColor=white)]()
+[![Atom](https://img.shields.io/badge/Atom-66595C?style=for-the-badge&logo=Atom&logoColor=white)]()
 [![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white)]()
 [![Photoshop](https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=white)]()
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white)]()
@@ -79,16 +87,16 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
   <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white" />
 </a>
 <a href="https://github.com/TrustedMercury" target="_blank">
-  <img src="https://img.shields.io/badge/GITHUB-BLACK?style=for-the-badge&logo=github" />
+  <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github" />
 </a>
 <a href="https://discord.gg/32aMzp8" target="_blank">
-  <img src="https://img.shields.io/badge/DISCORD-BLACK?style=for-the-badge&logo=discord&logoColor=white" />
+  <img src="https://img.shields.io/badge/DISCORD-7289DA?style=for-the-badge&logo=discord&logoColor=white" />
 </a>
 <a href="https://www.linkedin.com/in/kevin-thomas-262102127/" target="_blank">
-  <img src="https://img.shields.io/badge/LINKEDIN-BLUE?style=for-the-badge&logo=linkedin&logoColor=white" />
+  <img src="https://img.shields.io/badge/LINKEDIN-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
 <a href="https://twitter.com/TrustedMercury" target="_blank" href="https://twitter.com/TrustedMercury">
-  <img src="https://img.shields.io/badge/TWITTER-BLUE?style=for-the-badge&logo=twitter&logoColor=white" />
+  <img src="https://img.shields.io/badge/TWITTER-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
 </a>
 </p>
 
