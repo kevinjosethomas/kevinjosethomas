@@ -3,12 +3,12 @@
 
 ---
 
-<details >
+<details>
   <summary>⚡ GitHub Activity and Statistics</summary> 
   <img src="https://github-readme-stats.vercel.app/api?username=TrustedMercury&count_private=true&show_icons=true&theme=gotham" />
 </details>
 
-<details>
+<details open>
 <summary>
 ⏰ Development Duration
 </summary>
