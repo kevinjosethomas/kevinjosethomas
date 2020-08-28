@@ -63,7 +63,7 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 [![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white)]()
 [![Photoshop](https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=white)]()
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white)]()
-[![Font Awesome](https://img.shields.io/badge/Font Awesome-339AF0?style=for-the-badge&logo=Font%20Awesome&logoColor=white)]() 
+[![Font Awesome](https://img.shields.io/badge/Font%20Awesome-339AF0?style=for-the-badge&logo=Font%20Awesome&logoColor=white)]() 
 </p>
 </details>
 
