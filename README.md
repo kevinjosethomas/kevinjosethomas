@@ -3,14 +3,20 @@
 
 ---
 
-<!--START_SECTION:waka-->
-<!--END_SECTION:waka-->
-
 <!--
 [![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=LOGO_HERE&logoColor=white)]()
 -->
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&count_private=true&show_icons=true&theme=gotham)
+<details>
+  <summary>⚡ GitHub Activity and Statistics</summary> 
+  <img src="https://github-readme-stats.vercel.app/api?username=anuraghazra&count_private=true&show_icons=true&theme=gotham" />
+</details>
+
+<details>
+  <summary>⏰ Development Duration</summary>
+  <!--START_SECTION:waka-->
+  <!--END_SECTION:waka-->
+</details>
 
 ---
 
