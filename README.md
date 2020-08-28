@@ -10,6 +10,10 @@
 [![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=LOGO_HERE&logoColor=white)]()
 -->
 
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&count_private=true&show_icons=true&theme=gotham)
+
+---
+
 ### :hammer_and_wrench: Software 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
 [![NodeJS](https://img.shields.io/badge/NodeJS-529f44?style=for-the-badge&logo=node.js&logoColor=white)]()
