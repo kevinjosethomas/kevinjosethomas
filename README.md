@@ -3,10 +3,6 @@
 
 ---
 
-<!--
-[![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=LOGO_HERE&logoColor=white)]()
--->
-
 <details>
   <summary>⚡ GitHub Activity and Statistics</summary> 
   <img src="https://github-readme-stats.vercel.app/api?username=anuraghazra&count_private=true&show_icons=true&theme=gotham" />
@@ -19,6 +15,10 @@
 </details>
 
 ---
+
+<!--
+[![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=LOGO_HERE&logoColor=white)]()
+-->
 
 ### :hammer_and_wrench: Software 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
@@ -45,6 +45,8 @@
 
 
 ### :mailbox: Socials
+
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=Gmail&logoColor=white)]()
 [![GitHub](https://img.shields.io/badge/GITHUB-BLACK?style=for-the-badge&logo=github)](https://github.com/TrustedMercury)
 [![Discord](https://img.shields.io/badge/DISCORD-BLACK?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/32aMzp8)
 [![Linkedin](https://img.shields.io/badge/LINKEDIN-BLUE?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kevin-thomas-262102127/)
