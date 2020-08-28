@@ -32,7 +32,10 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 [![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=LOGO_HERE&logoColor=white)]()
 -->
 
-### :hammer_and_wrench: Software 
+<details open>
+  <summary>:hammer_and_wrench: <b>Software</b></summary>
+<p>
+
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
 [![NodeJS](https://img.shields.io/badge/NodeJS-529f44?style=for-the-badge&logo=node.js&logoColor=white)]()
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=PostgreSQL&logoColor=white)]()
@@ -49,17 +52,25 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 [![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white)]()
 [![Photoshop](https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=white)]()
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white)]()
+</p>
+</details>
 
-
-### :video_game: Games
+<details open>
+  <summary>:video_game: <b>Games</b></summary>
+<p>
+  
 [![Minecraft](https://img.shields.io/badge/Minecraft-DB1F29?style=for-the-badge&logo=Mojang%20Studios&logoColor=white)]()
 [![Valorant](https://img.shields.io/badge/Valorant-D32936?style=for-the-badge&logo=Riot%20Games&logoColor=white)]()
+</p>
+</details>
 
-
-### :mailbox: Socials
+<details open>
+  <summary>:mailbox: <b>Socials</b></summary>
+<p>
 
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white)]()
 [![GitHub](https://img.shields.io/badge/GITHUB-BLACK?style=for-the-badge&logo=github)](https://github.com/TrustedMercury)
 [![Discord](https://img.shields.io/badge/DISCORD-BLACK?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/32aMzp8)
 [![Linkedin](https://img.shields.io/badge/LINKEDIN-BLUE?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kevin-thomas-262102127/)
 [![Twitter](https://img.shields.io/badge/TWITTER-BLUE?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/TrustedMercury)
+</p>
