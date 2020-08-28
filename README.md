@@ -13,8 +13,6 @@
 ⏰ Development Duration
 </summary>
 <p>
-### Test
-  
 <!--START_SECTION:waka-->
 ```text
 JavaScript   9 hrs 43 mins   █████████▓░░░░░░░░░░░░░░░   38.21 % 
