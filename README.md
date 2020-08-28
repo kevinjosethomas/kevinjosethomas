@@ -10,7 +10,7 @@
 [![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=LOGO_HERE&logoColor=white)]()
 -->
 
-### Software 
+### ⚒️ Software 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
 [![NodeJS](https://img.shields.io/badge/NodeJS-529f44?style=for-the-badge&logo=node.js&logoColor=white)]()
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=PostgreSQL&logoColor=white)]()
@@ -29,12 +29,12 @@
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white)]()
 
 
-### Games
+### 🎮 Games
 [![Minecraft](https://img.shields.io/badge/Minecraft-DB1F29?style=for-the-badge&logo=Mojang%20Studios&logoColor=white)]()
 [![Valorant](https://img.shields.io/badge/Valorant-D32936?style=for-the-badge&logo=Riot%20Games&logoColor=white)]()
 
 
-### Socials
+### 📫 Socials
 [![GitHub](https://img.shields.io/badge/GITHUB-BLACK?style=for-the-badge&logo=github)](https://github.com/TrustedMercury)
 [![Discord](https://img.shields.io/badge/DISCORD-BLACK?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/32aMzp8)
 [![Linkedin](https://img.shields.io/badge/LINKEDIN-BLUE?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kevin-thomas-262102127/)
