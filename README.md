@@ -3,14 +3,14 @@
 
 ---
 
-<details>
+<details >
   <summary>⚡ GitHub Activity and Statistics</summary> 
   <img src="https://github-readme-stats.vercel.app/api?username=TrustedMercury&count_private=true&show_icons=true&theme=gotham" />
 </details>
 
-<details>
-  <summary>⏰ Development Duration</summary>
-  <!--START_SECTION:waka-->
+<details><summary>⏰ Development Duration</summary>
+<p>
+<!--START_SECTION:waka-->
 ```text
 JavaScript   9 hrs 43 mins   █████████▓░░░░░░░░░░░░░░░   38.21 % 
 HTML         7 hrs 17 mins   ███████▒░░░░░░░░░░░░░░░░░   28.67 % 
@@ -19,6 +19,7 @@ SQL          1 hr 44 mins    █▓░░░░░░░░░░░░░░░
 CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░░░░░░░░░   04.60 % 
 ```
 <!--END_SECTION:waka-->
+</p>
 </details>
 
 ---
