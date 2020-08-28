@@ -69,7 +69,7 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 <p>
 
 
-<a href="" target="_blank">
+<a href="mailto:trustedmercury@gmail.com" target="_blank">
   <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white" />
 </a>
 <a href="https://github.com/TrustedMercury" target="_blank">
@@ -81,7 +81,7 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 <a href="https://www.linkedin.com/in/kevin-thomas-262102127/" target="_blank">
   <img src="https://img.shields.io/badge/LINKEDIN-BLUE?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
-<a href="" target="_blank" href="https://twitter.com/TrustedMercury">
+<a href="https://twitter.com/TrustedMercury" target="_blank" href="https://twitter.com/TrustedMercury">
   <img src="https://img.shields.io/badge/TWITTER-BLUE?style=for-the-badge&logo=twitter&logoColor=white" />
 </a>
 
