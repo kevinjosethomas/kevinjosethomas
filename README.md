@@ -1,5 +1,11 @@
-# Hello! I'm TrustedMercury 👋
-#### I'm a 13 y/o developer, student and an aspiring tech entrepreneur.
+# Hi, I'm TrustedMercury 👋
+#### I'm a 13 y/o student, developer and an aspiring tech entrepreneur. 
+
+**I am currently working on** a [discord bot listing website](https://disbots.gg) to help new developers share and grow their product as I learn web development jargon and practice necessary business fundamentals.  
+
+**I'm well versed in** Python, JavaScript, HTML and CSS with over a year of experience in the development world (which happens to be very less). I'm learning how to make fast and efficient functional software (especially web applications and python packages) with exceptional UI and UX. 
+
+**I'm planning on** participating in developer related events and hackathons to gain more tech knowledge and also get some awards to spice up my portfolio. I'm looking for beneficial opportunities that can help me in the future. 
 
 ---
 
@@ -37,7 +43,7 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 <p>
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
-[![NodeJS](https://img.shields.io/badge/NodeJS-529f44?style=for-the-badge&logo=node.js&logoColor=white)]()
+[![NodeJS](https://img.shields.io/badge/NodeJS-529f44?style=for-the-badge&logo=node.js&logoColor=white)](
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=PostgreSQL&logoColor=white)]()
 [![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=Windows&logoColor=white)]()
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white)]()
