@@ -68,7 +68,7 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
   <summary>:mailbox: <b>Socials</b></summary>
 <p>
 
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white)]()
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white)]<trustedmercury@gmail.com>
 [![GitHub](https://img.shields.io/badge/GITHUB-BLACK?style=for-the-badge&logo=github)](https://github.com/TrustedMercury)
 [![Discord](https://img.shields.io/badge/DISCORD-BLACK?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/32aMzp8)
 [![Linkedin](https://img.shields.io/badge/LINKEDIN-BLUE?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kevin-thomas-262102127/)
