@@ -1,10 +1,6 @@
 # Hello! I'm TrustedMercury 👋
 #### I'm a 13 y/o developer, aspiring tech entrepreneur, student and a lot more! 
 
-
-## Stats
-
-### Time spent programming
 <!--START_SECTION:waka-->
 ```text
 JavaScript   9 hrs 43 mins   █████████▓░░░░░░░░░░░░░░░   38.21 % 
@@ -18,9 +14,6 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 <!--
 [![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=LOGO_HERE&logoColor=white)]()
 -->
-
-
-## Information
 
 ### Software 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
