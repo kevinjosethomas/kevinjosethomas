@@ -34,12 +34,9 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 
 ---
 
-<!--
-[![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=LOGO_HERE&logoColor=white)]()
--->
-
+<!-- Ignore the indentation -->
 <details open>
-  <summary>:hammer_and_wrench: <b>Software</b></summary>
+<summary>:hammer_and_wrench: <b>Software</b></summary>
 <p>
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
@@ -61,8 +58,10 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 </p>
 </details>
 
+
+<!-- Ignore the indentation -->
 <details open>
-  <summary>:video_game: <b>Games</b></summary>
+<summary>:video_game: <b>Games</b></summary>
 <p>
   
 [![Minecraft](https://img.shields.io/badge/Minecraft-DB1F29?style=for-the-badge&logo=Mojang%20Studios&logoColor=white)]()
@@ -70,10 +69,11 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 </p>
 </details>
 
-<details open>
-  <summary>:mailbox: <b>Socials</b></summary>
-<p>
 
+<!-- Ignore the indentation -->
+<details open>
+<summary>:mailbox: <b>Socials</b></summary>
+<p>
 
 <a href="mailto:trustedmercury@gmail.com" target="_blank">
   <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white" />
@@ -90,5 +90,9 @@ CSS          1 hr 10 mins    █░░░░░░░░░░░░░░░░
 <a href="https://twitter.com/TrustedMercury" target="_blank" href="https://twitter.com/TrustedMercury">
   <img src="https://img.shields.io/badge/TWITTER-BLUE?style=for-the-badge&logo=twitter&logoColor=white" />
 </a>
-
 </p>
+
+## Credits
+[@RoadToML](https://github.com/RoadToML) for guiding me through my development journey and being an amazing mentor.
+
+[This list](https://github.com/abhisheknaiidu/awesome-github-profile-readme) and the people mentioned in it for inspiration and ideas for this README.
