@@ -1,7 +1,7 @@
 # Hi, I'm TrustedMercury 👋
-#### I'm a 13 y/o student, developer and an aspiring tech entrepreneur. 
+#### I'm a 13 y/o student, (full-stack) developer and an aspiring tech entrepreneur. 
 
-**I am currently working on** a [discord bot listing website](https://disbots.gg) to help new developers share and grow their product as I learn web development jargon and practice necessary business fundamentals.  
+**I am currently working on** a [discord bot listing website](https://disbots.gg) to help new developers share and grow their product as I gain full stack web development know-how and practice necessary business fundamentals.  
 
 **I'm well versed in** Python, JavaScript, HTML and CSS with over a year of experience in the development world (which happens to be very less). I'm learning how to make fast and efficient functional software (especially web applications and python packages) with exceptional UI and UX. 
 
