@@ -30,56 +30,75 @@
 
 /* Animations */
 
-.slideFromBottom {
-  animation: slideFromBottom 1s;
-  animation-fill-mode: forwards;
+.slideInTop {
+  animation: slideInTop 1.5s;
+}
+@keyframes slideInTop {
+  0% {transform: translateY(-101vw);}
+  100% {transform: translateY(0vw);}
 }
 
-@keyframes slideFromBottom {
-  0% {margin-bottom: -10000px; opacity: 0;}
-  100% {margin-bottom: 0rem; opacity: 100;}
+.slideInRight {
+  animation: slideInRight 1.5s;
+}
+@keyframes slideInRight {
+  0% {transform: translateX(101vw);}
+  100% {transform: translateX(0vw);}
+}
+
+.slideInBottom {
+  animation: slideInBottom 1.5s;
+}
+@keyframes slideInBottom {
+  0% {transform: translateY(101vw);}
+  100% {transform: translateY(0vw);}
 }
 
 .slideInLeft {
   animation: slideInLeft ease 1.5s
 }
-
 @keyframes slideInLeft {
-  0% {margin-left: -100vw; opacity: 0;}
-  100% {margin-left: 5rem; opacity: 100;}
+  0% {transform: translateX(-101vw);}
+  100% {transform: translateX(0vw);}
 }
 
-.slideToLeft {
-  animation: slideToLeft 1.5s;
+
+.slideOutTop {
+  animation: slideOutTop 1.5s;
+}
+@keyframes slideOutTop {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-101vw);}
+}
+
+.slideOutRight {
+  animation: slideOutRight 1.5s;
+}
+@keyframes slideOutRight {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(101vw);}
+}
+
+.slideOutBottom {
+  animation: slideOutBottom 1.5s;
+}
+@keyframes slideOutBottom {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(101vw);}
+}
+
+.slideOutLeft {
+  animation: slideOutLeft 1.5s;
   animation-fill-mode: forwards;
 }
-
-@keyframes slideToLeft {
-  0% {margin-left: 0; opacity: 100;}
-  100% {margin-left: -200vw; opacity: 100;}
+@keyframes slideOutLeft {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-101vw);}
 }
 
-.slideInRight {
-  animation: slideInRight ease 1.5s
-}
-
-@keyframes slideInRight {
-  0% {margin-right: -100vw}
-  100% {margin-right: 5rem;}
-}
-
-.slideInFromRight {
-  animation: slideInFromRight ease 1.5s
-}
-
-@keyframes slideInFromRight {
-  0% {margin-right: -100vw;}
-  100% {margin-right: auto;}
-}
 
 .flipSide {
   animation: flipSlide ease 1s;
-  animation-fill-mode: forward;
   transform: rotate(180deg);
 }
 
