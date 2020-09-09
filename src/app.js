@@ -31,9 +31,9 @@ app.use(
     directives: {
       defaultSrc: ["'self'"],
       imgSrc: ["'self'"],
-      styleSrc: ["'self'"],
-      scriptSrc: ["'self'"],
-      fontSrc: ["'self'"],
+      styleSrc: ["'self'", "fontsforweb.com", "cdn.jsdelivr.net", "fonts.googleapis.com"],
+      scriptSrc: ["'self'", "ajax.googleapis.com", "cdnjs.cloudflare.com"],
+      fontSrc: ["'self'", "fontsforweb.com", "fonts.googleapis.com", "cdn.jsdelivr.net", "fonts.gstatic.com"],
       frameSrc: ["'self'"],
       upgradeInsecureRequests: []
     },
