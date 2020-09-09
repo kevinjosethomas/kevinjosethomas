@@ -10,6 +10,8 @@ import { fileURLToPath } from "url";
 import body_parser from "body-parser";
 import compression from "compression";
 
+import HomeRoute from "./routes/home.js";
+
 dotenv.config();
 const app = express();
 global.__dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -38,6 +40,12 @@ app.use(
     reportOnly: false
   })
 )
+
+
+app.use("/public", express.static(path.join(__dirname, "/public")));
+
+app.use("/", HomeRoute);
+
 
 server.listen(process.env.PORT, "0.0.0.0", () => {
   console.log(`Server Started on PORT ${process.env.PORT}`);
