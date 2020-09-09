@@ -6,6 +6,9 @@ $(document).ready(e => {
   $('#intro').addClass("slideInLeft");
   $('#arrow').addClass("slideInRight");
 
+  var scene = document.getElementById('scene');
+  var parallaxInstance = new Parallax(scene, {selector: '#intro'});
+
   setTimeout(() => {
     $('#intro').removeClass("slideInLeft");
     $('#arrow').removeClass("slideInRight");
