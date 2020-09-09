@@ -1,0 +1,26 @@
+{
+  "name": "trustedmercury",
+  "version": "1.0.0",
+  "description": "A web portfolio to showcase my awards and projects",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon run src/app.js",
+    "start": "node run src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrustedMercury/trustedmercury.git"
+  },
+  "keywords": [
+    "profile",
+    "portfolio",
+    "readme"
+  ],
+  "author": "TrustedMercury",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/TrustedMercury/trustedmercury/issues"
+  },
+  "homepage": "https://github.com/TrustedMercury/trustedmercury#readme"
+}

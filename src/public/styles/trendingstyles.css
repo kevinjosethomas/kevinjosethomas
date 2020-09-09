@@ -1,0 +1,120 @@
+
+/* Backgrounds */
+
+.bg-dark-fade {
+    background: linear-gradient(#1D1518, #16151D) !important;
+}
+
+
+/* Fonts */
+
+.font-circular {
+  font-family: 'CircularStdBold' !important;
+}
+
+.font-opensans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+/* Extensions */
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.noselect {
+  user-select: none;
+}
+
+
+/* Animations */
+
+.slideFromBottom {
+  animation: slideFromBottom 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideFromBottom {
+  0% {margin-bottom: -10000px; opacity: 0;}
+  100% {margin-bottom: 0rem; opacity: 100;}
+}
+
+.slideInLeft {
+  animation: slideInLeft ease 1.5s
+}
+
+@keyframes slideInLeft {
+  0% {margin-left: -100vw; opacity: 0;}
+  100% {margin-left: 5rem; opacity: 100;}
+}
+
+.slideToLeft {
+  animation: slideToLeft 1.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideToLeft {
+  0% {margin-left: 0; opacity: 100;}
+  100% {margin-left: -200vw; opacity: 100;}
+}
+
+.slideInRight {
+  animation: slideInRight ease 1.5s
+}
+
+@keyframes slideInRight {
+  0% {margin-right: -100vw}
+  100% {margin-right: 5rem;}
+}
+
+.slideInFromRight {
+  animation: slideInFromRight ease 1.5s
+}
+
+@keyframes slideInFromRight {
+  0% {margin-right: -100vw;}
+  100% {margin-right: auto;}
+}
+
+.flipSide {
+  animation: flipSlide ease 1s;
+  animation-fill-mode: forward;
+  transform: rotate(180deg);
+}
+
+@keyframes flipSlide {
+  0% {transform: rotate(0deg); margin-right: 5rem;}
+  100% {transform: rotate(180deg); margin-right: 1.25rem;}
+}
+
+.flipSide2 {
+  animation: flipSlide2 ease 1s;
+  animation-fill-mode: forward;
+  transform: rotate(360deg);
+}
+
+@keyframes flipSlide2 {
+  0% {transform: rotate(180deg); margin-right: 1.25rem;}
+  100% {transform: rotate(360deg); margin-right: 5rem;}
+}
+
+.expandPanel {
+  animation: expandPanel ease 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes expandPanel {
+  0% {width: 0rem;}
+  100% {width: 40%;}
+}
+
+.collapsePanel {
+  animation: collapsePanel ease 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes collapsePanel {
+  0% {width: 40%;}
+  100% {width: 0rem;}
+}
