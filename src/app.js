@@ -40,5 +40,5 @@ app.use(
 )
 
 server.listen(process.env.PORT, "0.0.0.0", () => {
-  console.log(`Server Started on ${process.env.PORT}`);
+  console.log(`Server Started on PORT ${process.env.PORT}`);
 })
