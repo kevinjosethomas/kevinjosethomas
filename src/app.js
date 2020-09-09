@@ -12,6 +12,7 @@ import compression from "compression";
 
 import HomeRoute from "./routes/home.js";
 import ProjectsRoute from "./routes/projects.js";
+import AwardsRoute from "./routes/awards.js";
 
 dotenv.config();
 const app = express();
@@ -46,7 +47,8 @@ app.use(
 app.use("/public", express.static(path.join(__dirname, "/public")));
 
 app.use("/", HomeRoute);
-app.use("/projects", ProjectsPage)
+app.use("/projects", ProjectsPage);
+app.use("/awards", AwardsPage);
 
 
 server.listen(process.env.PORT, "0.0.0.0", () => {
