@@ -16,9 +16,13 @@ $(document).ready(e => {
 })
 
 $(document).on('mouseover', '#arrow', e => {
+  if ($('#arrow').hasClass("transforming")) {
+    return;
+  }
   if ($('#panel').hasClass('expandPanel')) {
     $('#arrow').addClass("flipSide2");
     $('#arrow').removeClass("flipSide");
+    $('#arrow').addClass("transforming");
     setTimeout(() => {
       $('#arrow').addClass("mr-20");
       $('#panel').addClass('collapsePanel');
@@ -27,10 +31,12 @@ $(document).on('mouseover', '#arrow', e => {
         $('#panel').removeClass('collapsePanel');
         $('#panel').addClass('hidden');
         $('#arrow').removeClass("flipSide2");
+        $('#arrow').removeClass("transforming");
       }, 1999)
     }, 900)
   } else {
     $('#arrow').addClass("flipSide");
+    $('#arrow').addClass("transforming");
     setTimeout(() => {
       $('#arrow').removeClass("mr-20");
       $('#arrow').addClass("mr-5");
@@ -38,6 +44,7 @@ $(document).on('mouseover', '#arrow', e => {
     setTimeout(() => {
       $('#panel').removeClass('hidden');
       $('#panel').addClass('expandPanel');
+      $('#arrow').removeClass("transforming");
     }, 1000)
   }
 })
