@@ -8,60 +8,44 @@ $(document).ready(e => {
 
   var scene = document.getElementById('scene');
   var parallaxInstance = new Parallax(scene, {selector: '#intro'});
+})
 
-  setTimeout(() => {
-    $('#intro').removeClass("slideInLeft");
+$(document).on("mouseover", "#arrow", e => {
+  if (!($("#arrow").hasClass("transmission"))) {
+    if ($("#arrow").hasClass("rotated180")) {
+      $("#arrow").addClass("transmission");
+      $("#arrow").addClass("rotate180back")
+      $("#arrow").removeClass("rotated180");
+    } else {
+      $("#arrow").addClass("transmission");
+      $("#arrow").addClass("rotate180")
+    }
+  }
+})
+
+$(document).on("animationend", "body", e => {
+  if (e.originalEvent.animationName == "rotate180" && e.target == $("#arrow")[0]) {
+    $("#arrow").addClass("rotated180");
+    $("#arrow").removeClass("mr-20");
+    $("#arrow").addClass("mr-6");
+    $("#arrow").removeClass("rotate180");
+    $("#panel").removeClass("hidden");
+    $("#panel").addClass("expandPanel");
+  } else if (e.originalEvent.animationName == "rotate180back" && e.target == $("#arrow")[0]) {
+    $("#arrow").removeClass("rotate180back")
+    $("#arrow").addClass("mr-20");
+    $("#arrow").removeClass("mr-6");
+    $("#panel").removeClass("expandPanel");
+    $("#panel").addClass("collapsePanel");
+  } else if (e.originalEvent.animationName == "expandPanel" && e.target == $("#panel")[0]) {
+    $("#arrow").removeClass("transmission");
+  } else if (e.originalEvent.animationName == "collapsePanel" && e.target == $("#panel")[0]) {
+    $("#panel").removeClass("collapsePanel");
+    $("#panel").addClass("hidden");
+    $("#arrow").removeClass("transmission");
+  } else if (e.originalEvent.animationName == "slideInRight" && e.target == $("#arrow")[0]) {
     $('#arrow').removeClass("slideInRight");
-  }, 2000)
-})
-
-$(document).on('mouseover', '#arrow', e => {
-  if ($('#arrow').hasClass("transforming")) {
-    return;
-  }
-  if ($('#panel').hasClass('expandPanel')) {
-    $('#arrow').addClass("flipSide2");
-    $('#arrow').removeClass("flipSide");
-    $('#arrow').addClass("transforming");
-    setTimeout(() => {
-      $('#arrow').addClass("mr-20");
-      $('#panel').addClass('collapsePanel');
-      setTimeout(() => {
-        $('#panel').removeClass('expandPanel');
-        $('#panel').removeClass('collapsePanel');
-        $('#panel').addClass('hidden');
-        $('#arrow').removeClass("flipSide2");
-        $('#arrow').removeClass("transforming");
-      }, 1999)
-    }, 900)
-  } else {
-    $('#arrow').addClass("flipSide");
-    $('#arrow').addClass("transforming");
-    setTimeout(() => {
-      $('#arrow').removeClass("mr-20");
-      $('#arrow').addClass("mr-5");
-    }, 900)
-    setTimeout(() => {
-      $('#panel').removeClass('hidden');
-      $('#panel').addClass('expandPanel');
-      $('#arrow').removeClass("transforming");
-    }, 1000)
-  }
-})
-
-$(document).on('click', '#arrow', e => {
-  if ($('#panel').hasClass('expandPanel')) {
-    $('#arrow').addClass("flipSide2");
-    $('#arrow').removeClass("flipSide");
-    setTimeout(() => {
-      $('#arrow').addClass("mr-20");
-      $('#panel').addClass('collapsePanel');
-      setTimeout(() => {
-        $('#panel').removeClass('expandPanel');
-        $('#panel').removeClass('collapsePanel');
-        $('#panel').addClass('hidden');
-        $('#arrow').removeClass("flipSide2");
-      }, 1999)
-    }, 900)
+  } else if (e.originalEvent.animationName == "slideInRight" && e.target == $("#arrow")[0]) {
+    $('#intro').removeClass("slideInLeft");
   }
 })

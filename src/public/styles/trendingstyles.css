@@ -27,6 +27,10 @@
   user-select: none;
 }
 
+.rotated180 {
+  transform: rotate(180deg);
+}
+
 
 /* Animations */
 
@@ -96,27 +100,26 @@
   100% {transform: translateX(-101vw);}
 }
 
-
-.flipSide {
-  animation: flipSlide ease 1s;
-  transform: rotate(180deg);
+.rotate180 {
+  animation: rotate180 ease 1s;
+  animation-fill-mode: forwards;
 }
 
-@keyframes flipSlide {
-  0% {transform: rotate(0deg); margin-right: 5rem;}
-  100% {transform: rotate(180deg); margin-right: 1.25rem;}
+@keyframes rotate180 {
+  0% { transform: rotate(360deg); margin-right: 5rem; }
+  100% { transform: rotate(180deg); margin-right: 1.5rem; }
 }
 
-.flipSide2 {
-  animation: flipSlide2 ease 1s;
-  animation-fill-mode: forward;
-  transform: rotate(360deg);
+.rotate180back {
+  animation: rotate180back ease 1s;
+  animation-fill-mode: forwards;
 }
 
-@keyframes flipSlide2 {
-  0% {transform: rotate(180deg); margin-right: 1.25rem;}
-  100% {transform: rotate(360deg); margin-right: 5rem;}
+@keyframes rotate180back {
+  0% { transform: rotate(180deg); margin-right: 1.5rem; }
+  100% { transform: rotate(0deg); margin-right: 5rem; }
 }
+
 
 .expandPanel {
   animation: expandPanel ease 2s;
@@ -124,7 +127,7 @@
 }
 
 @keyframes expandPanel {
-  0% {width: 0rem;}
+  0% {width: 0%;}
   100% {width: 40%;}
 }
 
@@ -135,5 +138,5 @@
 
 @keyframes collapsePanel {
   0% {width: 40%;}
-  100% {width: 0rem;}
+  100% {width: 0%;}
 }
