@@ -1,7 +1,7 @@
 # Hi, I'm TrustedMercury 👋
 ### I'm a 13 y/o student, (full stack) developer and an aspiring tech entrepreneur. 
 
-**I am currently working with** a developemnt team to create new websites, automated bots and other applications to help connect the internet further. Also practicing essential full-stack development skills (PERN-stack), with PostgreSQL, ExpressJS, React and NodeJS.
+**I am currently working with** a development team to create new websites, automated bots and other applications to help connect the internet further. Also practicing essential full-stack development skills (PERN-stack), with PostgreSQL, ExpressJS, React and NodeJS.
 
 **I'm well versed in** Python, JavaScript, HTML and CSS with over a year of experience in the development world (which happens to be very less). I'm learning how to make fast and efficient functional software (especially web applications and python packages) with exceptional UI and UX. 
 
