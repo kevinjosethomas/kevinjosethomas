@@ -2,6 +2,7 @@
 $(document).ready(e => {
   $('#intro').removeClass("hidden");
   $('#arrow').removeClass("hidden");
+  $("#arrow").addClass("transmission");
 
   $('#intro').addClass("slideInLeft");
   $('#arrow').addClass("slideInRight");
@@ -45,7 +46,8 @@ $(document).on("animationend", "body", e => {
     $("#arrow").removeClass("transmission");
   } else if (e.originalEvent.animationName == "slideInRight" && e.target == $("#arrow")[0]) {
     $('#arrow').removeClass("slideInRight");
-  } else if (e.originalEvent.animationName == "slideInRight" && e.target == $("#arrow")[0]) {
+    $("#arrow").removeClass("transmission");
+  } else if (e.originalEvent.animationName == "slideInLeft" && e.target == $("#intro")[0]) {
     $('#intro').removeClass("slideInLeft");
   }
 })
