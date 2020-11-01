@@ -31,12 +31,12 @@
   </head>
   <body id="body" class="flex flex-row items-center overflow-hidden">
     <div id="scene" class="flex flex-row items-center justify-between w-screen h-screen bg-matteBlack">
-      <div id="intro" data-depth="0.1" class="hidden flex flex-col items-start ml-20 max-w-lg">
-        <h1 class="text-gray-300 font-circular">Kevin Thomas</h1>
-        <h6 class="text-lg font-opensans text-lightWhite">Hello, I'm Kevin Thomas. I'm a 13 year old student, developer and an aspiring tech entrepreneur based in Toronto</h6>
+      <div id="intro" data-depth="0.1" class="flex flex-col items-center md:items-start mx-4 md:mr-0 md:ml-20 max-w-lg text-center md:text-left">
+        <span class="text-gray-300 font-circular text-5xl">Kevin Thomas</span><br class="hidden md:block" />
+        <span class="text-lg font-opensans text-lightWhite text-sm md:text-lg">Hello, I'm Kevin Thomas. I'm a 13 year old student, full-stack developer and an aspiring tech entrepreneur in Toronto</span>
       </div>
     </div>
-    <div class="flex flex-col items-center justify-center bg-matteBlack h-screen">
+    <div id="arrowContainer" class="hidden lg:flex flex-col items-center justify-center bg-matteBlack h-screen">
         <div id="arrow" class="cursor-pointer hidden mr-20 text-6xl text-skyBlue font-opensans"><i class="ri-arrow-right-circle-fill"></i></div>
     </div>
     <div id="panel" class="hidden flex flex-row items-center justify-center w-0 h-screen bg-matteBlack border-l-2 border-lightWhite">

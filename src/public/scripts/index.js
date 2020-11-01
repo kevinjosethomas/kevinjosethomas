@@ -1,14 +1,22 @@
 
+let is_mobile = false;
+
 $(document).ready(e => {
   $('#intro').removeClass("hidden");
   $('#arrow').removeClass("hidden");
-  $("#arrow").addClass("transmission");
 
-  $('#intro').addClass("slideInLeft");
-  $('#arrow').addClass("slideInRight");
+  if ($("#arrowContainer").css("display") == "none") {
+    is_mobile = true;
+  }
 
-  var scene = document.getElementById('scene');
-  var parallaxInstance = new Parallax(scene, {selector: '#intro'});
+  if (!is_mobile) {
+    $("#arrow").addClass("transmission");
+    $('#intro').addClass("slideInLeft");
+    $('#arrow').addClass("slideInRight");
+
+    let scene = document.getElementById('scene');
+    let parallaxInstance = new Parallax(scene, {selector: '#intro'});
+  }
 })
 
 $(document).on("mouseover", "#arrow", e => {
