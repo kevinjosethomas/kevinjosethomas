@@ -25,6 +25,7 @@
   "homepage": "https://github.com/TrustedMercury/trustedmercury#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "compression": "^1.7.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -32,6 +33,7 @@
     "helmet-csp": "^3.1.0",
     "http": "0.0.1-security",
     "https": "^1.0.0",
+    "mocha": "^8.2.1",
     "nodemon": "^2.0.4"
   }
 }
