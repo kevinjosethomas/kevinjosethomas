@@ -19,8 +19,6 @@ dotenv.config();
 const app = express();
 global.__dirname = path.dirname(fileURLToPath(import.meta.url));
 
-let server = http.createServer(app);
-
 global.debug = (message) => {
   if (process.env.DEBUG_MODE) console.debug(message);
 }
@@ -53,6 +51,8 @@ app.use("/socials", SocialsRoute);
 app.use("/projects", ProjectsRoute);
 
 
-server.listen(process.env.PORT, "0.0.0.0", () => {
+app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log(`Server Started on PORT ${process.env.PORT}`);
 })
+
+export default app;
