@@ -51,7 +51,7 @@ app.use("/socials", SocialsRoute);
 app.use("/projects", ProjectsRoute);
 
 
-app.listen(process.env.PORT, "0.0.0.0", () => {
+app.listen(process.env.PORT || 3000, "0.0.0.0", () => {
   console.log(`Server Started on PORT ${process.env.PORT}`);
 })
 
