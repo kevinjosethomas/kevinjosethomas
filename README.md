@@ -93,9 +93,6 @@ JSON     5 mins          ▒░░░░░░░░░░░░░░░░░�
 <a href="https://discord.gg/32aMzp8" target="_blank">
   <img src="https://img.shields.io/badge/DISCORD-7289DA?style=for-the-badge&logo=discord&logoColor=white" />
 </a>
-<a href="https://www.linkedin.com/in/kevin-thomas-262102127/" target="_blank">
-  <img src="https://img.shields.io/badge/LINKEDIN-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
-</a>
 <a href="https://twitter.com/TrustedMercury" target="_blank" href="https://twitter.com/TrustedMercury">
   <img src="https://img.shields.io/badge/TWITTER-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
 </a>
