@@ -1,7 +1,7 @@
 # Hi, I'm TrustedMercury 👋 
 ### I'm a 13 y/o student, (full stack) developer and an aspiring tech entrepreneur. 
 
-![](https://api.ghprofile.me/view?username=TrustedMercury) ← this looks better with larger numbers, please share 💖 oh no, people are spamming it
+![](https://api.ghprofile.me/view?username=TrustedMercury) ← this looks better with larger numbers, please share 💖 Provided by https://ghprofile.me/! Check it out!
 
 **I am currently working with** a development team to create new websites, automated bots and other applications to help connect the internet further. Also practicing essential full-stack development skills (PERN-stack), with PostgreSQL, ExpressJS, React and NodeJS.
 
