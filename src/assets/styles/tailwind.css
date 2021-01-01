@@ -17,3 +17,10 @@
 .font-proxima {
   font-family: "proxima-soft";
 }
+
+
+/* Custom CSS */
+
+.Background {
+  background-image: url("/images/wave.png");
+}
