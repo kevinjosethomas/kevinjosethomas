@@ -3,6 +3,8 @@
 
 ![](https://api.ghprofile.me/view?username=TrustedMercury) ← this looks better with larger numbers, please share 💖 Provided by https://ghprofile.me/! Check it out!
 
+[Testimonials & Recommendations](https://github.com/TrustedMercury/Testimonials)
+
 **I am currently working with** a development team to create new websites, automated bots and other applications to help connect the internet further. Also practicing essential full-stack development skills (PERN-stack), with PostgreSQL, ExpressJS, React and NodeJS.
 
 **I'm well versed in** Python, JavaScript, HTML and CSS with over a year of experience in the development world (which happens to be very less). I'm learning how to make fast and efficient functional software (especially web applications and python packages) with exceptional UI and UX. 
@@ -31,6 +33,7 @@ Other        19 mins         ▓░░░░░░░░░░░░░░░░
 CSS          7 mins          ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.13 % 
 ```
 <!--END_SECTION:waka-->
+
 </p>
 </details>
 
@@ -42,7 +45,7 @@ CSS          7 mins          ▒░░░░░░░░░░░░░░░░
 
 <!-- Ignore the indentation -->
 <details open>
-<summary>:hammer_and_wrench: <b>Software</b></summary>
+<summary>🛠 <b>Software</b></summary>
 <p>
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
@@ -66,24 +69,13 @@ CSS          7 mins          ▒░░░░░░░░░░░░░░░░
 [![Photoshop](https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=white)]()
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white)]()
 [![Font Awesome](https://img.shields.io/badge/Font%20Awesome-339AF0?style=for-the-badge&logo=Font%20Awesome&logoColor=white)]() 
+
 </p>
 </details>
 
-
 <!-- Ignore the indentation -->
 <details open>
-<summary>:video_game: <b>Games</b></summary>
-<p>
-  
-[![Minecraft](https://img.shields.io/badge/Minecraft-DB1F29?style=for-the-badge&logo=Mojang%20Studios&logoColor=white)]()
-[![Valorant](https://img.shields.io/badge/Valorant-D32936?style=for-the-badge&logo=Riot%20Games&logoColor=white)]()
-</p>
-</details>
-
-
-<!-- Ignore the indentation -->
-<details open>
-<summary>:mailbox: <b>Socials</b></summary>
+<summary>📬 <b>Socials</b></summary>
 <p>
 
 <a href="mailto:trustedmercury@gmail.com" target="_blank">
@@ -98,9 +90,11 @@ CSS          7 mins          ▒░░░░░░░░░░░░░░░░
 <a href="https://twitter.com/TrustedMercury" target="_blank" href="https://twitter.com/TrustedMercury">
   <img src="https://img.shields.io/badge/TWITTER-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
 </a>
+
 </p>
+</details>
 
 ## Credits
-[@RoadToML](https://github.com/RoadToML) for guiding me through my development journey and being an amazing mentor.
+The many great people and mentors I've met along the way who've guided me and have helped me become who I am.
 
 [This list](https://github.com/abhisheknaiidu/awesome-github-profile-readme) and the people mentioned in it for inspiration and ideas for this README.
