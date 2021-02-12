@@ -1,10 +1,22 @@
 import Link from "next/link";
-import { Fragment } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
+import { AnimatePresence} from "framer-motion";
+
+import { MobileNav } from "./MobileNav.js";
+
+const useNavbarState = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return {
+    isOpen,
+    setIsOpen
+  }
+}
 
 export const Navbar = (props) => {
 
   const router = useRouter()
+  const { isOpen, setIsOpen } = useNavbarState();
 
   let padding;
   if (router.pathname === "/" || router.pathname === "/skills") {
@@ -16,8 +28,8 @@ export const Navbar = (props) => {
   }
 
   return (
-    <Fragment>
-      <nav className={`hidden md:flex flex-row items-center justify-start w-full ${padding}`}>
+    <nav className="w-full">
+      <div className={`hidden md:flex flex-row items-center justify-start w-full ${padding}`}>
         <Link href="/">
           <a className="mr-4 font-medium text-2xl text-gray-200 hover:text-gray-400"><i className="fal fa-home" /></a>
         </Link>
@@ -30,7 +42,7 @@ export const Navbar = (props) => {
         <a
           target="_blank"
           href="https://blog.kevinthomas.codes/"
-          className="ml-4 font-inter font-medium text-2xl text-gray-200 hover:text-gray-400"
+          className="mx-4 font-inter font-medium text-2xl text-gray-200 hover:text-gray-400"
         >blog</a>
         <a
           target="_blank"
@@ -38,11 +50,18 @@ export const Navbar = (props) => {
           className="ml-4 font-inter font-medium text-2xl text-gray-200 hover:text-gray-400"
         >recommendations</a>
 
-      </nav>
-      <nav className="flex md:hidden flex-row items-center justify-end p-6 w-full">
-        <i className="fas fa-bars text-3xl text-gray-200" />
-      </nav>
-    </Fragment>
+      </div>
+      <div className="flex md:hidden flex-row items-center justify-end p-6 w-full">
+        <i onClick={() => setIsOpen(true)} className="fas fa-bars text-3xl text-gray-200 hover:text-gray-300 cursor-pointer" />
+      </div>
+      <AnimatePresence>
+        { isOpen && (
+          <MobileNav
+            setIsOpen={setIsOpen}
+          />
+        ) }
+      </AnimatePresence>
+    </nav>
   )
 
 }
