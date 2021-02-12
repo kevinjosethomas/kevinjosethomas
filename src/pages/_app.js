@@ -27,7 +27,7 @@ function App({Component, pageProps}) {
           href="https://pro.fontawesome.com/releases/v5.15.1/css/all.css"
         />
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Fragment>
   )
 
