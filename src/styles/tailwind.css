@@ -22,19 +22,3 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
-
-.w-100 {
-    width: 25rem;
-}
-
-.h-112 {
-    height: 28rem;
-}
-
-.font-inter {
-    font-family: "Inter", sans-serif;
-}
-
-.font-proxima {
-    font-family: "proxima-soft", sans-serif;
-}

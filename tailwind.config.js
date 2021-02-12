@@ -9,8 +9,16 @@ module.exports = {
           300: "#202230",
           400: "#282C3B"
         }
+      },
+      fontFamily: {
+        inter: "Inter",
+        proxima: "proxima-soft"
+      },
+      spacing: {
+        100: "25rem",
+        112: "28rem"
       }
-    },
+    }
   },
   variants: {},
   plugins: [],
