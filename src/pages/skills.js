@@ -4,9 +4,9 @@ const Skills = (props) => {
 
   return (
     <Default>
-      <div className="flex flex-col items-start justify-center my-20 px-40 2xl:px-52 w-full">
+      <div className="flex flex-col items-start justify-center my-24 px-6 md:px-0 md:px-16 xl:px-40 2xl:px-52 w-full">
         <div className="flex flex-col items-start justify-center mb-4">
-          <span className="mb-2 font-proxima font-bold text-3xl text-gray-300">CONCEPTS</span>
+          <span className="mb-2 font-proxima font-bold text-4xl text-gray-300">CONCEPTS</span>
           <div className="flex flex-row items-center justify-start flex-wrap mt-2">
             <div className="flex flex-row items-center justify-center mx-2 py-2 px-4 bg-black bg-opacity-40 rounded">
               <i className="fas fa-columns mr-1 text-xl text-gray-100" />
@@ -47,7 +47,7 @@ const Skills = (props) => {
           </div>
         </div>
         <div className="flex flex-col items-start justify-center my-4">
-          <span className="mb-2 font-proxima font-bold text-3xl text-gray-300">SOFTWARE</span>
+          <span className="mb-2 font-proxima font-bold text-4xl text-gray-300">SOFTWARE</span>
           <div className="flex flex-row items-center justify-start flex-wrap mt-2">
             <div className="flex flex-row items-center justify-center mx-2 py-2 px-4 bg-black bg-opacity-40 rounded">
               <i className="fab fa-python mr-1 text-xl text-gray-100" />
@@ -96,7 +96,7 @@ const Skills = (props) => {
           </div>
         </div>
         <div className="flex flex-col items-start justify-center mt-4">
-          <span className="mb-2 font-proxima font-bold text-3xl text-gray-300">TECHNOLOGY</span>
+          <span className="mb-2 font-proxima font-bold text-4xl text-gray-300">TECHNOLOGY</span>
           <div className="flex flex-row items-center justify-start flex-wrap mt-2">
             <div className="flex flex-row items-center justify-center mx-2 py-2 px-4 bg-black bg-opacity-40 rounded">
               <i className="fab fa-github mr-1 text-xl text-gray-100" />
