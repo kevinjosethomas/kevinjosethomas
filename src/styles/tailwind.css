@@ -1,0 +1,17 @@
+
+/* TailwindCSS */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Custom CSS */
+
+.font-inter {
+    font-family: "Inter", sans-serif;
+}
+
+.font-proxima {
+    font-family: "proxima-soft", sans-serif;
+}
