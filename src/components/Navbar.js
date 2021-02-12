@@ -32,6 +32,12 @@ export const Navbar = (props) => {
           href="https://blog.kevinthomas.codes/"
           className="ml-4 font-inter font-medium text-2xl text-gray-200 hover:text-gray-400"
         >blog</a>
+        <a
+          target="_blank"
+          href="https://github.com/TrustedMercury/Recommendations"
+          className="ml-4 font-inter font-medium text-2xl text-gray-200 hover:text-gray-400"
+        >recommendations</a>
+
       </nav>
       <nav className="flex md:hidden flex-row items-center justify-end p-6 w-full">
         <i className="fas fa-bars text-3xl text-gray-200" />
