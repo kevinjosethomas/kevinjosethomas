@@ -4,7 +4,7 @@ const Index = () => {
 
   return (
     <Default>
-      <div className="flex flex-col items-start justify-center pl-40">
+      <div className="flex flex-col items-start justify-center pl-40 h-full">
         <div className="flex flex-col items-start justify-center mb-5">
           <div className="flex flex-row items-center justify-start">
             <a
