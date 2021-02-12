@@ -10,7 +10,7 @@ export const Navbar = (props) => {
   if (router.pathname === "/" || router.pathname === "/skills") {
     padding = "md:pl-20 xl:pl-40 2xl:pl-52 md:pt-10 2xl:pt-20"
   } else if (router.pathname === "/projects") {
-    padding = "xl:px-16 2xl:px-52 xl:pt-10 2xl:pt-20"
+    padding = "md:pl-20 xl:px-16 2xl:px-52 md:pt-10 2xl:pt-20"
   } else {
     padding = "pl-40 2xl:pl-52 xl:pt-10 2xl:pt-20"
   }
