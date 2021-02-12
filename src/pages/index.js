@@ -4,7 +4,7 @@ const Index = (props) => {
 
   return (
     <Default>
-      <div className="flex flex-col items-start justify-center my-16 md:my-32 2xl:my-52 px-5 md:px-0 md:pl-20 xl:pl-40 2xl:pl-52">
+      <div className="flex flex-col items-start justify-center my-24 md:my-32 2xl:my-52 px-6 md:px-0 md:pl-20 xl:pl-40 2xl:pl-52">
         <div className="flex flex-col items-start justify-center mb-5">
           <div className="flex flex-row items-center justify-start mb-2 md:mb-0">
             <a
