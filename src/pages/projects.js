@@ -6,7 +6,7 @@ const Projects = (props) => {
 
   return (
     <Default>
-      <div className="flex flex-col items-start justify-center xl:px-16 2xl:px-52 h-full w-full">
+      <div className="flex flex-col items-start justify-center my-20 xl:px-16 2xl:px-52 w-full h-full">
         <span className="mb-4 font-proxima font-bold text-5xl text-gray-300">PROJECTS</span>
         <div className="mt-4 flex flex-row items-center justify-between flex-wrap w-full">
           <Project
