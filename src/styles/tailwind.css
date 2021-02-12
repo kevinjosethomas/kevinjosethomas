@@ -8,6 +8,10 @@
 
 /* Custom CSS */
 
+.bg {
+    background-image: url("/images/background.png");
+}
+
 .font-inter {
     font-family: "Inter", sans-serif;
 }
