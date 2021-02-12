@@ -15,7 +15,7 @@
 
 /* Custom CSS */
 
-.bg {
+body {
     background-image: url("/images/bg.png");
     background-size: cover;
     background-position: center;
