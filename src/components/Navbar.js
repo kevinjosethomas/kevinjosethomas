@@ -1,9 +1,19 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-export const Navbar = () => {
+export const Navbar = (props) => {
+
+  const router = useRouter()
+
+  let padding;
+  if (router.pathname === "/") {
+    padding = "pl-40 2xl:pl-52 xl:pt-10 2xl:pt-20"
+  } else if (router.pathname === "/projects") {
+    padding = "xl:px-16 2xl:px-52 xl:pt-10 2xl:pt-20"
+  }
 
   return (
-    <nav className="flex flex-row items-center justify-start w-full px-40 pt-10">
+    <nav className={`flex flex-row items-center justify-start w-full ${padding}`}>
       <Link href="/">
         <a className="mr-4 font-medium text-2xl text-gray-200 hover:text-gray-400"><i className="fal fa-home" /></a>
       </Link>
