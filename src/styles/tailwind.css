@@ -5,11 +5,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .text-gradient {
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
 
 /* Custom CSS */
 
 .bg {
-    background-image: url("/images/background.png");
+    background-image: url("/images/bg.png");
+    background-repeat: repeat;
 }
 
 .font-inter {
