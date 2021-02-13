@@ -8,18 +8,19 @@ const Projects = (props) => {
 
   return (
     <Default>
-      <div className="flex flex-col items-center xl:items-start justify-center my-24 xl:px-16 2xl:px-52 w-full h-full">
+      <div className="flex flex-col items-center xl:items-start justify-center my-24 xl:px-14 2xl:px-52 w-full h-full">
         <motion.span
           initial="initial"
           animate="animate"
           variants={ProjectTitleSlideUp}
           className="mb-4 font-proxima font-bold text-5xl text-gray-300"
         >PROJECTS</motion.span>
-        <div className="flex flex-col xl:flex-row items-center justify-between flex-wrap w-full">
+        <div className="flex flex-col xl:flex-row items-center justify-start flex-wrap w-full">
           <motion.div
             initial="initial"
             animate="animate"
             variants={ProjectOneSlideUp}
+            className="mr-4"
           >
             <Project
               from="from-purple-500"
@@ -38,6 +39,7 @@ const Projects = (props) => {
             initial="initial"
             animate="animate"
             variants={ProjectTwoSlideUp}
+            className="mx-4"
           >
             <Project
               from="from-blue-500"
@@ -56,6 +58,7 @@ const Projects = (props) => {
             initial="initial"
             animate="animate"
             variants={ProjectThreeSlideUp}
+            className="ml-4"
           >
             <Project
               from="from-green-500"
