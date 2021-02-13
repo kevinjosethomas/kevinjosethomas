@@ -12,6 +12,11 @@ function App({ Component, pageProps, router }) {
         <title>Kevin Thomas</title>
 
         <link
+          rel="shortcut icon"
+          href="/favicon/favicon.ico"
+        />
+
+        <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
         />
