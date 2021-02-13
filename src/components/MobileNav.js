@@ -7,7 +7,7 @@ export const MobileNav = (props) => {
 
   return (
     <motion.div
-      className="absolute flex md:hidden flex-col items-center justify-start py-4 px-6 inset-0 h-screen w-screen overflow-hidden bg-dark-200"
+      className="absolute flex md:hidden flex-col items-center justify-start py-4 px-6 inset-0 h-screen w-screen z-50 overflow-hidden bg-dark-200"
       initial="initial"
       animate="animate"
       exit="exit"
