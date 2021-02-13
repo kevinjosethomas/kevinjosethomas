@@ -1,7 +1,13 @@
 import { motion } from "framer-motion";
 
 import { Default } from "../layouts/default.js";
-import { HomeSocialsSlideUp, HomeTitleSlideUp, HomePronounceSlideUp, HomeDefinitionSlideUp } from "../util/Animations";
+import {
+  HomeSocialsSlideUp,
+  HomeTitleSlideUp,
+  HomePronounceSlideUp,
+  HomeDefinitionSlideUp,
+  HomeInsultSlideUp
+} from "../util/Animations";
 
 const Index = (props) => {
 
@@ -55,9 +61,13 @@ const Index = (props) => {
             <span className="font-inter font-medium italic text-sm xl:text-xl text-gray-500">“Kevin is a 13 y/o aspiring tech entrepreneur, developer and student.”</span>
           </div>
         </motion.div>
-        <div className="hidden md:inline xl:hidden mt-20">
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={HomeInsultSlideUp}
+          className="hidden md:inline xl:hidden mt-20">
           <span className="font-inter font-semibold text-lg text-gray-200">what are you on? an iPad? bleh - get on a real device</span>
-        </div>
+        </motion.div>
       </div>
     </Default>
   )

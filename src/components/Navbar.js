@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { AnimatePresence} from "framer-motion";
 
 import { MobileNav } from "./MobileNav.js";
+import { ExpandNav } from "../util/Animations";
 
 const useNavbarState = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +31,12 @@ export const Navbar = (props) => {
 
   return (
     <nav className="w-full">
-      <div className={`hidden md:flex flex-row items-center justify-start w-full ${padding}`}>
+      <motion.div
+        initial="initial"
+        animate="animate"
+        variants={ExpandNav}
+        className={`hidden md:flex flex-row items-center justify-start w-full ${padding}`}
+      >
         <Link href="/">
           <a className="mr-4 font-medium text-2xl text-gray-200 hover:text-gray-400"><i className="fal fa-home" /></a>
         </Link>
@@ -50,7 +57,7 @@ export const Navbar = (props) => {
           className="ml-4 font-inter font-medium text-2xl text-gray-200 hover:text-gray-400"
         >recommendations</a>
 
-      </div>
+      </motion.div>
       <div className="flex md:hidden flex-row items-center justify-end p-6 w-full">
         <i onClick={() => setIsOpen(true)} className="fas fa-bars text-3xl text-gray-200 hover:text-gray-300 cursor-pointer" />
       </div>
