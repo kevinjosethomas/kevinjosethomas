@@ -1,8 +1,8 @@
 
 export const PageFade = {
-  initial: { opacity: 0, y: "20px" },
-  animate: { opacity: 1, y: "0px", transition: { duration: 0.4 } },
-  exit: { opacity: 0, y: "20px", transition: { duration: 0.4 } }
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4 } },
+  exit: { y: "20px", opacity: 0, transition: { duration: 0.4 } }
 }
 
 export const ExpandNav = {
@@ -39,4 +39,24 @@ export const HomeDefinitionSlideUp = {
 export const HomeInsultSlideUp = {
   initial: { y: "20px", opacity: 0 },
   animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 1.5 } }
+}
+
+export const ProjectTitleSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 0.3 } }
+}
+
+export const ProjectOneSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 0.6 } }
+}
+
+export const ProjectTwoSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 0.9 } }
+}
+
+export const ProjectThreeSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 1.2 } }
 }
