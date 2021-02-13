@@ -60,3 +60,33 @@ export const ProjectThreeSlideUp = {
   initial: { y: "20px", opacity: 0 },
   animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 1.2 } }
 }
+
+export const SkillsConceptsTitleSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 0.3 } }
+}
+
+export const SkillsConceptsFieldsSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 0.6 } }
+}
+
+export const SkillsSoftwareTitleSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 0.9 } }
+}
+
+export const SkillsSoftwareFieldsSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 1.2 } }
+}
+
+export const SkillsTechnologyTitleSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 1.5 } }
+}
+
+export const SkillsTechnologyFieldsSlideUp = {
+  initial: { y: "20px", opacity: 0 },
+  animate: { y: "0px", opacity: 1, transition: { duration: 0.4, delay: 1.8 } }
+}

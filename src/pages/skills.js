@@ -1,4 +1,14 @@
+import { motion } from "framer-motion";
+
 import { Default } from "../layouts/default";
+import {
+  SkillsConceptsTitleSlideUp,
+  SkillsConceptsFieldsSlideUp,
+  SkillsSoftwareTitleSlideUp,
+  SkillsSoftwareFieldsSlideUp,
+  SkillsTechnologyTitleSlideUp,
+  SkillsTechnologyFieldsSlideUp
+} from "../util/Animations";
 
 const Skills = (props) => {
 
@@ -6,8 +16,18 @@ const Skills = (props) => {
     <Default>
       <div className="flex flex-col items-start justify-center my-24 px-6 md:px-0 md:px-16 xl:px-40 2xl:px-52 w-full">
         <div className="flex flex-col items-start justify-center mb-4">
-          <span className="mb-2 font-proxima font-bold text-4xl text-gray-300">CONCEPTS</span>
-          <div className="flex flex-row items-center justify-start flex-wrap mt-2">
+          <motion.span
+            initial="initial"
+            animate="animate"
+            variants={SkillsConceptsTitleSlideUp}
+            className="mb-2 font-proxima font-bold text-4xl text-gray-300"
+          >CONCEPTS</motion.span>
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={SkillsConceptsFieldsSlideUp}
+            className="flex flex-row items-center justify-start flex-wrap mt-2"
+          >
             <div className="flex flex-row items-center justify-center mx-2 py-2 px-4 bg-black bg-opacity-40 rounded">
               <i className="fas fa-columns mr-1 text-xl text-gray-100" />
               <span className="ml-1 font-proxima font-semibold text-xl text-gray-300">FRONTEND WEB</span>
@@ -44,11 +64,21 @@ const Skills = (props) => {
               <i className="far fa-dollar-sign mr-1 text-xl text-gray-100" />
               <span className="ml-1 font-proxima font-semibold text-xl text-gray-300">FREELANCING</span>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className="flex flex-col items-start justify-center my-4">
-          <span className="mb-2 font-proxima font-bold text-4xl text-gray-300">SOFTWARE</span>
-          <div className="flex flex-row items-center justify-start flex-wrap mt-2">
+          <motion.span
+            initial="initial"
+            animate="animate"
+            variants={SkillsSoftwareTitleSlideUp}
+            className="mb-2 font-proxima font-bold text-4xl text-gray-300"
+          >SOFTWARE</motion.span>
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={SkillsSoftwareFieldsSlideUp}
+            className="flex flex-row items-center justify-start flex-wrap mt-2"
+          >
             <div className="flex flex-row items-center justify-center mx-2 py-2 px-4 bg-black bg-opacity-40 rounded">
               <i className="fab fa-python mr-1 text-xl text-gray-100" />
               <span className="ml-1 font-proxima font-semibold text-xl text-gray-300">PYTHON</span>
@@ -93,11 +123,21 @@ const Skills = (props) => {
               <i className="fab fa-github mr-1 text-xl text-gray-100" />
               <span className="ml-1 font-proxima font-semibold text-xl text-gray-300">ACTIONS</span>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className="flex flex-col items-start justify-center mt-4">
-          <span className="mb-2 font-proxima font-bold text-4xl text-gray-300">TECHNOLOGY</span>
-          <div className="flex flex-row items-center justify-start flex-wrap mt-2">
+          <motion.span
+            initial="initial"
+            animate="animate"
+            variants={SkillsTechnologyTitleSlideUp}
+            className="mb-2 font-proxima font-bold text-4xl text-gray-300"
+          >TECHNOLOGY</motion.span>
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={SkillsTechnologyFieldsSlideUp}
+            className="flex flex-row items-center justify-start flex-wrap mt-2"
+          >
             <div className="flex flex-row items-center justify-center mx-2 py-2 px-4 bg-black bg-opacity-40 rounded">
               <i className="fab fa-github mr-1 text-xl text-gray-100" />
               <span className="ml-1 font-proxima font-semibold text-xl text-gray-300">GITHUB</span>
@@ -138,7 +178,7 @@ const Skills = (props) => {
               <i className="fab fa-raspberry-pi mr-1 text-xl text-gray-100" />
               <span className="ml-1 font-proxima font-semibold text-xl text-gray-300">RASPBERRY PI</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </Default>
