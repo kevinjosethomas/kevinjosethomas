@@ -1,9 +1,10 @@
 import Head from "next/head";
 import { Fragment } from "react";
+import { AnimateSharedLayout, AnimatePresence, motion } from "framer-motion";
 
 import "../styles/tailwind.css";
 
-function App({Component, pageProps}) {
+function App({ Component, pageProps, router }) {
 
   return (
     <Fragment>
@@ -27,7 +28,11 @@ function App({Component, pageProps}) {
           href="https://pro.fontawesome.com/releases/v5.15.1/css/all.css"
         />
       </Head>
-      <Component {...pageProps} />
+      <AnimateSharedLayout>
+        <AnimatePresence exitBeforeEnter>
+            <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
+      </AnimateSharedLayout>
     </Fragment>
   )
 

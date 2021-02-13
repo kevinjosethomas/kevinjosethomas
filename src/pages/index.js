@@ -13,7 +13,13 @@ const Index = (props) => {
 
   return (
     <Default>
-      <div className="flex flex-col items-start justify-center my-24 md:my-32 2xl:my-52 px-6 md:px-0 md:pl-20 xl:pl-40 2xl:pl-52">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        layoutId="index"
+        className="flex flex-col items-start justify-center my-24 md:my-32 2xl:my-52 px-6 md:px-0 md:pl-20 xl:pl-40 2xl:pl-52"
+      >
         <div className="flex flex-col items-start justify-center mb-5">
           <motion.div
             className="flex flex-row items-center justify-start mb-2 md:mb-0"
@@ -68,7 +74,7 @@ const Index = (props) => {
           className="hidden md:inline xl:hidden mt-20">
           <span className="font-inter font-semibold text-lg text-gray-200">what are you on? an iPad? bleh - get on a real device</span>
         </motion.div>
-      </div>
+      </motion.div>
     </Default>
   )
 

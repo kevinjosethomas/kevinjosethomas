@@ -35,6 +35,7 @@ export const Navbar = (props) => {
         initial="initial"
         animate="animate"
         variants={ExpandNav}
+        layoutId="navbar"
         className={`hidden md:flex flex-row items-center justify-start w-full ${padding}`}
       >
         <Link href="/">
@@ -56,7 +57,6 @@ export const Navbar = (props) => {
           href="https://github.com/TrustedMercury/Recommendations"
           className="ml-4 font-inter font-medium text-2xl text-gray-200 hover:text-gray-400"
         >recommendations</a>
-
       </motion.div>
       <div className="flex md:hidden flex-row items-center justify-end p-6 w-full">
         <i onClick={() => setIsOpen(true)} className="fas fa-bars text-3xl text-gray-200 hover:text-gray-300 cursor-pointer" />
