@@ -26,7 +26,7 @@ function App({ Component, pageProps, router }) {
         />
         <link
           rel="stylesheet"
-          href="https://use.typekit.net/ebw0chl.css"
+          href="https://use.typekit.net/mbb5sux.css"
         />
         <link
           rel="stylesheet"
@@ -35,7 +35,7 @@ function App({ Component, pageProps, router }) {
       </Head>
       <AnimateSharedLayout>
         <AnimatePresence exitBeforeEnter>
-            <Component {...pageProps} key={router.route} />
+          <Component {...pageProps} key={router.route} />
         </AnimatePresence>
       </AnimateSharedLayout>
     </Fragment>
