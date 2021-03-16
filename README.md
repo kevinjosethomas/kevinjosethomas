@@ -1,9 +1,9 @@
-# Hi, I'm TrustedMercury 👋 
+# Hi, I'm trustedmercury 👋 
 ### I'm a 13 y/o student, (full stack) developer and an aspiring tech entrepreneur. 
 
 ![](https://api.ghprofile.me/view?username=TrustedMercury) ← this looks better with larger numbers, please share 💖 Provided by https://ghprofile.me/! Check it out!
 
-[Testimonials & Recommendations](https://github.com/TrustedMercury/Testimonials)
+[Testimonials & Recommendations](https://github.com/trustedmercury/Testimonials)
 
 **I am currently working with** a development team to create new websites, automated bots and other applications to help connect the internet further. Also practicing essential full-stack development skills (PERN-stack), with PostgreSQL, ExpressJS, React and NodeJS.
 
@@ -15,7 +15,7 @@
 
 <details>
   <summary>⚡ GitHub Activity and Statistics</summary> 
-  <img src="https://github-readme-stats.vercel.app/api?username=TrustedMercury&count_private=true&show_icons=true&theme=gotham" />
+  <img src="https://github-readme-stats.vercel.app/api?username=trustedmercury&count_private=true&show_icons=true&theme=gotham" />
 </details>
 
 <details open>
@@ -81,13 +81,13 @@ CSS                        21 mins         ▒░░░░░░░░░░░�
 <a href="mailto:trustedmercury@gmail.com" target="_blank">
   <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white" />
 </a>
-<a href="https://github.com/TrustedMercury" target="_blank">
+<a href="https://github.com/trustedmercury" target="_blank">
   <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github" />
 </a>
 <a href="https://discord.gg/32aMzp8" target="_blank">
   <img src="https://img.shields.io/badge/DISCORD-7289DA?style=for-the-badge&logo=discord&logoColor=white" />
 </a>
-<a href="https://twitter.com/TrustedMercury" target="_blank" href="https://twitter.com/TrustedMercury">
+<a href="https://twitter.com/trustedmercury" target="_blank" href="https://twitter.com/TrustedMercury">
   <img src="https://img.shields.io/badge/TWITTER-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
 </a>
 
