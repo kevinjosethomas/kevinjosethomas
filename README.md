@@ -1,5 +1,5 @@
 # Hi, I'm trustedmercury 👋 
-### I'm a 13 y/o student, (full stack) developer and an aspiring tech entrepreneur. 
+### I'm a 14 y/o student, (full stack) developer and an aspiring tech entrepreneur. 
 
 ![](https://api.ghprofile.me/view?username=TrustedMercury) ← this looks better with larger numbers, please share 💖 Provided by https://ghprofile.me/! Check it out!
 
