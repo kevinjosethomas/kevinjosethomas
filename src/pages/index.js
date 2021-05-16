@@ -63,8 +63,8 @@ const Index = (props) => {
         >
           <span className="font-inter italic text-xl text-gray-300">proper noun</span>
           <div className="flex flex-col items-start justify-center ml-6">
-            <span className="font-inter md:text-xl xl:text-3xl text-gray-400">13 y/o aspiring tech entrepreneur, developer and student</span>
-            <span className="font-inter font-medium italic text-sm xl:text-xl text-gray-500">“Kevin is a 13 y/o aspiring tech entrepreneur, developer and student.”</span>
+            <span className="font-inter md:text-xl xl:text-3xl text-gray-400">14 y/o aspiring tech entrepreneur, developer and student</span>
+            <span className="font-inter font-medium italic text-sm xl:text-xl text-gray-500">“Kevin is a 14 y/o aspiring tech entrepreneur, developer and student.”</span>
           </div>
         </motion.div>
         <motion.div
