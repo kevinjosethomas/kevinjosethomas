@@ -6,11 +6,10 @@ import {
   HomeTitleSlideUp,
   HomePronounceSlideUp,
   HomeDefinitionSlideUp,
-  HomeInsultSlideUp
+  HomeInsultSlideUp,
 } from "../util/Animations";
 
 const Index = (props) => {
-
   return (
     <Default>
       <motion.div
@@ -30,16 +29,18 @@ const Index = (props) => {
             <a
               target="_blank"
               href="https://github.kevinthomas.codes/"
-              className="mr-2 font-inter font-medium text-3xl md:text-lg text-gray-300 hover:text-gray-400"
+              className="mr-2 font-inter font-medium text-3xl md:text-lg text-gray-300 hover:text-purple-400 transition duration-500"
             >
-              <i className="fab fa-github" /> <span className="hidden md:inline">trustedmercury</span>
+              <i className="fab fa-github" />{" "}
+              <span className="hidden md:inline">trustedmercury</span>
             </a>
             <a
               target="_blank"
               href="https://twitter.kevinthomas.codes/"
-              className="ml-2 font-inter font-medium text-3xl md:text-lg text-gray-300 hover:text-gray-400"
+              className="ml-2 font-inter font-medium text-3xl md:text-lg text-gray-300 hover:text-purple-400 transition duration-500"
             >
-              <i className="fab fa-twitter" /> <span className="hidden md:inline">trustedmercury</span>
+              <i className="fab fa-twitter" />{" "}
+              <span className="hidden md:inline">trustedmercury</span>
             </a>
           </motion.div>
           <motion.span
@@ -47,13 +48,17 @@ const Index = (props) => {
             animate="animate"
             variants={HomeTitleSlideUp}
             className="font-inter font-bold text-6xl md:text-7xl xl:text-8xl text-gradient bg-gradient-to-r from-purple-500 to-purple-400"
-          >Kev·in Thom·as</motion.span>
+          >
+            Kev·in Thom·as
+          </motion.span>
           <motion.span
             initial="initial"
             animate="animate"
             variants={HomePronounceSlideUp}
             className="font-inter text-2xl text-gray-400"
-          >/ˈkevɪn tɒməs/</motion.span>
+          >
+            /ˈkevɪn tɒməs/
+          </motion.span>
         </div>
         <motion.div
           initial="initial"
@@ -61,23 +66,32 @@ const Index = (props) => {
           variants={HomeDefinitionSlideUp}
           className="flex flex-col items-start justify-center mt-5"
         >
-          <span className="font-inter italic text-xl text-gray-300">proper noun</span>
+          <span className="font-inter italic text-xl text-gray-300">
+            proper noun
+          </span>
           <div className="flex flex-col items-start justify-center ml-6">
-            <span className="font-inter md:text-xl xl:text-3xl text-gray-400">14 y/o aspiring tech entrepreneur, developer and student</span>
-            <span className="font-inter font-medium italic text-sm xl:text-xl text-gray-500">“Kevin is a 14 y/o aspiring tech entrepreneur, developer and student.”</span>
+            <span className="font-inter md:text-xl xl:text-3xl text-gray-400">
+              14 y/o aspiring tech entrepreneur, developer and student
+            </span>
+            <span className="font-inter font-medium italic text-sm xl:text-xl text-gray-500">
+              “Interested in meeting new people, collaborating on projects and
+              particpating in events!”
+            </span>
           </div>
         </motion.div>
         <motion.div
           initial="initial"
           animate="animate"
           variants={HomeInsultSlideUp}
-          className="hidden md:inline xl:hidden mt-20">
-          <span className="font-inter font-semibold text-lg text-gray-200">what are you on? an iPad? bleh - get on a real device</span>
+          className="hidden md:inline xl:hidden mt-20"
+        >
+          <span className="font-inter font-semibold text-lg text-gray-200">
+            what are you on? an iPad? bleh - get on a real device
+          </span>
         </motion.div>
       </motion.div>
     </Default>
-  )
-
-}
+  );
+};
 
 export default Index;
