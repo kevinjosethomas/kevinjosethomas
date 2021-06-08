@@ -1,4 +1,5 @@
 module.exports = {
+  mode: "jit",
   purge: ["./src/**/*.js"],
   theme: {
     extend: {
@@ -7,22 +8,22 @@ module.exports = {
           100: "#161820",
           200: "#1C1D28",
           300: "#202230",
-          400: "#282C3B"
-        }
+          400: "#282C3B",
+        },
       },
       fontFamily: {
         inter: "Inter",
-        proxima: "proxima-soft"
+        proxima: "proxima-soft",
       },
       spacing: {
         100: "25rem",
-        112: "28rem"
+        112: "28rem",
       },
       screens: {
-        "2xl": "1537px"
-      }
-    }
+        "2xl": "1537px",
+      },
+    },
   },
   variants: {},
   plugins: [],
-}
+};
