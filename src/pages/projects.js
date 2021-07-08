@@ -91,7 +91,7 @@ const Projects = (props) => {
               against other players from all across Discord. Earn money, balance your happiness and
               keep uploading to become the best vidio channel on Discord!"
               type="REPOSITORY"
-              redirect="https://github.com/trustedmercury/ghprofile.me/"
+              redirect="https://github.com/trustedmercury/vidio/"
             />
           </motion.div>
           <motion.div
