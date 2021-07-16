@@ -1,17 +1,21 @@
-# Hi, I'm trustedmercury 👋 
-### I'm a 14 y/o student, (full stack) developer and an aspiring tech entrepreneur. 
+# Hi, I'm Kevin Thomas 👋 
+### I'm a 14 y/o student, full-stack developer and an aspiring tech entrepreneur. 
 
-![](https://api.ghprofile.me/view?username=TrustedMercury) ← this looks better with larger numbers, please share 💖 Provided by https://ghprofile.me/! Check it out!
+[Testimonials & Recommendations](https://github.com/trustedmercury/Testimonials) + [Portfolio](https://kevinthomas.codes/)
 
-[Testimonials & Recommendations](https://github.com/trustedmercury/Testimonials)
+**I am currently working with** a development team to create new websites, automated bots and other applications to help connect the internet further. Also practicing essential full-stack development skills with Python, Node, PostgreSQL, Express, Fastify, React and NextJS.
 
-**I am currently working with** a development team to create new websites, automated bots and other applications to help connect the internet further. Also practicing essential full-stack development skills (PERN-stack), with PostgreSQL, ExpressJS, React and NodeJS.
+**I am currently working on** -
+- [Turbo](https://turbobrowser.io/); a Chromium-based web browser that's specifically engineered for developers. (to learn C++ fundamentals and build a product that many people want!)
+- [minecraft.global](https://minecraft.global/); a Mineraft server list (to learn how to effectively scale and monetize a web application, and also to improve my React, Next and Java skills!)
 
-**I'm well versed in** Python, JavaScript, HTML and CSS with over a year of experience in the development world (which happens to be very less). I'm learning how to make fast and efficient functional software (especially web applications and python packages) with exceptional UI and UX. 
+**I'm well versed in** Python, NodeJS, PostgreSQL, React, Next with over two years of experience in the development world. I'm learning how to make fast and efficient functional software with exceptional user experiences! 
 
-**I'm planning on** participating in developer related events and hackathons to gain more tech knowledge and also get some awards to spice up my portfolio. I'm looking for beneficial opportunities that can help me in the future. 
+**I'm planning on** landing an internship or job position to put my skills to good use. Also interested in participating in coding events like hackathons or codejams to continue learning new technology in a competitive field!
 
 ---
+
+![](https://api.ghprofile.me/view?username=TrustedMercury) ← this looks better with larger numbers, please share 💖 Provided by https://ghprofile.me/! Check it out!
 
 <details>
   <summary>⚡ GitHub Activity and Statistics</summary> 
