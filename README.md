@@ -15,7 +15,7 @@
 
 ---
 
-![](https://api.ghprofile.me/view?username=TrustedMercury) 💖 Provided by (ghprofile.me)[https://github.com/trustedmercury/ghprofile.me]! Check it out!
+![](https://api.ghprofile.me/view?username=TrustedMercury) 💖 Provided by [ghprofile.me](https://github.com/trustedmercury/ghprofile.me)! Check it out!
 
 <details>
   <summary>⚡ GitHub Activity and Statistics</summary> 
