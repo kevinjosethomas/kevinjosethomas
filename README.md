@@ -9,7 +9,7 @@
 - [Turbo](https://turbobrowser.io/); a Chromium-based web browser that's specifically engineered for developers. (to learn C++ fundamentals and build a product that many people want!)
 - [minecraft.global](https://minecraft.global/); a Mineraft server list (to learn how to effectively scale and monetize a web application, and also to improve my React, Next and Java skills!)
 
-**I'm well versed in** Python, NodeJS, PostgreSQL, React, Next with over two years of experience in the development world. I'm learning how to make fast and efficient functional software with exceptional user experiences! 
+**I'm well versed in** Python, NodeJS, PostgreSQL, React and NextJS with over two years of experience in the development world. I'm learning how to make fast and efficient functional software with exceptional user experiences! 
 
 **I'm planning on** landing an internship or job position to put my skills to good use. Also interested in participating in coding events like hackathons or codejams to continue learning new technology in a competitive field!
 
