@@ -74,8 +74,8 @@ const Index = (props) => {
               14 y/o aspiring tech entrepreneur, developer and student
             </span>
             <span className="font-inter font-medium italic text-sm xl:text-xl text-gray-500">
-              “Interested in meeting new people, collaborating on projects and
-              particpating in events!”
+              “Interested in software engineering intenrships and
+              participating in developer events!”
             </span>
           </div>
         </motion.div>
