@@ -1,17 +1,21 @@
-# Hi, I'm trustedmercury 👋 
-### I'm a 14 y/o student, (full stack) developer and an aspiring tech entrepreneur. 
+# Hi, I'm Kevin Thomas 👋 
+### I'm a 14 y/o student, full-stack developer and an aspiring tech entrepreneur. 
 
-![](https://api.ghprofile.me/view?username=TrustedMercury) ← this looks better with larger numbers, please share 💖 Provided by https://ghprofile.me/! Check it out!
+[Testimonials & Recommendations](https://github.com/trustedmercury/Testimonials) + [Portfolio](https://kevinthomas.codes/)
 
-[Testimonials & Recommendations](https://github.com/trustedmercury/Testimonials)
+**I am currently working with** a development team to create new websites, automated bots and other applications to help connect the internet further. Also practicing essential full-stack development skills with Python, Node, PostgreSQL, Express, Fastify, React and NextJS.
 
-**I am currently working with** a development team to create new websites, automated bots and other applications to help connect the internet further. Also practicing essential full-stack development skills (PERN-stack), with PostgreSQL, ExpressJS, React and NodeJS.
+**I am currently working on** -
+- [Turbo](https://turbobrowser.io/); a Chromium-based web browser that's specifically engineered for developers. (to learn C++ fundamentals and build a product that many people want!)
+- [minecraft.global](https://minecraft.global/); a Mineraft server list (to learn how to effectively scale and monetize a web application, and also to improve my React, Next and Java skills!)
 
-**I'm well versed in** Python, JavaScript, HTML and CSS with over a year of experience in the development world (which happens to be very less). I'm learning how to make fast and efficient functional software (especially web applications and python packages) with exceptional UI and UX. 
+**I'm well versed in** Python, NodeJS, PostgreSQL, React and NextJS with over two years of experience in the development world. I'm learning how to make fast and efficient functional software with exceptional user experiences! 
 
-**I'm planning on** participating in developer related events and hackathons to gain more tech knowledge and also get some awards to spice up my portfolio. I'm looking for beneficial opportunities that can help me in the future. 
+**I'm planning on** landing an internship or job position to put my skills to good use. Also interested in participating in coding events like hackathons or codejams to continue learning new technology in a competitive field!
 
 ---
+
+![](https://api.ghprofile.me/view?username=TrustedMercury) 💖 Provided by [ghprofile.me](https://github.com/trustedmercury/ghprofile.me)! Check it out!
 
 <details>
   <summary>⚡ GitHub Activity and Statistics</summary> 
@@ -26,11 +30,11 @@
   
 <!--START_SECTION:waka-->
 ```text
-JSX          4 hrs 59 mins   ██████████████░░░░░░░░░░░   56.30 % 
-Python       3 hrs 12 mins   █████████░░░░░░░░░░░░░░░░   36.12 % 
-SQL          17 mins         █░░░░░░░░░░░░░░░░░░░░░░░░   03.36 % 
-JSON         11 mins         ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.25 % 
-JavaScript   8 mins          ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.52 % 
+TypeScript   11 hrs 47 mins  █████████████▒░░░░░░░░░░░   53.83 % 
+JavaScript   7 hrs 17 mins   ████████▒░░░░░░░░░░░░░░░░   33.24 % 
+SQL          1 hr 22 mins    █▓░░░░░░░░░░░░░░░░░░░░░░░   06.30 % 
+JSON         32 mins         ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.44 % 
+Python       23 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.77 % 
 ```
 <!--END_SECTION:waka-->
 
@@ -51,23 +55,29 @@ JavaScript   8 mins          ▒░░░░░░░░░░░░░░░░
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
 [![NodeJS](https://img.shields.io/badge/NodeJS-529f44?style=for-the-badge&logo=node.js&logoColor=white)]()
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=PostgreSQL&logoColor=white)]()
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)]()
-[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=Windows&logoColor=white)]()
-[![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white)]()
-[![VueJS](https://img.shields.io/badge/VueJS-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white)]() 
-[![SocketIO](https://img.shields.io/badge/SocketIO-010101?style=for-the-badge&logo=Socket.io&logoColor=white)]()
-[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=Discord&logoColor=white)]() 
+[![ReactJS](https://img.shields.io/badge/ReactJS-61DAFB?style=for-the-badge&logo=react&logoColor=black)]()
+[![NextJS](https://img.shields.io/badge/NextJS-000000?style=for-the-badge&logo=next.js&logoColor=white)]()
 [![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)]()
 [![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)]()
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=Tailwind%20CSS&logoColor=white)]()
-[![JavaScript](https://img.shields.io/badge/JavaScript-D8C31A?style=for-the-badge&logo=javascript&logoColor=white)]()
-[![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jQuery&logoColor=white)]()
+
+</p>
+</details>
+
+<!-- Ignore the indentation -->
+<details open>
+<summary>🛠 <b>Software</b></summary>
+<p>
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)]()
+[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=Windows&logoColor=white)]()
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white)]()
+[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=Discord&logoColor=white)]() 
 [![PyPI](https://img.shields.io/badge/PyPI-3775A9?style=for-the-badge&logo=PyPI&logoColor=white)]()
 [![NPM](https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=NPM&logoColor=white)]()
-[![Atom](https://img.shields.io/badge/Atom-66595C?style=for-the-badge&logo=Atom&logoColor=white)]()
+[![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white)]() 
 [![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white)]()
 [![Photoshop](https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=white)]()
-[![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white)]()
 [![Font Awesome](https://img.shields.io/badge/Font%20Awesome-339AF0?style=for-the-badge&logo=Font%20Awesome&logoColor=white)]() 
 
 </p>
