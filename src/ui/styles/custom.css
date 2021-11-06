@@ -9,7 +9,7 @@ body,
 }
 .Typist .Cursor--blinking {
   opacity: 1;
-  animation: blink 1s infinite;
+  animation: blink 1s infinite step-start;
 }
 
 @keyframes blink {
@@ -17,9 +17,9 @@ body,
     opacity: 1;
   }
   50% {
-    opacity: 0.6;
+    opacity: 1;
   }
   100% {
-    opacity: 1;
+    opacity: 0;
   }
 }
