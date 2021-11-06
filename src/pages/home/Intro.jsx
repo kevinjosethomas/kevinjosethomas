@@ -22,6 +22,7 @@ export default function Introduction(props) {
         <Intro />
         <Socials />
       </div>
+      <Continue />
     </div>
   );
 }
@@ -75,6 +76,21 @@ function Socials() {
       <Link label="Discord" link="https://dsc.gg/tm" />
       <Link label="GitHub" link="https://github.com/trustedmercury" />
       <Link label="Twitter" link="https://twitter.com/trustedmercury" />
+    </motion.div>
+  );
+}
+
+function Continue() {
+  return (
+    <motion.div
+      className="flex flex-row items-center justify-start"
+      initial={{ display: "none" }}
+      animate={{ display: "flex" }}
+      transition={{ delay: 5 }}
+    >
+      <p className="text-xl text-white text-opacity-90">
+        <span className="text-blue-300">kevin@ubuntu</span>:~$ Press any key to continue.
+      </p>
     </motion.div>
   );
 }
