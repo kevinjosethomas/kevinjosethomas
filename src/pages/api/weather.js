@@ -6,8 +6,17 @@ export default async function weather(req, res) {
       `https://api.openweathermap.org/data/2.5/weather?q=${process.env.OPENWEATHER_LOCATION}&appid=${process.env.OPENWEATHER_API_KEY}`
     );
 
-    return [response.data, null];
+    console.log(response.data);
+
+    return res.status(200).json({
+      success: true,
+      message: "OK - Successfully retrieved weather data",
+      payload: response.data,
+    });
   } catch (e) {
-    return [null, e];
+    return res.status(200).json({
+      success: false,
+      message: e,
+    });
   }
 }
