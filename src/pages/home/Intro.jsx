@@ -106,8 +106,9 @@ function Continue() {
       animate={{ display: "flex" }}
       transition={{ delay: 5 }}
     >
-      <p className="text-xl text-white text-opacity-90">
+      <p className="flex flex-row items-center justify-start space-x-1 text-xl text-white text-opacity-90">
         <span className="text-blue-300">kevin@ubuntu</span>:~$ Press any key to continue.
+        <Typist cursor={{ show: true, blink: true }} />
       </p>
     </motion.div>
   );
