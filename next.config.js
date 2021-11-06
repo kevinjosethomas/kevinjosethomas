@@ -1,3 +1,3 @@
 module.exports = {
-  pageExtensions: ["p.jsx"],
+  pageExtensions: [".js", "p.jsx"],
 };
