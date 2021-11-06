@@ -27,7 +27,7 @@ function Favicon(props) {
   return (
     <div
       id={props.alt}
-      className="flex flex-col items-center justify-center p-2 hover:bg-white hover:bg-opacity-5 rounded transition duration-200"
+      className="flex flex-col items-center justify-center p-2 hover:bg-white hover:bg-opacity-5  rounded transition duration-200"
     >
       <img src={props.img} alt={props.alt} className="w-7 h-7" />
     </div>
