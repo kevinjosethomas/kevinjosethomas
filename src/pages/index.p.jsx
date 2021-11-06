@@ -5,7 +5,7 @@ import Intro from "./home/Intro";
 export default function Home(props) {
   const [initialized, setInitialized] = useState(false);
 
-  if (initialized) {
+  if (!initialized) {
     return <Intro />;
   }
 
