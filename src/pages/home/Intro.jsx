@@ -1,16 +1,27 @@
 import "moment-timezone";
 import moment from "moment";
 import Typist from "react-typist";
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 import Link from "./Link";
 
 export default function Introduction(props) {
+  const controls = useAnimation();
+
+  const [animated, setAnimated] = useState(false);
   const [time, setTime] = useState(moment.tz(new Date(), "America/Vancouver"));
 
   const close = () => {
-    props.setIntro(true);
+    if (!animated) {
+      controls.start({
+        scale: 0.65,
+        transition: { duration: 0.2 },
+      });
+      setAnimated(true);
+      document.removeEventListener("click", close);
+      document.removeEventListener("keydown", close);
+    }
   };
 
   useEffect(() => {
@@ -35,11 +46,10 @@ export default function Introduction(props) {
 
   return (
     <motion.div
-      className="flex flex-col items-start justify-start w-screen h-screen"
-      initial={{ scale: 1 }}
-      animate={{ scale: 1 }}
-      exit={{ scale: [1, 0.5, 0.5, 0.5, 0.5, 0.5] }}
-      transition={{ duration: 5 }}
+      className={`flex flex-col items-start justify-start w-screen h-screen ${
+        animated && "select-none rounded-xl overflow-hidden border-2 border-blue-300"
+      }`}
+      animate={controls}
     >
       <Titlebar />
       <div className="flex flex-col items-start justify-start w-full h-full p-10 bg-[#0C0C0C] space-y-3">
