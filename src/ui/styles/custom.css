@@ -24,6 +24,15 @@ body,
   }
 }
 
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .tab::before {
   content: "";
   position: absolute;
@@ -46,4 +55,8 @@ body,
   width: 15px;
   border-bottom-left-radius: 0.375rem;
   box-shadow: -3px 0px 0 0 #0c0c0c;
+}
+
+.taskbar {
+  background: repeating-linear-gradient(to right, rgb(0, 0, 0) 100px, rgba(40, 72, 119) 100px);
 }

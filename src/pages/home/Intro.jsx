@@ -1,8 +1,8 @@
 import "moment-timezone";
 import moment from "moment";
 import Typist from "react-typist";
-import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { Fragment, useEffect, useState } from "react";
 
 import Link from "./Link";
 
@@ -45,22 +45,36 @@ export default function Introduction(props) {
   }, []);
 
   return (
-    <motion.div
-      className={`flex flex-col items-start justify-start w-screen h-screen ${
-        animated && "select-none rounded-xl overflow-hidden border-2 border-blue-300"
-      }`}
-      animate={controls}
-    >
-      <Titlebar />
-      <div className="flex flex-col items-start justify-start w-full h-full p-10 bg-[#0C0C0C] space-y-3">
-        <Dynamic time={time} weather={props.weather} />
-        <div className="flex flex-col items-start justify-start space-y-1">
-          <Intro />
-          <Socials />
+    <Fragment>
+      {animated && <Window />}
+      <motion.div
+        className={`flex flex-col items-start justify-start w-screen h-screen ${
+          animated && "select-none rounded-xl overflow-hidden"
+        }`}
+        animate={controls}
+      >
+        <Titlebar />
+        <div className="flex flex-col items-start justify-start w-full h-full p-10 bg-[#0C0C0C] space-y-3">
+          <Dynamic time={time} weather={props.weather} />
+          <div className="flex flex-col items-start justify-start space-y-1">
+            <Intro />
+            <Socials />
+          </div>
+          <Continue />
         </div>
-        <Continue />
-      </div>
-    </motion.div>
+      </motion.div>
+    </Fragment>
+  );
+}
+
+function Window() {
+  return (
+    <div className="absolute flex flex-col items-center justify-center top-0 left-0 w-screen h-screen bg-blue-300">
+      <video playsInline autoPlay muted loop poster="bg.png" className="w-screen h-screen">
+        <source src="bg.mp4" type="video/mp4" />
+      </video>
+      <div className="taskbar absolute bottom-0 left-0 flex flex-row items-center justify-center w-full h-[48px]"></div>
+    </div>
   );
 }
 
@@ -83,7 +97,7 @@ function Titlebar() {
   );
 }
 
-function ActionBar(props) {
+function ActionBar() {
   return (
     <div className="flex flex-row items-center justify-start">
       <div className="flex flex-row items-center justify-center w-12 h-12 hover:bg-white hover:bg-opacity-10">
