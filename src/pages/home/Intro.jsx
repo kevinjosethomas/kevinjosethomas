@@ -9,10 +9,28 @@ import Link from "./Link";
 export default function Introduction(props) {
   const [time, setTime] = useState(moment.tz(new Date(), "America/Vancouver"));
 
+  const close = () => {
+    props.setIntro(true);
+  };
+
   useEffect(() => {
-    setInterval(() => {
+    document.addEventListener("click", close);
+    document.addEventListener("keydown", close);
+
+    return () => {
+      document.removeEventListener("click", close);
+      document.removeEventListener("keydown", close);
+    };
+  }, []);
+
+  useEffect(() => {
+    const refreshTime = setInterval(() => {
       setTime(moment.tz(new Date(), "America/Vancouver"));
     }, 1000);
+
+    return () => {
+      clearInterval(refreshTime);
+    };
   }, []);
 
   return (

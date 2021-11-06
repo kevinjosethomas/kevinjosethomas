@@ -7,7 +7,7 @@ export default function Home(props) {
   const [initialized, setInitialized] = useState(false);
 
   if (!initialized) {
-    return <Intro weather={props.weather} />;
+    return <Intro weather={props.weather} setIntro={setInitialized} />;
   }
 
   return <div className="flex flex-col items-start justify-start w-screen h-screen"></div>;
