@@ -6,7 +6,7 @@ import Link from "./Link";
 export default function Terminal(props) {
   return (
     <motion.div
-      className={`terminal flex flex-col items-start justify-start w-screen h-screen ${
+      className={`terminal flex flex-col items-start justify-start w-screen h-screen z-10 ${
         props.animated && "select-none rounded-xl overflow-hidden"
       }`}
       animate={props.controls}

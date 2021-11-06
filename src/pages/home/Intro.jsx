@@ -1,9 +1,10 @@
 import "moment-timezone";
-
+import moment from "moment";
 import { useAnimation } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
 import Cursor from "./Cursor";
+import Window from "./Window";
 import Terminal from "./Terminal";
 
 export default function Introduction(props) {
@@ -61,29 +62,31 @@ export default function Introduction(props) {
     };
   }, []);
 
+  const [time, setTime] = useState(moment.tz(new Date(), "America/Vancouver"));
+
+  useEffect(() => {
+    const refreshTime = setInterval(() => {
+      setTime(moment.tz(new Date(), "America/Vancouver"));
+    }, 1000);
+
+    return () => {
+      clearInterval(refreshTime);
+    };
+  }, []);
+
   return (
     <Fragment>
-      {animated && <Window />}
+      {animated && <Window time={time} />}
       {terminal && (
         <Terminal
+          time={time}
           animated={animated}
           controls={controls}
           closing={closingTerminal}
           weather={props.weather}
         />
       )}
-      {beforeClosingTerminal && <Cursor />}
+      {beforeClosingTerminal ? <Cursor /> : <Fragment />}
     </Fragment>
-  );
-}
-
-function Window() {
-  return (
-    <div className="absolute flex flex-col items-center justify-center top-0 left-0 w-screen h-screen">
-      <video playsInline autoPlay muted loop poster="bg.png" className="w-screen h-screen">
-        <source src="bg.mp4" type="video/mp4" />
-      </video>
-      <div className="taskbar absolute bottom-0 left-0 flex flex-row items-center justify-center w-full h-[48px]"></div>
-    </div>
   );
 }
