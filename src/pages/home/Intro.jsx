@@ -5,11 +5,15 @@ import { motion, useAnimation } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
 import Link from "./Link";
+import Cursor from "./Cursor";
 
 export default function Introduction(props) {
   const controls = useAnimation();
 
+  const [beforeClosingTerminal, setBeforeClosingTerminal] = useState(false);
+  const [closingTerminal, setClosingTerminal] = useState(false);
   const [animated, setAnimated] = useState(false);
+  const [terminal, setTerminal] = useState(true);
   const [time, setTime] = useState(moment.tz(new Date(), "America/Vancouver"));
 
   const close = () => {
@@ -21,6 +25,20 @@ export default function Introduction(props) {
       setAnimated(true);
       document.removeEventListener("click", close);
       document.removeEventListener("keydown", close);
+
+      setTimeout(() => {
+        setBeforeClosingTerminal(true);
+
+        setTimeout(() => {
+          setClosingTerminal(true);
+
+          setTimeout(() => {
+            setBeforeClosingTerminal(false);
+            setClosingTerminal(false);
+            setTerminal(false);
+          }, 1000);
+        }, 750);
+      }, 1000);
     }
   };
 
@@ -47,22 +65,25 @@ export default function Introduction(props) {
   return (
     <Fragment>
       {animated && <Window />}
-      <motion.div
-        className={`flex flex-col items-start justify-start w-screen h-screen ${
-          animated && "select-none rounded-xl overflow-hidden"
-        }`}
-        animate={controls}
-      >
-        <Titlebar />
-        <div className="flex flex-col items-start justify-start w-full h-full p-10 bg-[#0C0C0C] space-y-3">
-          <Dynamic time={time} weather={props.weather} />
-          <div className="flex flex-col items-start justify-start space-y-1">
-            <Intro />
-            <Socials />
+      {terminal && (
+        <motion.div
+          className={`flex flex-col items-start justify-start w-screen h-screen ${
+            animated && "select-none rounded-xl overflow-hidden"
+          }`}
+          animate={controls}
+        >
+          <Titlebar closing={closingTerminal} />
+          <div className="flex flex-col items-start justify-start w-full h-full p-10 bg-[#0C0C0C] space-y-3">
+            <Dynamic time={time} weather={props.weather} />
+            <div className="flex flex-col items-start justify-start space-y-1">
+              <Intro />
+              <Socials />
+            </div>
+            <Continue />
           </div>
-          <Continue />
-        </div>
-      </motion.div>
+        </motion.div>
+      )}
+      {beforeClosingTerminal && <Cursor />}
     </Fragment>
   );
 }
@@ -78,7 +99,7 @@ function Window() {
   );
 }
 
-function Titlebar() {
+function Titlebar(props) {
   return (
     <div className="flex flex-row items-center justify-between w-full bg-[#2D2D2D]">
       <div className="flex flex-row items-end justify-start h-12 pl-4">
@@ -92,12 +113,12 @@ function Titlebar() {
           </div>
         </div>
       </div>
-      <ActionBar />
+      <ActionBar closing={props.closing} />
     </div>
   );
 }
 
-function ActionBar() {
+function ActionBar(props) {
   return (
     <div className="flex flex-row items-center justify-start">
       <div className="flex flex-row items-center justify-center w-12 h-12 hover:bg-white hover:bg-opacity-10">
@@ -106,7 +127,12 @@ function ActionBar() {
       <div className="flex flex-row items-center justify-center w-12 h-12 hover:bg-white hover:bg-opacity-10">
         <i className="fal fa-square-full text-sm text-white" />
       </div>
-      <div className="flex flex-row items-center justify-center w-12 h-12 hover:bg-[#D30F20]">
+      <div
+        id="closeButton"
+        className={`flex flex-row items-center justify-center w-12 h-12 ${
+          props.closing ? "bg-[#D30F20]" : "hover:bg-[#D30F20]"
+        }`}
+      >
         <i className="fal fa-times text-sm text-white" />
       </div>
     </div>
