@@ -1,33 +1,19 @@
-import moment from "moment";
 import Typist from "react-typist";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 import Link from "./Link";
 
 export default function Terminal(props) {
-  const [time, setTime] = useState(moment.tz(new Date(), "America/Vancouver"));
-
-  useEffect(() => {
-    const refreshTime = setInterval(() => {
-      setTime(moment.tz(new Date(), "America/Vancouver"));
-    }, 1000);
-
-    return () => {
-      clearInterval(refreshTime);
-    };
-  }, []);
-
   return (
     <motion.div
-      className={`flex flex-col items-start justify-start w-screen h-screen ${
+      className={`terminal flex flex-col items-start justify-start w-screen h-screen ${
         props.animated && "select-none rounded-xl overflow-hidden"
       }`}
       animate={props.controls}
     >
       <Titlebar closing={props.closing} />
       <div className="flex flex-col items-start justify-start w-full h-full p-10 bg-[#0C0C0C] space-y-3">
-        <Dynamic time={time} weather={props.weather} />
+        <Dynamic time={props.time} weather={props.weather} />
         <div className="flex flex-col items-start justify-start space-y-1">
           <Intro />
           <Socials />
