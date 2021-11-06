@@ -3,21 +3,22 @@ import "moment-timezone";
 import { useEffect, useState } from "react";
 
 export default function Intro(props) {
-  const [time, setTime] = useState();
+  const [time, setTime] = useState(moment.tz(new Date(), "America/Vancouver"));
 
   useEffect(() => {
     setInterval(() => {
-      const pst = moment.tz(new Date(), "America/Vancouver");
-
-      setTime(pst.format("hh:mm:ss a"));
+      setTime(moment.tz(new Date(), "America/Vancouver"));
     }, 1000);
   }, []);
 
-  const lines = ["Current Time: ", "Welcome to Kevin Thomas v2 ()"];
-
   return (
-    <div className="flex flex-col items-start justify-start w-screen h-screen bg-black">
-      <span className="text-white">Current Time: {time}</span>
+    <div className="flex flex-col items-start justify-start w-screen h-screen p-5 bg-black">
+      <div className="flex flex-row items-center justify-start space-x-2">
+        <i className="fal fa-clock text-xl text-white" />
+        <p className="text-xl text-white text-opacity-90">
+          {time.format("MMMM Do YYYY")} • {time.format("hh:mm:ss a")}
+        </p>
+      </div>
     </div>
   );
 }
