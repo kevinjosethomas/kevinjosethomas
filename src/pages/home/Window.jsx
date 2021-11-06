@@ -7,12 +7,12 @@ export default function Window(props) {
       <div className="taskbar absolute bottom-0 left-0 flex flex-row items-center justify-between w-full h-[56px] px-5">
         <div />
         <div className="flex flex-row items-center justify-center space-x-2">
-          <Favicon img="w11.png" alt="Windows" />
-          <Favicon img="discord.png" alt="Discord" />
-          <Favicon img="chrome.png" alt="Chrome" />
-          <Favicon img="vscode.svg" alt="Spotify" />
-          <Favicon img="spotify.svg" alt="Spotify" />
-          <Favicon img="wt.svg" alt="Windows Terminal" />
+          <Favicon img="w11.png" alt="windows" />
+          <Favicon img="discord.png" alt="discord" />
+          <Favicon img="chrome.png" alt="chrome" />
+          <Favicon img="vscode.svg" alt="vscode" />
+          <Favicon img="spotify.svg" alt="spotify" />
+          <Favicon img="wt.svg" alt="windows terminal" />
         </div>
         <div className="flex flex-col items-center justify-start">
           <p className="text-xs text-white">{props.time.format("h:mm A")}</p>
@@ -25,7 +25,10 @@ export default function Window(props) {
 
 function Favicon(props) {
   return (
-    <div className="flex flex-col items-center justify-center p-2 hover:bg-white hover:bg-opacity-5 rounded transition duration-200">
+    <div
+      id={props.alt}
+      className="flex flex-col items-center justify-center p-2 hover:bg-white hover:bg-opacity-5 rounded transition duration-200"
+    >
       <img src={props.img} alt={props.alt} className="w-7 h-7" />
     </div>
   );

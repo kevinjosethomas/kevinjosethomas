@@ -3,17 +3,19 @@ import moment from "moment";
 import { useAnimation } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
-import Cursor from "./Cursor";
+import Cursor, { Cursor2 } from "./Cursor";
 import Window from "./Window";
 import Terminal from "./Terminal";
 
 export default function Introduction(props) {
   const controls = useAnimation();
 
+  const [locations, setLocations] = useState({});
   const [animated, setAnimated] = useState(false);
   const [terminal, setTerminal] = useState(true);
   const [closingTerminal, setClosingTerminal] = useState(false);
   const [beforeClosingTerminal, setBeforeClosingTerminal] = useState(false);
+  const [afterClosingTerminal, setAfterClosingTerminal] = useState(false);
 
   const close = () => {
     if (!animated) {
@@ -30,6 +32,11 @@ export default function Introduction(props) {
         document.removeEventListener("keydown", close);
 
         setTimeout(() => {
+          setLocations({
+            close: document.getElementById("closeButton")?.getBoundingClientRect(),
+            chrome: document.getElementById("chrome")?.getBoundingClientRect(),
+          });
+
           // Wait 1000ms before the cursor appears
           setBeforeClosingTerminal(true);
 
@@ -39,6 +46,7 @@ export default function Introduction(props) {
 
             setTimeout(() => {
               // Wait 1000ms before closing the terminal
+              setAfterClosingTerminal(true);
               setBeforeClosingTerminal(false);
               setClosingTerminal(false);
               setTerminal(false);
@@ -86,7 +94,8 @@ export default function Introduction(props) {
           weather={props.weather}
         />
       )}
-      {beforeClosingTerminal ? <Cursor /> : <Fragment />}
+      {beforeClosingTerminal && <Cursor loc={locations.close} />}
+      {afterClosingTerminal && <Cursor2 loc={locations.close} loc2={locations.chrome} />}
     </Fragment>
   );
 }
