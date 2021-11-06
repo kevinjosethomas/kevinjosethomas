@@ -34,13 +34,57 @@ export default function Introduction(props) {
   }, []);
 
   return (
-    <div className="flex flex-col items-start justify-start w-screen h-screen p-10 space-y-3 bg-black">
-      <Dynamic time={time} weather={props.weather} />
-      <div className="flex flex-col items-start justify-start space-y-1">
-        <Intro />
-        <Socials />
+    <motion.div
+      className="flex flex-col items-start justify-start w-screen h-screen"
+      initial={{ scale: 1 }}
+      animate={{ scale: 1 }}
+      exit={{ scale: [1, 0.5, 0.5, 0.5, 0.5, 0.5] }}
+      transition={{ duration: 5 }}
+    >
+      <Titlebar />
+      <div className="flex flex-col items-start justify-start w-full h-full p-10 bg-[#0C0C0C] space-y-3">
+        <Dynamic time={time} weather={props.weather} />
+        <div className="flex flex-col items-start justify-start space-y-1">
+          <Intro />
+          <Socials />
+        </div>
+        <Continue />
       </div>
-      <Continue />
+    </motion.div>
+  );
+}
+
+function Titlebar() {
+  return (
+    <div className="flex flex-row items-center justify-between w-full bg-[#2D2D2D]">
+      <div className="flex flex-row items-end justify-start h-12 pl-4">
+        <div className="relative tab flex flex-row items-center justify-start h-10 px-4 space-x-32 bg-[#0C0C0C] rounded-t-md">
+          <div className="flex flex-row items-center justify-start space-x-2">
+            <i className="fab fa-ubuntu text-sm text-blue-300" />
+            <p className="text-sm text-white tracking-wider">Ubuntu</p>
+          </div>
+          <div className="flex flex-row items-center justify-center w-5 h-5 hover:bg-white hover:bg-opacity-10 rounded-sm">
+            <i className="fal fa-times text-sm text-white" />
+          </div>
+        </div>
+      </div>
+      <ActionBar />
+    </div>
+  );
+}
+
+function ActionBar(props) {
+  return (
+    <div className="flex flex-row items-center justify-start">
+      <div className="flex flex-row items-center justify-center w-12 h-12 hover:bg-white hover:bg-opacity-10">
+        <i className="fal fa-window-minimize text-sm text-white" />
+      </div>
+      <div className="flex flex-row items-center justify-center w-12 h-12 hover:bg-white hover:bg-opacity-10">
+        <i className="fal fa-square-full text-sm text-white" />
+      </div>
+      <div className="flex flex-row items-center justify-center w-12 h-12 hover:bg-[#D30F20]">
+        <i className="fal fa-times text-sm text-white" />
+      </div>
     </div>
   );
 }

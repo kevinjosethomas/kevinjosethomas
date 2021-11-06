@@ -23,3 +23,27 @@ body,
     opacity: 0;
   }
 }
+
+.tab::before {
+  content: "";
+  position: absolute;
+
+  left: -15px;
+  bottom: 0px;
+  height: 10px;
+  width: 15px;
+  border-bottom-right-radius: 0.375rem;
+  box-shadow: 3px 0px 0 0 #0c0c0c;
+}
+
+.tab::after {
+  content: "";
+  position: absolute;
+
+  right: -15px;
+  bottom: 0px;
+  height: 10px;
+  width: 15px;
+  border-bottom-left-radius: 0.375rem;
+  box-shadow: -3px 0px 0 0 #0c0c0c;
+}

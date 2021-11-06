@@ -1,16 +1,19 @@
 import axios from "axios";
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 import Intro from "./home/Intro";
 
 export default function Home(props) {
   const [initialized, setInitialized] = useState(false);
 
-  if (!initialized) {
-    return <Intro weather={props.weather} setIntro={setInitialized} />;
-  }
-
-  return <div className="flex flex-col items-start justify-start w-screen h-screen"></div>;
+  return (
+    <Fragment>
+      <AnimatePresence>
+        {!initialized && <Intro weather={props.weather} setIntro={setInitialized} />}
+      </AnimatePresence>
+    </Fragment>
+  );
 }
 
 export async function getServerSideProps(ctx) {
