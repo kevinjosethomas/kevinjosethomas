@@ -1,9 +1,23 @@
-import moment from "moment";
 import "moment-timezone";
+import axios from "axios";
+import moment from "moment";
 import { useEffect, useState } from "react";
 
 export default function Intro(props) {
+  const [weather, setWeather] = useState();
   const [time, setTime] = useState(moment.tz(new Date(), "America/Vancouver"));
+
+  useEffect(() => {
+    (async () => {
+      const [response, error] = await fetchWeather();
+
+      if (error) {
+        return;
+      }
+
+      setWeather(response);
+    })();
+  }, []);
 
   useEffect(() => {
     setInterval(() => {
@@ -38,3 +52,13 @@ export default function Intro(props) {
     </div>
   );
 }
+
+const fetchWeather = async () => {
+  try {
+    const response = await axios.get("/api/weather");
+
+    return [response.data.payload, null];
+  } catch (e) {
+    return [null, e];
+  }
+};
