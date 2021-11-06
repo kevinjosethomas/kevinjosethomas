@@ -1,6 +1,10 @@
 html,
 body,
 #__next {
+  font-family: "DM Sans", sans-serif;
+}
+
+.intro {
   font-family: "Ubuntu Mono", sans-serif;
 }
 
@@ -58,5 +62,10 @@ video {
 }
 
 .taskbar {
-  background: repeating-linear-gradient(to right, rgb(0, 0, 0) 100px, rgba(40, 72, 119) 100px);
+  background: repeating-linear-gradient(
+    to right,
+    rgb(30, 54, 89),
+    rgba(40, 72, 119) 33.3%,
+    rgb(30, 54, 89)
+  );
 }
