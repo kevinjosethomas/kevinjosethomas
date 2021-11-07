@@ -2,9 +2,10 @@ import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 
 import Intro from "./index/Intro";
+import Default from "ui/layouts/Default";
 
 export default function Home(props) {
-  const [initialized, setInitialized] = useState(false);
+  const [initialized, setInitialized] = useState(true);
 
   useEffect(() => {
     setInitialized(localStorage.getItem("intro") === "true");
@@ -13,6 +14,7 @@ export default function Home(props) {
   return (
     <Fragment>
       {!initialized && <Intro weather={props.weather} setIntro={setInitialized} />}
+      {initialized && <Default></Default>}
     </Fragment>
   );
 }
