@@ -13,7 +13,7 @@ export default function Awards(props) {
             title="BorderHacks"
             subtitle="Sep 25-26 2021"
             lines={[
-              "Youngest winner among over 300 participants. 2 awards:",
+              "Hackathon; Youngest winner among over 300 participants. 2 awards:",
               "• Optimizing Community Services with Open Data ($500)",
               "• Best UI / UX Design Award (Sketch, Thunkable & Axure licenses)",
             ]}
