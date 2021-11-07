@@ -16,7 +16,10 @@ export default function Element(props) {
         </a>
       </Link>
       {props.active && (
-        <motion.div className="nav-highlight left-0 absolute w-full h-0.5 bg-white bg-opacity-90" />
+        <motion.div
+          layout="nav-highlight"
+          className="nav-highlight left-0 absolute w-full h-0.5 bg-white bg-opacity-90"
+        />
       )}
     </div>
   );
