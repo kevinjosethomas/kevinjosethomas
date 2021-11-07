@@ -1,7 +1,10 @@
 html,
 body,
 #__next {
+  width: 100% !important;
+  min-height: 100% !important;
   font-family: "DM Sans", sans-serif;
+  background-color: black;
 }
 
 .terminal {
@@ -68,4 +71,8 @@ video {
     rgba(40, 72, 119) 33.3%,
     rgb(30, 54, 89)
   );
+}
+
+.nav-highlight {
+  bottom: -1.125rem;
 }
