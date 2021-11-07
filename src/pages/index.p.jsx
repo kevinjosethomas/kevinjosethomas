@@ -1,5 +1,4 @@
 import axios from "axios";
-import { AnimatePresence } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
 import Intro from "./index/Intro";
@@ -13,9 +12,7 @@ export default function Home(props) {
 
   return (
     <Fragment>
-      <AnimatePresence>
-        {!initialized && <Intro weather={props.weather} setIntro={setInitialized} />}
-      </AnimatePresence>
+      {!initialized && <Intro weather={props.weather} setIntro={setInitialized} />}
     </Fragment>
   );
 }
