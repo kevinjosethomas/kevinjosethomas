@@ -10,7 +10,7 @@ export default function Cursor(props) {
       }}
       transition={{ duration: 0.75 }}
     >
-      <img src="cursor.png" alt="cursor" className="w-3" />
+      <img src="cursor.png" alt="cursor" draggable="false" className="w-3" />
     </motion.div>
   );
 }
@@ -29,7 +29,7 @@ export function Cursor2(props) {
       }}
       transition={{ duration: 0.75 }}
     >
-      <img src="cursor.png" alt="cursor" className="w-3" />
+      <img src="cursor.png" alt="cursor" draggable="false" className="w-3" />
     </motion.div>
   );
 }

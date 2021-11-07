@@ -4,7 +4,7 @@ export default function Technology(props) {
       <div
         className={`flex flex-col items-center justify-center min-w-[8rem] min-h-[8rem] ${props.color} text-white`}
       >
-        <img src={`/tech/${props.icon}`} className="w-12" />
+        <img src={`/tech/${props.icon}`} draggable="false" className="w-12" />
       </div>
       <div className="flex flex-row items-center justify-start w-full min-h-[8rem]">
         <div className="flex flex-col items-start justify-center h-32 w-[175px] pl-5 border-[1px] border-white border-opacity-5">
