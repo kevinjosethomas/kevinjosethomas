@@ -41,7 +41,7 @@ export default function Technologies(props) {
       label: "Postman",
     },
     {
-      icon: "fab fa-stripe",
+      icon: "fab fa-stripe-s",
       label: "Stripe",
     },
     {
