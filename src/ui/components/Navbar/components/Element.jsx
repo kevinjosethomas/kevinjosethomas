@@ -17,7 +17,7 @@ export default function Element(props) {
       </Link>
       {props.active && (
         <motion.div
-          layout="nav-highlight"
+          layoutId="underline"
           className="nav-highlight left-0 absolute w-full h-0.5 bg-white bg-opacity-90"
         />
       )}
