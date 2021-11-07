@@ -1,6 +1,5 @@
 import "moment-timezone";
 import moment from "moment";
-import { useRouter } from "next/router";
 import { useAnimation } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
@@ -9,7 +8,6 @@ import Window from "./Window";
 import Terminal from "./Terminal";
 
 export default function Introduction(props) {
-  const router = useRouter();
   const controls = useAnimation();
 
   const [locations, setLocations] = useState({});
@@ -54,8 +52,9 @@ export default function Introduction(props) {
               setTerminal(false);
 
               setTimeout(() => {
-                // Wait 1000ms before redirecting to home page
-                router.push("/home");
+                // Wait 1000ms before going back home
+                localStorage.setItem("intro", true);
+                props.setIntro(true);
               }, 1000);
               //
             }, 1000);

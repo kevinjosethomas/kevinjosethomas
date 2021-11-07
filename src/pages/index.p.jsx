@@ -1,11 +1,15 @@
 import axios from "axios";
-import { Fragment, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { Fragment, useEffect, useState } from "react";
 
 import Intro from "./index/Intro";
 
 export default function Home(props) {
   const [initialized, setInitialized] = useState(false);
+
+  useEffect(() => {
+    setInitialized(localStorage.getItem("intro") === "true");
+  });
 
   return (
     <Fragment>
