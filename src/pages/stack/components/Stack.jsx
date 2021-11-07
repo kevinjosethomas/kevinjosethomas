@@ -30,9 +30,15 @@ export default function Stack(props) {
 
   return (
     <div className="flex flex-col items-start justify-start w-full space-y-2">
-      <h1 className="font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
-        💻 Stack
-      </h1>
+      <div className="flex flex-col items-start justify-start w-full">
+        <h1 className="font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
+          💻 Stack
+        </h1>
+        <p className="text-lg text-white text-opacity-60">
+          My preferred stack of technologies for any web, mobile, desktop or discord projects right
+          now. (w/ electron and react native)
+        </p>
+      </div>
       <div className="flex flex-col items-start justify-start w-full space-y-2">
         {stack.map((tech, index) => (
           <Technology key={index} {...tech} />
