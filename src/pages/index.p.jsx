@@ -2,7 +2,7 @@ import axios from "axios";
 import { Fragment, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
-import Intro from "./home/Intro";
+import Intro from "./index/Intro";
 
 export default function Home(props) {
   const [initialized, setInitialized] = useState(false);
