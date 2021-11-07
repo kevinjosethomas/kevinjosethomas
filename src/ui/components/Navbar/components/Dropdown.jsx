@@ -74,7 +74,7 @@ function DropdownElement(props) {
   return (
     <Container {...props}>
       <a
-        href={!internal && props.href}
+        href={!internal ? props.href : null}
         target={internal ? "_self" : "_blank"}
         className="flex flex-row items-center justify-start w-full pl-2 pr-8 py-1 hover:bg-white hover:bg-opacity-[0.08] cursor-pointer select-none"
       >
