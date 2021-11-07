@@ -1,5 +1,5 @@
 import Default from "ui/layouts/Default";
 
-export default function Home(props) {
+export default function Projects(props) {
   return <Default></Default>;
 }
