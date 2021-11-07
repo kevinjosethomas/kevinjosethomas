@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
-import { AnimateSharedLayout } from "framer-motion";
 
 import Element from "./Element";
+import Dropdown from "./Dropdown";
 
 export default function Navigation(props) {
   const elements = [
@@ -31,6 +31,7 @@ export default function Navigation(props) {
         {elements.map((el, ind) => (
           <Element key={ind} {...el} active={router.pathname === el.href} />
         ))}
+        <Dropdown />
       </div>
       <div className="w-full h-0.5 bg-white bg-opacity-10" />
     </div>
