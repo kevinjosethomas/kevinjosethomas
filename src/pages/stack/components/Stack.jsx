@@ -41,7 +41,7 @@ export default function Stack(props) {
       </div>
       <div className="flex flex-col items-start justify-start w-full space-y-2">
         {stack.map((tech, index) => (
-          <Technology key={index} {...tech} />
+          <Technology key={index} index={index} {...tech} />
         ))}
       </div>
     </div>

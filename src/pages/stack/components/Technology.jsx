@@ -1,6 +1,13 @@
+import { motion } from "framer-motion";
+
 export default function Technology(props) {
   return (
-    <div className="flex flex-row items-center justify-start w-full max-h-[8rem] rounded-xl overflow-hidden hover:bg-white hover:bg-opacity-[0.03] border-[1px] border-white border-opacity-5 transition duration-300">
+    <motion.div
+      className="flex flex-row items-center justify-start w-full max-h-[8rem] rounded-xl overflow-hidden hover:bg-white hover:bg-opacity-[0.03] border-[1px] border-white border-opacity-5 transition duration-300"
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.2, delay: 0.1 * props.index }}
+    >
       <div
         className={`flex flex-col items-center justify-center min-w-[8rem] min-h-[8rem] ${props.color} text-white`}
       >
@@ -16,6 +23,6 @@ export default function Technology(props) {
           <span className="text-lg text-white text-opacity-80 leading-snug">{props.for}</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function Technologies(props) {
   const technology = [
     {
@@ -68,19 +70,29 @@ export default function Technologies(props) {
 
   return (
     <div className="flex flex-col items-start justify-start w-full space-y-2">
-      <div className="flex flex-col items-start justify-start w-full">
+      <motion.div
+        className="flex flex-col items-start justify-start w-full"
+        initial={{ y: 10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.8 }}
+      >
         <h1 className="font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
           🖥️ Technologies
         </h1>
         <p className="text-lg text-white text-opacity-60">
           Other software and technology that I'm experienced with and use regularly.
         </p>
-      </div>
-      <div className="grid grid-cols-4 gap-y-0.5 w-full">
+      </motion.div>
+      <motion.div
+        className="grid grid-cols-4 gap-y-0.5 w-full"
+        initial={{ y: 10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3, delay: 1.2 }}
+      >
         {technology.map((tech, index) => (
           <Technology key={index} {...tech} />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
