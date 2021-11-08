@@ -75,7 +75,7 @@ export default function Projects(props) {
         </h1>
         <div className="flex flex-col items-start justify-start w-full space-y-2">
           {projects.map((project, index) => (
-            <Project key={index} {...project} />
+            <Project key={index} index={index} {...project} />
           ))}
         </div>
       </div>
