@@ -23,7 +23,7 @@ export default function DropdownContainer(props) {
     <div className="relative flex flex-col items-start justify-start">
       <motion.i
         animate={controls}
-        className="fas fa-caret-down text-lg text-white text-opacity-70 cursor-pointer"
+        className="fas fa-caret-down text-lg text-white text-opacity-70"
         onClick={() => setDropdown((dd) => !dd)}
       />
       <AnimatePresence>{dropdown && <Dropdown setDropdown={setDropdown} />}</AnimatePresence>
