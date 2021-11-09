@@ -14,6 +14,7 @@
     "moment-timezone": "^0.5.33",
     "next": "12.0.3",
     "react": "17.0.2",
+    "react-animated-cursor": "^2.2.0",
     "react-detect-click-outside": "^1.1.1",
     "react-dom": "17.0.2",
     "react-typist": "^2.0.5"
