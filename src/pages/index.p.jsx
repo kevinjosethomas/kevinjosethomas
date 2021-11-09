@@ -100,8 +100,6 @@ export async function getServerSideProps(ctx) {
     `https://api.openweathermap.org/data/2.5/weather?q=${process.env.OPENWEATHER_LOCATION}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`
   );
 
-  console.log(response.data.weather);
-
   return {
     props: {
       weather: response.data,
