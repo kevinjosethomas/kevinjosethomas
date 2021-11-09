@@ -1,6 +1,7 @@
 import "moment-timezone";
 import axios from "axios";
 import moment from "moment";
+import { motion } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
 import Intro from "./index/Intro";
@@ -31,24 +32,44 @@ export default function Home(props) {
         <Default>
           <div className="flex flex-col items-start justify-start w-full space-y-6">
             <div className="flex flex-col items-start justify-start w-full space-y-6">
-              <h1 className="font-bold text-5xl text-white text-opacity-80 tracking-[-0.02rem]">
+              <motion.h1
+                className="font-bold text-5xl text-white text-opacity-80 tracking-[-0.02rem]"
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.2 }}
+              >
                 Hey! 👋 I'm Kevin.
-              </h1>
+              </motion.h1>
               <div className="flex flex-col items-start justify-start w-full space-y-4 max-w-2xl">
-                <p className="text-xl text-white text-opacity-70">
+                <motion.p
+                  className="text-xl text-white text-opacity-70"
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
+                >
                   I'm Kevin Thomas, a 14 year old student, full-stack developer and an aspiring tech
                   entrepreneur. I have over 2 years of experience in the development world and I
                   spend most of my time learning and practicing new technology.
-                </p>
-                <p className="text-xl text-white text-opacity-70">
+                </motion.p>
+                <motion.p
+                  className="text-xl text-white text-opacity-70"
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.2, delay: 0.2 }}
+                >
                   Over the last two years, I've gained expertise in Python, JavaScript, PostgreSQL
                   and React. I've worked on dozens of projects including REST APIs, websites,
                   Discord bots and mobile apps. I'm currently focusing on participating in developer
                   events, creating accessible technology and contributing to opensource software!
-                </p>
+                </motion.p>
               </div>
             </div>
-            <div className="flex flex-col items-start justify-start space-y-1">
+            <motion.div
+              className="flex flex-col items-start justify-start space-y-1"
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.2, delay: 0.3 }}
+            >
               <div className="flex flex-row items-center justify-start space-x-2">
                 <i className="fas fa-map-marker-alt w-[22.5px] text-center text-lg text-white text-opacity-90" />
                 <p className="text-lg text-white text-opacity-90">Vancouver, Canada</p>
@@ -66,7 +87,7 @@ export default function Home(props) {
                   {time.format("MMMM Do YYYY")} • {time.format("hh:mm:ss a")}
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </Default>
       )}
