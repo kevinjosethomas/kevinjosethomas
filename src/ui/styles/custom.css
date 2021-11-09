@@ -73,6 +73,11 @@ video {
   );
 }
 
+.setup a {
+  @apply text-blue-300;
+  text-decoration: underline;
+}
+
 .nav-highlight {
   bottom: -1.125rem;
 }
