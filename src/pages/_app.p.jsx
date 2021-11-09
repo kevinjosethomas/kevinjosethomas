@@ -1,5 +1,7 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import { AnimateSharedLayout } from "framer-motion";
 
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
@@ -10,6 +12,16 @@ import "ui/styles/custom.css";
 import "tailwindcss/tailwind.css";
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    try {
+      new Audio("/sounds/boop.mp3").play();
+    } catch (e) {
+      return;
+    }
+  }, [router.pathname]);
+
   return (
     <AnimateSharedLayout>
       <Head>
