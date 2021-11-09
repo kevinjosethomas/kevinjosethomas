@@ -7,6 +7,16 @@ body,
   background-color: black;
 }
 
+::-moz-selection {
+  background: #93c5fd;
+}
+::-webkit-selection {
+  background: #93c5fd;
+}
+::selection {
+  background: #93c5fd;
+}
+
 .terminal {
   font-family: "Ubuntu Mono", sans-serif;
 }

@@ -48,7 +48,7 @@ function Dropdown(props) {
   return (
     <motion.div
       ref={ref}
-      className="absolute top-10 flex flex-col items-start justify-start bg-black border-[1px] border-white border-opacity-70 rounded"
+      className="absolute top-10 flex flex-col items-start justify-start bg-black border-[1px] border-white border-opacity-60 rounded"
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 10, opacity: 0 }}
