@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import Award from "./components/Award";
 import Default from "ui/layouts/Default";
 
@@ -25,6 +27,12 @@ export default function Awards(props) {
 
   return (
     <Default>
+      <Head>
+        <title>Awards • Kevin Thomas</title>
+        <meta name="title" content="Awards • Kevin Thomas" />
+        <meta property="og:title" content="Awards • Kevin Thomas" />
+        <meta property="twitter:title" content="Awards • Kevin Thomas" />
+      </Head>
       <div className="flex flex-col items-start justify-start w-full space-y-4">
         <h1 className="font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
           🏆 Awards

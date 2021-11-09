@@ -1,6 +1,7 @@
 import "moment-timezone";
 import axios from "axios";
 import moment from "moment";
+import Head from "next/head";
 import { motion } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
@@ -27,6 +28,12 @@ export default function Home(props) {
 
   return (
     <Fragment>
+      <Head>
+        <title>Kevin Thomas</title>
+        <meta name="title" content="Kevin Thomas" />
+        <meta property="og:title" content="Kevin Thomas" />
+        <meta property="twitter:title" content="Kevin Thomas" />
+      </Head>
       {!initialized && <Intro weather={props.weather} setIntro={setInitialized} />}
       {initialized && (
         <Default>

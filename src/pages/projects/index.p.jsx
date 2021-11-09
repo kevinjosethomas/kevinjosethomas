@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import Default from "ui/layouts/Default";
 import Project from "./components/Project";
 
@@ -69,6 +71,12 @@ export default function Projects(props) {
 
   return (
     <Default>
+      <Head>
+        <title>Projects • Kevin Thomas</title>
+        <meta name="title" content="Projects • Kevin Thomas" />
+        <meta property="og:title" content="Projects • Kevin Thomas" />
+        <meta property="twitter:title" content="Projects • Kevin Thomas" />
+      </Head>
       <div className="flex flex-col items-start justify-start w-full space-y-4">
         <h1 className="font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
           💭 Projects
