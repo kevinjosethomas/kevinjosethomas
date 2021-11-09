@@ -8,13 +8,13 @@ body,
 }
 
 ::-moz-selection {
-  background: #93c5fd;
+  background: #3b82f6;
 }
 ::-webkit-selection {
-  background: #93c5fd;
+  background: #3b82f6;
 }
 ::selection {
-  background: #93c5fd;
+  background: #3b82f6;
 }
 
 .terminal {
