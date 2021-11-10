@@ -37,19 +37,19 @@ export default function Home(props) {
       {!initialized && <Intro weather={props.weather} setIntro={setInitialized} />}
       {initialized && (
         <Default>
-          <div className="flex flex-col items-start justify-start w-full space-y-6">
-            <div className="flex flex-col items-start justify-start w-full space-y-6">
+          <div className="flex flex-col items-start justify-start w-full space-y-3 md:space-y-6">
+            <div className="flex flex-col items-start justify-start w-full space-y-3 md:space-y-6">
               <motion.h1
-                className="font-bold text-5xl text-white text-opacity-80 tracking-[-0.02rem]"
+                className="font-bold text-3xl md:text-5xl text-white text-opacity-80 tracking-[-0.02rem]"
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.2 }}
               >
                 Hey! 👋 I'm Kevin.
               </motion.h1>
-              <div className="flex flex-col items-start justify-start w-full space-y-4 max-w-2xl">
+              <div className="flex flex-col items-start justify-start w-full space-y-3 md:space-y-4 max-w-2xl">
                 <motion.p
-                  className="text-xl text-white text-opacity-70"
+                  className="text-lg md:text-xl text-white text-opacity-70"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.2, delay: 0.1 }}
@@ -59,7 +59,7 @@ export default function Home(props) {
                   spend most of my time learning and practicing new technology.
                 </motion.p>
                 <motion.p
-                  className="text-xl text-white text-opacity-70"
+                  className="text-lg md:text-xl text-white text-opacity-70"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.2, delay: 0.2 }}
