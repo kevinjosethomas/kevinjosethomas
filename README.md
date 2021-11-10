@@ -1,30 +1,102 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hi, I'm Kevin Thomas 👋
 
-## Getting Started
+### I'm a 14 y/o student, full-stack developer and an aspiring tech entrepreneur.
 
-First, run the development server:
+[Portfolio](https://kevinthomas.codes/) + [Recommendations](https://github.com/trustedmercury/Testimonials)
 
-```bash
-npm run dev
-# or
-yarn dev
+**I'm well versed in** python, typescript, sql, react and next with over two years of experience in the development world. I'm developing fast and efficient software with exceptional user interfaces!
+
+**I'm planning on** continuing to participate in numerous developer events like hackathons over the next few months. I'm also interested in creating software related to accessibility or realtime technology!
+
+---
+
+![](https://api.ghprofile.me/view?username=trustedmercury) 💖 Provided by [ghprofile.me](https://github.com/trustedmercury/ghprofile.me)! Check it out!
+
+<details>
+  <summary>⚡ GitHub Activity and Statistics</summary> 
+  <img src="https://github-readme-stats.vercel.app/api?username=trustedmercury&count_private=true&show_icons=true&theme=gotham" />
+</details>
+
+<details open>
+<summary>
+⏰ Development Duration
+</summary>
+<p>
+
+<!--START_SECTION:waka-->
+
+```text
+JSX          13 hrs 35 mins  ███████████████████▓░░░░░   78.42 %
+Python       2 hrs 15 mins   ███▒░░░░░░░░░░░░░░░░░░░░░   13.02 %
+CSS          40 mins         █░░░░░░░░░░░░░░░░░░░░░░░░   03.91 %
+JavaScript   20 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.97 %
+JSON         8 mins          ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.80 %
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<!--END_SECTION:waka-->
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+</p>
+</details>
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+<!--
+[![NAME_HERE](https://img.shields.io/badge/NAME_HERE-COLOR_HERE?style=for-the-badge&logo=NAME_HERE&logoColor=white)]()
+-->
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<!-- Ignore the indentation -->
+<details open>
+<summary>🛠 <b>Software</b></summary>
+<p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
+[![NodeJS](https://img.shields.io/badge/NodeJS-529f44?style=for-the-badge&logo=node.js&logoColor=white)]()
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=PostgreSQL&logoColor=white)]()
+[![ReactJS](https://img.shields.io/badge/ReactJS-61DAFB?style=for-the-badge&logo=react&logoColor=black)]()
+[![NextJS](https://img.shields.io/badge/NextJS-000000?style=for-the-badge&logo=next.js&logoColor=white)]()
+[![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)]()
+[![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)]()
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=Tailwind%20CSS&logoColor=white)]()
 
-## Deploy on Vercel
+</p>
+</details>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<!-- Ignore the indentation -->
+<details open>
+<summary>🛠 <b>Software</b></summary>
+<p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)]()
+[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=Windows&logoColor=white)]()
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white)]()
+[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=Discord&logoColor=white)]()
+[![PyPI](https://img.shields.io/badge/PyPI-3775A9?style=for-the-badge&logo=PyPI&logoColor=white)]()
+[![NPM](https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=NPM&logoColor=white)]()
+[![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white)]()
+[![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white)]()
+[![Photoshop](https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=white)]()
+[![Font Awesome](https://img.shields.io/badge/Font%20Awesome-339AF0?style=for-the-badge&logo=Font%20Awesome&logoColor=white)]()
+
+</p>
+</details>
+
+<!-- Ignore the indentation -->
+<details open>
+<summary>📬 <b>Socials</b></summary>
+<p>
+
+<a href="mailto:trustedmercury@gmail.com" target="_blank">
+  <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white" />
+</a>
+<a href="https://github.com/trustedmercury" target="_blank">
+  <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github" />
+</a>
+<!-- <a href="https://discord.gg/32aMzp8" target="_blank">
+  <img src="https://img.shields.io/badge/DISCORD-7289DA?style=for-the-badge&logo=discord&logoColor=white" />
+</a> -->
+<a href="https://twitter.com/trustedmercury" target="_blank">
+  <img src="https://img.shields.io/badge/TWITTER-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
+</a>
+
+</p>
+</details>
