@@ -84,7 +84,7 @@ export default function Technologies(props) {
         </p>
       </motion.div>
       <motion.div
-        className="grid grid-cols-4 gap-y-0.5 w-full"
+        className="grid grid-cols-2 md:grid-cols-4 gap-y-0.5 w-full"
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3, delay: 1.2 }}
