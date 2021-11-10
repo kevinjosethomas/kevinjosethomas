@@ -32,25 +32,25 @@ export default function Awards(props) {
               ASUS ROG Strix G G531
             </a>
             <ol className="list-disc list-inside">
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">CPU</span> Intel i7-9750H 2.6
                 GHz
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">GPU</span> NVIDIA GeForce GTX
                 1650
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">Monitor</span> 15.6in FHD
                 1080p 60Hz IPS
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">Memory</span> 16GB DDR4
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">Disk</span> 512GB SSD
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">OS</span> Windows 11
               </li>
             </ol>
@@ -63,7 +63,7 @@ export default function Awards(props) {
           >
             <h3 className="font-bold text-2xl text-white text-opacity-80">Other</h3>
             <ol className="list-disc list-inside">
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">Monitor #2</span>{" "}
                 <a
                   target="_blank"
@@ -73,7 +73,7 @@ export default function Awards(props) {
                   Dell 27 - 27" 1440p 60Hz QHD IPS
                 </a>
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">Mouse</span>{" "}
                 <a
                   target="_blank"
@@ -83,7 +83,7 @@ export default function Awards(props) {
                   Acer Nitro Gaming Mouse - NMW810
                 </a>
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">Keyboard</span>{" "}
                 <a
                   target="_blank"
@@ -93,7 +93,7 @@ export default function Awards(props) {
                   Logitech G G413 Mechanical
                 </a>
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">Headphones</span>{" "}
                 <a
                   target="_blank"
@@ -103,7 +103,7 @@ export default function Awards(props) {
                   Bose QuietComfort 25
                 </a>
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">Headphones #2</span>{" "}
                 <a
                   target="_blank"
@@ -113,7 +113,7 @@ export default function Awards(props) {
                   Bose SoundLink Wireless Headphones II
                 </a>
               </li>
-              <li className="text-xl text-white text-opacity-70">
+              <li className="text-lg md:text-xl text-white text-opacity-70">
                 <span className="font-bold text-white text-opacity-80">Microphone</span>{" "}
                 <a
                   target="_blank"
