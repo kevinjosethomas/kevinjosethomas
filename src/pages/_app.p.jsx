@@ -15,11 +15,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    try {
-      new Audio("/sounds/boop.mp3").play();
-    } catch (e) {
-      return;
-    }
+    new Audio("/sounds/boop.mp3").play().catch((e) => void 0);
   }, [router.pathname]);
 
   return (
