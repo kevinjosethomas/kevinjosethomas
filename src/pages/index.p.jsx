@@ -13,8 +13,12 @@ export default function Home(props) {
   const [time, setTime] = useState(moment.tz(new Date(), "America/Vancouver"));
 
   useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setInitialized(true);
+      return;
+    }
     setInitialized(localStorage.getItem("intro") === "true");
-  });
+  }, []);
 
   useEffect(() => {
     const refreshTime = setInterval(() => {
