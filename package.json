@@ -1,6 +1,6 @@
 {
   "name": "trustedmercury",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,13 +8,20 @@
     "start": "next start"
   },
   "dependencies": {
-    "autoprefixer": "^10.2.4",
-    "axios": "^0.21.1",
-    "framer-motion": "^3.3.0",
-    "next": "10.0.6",
-    "postcss": "^8.2.10",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "tailwindcss": "^2.0.3"
+    "axios": "^0.24.0",
+    "framer-motion": "^5.2.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "next": "12.0.3",
+    "react": "17.0.2",
+    "react-animated-cursor": "^2.2.0",
+    "react-detect-click-outside": "^1.1.1",
+    "react-dom": "17.0.2",
+    "react-typist": "^2.0.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19"
   }
 }

@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   schedule:
     # Runs at 12am UTC
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
 
 jobs:
   update-readme:
-    name: Update this repo's README
+    name: Wakatime Integration
     runs-on: ubuntu-latest
     steps:
       - uses: athul/waka-readme@master

@@ -1,0 +1,106 @@
+html,
+body,
+#__next {
+  width: 100% !important;
+  min-height: 100% !important;
+  font-family: "DM Sans", sans-serif;
+  background-color: black;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #101010;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #282828;
+  border-radius: 0.15rem;
+}
+
+::-moz-selection {
+  background: #3b82f6;
+}
+::-webkit-selection {
+  background: #3b82f6;
+}
+::selection {
+  background: #3b82f6;
+}
+
+.terminal {
+  font-family: "Ubuntu Mono", sans-serif;
+}
+
+.Typist .Cursor {
+  display: inline-block;
+}
+.Typist .Cursor--blinking {
+  opacity: 1;
+  animation: blink 1s infinite step-start;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.tab::before {
+  content: "";
+  position: absolute;
+
+  left: -15px;
+  bottom: 0px;
+  height: 10px;
+  width: 15px;
+  border-bottom-right-radius: 0.375rem;
+  box-shadow: 3px 0px 0 0 #0c0c0c;
+}
+
+.tab::after {
+  content: "";
+  position: absolute;
+
+  right: -15px;
+  bottom: 0px;
+  height: 10px;
+  width: 15px;
+  border-bottom-left-radius: 0.375rem;
+  box-shadow: -3px 0px 0 0 #0c0c0c;
+}
+
+.taskbar {
+  background: repeating-linear-gradient(
+    to right,
+    rgb(30, 54, 89),
+    rgba(40, 72, 119) 33.3%,
+    rgb(30, 54, 89)
+  );
+}
+
+.setup a {
+  @apply text-blue-300;
+  text-decoration: underline;
+}
+
+.nav-highlight {
+  bottom: -1.125rem;
+}
