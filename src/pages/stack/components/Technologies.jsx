@@ -71,14 +71,15 @@ export default function Technologies(props) {
   return (
     <div className="flex flex-col items-start justify-start w-full space-y-2">
       <motion.div
-        className="flex flex-col items-start justify-start w-full"
+        className="flex flex-col items-start justify-start w-full space-y-1"
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.8 }}
       >
-        <h1 className="font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
-          🖥️ Technologies
-        </h1>
+        <div className="flex items-center space-x-2 font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
+          <img src="/icons/pc.svg" className="h-[40px] select-none" draggable="false" />
+          <p>Technologies</p>
+        </div>
         <p className="text-lg text-white text-opacity-60">
           Other software and technology that I'm experienced with and use regularly.
         </p>

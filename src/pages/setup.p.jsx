@@ -13,9 +13,10 @@ export default function Awards(props) {
         <meta property="twitter:title" content="Setup • Kevin Thomas" />
       </Head>
       <div className="flex flex-col items-start justify-start w-full space-y-4">
-        <h1 className="font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
-          💻 Setup
-        </h1>
+        <div className="flex items-center space-x-2 font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
+          <img src="/icons/laptop.svg" className="h-[40px] select-none" draggable="false" />
+          <p>Setup</p>
+        </div>
         <div className="setup flex flex-col items-start justify-start w-full space-y-6">
           <motion.div
             className="flex flex-col items-start justify-start space-y-1"

@@ -21,11 +21,20 @@ export default function DropdownContainer(props) {
 
   return (
     <div className="relative flex flex-col items-start justify-start">
-      <motion.i
-        animate={controls}
-        className="fas fa-caret-down text-lg text-white text-opacity-70"
-        onClick={() => setDropdown((dd) => !dd)}
-      />
+      <div
+        className={`flex items-center justify-center w-[28px] h-[28px] rounded-full ${
+          dropdown
+            ? "bg-white bg-opacity-10"
+            : "hover:bg-white hover:bg-opacity-10 transition duration-300"
+        } `}
+      >
+        <motion.i
+          animate={controls}
+          className="fas fa-caret-down text-lg text-white text-opacity-70"
+          onClick={() => setDropdown((dd) => !dd)}
+        />
+      </div>
+
       <AnimatePresence>{dropdown && <Dropdown setDropdown={setDropdown} />}</AnimatePresence>
     </div>
   );
@@ -38,6 +47,10 @@ function Dropdown(props) {
     {
       label: "/setup",
       href: "/setup",
+    },
+    {
+      label: "/books",
+      href: "/books",
     },
     {
       label: "/recommendations",

@@ -6,7 +6,7 @@ export default function Stack(props) {
       icon: "python.svg",
       color: "bg-[#DFBA39]",
       name: "Python",
-      for: "my go-to language for basic scripts, Discord bots, scrapers & libraries",
+      for: "my go-to language for scripts, Discord bots, scrapers & libraries",
     },
     {
       icon: "typescript.svg",
@@ -30,11 +30,12 @@ export default function Stack(props) {
 
   return (
     <div className="flex flex-col items-start justify-start w-full space-y-2">
-      <div className="flex flex-col items-start justify-start w-full">
-        <h1 className="font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
-          💻 Stack
-        </h1>
-        <p className="text-lg text-white text-opacity-60">
+      <div className="flex flex-col items-start justify-start w-full space-y-1">
+        <div className="flex items-center space-x-2 font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
+          <img src="/icons/laptop.svg" className="h-[40px] select-none" draggable="false" />
+          <p>Stack</p>
+        </div>
+        <p className="text-lg text-white text-opacity-60 leading-tight">
           My preferred stack of technologies for any web, mobile, desktop or discord projects right
           now. (w/ electron and react native)
         </p>

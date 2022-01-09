@@ -2,6 +2,7 @@ import "moment-timezone";
 import axios from "axios";
 import moment from "moment";
 import Head from "next/head";
+import twemoji from "twemoji";
 import { motion } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
@@ -43,14 +44,16 @@ export default function Home(props) {
         <Default>
           <div className="flex flex-col items-start justify-start w-full space-y-3 md:space-y-6">
             <div className="flex flex-col items-start justify-start w-full space-y-3 md:space-y-6">
-              <motion.h1
-                className="font-bold text-3xl md:text-5xl text-white text-opacity-80 tracking-[-0.02rem]"
+              <motion.div
+                className="flex items-center space-x-4 font-bold text-3xl md:text-5xl text-white text-opacity-80 tracking-[-0.02rem]"
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.2 }}
               >
-                Hey! 👋 I'm Kevin.
-              </motion.h1>
+                <p>Hey!</p>
+                <img src="/icons/wave.svg" className="h-[48px] select-none" draggable="false" />
+                <p>I'm Kevin.</p>
+              </motion.div>
               <div className="flex flex-col items-start justify-start w-full space-y-3 md:space-y-4 max-w-2xl">
                 <motion.p
                   className="text-lg md:text-xl text-white text-opacity-70"
@@ -68,7 +71,7 @@ export default function Home(props) {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.2, delay: 0.2 }}
                 >
-                  Over the last two years, I've gained expertise in Python, JavaScript, PostgreSQL
+                  Over the last two years, I've gained expertise in Python, TypeScript, PostgreSQL
                   and React. I've worked on dozens of projects including REST APIs, websites,
                   Discord bots and mobile apps. I'm currently focusing on participating in developer
                   events, creating accessible technology and contributing to opensource software!
@@ -95,7 +98,7 @@ export default function Home(props) {
               <div className="flex flex-row items-center justify-start space-x-2">
                 <i className="fas fa-clock w-[22.5px] text-center text-lg text-white text-opacity-90" />
                 <p className="text-lg text-white text-opacity-90">
-                  {time.format("MMMM Do YYYY")} • {time.format("hh:mm:ss a")}
+                  {time.format("MMMM Do YYYY")} • {time.format("h:mm:ss a")}
                 </p>
               </div>
             </motion.div>
