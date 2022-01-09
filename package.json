@@ -12,7 +12,7 @@
     "framer-motion": "^5.2.1",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
-    "next": "12.0.3",
+    "next": "12.0.5",
     "react": "17.0.2",
     "react-animated-cursor": "^2.2.0",
     "react-detect-click-outside": "^1.1.1",
