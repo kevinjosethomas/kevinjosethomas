@@ -49,6 +49,10 @@ function Dropdown(props) {
       href: "/setup",
     },
     {
+      label: "/books",
+      href: "/books",
+    },
+    {
       label: "/recommendations",
       href: "https://github.com/trustedmercury/recommendations",
     },

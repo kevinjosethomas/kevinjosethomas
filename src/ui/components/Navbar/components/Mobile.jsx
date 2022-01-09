@@ -22,6 +22,10 @@ export default function Mobile(props) {
       label: "/setup",
       href: "/setup",
     },
+    {
+      label: "/books",
+      href: "/books",
+    },
   ];
 
   return (
