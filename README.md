@@ -25,11 +25,11 @@
 
 <!--START_SECTION:waka-->
 ```text
-Python       5 hrs 41 mins   ███████░░░░░░░░░░░░░░░░░░   27.86 % 
-JavaScript   4 hrs 44 mins   █████▓░░░░░░░░░░░░░░░░░░░   23.24 % 
-Elixir       3 hrs 40 mins   ████▓░░░░░░░░░░░░░░░░░░░░   18.02 % 
-TypeScript   2 hrs 30 mins   ███░░░░░░░░░░░░░░░░░░░░░░   12.27 % 
-C++          2 hrs 9 mins    ██▓░░░░░░░░░░░░░░░░░░░░░░   10.58 % 
+Python       4 hrs 9 mins    ██████░░░░░░░░░░░░░░░░░░░   23.73 % 
+JavaScript   3 hrs 52 mins   █████▓░░░░░░░░░░░░░░░░░░░   22.08 % 
+Elixir       3 hrs 40 mins   █████▒░░░░░░░░░░░░░░░░░░░   20.97 % 
+C++          2 hrs 29 mins   ███▓░░░░░░░░░░░░░░░░░░░░░   14.23 % 
+TypeScript   2 hrs 8 mins    ███░░░░░░░░░░░░░░░░░░░░░░   12.20 % 
 ```
 <!--END_SECTION:waka-->
 
