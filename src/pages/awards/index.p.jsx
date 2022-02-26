@@ -6,6 +6,15 @@ import Default from "ui/layouts/Default";
 export default function Awards(props) {
   const awards = [
     {
+      title: "CCC - 59/75",
+      subtitle: "feb 16 2022",
+      lines: [
+        "Participant in the Junior Canadian Computing Competiton 2022",
+        "• Completed all challenges in under 3 hours with Python 3",
+        "• Scored 59/60 in the first 4 challenges",
+      ],
+    },
+    {
       title: "BorderHacks",
       subtitle: "sep 25-26 2021",
       lines: [
