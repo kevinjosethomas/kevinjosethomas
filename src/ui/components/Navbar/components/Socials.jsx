@@ -11,7 +11,7 @@ function Twitter() {
   return (
     <a
       target="_blank"
-      href="https://twitter.com/trustedmercury"
+      href="https://twitter.com/kevinjosethomas"
       className="text-white text-opacity-70 hover:text-opacity-90 transition duration-300"
     >
       <svg
@@ -36,7 +36,7 @@ function GitHub() {
   return (
     <a
       target="_blank"
-      href="https://github.com/trustedmercury"
+      href="https://github.com/kevinjosethomas"
       className="text-white text-opacity-70 hover:text-opacity-90 transition duration-300"
     >
       <svg
