@@ -10,11 +10,11 @@
 
 ---
 
-![](https://api.ghprofile.me/view?username=trustedmercury) 💖 Provided by [ghprofile.me](https://github.com/trustedmercury/ghprofile.me)! Check it out!
+![](https://api.ghprofile.me/view?username=trustedmercury) 💖 Provided by [ghprofile.me](https://github.com/kevinjosethomas/ghprofile.me)! Check it out!
 
 <details>
   <summary>⚡ GitHub Activity and Statistics</summary> 
-  <img src="https://github-readme-stats.vercel.app/api?username=trustedmercury&count_private=true&show_icons=true&theme=gotham" />
+  <img src="https://github-readme-stats.vercel.app/api?username=kevinjosethomas&count_private=true&show_icons=true&theme=gotham" />
 </details>
 
 <details open>
