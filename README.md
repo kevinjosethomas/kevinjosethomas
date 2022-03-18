@@ -1,4 +1,4 @@
-# Hi, I'm Kevin Thomas 👋
+# Hello 👋 I'm Kevin Thomas 
 
 ### I'm a 14 y/o student, full-stack developer and an aspiring tech entrepreneur.
 
@@ -9,8 +9,6 @@
 **I'm planning on** continuing to participate in numerous developer events like hackathons over the next few months. I'm also interested in creating software related to accessibility or realtime technology!
 
 ---
-
-![](https://api.ghprofile.me/view?username=trustedmercury) 💖 Provided by [ghprofile.me](https://github.com/kevinjosethomas/ghprofile.me)! Check it out!
 
 <details>
   <summary>⚡ GitHub Activity and Statistics</summary> 
@@ -47,7 +45,7 @@ JSON         0 secs          ░░░░░░░░░░░░░░░░░
 
 <!-- Ignore the indentation -->
 <details open>
-<summary>🛠 <b>Software</b></summary>
+<summary>⚙️ <b>Technologies</b></summary>
 <p>
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
