@@ -11,10 +11,10 @@ I'm a 14 y/o student & full-stack web developer experienced in Python, TypeScrip
 - [ ] Find more music 🎵🎶
 
 # Languages & Frameworks
-[![Python](https://i.imgur.com/4uL6M3Y.png)](https://kevinthomas.codes/stack)
-[![TypeScript](https://i.imgur.com/HSLaLXl.png)](https://kevinthomas.codes/stack)
-[![PostgreSQL](https://i.imgur.com/XDJjRc1.png)](https://kevinthomas.codes/stack)
-[![NextJS](https://i.imgur.com/eCDGymD.png)](https://kevinthomas.codes/stack)
+[![Python](https://i.imgur.com/uJCFGqb.png)](https://kevinthomas.codes/stack)
+[![TypeScript](https://i.imgur.com/LlHxpmm.png)](https://kevinthomas.codes/stack)
+[![PostgreSQL](https://i.imgur.com/JtHCo5L.png)](https://kevinthomas.codes/stack)
+[![NextJS](https://i.imgur.com/S1zqWbT.png)](https://kevinthomas.codes/stack)
 [![Software](https://i.imgur.com/cdfHm5u.png)](https://kevinthomas.codes/stack)
 
 # Development Duration
