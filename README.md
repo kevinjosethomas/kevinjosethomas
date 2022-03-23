@@ -30,3 +30,6 @@ Other        2 mins          ▒░░░░░░░░░░░░░░░░
 ```
 
 <!--END_SECTION:waka-->
+
+# Discord Presence
+[![Discord Presence](https://lanyard.cnrad.dev/api/418707912836382721)](https:/kevinthomas.codes/)
