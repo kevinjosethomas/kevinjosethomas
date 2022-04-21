@@ -6,6 +6,12 @@ import Default from "ui/layouts/Default";
 export default function Books(props) {
   const books = [
     {
+      name: "The Kite Runner",
+      read_at: "April 2022",
+      link: "https://www.amazon.ca/Kite-Runner-Khaled-Hosseini/dp/159463193X",
+      img: "/books/the-kite-runner.png",
+    },
+    {
       name: "A Phở Love Story",
       read_at: "January 2022",
       link: "https://www.amazon.ca/Pho-Love-Story-Loan/dp/153444193X",
@@ -66,17 +72,17 @@ export default function Books(props) {
         <meta property="og:title" content="Books • Kevin Thomas" />
         <meta property="twitter:title" content="Books • Kevin Thomas" />
       </Head>
-      <div className="flex flex-col items-start justify-start w-full space-y-4">
-        <div className="flex flex-col items-start justify-start w-full space-y-1">
-          <div className="flex items-center space-x-2 font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
+      <div className="flex w-full flex-col items-start justify-start space-y-4">
+        <div className="flex w-full flex-col items-start justify-start space-y-1">
+          <div className="flex items-center space-x-2 text-4xl font-bold tracking-[-0.02rem] text-white text-opacity-80">
             <img src="/icons/book.svg" className="h-[40px] select-none" draggable="false" />
             <p>Books</p>
           </div>
-          <p className="text-lg text-white text-opacity-60 leading-tight">
+          <p className="text-lg leading-tight text-white text-opacity-60">
             Some cool books I've read recently :) Mostly fiction or self-help!
           </p>
         </div>
-        <div className="flex flex-col items-start justify-start w-full space-y-2">
+        <div className="flex w-full flex-col items-start justify-start space-y-2">
           {books.map((book, index) => (
             <Book key={index} index={index} {...book} />
           ))}
