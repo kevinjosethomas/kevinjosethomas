@@ -42,10 +42,10 @@ export default function Home(props) {
       {!initialized && <Intro weather={props.weather} setIntro={setInitialized} />}
       {initialized && (
         <Default>
-          <div className="flex flex-col items-start justify-start w-full space-y-3 md:space-y-6">
-            <div className="flex flex-col items-start justify-start w-full space-y-3 md:space-y-6">
+          <div className="flex w-full flex-col items-start justify-start space-y-3 md:space-y-6">
+            <div className="flex w-full flex-col items-start justify-start space-y-3 md:space-y-6">
               <motion.div
-                className="flex items-center space-x-4 font-bold text-3xl md:text-5xl text-white text-opacity-80 tracking-[-0.02rem]"
+                className="flex items-center space-x-4 text-3xl font-bold tracking-[-0.02rem] text-white text-opacity-80 md:text-5xl"
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.2 }}
@@ -54,19 +54,19 @@ export default function Home(props) {
                 <img src="/icons/wave.svg" className="h-[48px] select-none" draggable="false" />
                 <p>I'm Kevin.</p>
               </motion.div>
-              <div className="flex flex-col items-start justify-start w-full space-y-3 md:space-y-4 max-w-2xl">
+              <div className="flex w-full max-w-2xl flex-col items-start justify-start space-y-3 md:space-y-4">
                 <motion.p
-                  className="text-lg md:text-xl text-white text-opacity-70"
+                  className="text-lg text-white text-opacity-70 md:text-xl"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.2, delay: 0.1 }}
                 >
-                  I'm Kevin Thomas, a 14 year old student, full-stack developer and an aspiring tech
+                  I'm Kevin Thomas, a 15 year old student, full-stack developer and an aspiring tech
                   entrepreneur. I have over 2 years of experience in the development world and I
                   spend most of my time learning and practicing new technology.
                 </motion.p>
                 <motion.p
-                  className="text-lg md:text-xl text-white text-opacity-70"
+                  className="text-lg text-white text-opacity-70 md:text-xl"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.2, delay: 0.2 }}
