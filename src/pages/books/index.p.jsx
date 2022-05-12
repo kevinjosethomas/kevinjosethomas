@@ -6,6 +6,12 @@ import Default from "ui/layouts/Default";
 export default function Books(props) {
   const books = [
     {
+      name: "The Book Thief",
+      read_at: "May 2022",
+      link: "https://www.amazon.ca/Book-Thief-Markus-Zusak/dp/0375842209",
+      img: "/books/the-book-thief.png",
+    },
+    {
       name: "The Kite Runner",
       read_at: "April 2022",
       link: "https://www.amazon.ca/Kite-Runner-Khaled-Hosseini/dp/159463193X",
