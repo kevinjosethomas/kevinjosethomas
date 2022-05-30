@@ -1,6 +1,6 @@
 # Hello 👋 I'm Kevin Thomas //
 
-I'm a 14 y/o student & full-stack web developer experienced in Python, TypeScript, SQL and React. I'm working on developing efficient software with modern design and exceptional user experiences. I'm currently investing my time into learning new technology, participating in hackathons and working on a few side projects. You can learn more about my projects and the people I've worked with on my [portfolio](https://kevinthomas.codes/) and my [recommendations](https://github.com/kevinjosethomas/Testimonials).
+I'm a 15 y/o student & full-stack web developer experienced in Python, TypeScript, SQL and React. I'm working on developing efficient software with modern design and exceptional user experiences. I'm currently investing my time into learning new technology, participating in hackathons and working on a few side projects. You can learn more about my projects and the people I've worked with on my [portfolio](https://kevinthomas.codes/) and my [recommendations](https://github.com/kevinjosethomas/Testimonials).
 
 ### A few of my short-term goals:
 - [ ] Learn a new language like Elixir
@@ -22,7 +22,7 @@ I'm a 14 y/o student & full-stack web developer experienced in Python, TypeScrip
 <!--START_SECTION:waka-->
 
 ```text
-JavaScript   6 mins          █████████████████████████   100.00 %
+No activity tracked
 ```
 
 <!--END_SECTION:waka-->
