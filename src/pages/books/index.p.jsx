@@ -6,6 +6,18 @@ import Default from "ui/layouts/Default";
 export default function Books(props) {
   const books = [
     {
+      name: "You've Reached Sam",
+      read_at: "May 2022",
+      link: "https://www.amazon.ca/Youve-Reached-Sam-Dustin-Thao/dp/1250762030",
+      img: "/books/youve-reached-sam.png",
+    },
+    {
+      name: "The Girls I've Been",
+      read_at: "May 2022",
+      link: "https://www.amazon.ca/Girls-Ive-Been-Tess-Sharpe/dp/0593353803",
+      img: "/books/the-girls-ive-been.png",
+    },
+    {
       name: "The Book Thief",
       read_at: "May 2022",
       link: "https://www.amazon.ca/Book-Thief-Markus-Zusak/dp/0375842209",
@@ -22,6 +34,12 @@ export default function Books(props) {
       read_at: "January 2022",
       link: "https://www.amazon.ca/Pho-Love-Story-Loan/dp/153444193X",
       img: "/books/a-pho-love-story.png",
+    },
+    {
+      name: "The Block",
+      read_at: "January 2022",
+      link: "https://www.amazon.ca/Block-Second-Book-Loop-Trilogy/dp/1338589334",
+      img: "/books/the-block.png",
     },
     {
       name: "Exo",
@@ -49,12 +67,6 @@ export default function Books(props) {
       link: "https://www.amazon.ca/Scythe-Arc-Book-1-ebook/dp/B01BKR487W",
       img: "/books/scythe.png",
       favourite: true,
-    },
-    {
-      name: "The Block",
-      read_at: "January 2022",
-      link: "https://www.amazon.ca/Block-Second-Book-Loop-Trilogy/dp/1338589334",
-      img: "/books/the-block.png",
     },
     {
       name: "The Loop",
