@@ -22,10 +22,10 @@ export default function DropdownContainer(props) {
   return (
     <div className="relative flex flex-col items-start justify-start">
       <div
-        className={`flex items-center justify-center w-[28px] h-[28px] rounded-full ${
+        className={`flex h-[28px] w-[28px] items-center justify-center rounded-full ${
           dropdown
             ? "bg-white bg-opacity-10"
-            : "hover:bg-white hover:bg-opacity-10 transition duration-300"
+            : "transition duration-300 hover:bg-white hover:bg-opacity-10"
         } `}
       >
         <motion.i
@@ -54,14 +54,14 @@ function Dropdown(props) {
     },
     {
       label: "/recommendations",
-      href: "https://github.com/trustedmercury/recommendations",
+      href: "https://github.com/kevinjosethomas/recommendations",
     },
   ];
 
   return (
     <motion.div
       ref={ref}
-      className="absolute top-10 flex flex-col items-start justify-start bg-black border-[1px] border-white border-opacity-60 rounded"
+      className="absolute top-10 flex flex-col items-start justify-start rounded border-[1px] border-white border-opacity-60 bg-black"
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 10, opacity: 0 }}
@@ -89,7 +89,7 @@ function DropdownElement(props) {
       <a
         href={!internal ? props.href : null}
         target={internal ? "_self" : "_blank"}
-        className="flex flex-row items-center justify-start w-full pl-2 pr-8 py-1 hover:bg-white hover:bg-opacity-[0.08] cursor-pointer select-none"
+        className="flex w-full cursor-pointer select-none flex-row items-center justify-start py-1 pl-2 pr-8 hover:bg-white hover:bg-opacity-[0.08]"
       >
         <span className="text-sm text-white text-opacity-70">{props.label}</span>
       </a>

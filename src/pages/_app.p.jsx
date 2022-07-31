@@ -27,19 +27,19 @@ export default function App({ Component, pageProps }) {
         />
         <meta
           name="description"
-          content="I'm Kevin Thomas, a 14 year old full-stack developer and an aspiring tech entrepreneur. Experienced in py, js, sql, react & more!"
+          content="I'm Kevin Thomas, a 15 year old full-stack developer and an aspiring tech entrepreneur. Experienced in py, js, sql, react & more!"
         />
 
         <meta property="og:image" content="/embed.png" />
         <meta
           property="og:description"
-          content="I'm Kevin Thomas, a 14 year old full-stack developer and an aspiring tech entrepreneur. Experienced in py, js, sql, react & more!"
+          content="I'm Kevin Thomas, a 15 year old full-stack developer and an aspiring tech entrepreneur. Experienced in py, js, sql, react & more!"
         />
 
         <meta property="twitter:image" content="/embed.png" />
         <meta
           property="twitter:description"
-          content="I'm Kevin Thomas, a 14 year old full-stack developer and an aspiring tech entrepreneur. Experienced in py, js, sql, react & more!"
+          content="I'm Kevin Thomas, a 15 year old full-stack developer and an aspiring tech entrepreneur. Experienced in py, js, sql, react & more!"
         />
 
         <meta property="og:type" content="website" />

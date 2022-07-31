@@ -65,7 +65,7 @@ export default function Projects(props) {
         "My first public Discord bot - a YouTube simulation bot that allowed players to create a simulation of a YouTube channel. They could upload videos and buy in-game cosmetics via Discord commands.",
       date: "mar - sep 2020",
       status: -1,
-      href: "https://github.com/trustedmercury/vidio",
+      href: "https://github.com/kevinjosethomas/vidio",
     },
   ];
 
@@ -77,12 +77,12 @@ export default function Projects(props) {
         <meta property="og:title" content="Projects • Kevin Thomas" />
         <meta property="twitter:title" content="Projects • Kevin Thomas" />
       </Head>
-      <div className="flex flex-col items-start justify-start w-full space-y-4">
-        <div className="flex items-center space-x-2 font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
+      <div className="flex w-full flex-col items-start justify-start space-y-4">
+        <div className="flex items-center space-x-2 text-4xl font-bold tracking-[-0.02rem] text-white text-opacity-80">
           <img src="/icons/think.svg" className="h-[40px] select-none" draggable="false" />
           <p>Projects</p>
         </div>
-        <div className="flex flex-col items-start justify-start w-full space-y-2">
+        <div className="flex w-full flex-col items-start justify-start space-y-2">
           {projects.map((project, index) => (
             <Project key={index} index={index} {...project} />
           ))}

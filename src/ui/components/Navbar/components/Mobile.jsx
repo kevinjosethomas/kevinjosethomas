@@ -29,22 +29,22 @@ export default function Mobile(props) {
   ];
 
   return (
-    <div className="absolute z-50 flex md:hidden flex-col items-center justify-between w-screen h-screen bg-black pb-10 overflow-hidden">
-      <div className="flex md:hidden flex-col items-start justify-start w-[90%] py-5 space-y-8">
-        <div className="flex flex-col items-start justify-start w-full space-y-4">
-          <div className="flex flex-row items-center justify-between w-full">
+    <div className="absolute z-50 flex h-screen w-screen flex-col items-center justify-between overflow-hidden bg-black pb-10 md:hidden">
+      <div className="flex w-[90%] flex-col items-start justify-start space-y-8 py-5 md:hidden">
+        <div className="flex w-full flex-col items-start justify-start space-y-4">
+          <div className="flex w-full flex-row items-center justify-between">
             <p className="text-xl text-white text-opacity-70">Kevin Thomas</p>
             <i
               className="far fa-times text-xl text-white text-opacity-70"
               onClick={() => props.setMobile(false)}
             />
           </div>
-          <div className="w-full h-0.5 bg-white bg-opacity-10" />
+          <div className="h-0.5 w-full bg-white bg-opacity-10" />
         </div>
-        <div className="flex flex-col items-start justify-center w-[90%] space-y-3">
+        <div className="flex w-[90%] flex-col items-start justify-center space-y-3">
           {links.map((link, index) => (
             <Link key={index} href={link.href}>
-              <a className="text-2xl text-white text-opacity-70 hover:text-opacity-90 transition duration-300">
+              <a className="text-2xl text-white text-opacity-70 transition duration-300 hover:text-opacity-90">
                 {link.label}
               </a>
             </Link>
@@ -63,8 +63,8 @@ function Twitter() {
   return (
     <a
       target="_blank"
-      href="https://twitter.com/trustedmercury"
-      className="text-white text-opacity-70 hover:text-opacity-90 transition duration-300"
+      href="https://twitter.com/kevinjosethomas"
+      className="text-white text-opacity-70 transition duration-300 hover:text-opacity-90"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -88,8 +88,8 @@ function GitHub() {
   return (
     <a
       target="_blank"
-      href="https://github.com/trustedmercury"
-      className="text-white text-opacity-70 hover:text-opacity-90 transition duration-300"
+      href="https://github.com/kevinjosethomas"
+      className="text-white text-opacity-70 transition duration-300 hover:text-opacity-90"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
