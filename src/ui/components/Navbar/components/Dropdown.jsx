@@ -45,13 +45,18 @@ function Dropdown(props) {
 
   const elements = [
     {
-      label: "/setup",
-      href: "/setup",
+      label: "/music",
+      href: "/music",
     },
     {
       label: "/books",
       href: "/books",
     },
+    {
+      label: "/setup",
+      href: "/setup",
+    },
+
     {
       label: "/recommendations",
       href: "https://github.com/kevinjosethomas/recommendations",

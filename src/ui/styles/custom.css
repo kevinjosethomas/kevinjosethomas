@@ -33,15 +33,15 @@ body,
 .terminal {
   font-family: "Ubuntu Mono", sans-serif;
 }
-/*
+
 .Typist .Cursor {
   display: inline-block;
 }
 .Typist .Cursor--blinking {
   opacity: 1;
   animation: blink 1s infinite step-start;
-} */
-/* 
+}
+
 @keyframes blink {
   0% {
     opacity: 1;
@@ -52,7 +52,7 @@ body,
   100% {
     opacity: 0;
   }
-} */
+}
 
 .setup a {
   @apply text-blue-300;

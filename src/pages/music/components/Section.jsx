@@ -1,10 +1,16 @@
+import { motion } from "framer-motion";
 import ScrollContainer from "react-indiana-drag-scroll";
 
 import Item from "./Item";
 
 export default function Section(props) {
   return (
-    <div className="flex w-full flex-col space-y-1">
+    <motion.div
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.2, delay: 0.1 * props.i }}
+      className="flex w-full flex-col space-y-1"
+    >
       <h1 className="text-2xl font-bold capitalize text-white text-opacity-80">
         Top {props.type}s
       </h1>
@@ -22,6 +28,6 @@ export default function Section(props) {
           <i className="fas fa-arrow-right text-4xl text-[#1DB954] text-opacity-60 transition duration-300 group-hover:text-opacity-100" />
         </a>
       </ScrollContainer>
-    </div>
+    </motion.div>
   );
 }

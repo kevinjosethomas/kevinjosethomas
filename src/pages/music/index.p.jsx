@@ -1,27 +1,10 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
 
 import { FetchMusic } from "./routes";
 import Default from "ui/layouts/Default";
 import Section from "./components/Section";
 
 export default function Music(props) {
-  const [music, setMusic] = useState();
-
-  useEffect(async () => {
-    const responses = await Promise.all([
-      FetchMusic("tracks"),
-      FetchMusic("albums"),
-      FetchMusic("artists"),
-    ]);
-
-    setMusic({
-      tracks: responses[0],
-      albums: responses[1],
-      artists: responses[2],
-    });
-  }, []);
-
   return (
     <Default>
       <Head>
@@ -37,14 +20,14 @@ export default function Music(props) {
             <p>Music</p>
           </div>
           <p className="text-lg leading-tight text-white text-opacity-60">
-            Automated Spotify stats of my top tracks, albums and artists from the last 6 months{" "}
-            {"<3"}
+            Automated Spotify stats of my top tracks, albums and artists over the last 4 weeks
+            {" <3"}
           </p>
         </div>
         <div className="flex w-full flex-col items-start justify-start space-y-4">
-          <Section type="track" music={music?.tracks} />
-          <Section type="album" music={music?.albums} />
-          <Section type="artist" music={music?.artists} />
+          <Section i={1} type="track" music={props.tracks} />
+          <Section i={2} type="album" music={props.albums} />
+          <Section i={3} type="artist" music={props.artists} />
         </div>
         <a
           target="_blank"
@@ -59,4 +42,20 @@ export default function Music(props) {
       </div>
     </Default>
   );
+}
+
+export async function getServerSideProps(ctx) {
+  const responses = await Promise.all([
+    FetchMusic("tracks"),
+    FetchMusic("albums"),
+    FetchMusic("artists"),
+  ]);
+
+  return {
+    props: {
+      tracks: responses[0],
+      albums: responses[1],
+      artists: responses[2],
+    },
+  };
 }

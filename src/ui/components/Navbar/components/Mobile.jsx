@@ -14,17 +14,23 @@ export default function Mobile(props) {
       label: "/awards",
       href: "/awards",
     },
+
     {
       label: "/stack",
       href: "/stack",
     },
     {
-      label: "/setup",
-      href: "/setup",
+      label: "/music",
+      href: "/music",
     },
+
     {
       label: "/books",
       href: "/books",
+    },
+    {
+      label: "/setup",
+      href: "/setup",
     },
   ];
 

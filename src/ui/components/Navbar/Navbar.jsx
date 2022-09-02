@@ -17,22 +17,22 @@ export default function Navbar(props) {
 
   return (
     <Fragment>
-      <div className="hidden md:flex flex-col items-start justify-start w-full py-10 space-y-4">
-        <div className="flex flex-row items-center justify-between w-full">
+      <div className="hidden w-full flex-col items-start justify-start space-y-4 py-10 md:flex">
+        <div className="flex w-full flex-row items-center justify-between">
           <Navigation />
           <Socials />
         </div>
-        <div className="w-full h-0.5 bg-white bg-opacity-10" />
+        <div className="h-0.5 w-full bg-white bg-opacity-10" />
       </div>
-      <div className="flex md:hidden flex-col items-start justify-start w-[90%] py-5 space-y-4">
-        <div className="flex flex-row items-center justify-between w-full">
+      <div className="flex w-[90%] flex-col items-start justify-start space-y-4 py-5 md:hidden">
+        <div className="flex w-full flex-row items-center justify-between">
           <p className="text-xl text-white text-opacity-70">Kevin Thomas</p>
           <i
             className="far fa-bars text-xl text-white text-opacity-70"
             onClick={() => setMobile(true)}
           />
         </div>
-        <div className="w-full h-0.5 bg-white bg-opacity-10" />
+        <div className="h-0.5 w-full bg-white bg-opacity-10" />
       </div>
       {mobile && <Mobile setMobile={setMobile} />}
     </Fragment>
