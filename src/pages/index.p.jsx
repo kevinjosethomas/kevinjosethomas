@@ -2,11 +2,9 @@ import "moment-timezone";
 import axios from "axios";
 import moment from "moment";
 import Head from "next/head";
-import twemoji from "twemoji";
 import { motion } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
-import Intro from "./index/Intro";
 import Default from "ui/layouts/Default";
 
 export default function Home(props) {

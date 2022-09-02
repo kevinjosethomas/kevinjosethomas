@@ -2,12 +2,10 @@ import Navbar from "ui/components/Navbar/Navbar";
 
 export default function Default(props) {
   return (
-    <div className="flex flex-col items-center justify-start w-full overflow-x-hidden bg-black">
-      <div className="flex flex-col items-center justify-start w-screen md:w-[900px] min-h-screen h-full pb-10 overflow-x-hidden">
+    <div className="flex w-full flex-col items-center justify-start overflow-x-hidden bg-black">
+      <div className="flex h-full min-h-screen w-screen flex-col items-center justify-start overflow-x-hidden pb-10 md:w-[900px]">
         <Navbar />
-        <div className="flex flex-col items-start justify-start w-[90%] md:w-full">
-          {props.children}
-        </div>
+        <div className="flex flex-col items-start justify-start md:w-full">{props.children}</div>
       </div>
     </div>
   );
