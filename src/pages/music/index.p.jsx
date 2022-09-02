@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { FetchMusic } from "./routes";
+import { FetchMusic } from "lib/routes";
 import Default from "ui/layouts/Default";
 import Section from "./components/Section";
 
