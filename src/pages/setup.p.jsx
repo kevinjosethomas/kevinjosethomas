@@ -12,12 +12,12 @@ export default function Awards(props) {
         <meta property="og:title" content="Setup • Kevin Thomas" />
         <meta property="twitter:title" content="Setup • Kevin Thomas" />
       </Head>
-      <div className="flex flex-col items-start justify-start w-full space-y-4">
-        <div className="flex items-center space-x-2 font-bold text-4xl text-white text-opacity-80 tracking-[-0.02rem]">
+      <div className="flex w-full flex-col items-start justify-start space-y-4">
+        <div className="flex items-center space-x-2 text-4xl font-bold tracking-[-0.02rem] text-white text-opacity-80">
           <img src="/icons/laptop.svg" className="h-[40px] select-none" draggable="false" />
           <p>Setup</p>
         </div>
-        <div className="setup flex flex-col items-start justify-start w-full space-y-6">
+        <div className="setup flex w-full flex-col items-start justify-start space-y-6">
           <motion.div
             className="flex flex-col items-start justify-start space-y-1"
             initial={{ y: 10, opacity: 0 }}
@@ -27,31 +27,31 @@ export default function Awards(props) {
             <a
               target="_blank"
               rel="nofollow noreferrer"
-              className="font-bold text-2xl text-white text-opacity-80"
+              className="text-2xl font-bold text-white text-opacity-80"
               href="https://rog.asus.com/laptops/rog-strix/rog-strix-g-g531-series/"
             >
               ASUS ROG Strix G G531
             </a>
-            <ol className="list-disc list-inside">
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+            <ol className="list-inside list-disc">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">CPU</span> Intel i7-9750H 2.6
                 GHz
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">GPU</span> NVIDIA GeForce GTX
                 1650
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">Monitor</span> 15.6in FHD
                 1080p 60Hz IPS
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">Memory</span> 16GB DDR4
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">Disk</span> 512GB SSD
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">OS</span> Windows 11
               </li>
             </ol>
@@ -62,9 +62,9 @@ export default function Awards(props) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.5 }}
           >
-            <h3 className="font-bold text-2xl text-white text-opacity-80">Other</h3>
-            <ol className="list-disc list-inside">
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+            <h3 className="text-2xl font-bold text-white text-opacity-80">Other</h3>
+            <ol className="list-inside list-disc">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">Monitor #2</span>{" "}
                 <a
                   target="_blank"
@@ -74,7 +74,7 @@ export default function Awards(props) {
                   Dell 27 - 27" 1440p 60Hz QHD IPS
                 </a>
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">Mouse</span>{" "}
                 <a
                   target="_blank"
@@ -84,7 +84,7 @@ export default function Awards(props) {
                   Acer Nitro Gaming Mouse - NMW810
                 </a>
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">Keyboard</span>{" "}
                 <a
                   target="_blank"
@@ -94,7 +94,7 @@ export default function Awards(props) {
                   Logitech G G413 Mechanical
                 </a>
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">Headphones</span>{" "}
                 <a
                   target="_blank"
@@ -104,17 +104,27 @@ export default function Awards(props) {
                   Bose QuietComfort 25
                 </a>
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">Headphones #2</span>{" "}
                 <a
                   target="_blank"
                   rel="nofollow noreferrer"
                   href="https://www.bose.ca/en_ca/products/headphones/over_ear_headphones/soundlink-around-ear-wireless-headphones-ii.html#v=soundlink_ae_headphones_ii_white"
                 >
-                  Bose SoundLink Wireless Headphones II
+                  Bose SoundLink II
                 </a>
               </li>
-              <li className="text-lg md:text-xl text-white text-opacity-70">
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
+                <span className="font-bold text-white text-opacity-80">Earphones</span>{" "}
+                <a
+                  target="_blank"
+                  rel="nofollow noreferrer"
+                  href="https://www.apple.com/ca/shop/product/MJ503LL/A/beats-studio-buds-true-wireless-noise-cancelling-earphones-beats-red"
+                >
+                  Beats Studio Buds
+                </a>
+              </li>
+              <li className="text-lg text-white text-opacity-70 md:text-xl">
                 <span className="font-bold text-white text-opacity-80">Microphone</span>{" "}
                 <a
                   target="_blank"
