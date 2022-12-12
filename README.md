@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# Hello 👋 I'm Kevin Thomas //
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I'm a 15 y/o student & full-stack web developer experienced in Python, TypeScript, SQL and React. I'm working on developing efficient software with modern design and exceptional user experiences. I'm currently investing my time into learning new technology, participating in hackathons and working on a few side projects. You can learn more about my projects and the people I've worked with on my [portfolio](https://kevinthomas.codes/) and my [recommendations](https://github.com/kevinjosethomas/Testimonials).
 
-## Available Scripts
+### A few of my short-term goals:
 
-In the project directory, you can run:
+- [ ] Learn a new language like Elixir
+- [ ] Create some a11y-related software
+- [ ] Revive some of my dead projects☠️
+- [ ] Balance time between school, friends & work
+- [ ] Make fat stacks with [minecraft.global](https://minecraft.global/) 💵💸
+- [ ] Find more music 🎵🎶
 
-### `yarn start`
+# Languages & Frameworks
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[![Python](https://i.imgur.com/uJCFGqb.png)](https://kevinthomas.codes/stack)
+[![TypeScript](https://i.imgur.com/LlHxpmm.png)](https://kevinthomas.codes/stack)
+[![PostgreSQL](https://i.imgur.com/JtHCo5L.png)](https://kevinthomas.codes/stack)
+[![NextJS](https://i.imgur.com/S1zqWbT.png)](https://kevinthomas.codes/stack)
+[![Software](https://i.imgur.com/cdfHm5u.png)](https://kevinthomas.codes/stack)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Development Duration
 
-### `yarn test`
+<!--START_SECTION:waka-->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text
+No activity tracked
+```
 
-### `yarn build`
+<!--END_SECTION:waka-->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Discord Presence
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[![Discord Presence](https://lanyard.cnrad.dev/api/418707912836382721)](https:/kevinthomas.codes/)
