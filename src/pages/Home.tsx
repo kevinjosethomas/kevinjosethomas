@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 
-import PageWrapper from "ui/wrappers/PageWrapper";
 import Image from "assets/images/home.jpg";
+import PageWrapper from "ui/wrappers/PageWrapper";
+import Presence from "ui/components/Presence/Presence";
 
 const Home = () => {
   const socials = [
@@ -21,7 +22,7 @@ const Home = () => {
 
   return (
     <PageWrapper image={{ alt: "me!", src: Image, style: "w-1/3" }}>
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col items-start space-y-4">
         <motion.p
           className="font-inter text-xl font-medium text-white text-opacity-80"
           initial={{ opacity: 0, y: 10 }}
@@ -60,8 +61,8 @@ const Home = () => {
           Reach out:{" "}
           <div className="ml-2 flex items-center space-x-2">
             {socials.map((s, i) => (
-              <div className="relative transition duration-500 hover:opacity-80">
-                <a key={i} href={s.href} target="_blank" rel="noreferrer">
+              <div key={i} className="relative transition duration-500 hover:opacity-80">
+                <a href={s.href} target="_blank" rel="noreferrer">
                   {s.label}
                 </a>
                 <div className="absolute bottom-0.5 h-0.5 w-full bg-white" />
@@ -69,6 +70,7 @@ const Home = () => {
             ))}
           </div>
         </motion.p>
+        <Presence />
       </div>
     </PageWrapper>
   );

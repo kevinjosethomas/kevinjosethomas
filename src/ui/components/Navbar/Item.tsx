@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { Link, useMatch } from "react-router-dom";
 
-const Item = ({ i, label, href }: { i: number; label: string; href: string }) => {
+const Item = ({ label, href }: { label: string; href: string }) => {
   return (
     <div className="relative">
-      <Link key={i} to={href}>
+      <Link to={href}>
         <p className="font-std text-2xl text-white">{label}</p>
       </Link>
       {useMatch(href) && (

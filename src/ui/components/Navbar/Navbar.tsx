@@ -21,7 +21,7 @@ const Navbar = () => {
       <h1 className="font-std text-7xl font-bold text-white">kevin thomas</h1>
       <div className="flex items-center space-x-6">
         {items.map((item, i) => (
-          <Item i={i} {...item} />
+          <Item key={i} {...item} />
         ))}
       </div>
     </div>
