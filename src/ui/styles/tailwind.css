@@ -21,5 +21,9 @@
 }
 
 .font-std {
-  font-family: CircularStd;
+  font-family: "CircularStd", sans-serif;
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
 }
