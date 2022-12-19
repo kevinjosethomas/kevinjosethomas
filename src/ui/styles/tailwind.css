@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: CircularStd;
+  src: url("../fonts/CircularStd-Medium.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: CircularStd;
+  src: url("../fonts/CircularStd-Bold.otf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: CircularStd;
+  src: url("../fonts/CircularStd-Black.otf");
+  font-weight: 900;
+}
+
+.font-std {
+  font-family: CircularStd;
+}
