@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 
 import spotify from "assets/images/spotify.svg";
@@ -44,33 +44,30 @@ const Presence = () => {
   }, []);
 
   return (
-    <AnimatePresence>
+    <Fragment>
       {presence && (
-        <motion.a
-          target="_blank"
-          href="https://open.spotify.com/user/ock5719fh26056w67awzv7rty"
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.4, delay: 0.4 }}
-          className="flex w-72 select-none items-center justify-start space-x-3 overflow-hidden rounded-lg border-2 border-white border-opacity-5 bg-white bg-opacity-5 p-3 2xl:w-80 3xl:mt-6"
+          className="!mt-16 flex max-w-xs select-none items-center justify-start space-x-3 overflow-hidden rounded-lg border-2 border-white border-opacity-5 bg-white bg-opacity-5 py-3 pr-10 pl-4"
         >
-          <img src={presence.album_art_url} alt="Album Art" className="w-10 rounded-md 2xl:w-12" />
-          <div className="font-inter flex w-56 flex-col overflow-hidden whitespace-nowrap leading-snug text-white text-opacity-75 2xl:w-64">
-            <p className="text-md overflow-hidden text-ellipsis 2xl:text-lg 3xl:text-xl">
+          <img src={presence.album_art_url} alt="Album Art" className="w-12 rounded-md" />
+          <div className="font-inter flex flex-col whitespace-nowrap leading-snug text-white text-opacity-75">
+            <p>
               Listening to{" "}
               <span className="font-semibold text-opacity-90">{presence.song.split("(")[0]}</span>
             </p>
-            <div className="flex items-center space-x-1 text-xs 2xl:text-sm">
-              <img src={spotify} alt="Spotify" className="h-3 2xl:h-4" />
+            <div className="flex items-center space-x-1">
+              <img src={spotify} alt="Spotify" className="h-4" />
               <p>
                 on <span className="font-semibold text-opacity-90">Spotify</span>
               </p>
             </div>
           </div>
-        </motion.a>
+        </motion.div>
       )}
-    </AnimatePresence>
+    </Fragment>
   );
 };
 

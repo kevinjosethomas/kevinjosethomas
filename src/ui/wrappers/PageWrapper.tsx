@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Navbar from "ui/components/Navbar/Navbar";
@@ -9,7 +9,7 @@ const PageWrapper = (props: {
 }) => {
   return (
     <div className="flex w-full items-start justify-between py-24 px-36">
-      <div className={`flex flex-col justify-start space-y-8 ${props.image && "w-5/12"}`}>
+      <div className={`flex flex-col justify-start space-y-8 ${props.image && "w-1/2"}`}>
         <Navbar />
         {props.children}
       </div>

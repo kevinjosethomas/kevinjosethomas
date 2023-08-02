@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <div className="flex w-full flex-col space-y-4">
-      <h1 className="font-std text-7xl font-bold text-white">kevin thomas</h1>
+      <h1 className="font-std text-6xl font-bold text-white 2xl:text-7xl">kevin thomas</h1>
       <div className="flex items-center space-x-6">
         {items.map((item, i) => (
           <Item key={i} {...item} />

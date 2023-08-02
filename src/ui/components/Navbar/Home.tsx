@@ -22,8 +22,9 @@ const Home = () => {
 
   return (
     <PageWrapper image={{ alt: "me!", src: Image, style: "w-1/3" }}>
-      <div className="font-inter text-md flex flex-col items-start gap-4 text-white text-opacity-80 2xl:text-xl 3xl:text-2xl">
+      <div className="flex flex-col items-start space-y-4">
         <motion.p
+          className="font-inter text-xl font-medium text-white text-opacity-80"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
@@ -32,6 +33,7 @@ const Home = () => {
           time at school, writing code, listening to music or hanging out {"<3"}
         </motion.p>
         <motion.p
+          className="font-inter text-xl font-medium text-white text-opacity-80"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
@@ -42,6 +44,7 @@ const Home = () => {
           participate in hackathons, and monetize my projects.
         </motion.p>
         <motion.p
+          className="font-inter text-xl font-medium text-white text-opacity-80"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
@@ -50,10 +53,10 @@ const Home = () => {
           start developing software that can make a positive impact on people around me.
         </motion.p>
         <motion.p
+          className="font-inter flex text-xl font-medium text-white text-opacity-80"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
-          className="flex"
         >
           Reach out:{" "}
           <div className="ml-2 flex items-center space-x-2">
