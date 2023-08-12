@@ -9132,6 +9132,11 @@ url-parse@^1.5.3:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
 
+use-lanyard@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/use-lanyard/-/use-lanyard-1.4.4.tgz#bcf9f57ad1044f9bbb25f9c44f00a785c20aa051"
+  integrity sha512-QceDXahv4LlEt+0cTbLwOTgeCA+83BEi26m//2mu/bZkmiHyiF3ZsUYGeukkc0cCLwGm4mm5XVgy71YO6PINxQ==
+
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"

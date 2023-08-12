@@ -21,7 +21,7 @@ const Home = () => {
   ];
 
   return (
-    <PageWrapper image={{ alt: "me!", src: Image, style: "w-1/3" }}>
+    <PageWrapper name image={{ alt: "me!", src: Image, style: "w-1/3" }}>
       <div className="font-inter text-md flex flex-col items-start gap-4 text-white text-opacity-80 2xl:text-xl 3xl:text-2xl">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -49,7 +49,7 @@ const Home = () => {
           Now, I spend most of my time in high school and preparing for university. I'm hoping to
           start developing software that can make a positive impact on people around me.
         </motion.p>
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
@@ -66,7 +66,7 @@ const Home = () => {
               </div>
             ))}
           </div>
-        </motion.p>
+        </motion.div>
         <Presence />
       </div>
     </PageWrapper>
