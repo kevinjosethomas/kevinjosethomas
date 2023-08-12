@@ -10,7 +10,7 @@ const PageWrapper = (props: {
 }) => {
   return (
     <div className="flex w-full items-start justify-between py-24 px-36">
-      <div className={`flex flex-col justify-start space-y-8 ${props.image && "w-1/2"}`}>
+      <div className={`flex flex-col justify-start gap-8 ${props.image && "w-1/2"}`}>
         <Navbar name={props.name} />
         {props.children}
       </div>

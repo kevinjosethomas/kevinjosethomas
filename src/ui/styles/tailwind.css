@@ -20,10 +20,11 @@
   font-weight: 900;
 }
 
-.font-std {
-  font-family: "CircularStd", sans-serif;
-}
-
+body,
 .font-inter {
   font-family: "Inter", sans-serif;
+}
+
+.font-std {
+  font-family: "CircularStd", sans-serif;
 }

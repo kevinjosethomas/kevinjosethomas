@@ -8,7 +8,7 @@ import "ui/styles/tailwind.css";
 
 function App() {
   return (
-    <div className="grid h-full min-h-screen w-screen bg-black">
+    <div className="grid h-full min-h-screen bg-black">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

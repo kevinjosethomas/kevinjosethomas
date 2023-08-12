@@ -19,11 +19,11 @@ const Navbar = ({ name }: { name?: boolean }) => {
   ];
 
   return (
-    <div className="flex w-full flex-col space-y-4">
+    <div className="flex w-full flex-col gap-4">
       {name && (
         <h1 className="font-std text-6xl font-bold text-white 2xl:text-7xl">kevin thomas</h1>
       )}
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center gap-6">
         {items.map((item, i) => (
           <Item key={i} {...item} />
         ))}
