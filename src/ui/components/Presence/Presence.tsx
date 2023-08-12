@@ -7,7 +7,6 @@ import spotify from "assets/images/spotify.svg";
 
 const Presence = memo(function () {
   const data = useLanyardWS("418707912836382721");
-  console.log(data);
 
   return (
     <AnimatePresence>
