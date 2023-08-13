@@ -18,6 +18,7 @@ export default function PageWrapper(props: {
           <motion.img
             alt={props.image.alt}
             className={`${props.image.style} rounded-lg`}
+            layoutId="image"
             src={props.image.src}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

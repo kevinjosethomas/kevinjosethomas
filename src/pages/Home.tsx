@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
+import Image from "assets/img/1.png";
 import Wave from "assets/img/wave.png";
-import Image from "assets/img/home.jpg";
 import PageWrapper from "ui/wrappers/PageWrapper";
 import Presence from "ui/components/Presence/Presence";
 
@@ -16,8 +16,12 @@ export default function Home() {
       href: "https://discord.com/users/418707912836382721s",
     },
     {
-      label: "twitter",
-      href: "https://twitter.com/kevinjosethomas",
+      label: "linkedin",
+      href: "https://linkedin.com/in/kevinjosethomas",
+    },
+    {
+      label: "x",
+      href: "https://x.com/kevinjosethomas",
     },
   ];
 
@@ -57,7 +61,7 @@ export default function Home() {
           transition={{ duration: 0.3, delay: 0.3 }}
         >
           although most of my time is in school, i still enjoy learning about new technology,
-          participating in hackathons and occasionally freelancing or workingf on a few side
+          participating in hackathons and occasionally freelancing or working on a few side
           projects.
         </motion.p>
         <motion.div
@@ -69,7 +73,10 @@ export default function Home() {
           reach out:{" "}
           <div className="ml-2 flex items-center gap-2">
             {socials.map((s, i) => (
-              <div key={i} className="relative transition duration-500 hover:opacity-80">
+              <div
+                key={i}
+                className="relative opacity-80 transition duration-300 hover:opacity-100"
+              >
                 <a href={s.href} target="_blank" rel="noreferrer">
                   {s.label}
                 </a>
