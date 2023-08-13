@@ -1,7 +1,5 @@
 import PageWrapper from "ui/wrappers/PageWrapper";
 
-const Home = () => {
+export default function Work() {
   return <PageWrapper></PageWrapper>;
-};
-
-export default Home;
+}

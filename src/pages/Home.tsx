@@ -5,7 +5,7 @@ import Image from "assets/img/home.jpg";
 import PageWrapper from "ui/wrappers/PageWrapper";
 import Presence from "ui/components/Presence/Presence";
 
-const Home = () => {
+export default function Home() {
   const socials = [
     {
       label: "github",
@@ -82,6 +82,4 @@ const Home = () => {
       </div>
     </PageWrapper>
   );
-};
-
-export default Home;
+}

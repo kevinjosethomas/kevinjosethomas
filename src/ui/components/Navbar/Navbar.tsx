@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-
 import Item from "./Item";
 
 export default function Navbar() {

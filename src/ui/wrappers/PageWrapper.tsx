@@ -3,10 +3,10 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import Navbar from "ui/components/Navbar/Navbar";
 
-const PageWrapper = (props: {
+export default function PageWrapper(props: {
   image?: { alt: string; src: string; style: string };
   children?: ReactElement | ReactElement[];
-}) => {
+}) {
   return (
     <div className="flex w-full items-start justify-between py-24 px-36">
       <div className={`flex flex-col justify-start gap-8 ${props.image && "w-1/2"}`}>
@@ -28,6 +28,4 @@ const PageWrapper = (props: {
       </AnimatePresence>
     </div>
   );
-};
-
-export default PageWrapper;
+}

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link, useMatch } from "react-router-dom";
 
-const Item = ({ label, href }: { label: string; href: string }) => {
+export default function Item({ label, href }: { label: string; href: string }) {
   return (
     <div className="relative">
       <Link to={href}>
@@ -12,6 +12,4 @@ const Item = ({ label, href }: { label: string; href: string }) => {
       )}
     </div>
   );
-};
-
-export default Item;
+}
