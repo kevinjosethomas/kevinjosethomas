@@ -22,7 +22,7 @@ const Home = () => {
   ];
 
   return (
-    <PageWrapper name image={{ alt: "me!", src: Image, style: "w-1/3" }}>
+    <PageWrapper image={{ alt: "me!", src: Image, style: "w-1/3" }}>
       <div className="text-md flex flex-col items-start gap-4 text-white text-opacity-80 2xl:text-xl 3xl:text-2xl">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
