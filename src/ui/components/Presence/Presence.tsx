@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Fragment, memo } from "react";
 import { useLanyardWS } from "use-lanyard";
 
-import spotify from "assets/img/spotify.svg";
+import spotify from "assets/img/icon/spotify.svg";
 
 const Presence = memo(function () {
   const data = useLanyardWS("418707912836382721");

@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
-import Image from "assets/img/1.png";
-import Wave from "assets/img/wave.png";
+import Wave from "assets/img/icon/wave.png";
 import PageWrapper from "ui/wrappers/PageWrapper";
+import Image from "assets/img/banner/1.png";
 import Presence from "ui/components/Presence/Presence";
 
 export default function Home() {

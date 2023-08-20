@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import Image from "assets/img/2.png";
+import { Screen } from "types";
+import Image from "assets/img/banner/2.png";
 import Toggle from "ui/components/Work/Toggle";
 import Awards from "ui/components/Work/Awards";
 import PageWrapper from "ui/wrappers/PageWrapper";
 import Projects from "ui/components/Work/Projects";
 import Hackathons from "ui/components/Work/Hackathons";
-import { Screen } from "types";
 
 export default function Work() {
   const screens: Screen[] = [

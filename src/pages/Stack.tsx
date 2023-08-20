@@ -1,4 +1,4 @@
-import Image from "assets/img/3.png";
+import Image from "assets/img/banner/3.png";
 import PageWrapper from "ui/wrappers/PageWrapper";
 
 export default function Stack() {
