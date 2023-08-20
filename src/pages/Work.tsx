@@ -26,8 +26,8 @@ export default function Work() {
   const [screen, setScreen] = useState<Screen>(screens[0]);
 
   return (
-    <PageWrapper image={{ alt: "me!", src: Image, style: "w-1/3" }}>
-      <div className="flex w-full flex-col items-start">
+    <PageWrapper width="w-7/12" image={{ alt: "me!", src: Image }}>
+      <div className="flex w-full flex-col items-start gap-4">
         <Toggle screens={screens} screen={screen} setScreen={setScreen} />
         {screen.component}
       </div>
