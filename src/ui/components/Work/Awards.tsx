@@ -7,9 +7,9 @@ export default function Awards() {
       time: "july 2023",
       institution: "Western University",
       description: [
-        "spent an entire month at western university with 80 other students from all",
-        "across canada, experiencing the ins and outs of post-secondary education, ",
-        "including dorm living, higher academics, projects and a lot of partying",
+        "spent one month at western university with 80 other students from",
+        "across canada, experiencing post-secondary education, dorm living,",
+        "higher academics, team-driven projects and a lot of partying",
       ],
     },
     {
@@ -33,7 +33,7 @@ export default function Awards() {
       ],
     },
     {
-      name: "winhacks 2022",
+      name: "winhacks '22",
       time: "march 2022",
       institution: "University of Windsor",
       description: [
@@ -43,11 +43,11 @@ export default function Awards() {
       ],
     },
     {
-      name: "borderhacks 2021",
+      name: "borderhacks '21",
       time: "september 2021",
-      institution: "University of Windsor",
+      institution: "WindsorEssex",
       description: [
-        "first hackathon; i was the youngest winner among 300 uni-level participants:",
+        "first hackathon; i was the youngest winner among 300 participants:",
         "• best UI / UX design award",
         "• optimizing community services with open data ($500)",
       ],
@@ -61,20 +61,24 @@ export default function Awards() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 * i }}
-          className="flex h-32 cursor-default overflow-hidden rounded-2xl border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-10"
+          className="flex h-28 cursor-default overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-10 2xl:h-32 2xl:rounded-2xl"
         >
-          <div className="flex h-full w-64 flex-col justify-between border-r border-white border-opacity-20 bg-[#1A1A1A] p-5">
+          <div className="flex h-full w-40 flex-col justify-between border-r border-white border-opacity-20 bg-[#1A1A1A] p-3 2xl:w-48 2xl:p-4 3xl:w-64 3xl:p-5">
             <div className="flex flex-col">
-              <p className="font-std text-2xl tracking-wide text-white">{award.name}</p>
-              <p className="font-light leading-tight tracking-wide text-white">
+              <p className="font-std tracking-wide text-white 2xl:text-lg 3xl:text-2xl">
+                {award.name}
+              </p>
+              <p className="text-xs font-light leading-tight tracking-wide text-white 2xl:text-sm 3xl:text-base">
                 {award.institution}
               </p>
             </div>
-            <p className="font-extralight leading-tight tracking-wide text-white">{award.time}</p>
+            <p className="text-xs font-extralight leading-tight tracking-wide text-white 2xl:text-sm 3xl:text-base">
+              {award.time}
+            </p>
           </div>
-          <div className="flex flex-1 flex-col items-start p-5">
+          <div className="flex flex-1 flex-col items-start gap-1 p-3 2xl:p-4 3xl:gap-0 3xl:p-5">
             {award.description.map((line) => (
-              <p className="text-lg font-light text-white">{line}</p>
+              <p className="text-xs font-light text-white 2xl:text-sm 3xl:text-lg">{line}</p>
             ))}
           </div>
         </motion.div>
