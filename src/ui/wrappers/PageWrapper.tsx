@@ -22,9 +22,6 @@ export default function PageWrapper(props: {
               className="w-full rounded-lg"
               layoutId="image"
               src={props.image.src}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.4 }}
             />
           )}
