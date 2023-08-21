@@ -8,7 +8,7 @@ export default function ProjectCard(props: Project) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 * props.i }}
-      className="flex h-32 items-center justify-between gap-4 overflow-hidden rounded-2xl border border-white border-opacity-20 pl-6"
+      className="flex h-32 cursor-pointer items-center justify-between gap-4 overflow-hidden rounded-2xl border border-white border-opacity-20 pl-6 transition duration-300 hover:bg-white hover:bg-opacity-10"
     >
       <div className="flex items-center gap-5">
         <img src={props.image} alt={props.name} className="h-16 w-16 rounded-lg" />
@@ -30,8 +30,8 @@ export default function ProjectCard(props: Project) {
           </p>
         </div>
       </div>
-      <div className="flex h-full w-64 flex-col justify-center bg-white bg-opacity-10">
-        <div className="flex h-20 w-full flex-col justify-start gap-2 overflow-hidden px-3">
+      <div className="flex h-full w-72 flex-col justify-center border-l border-white border-opacity-20 bg-[#1A1A1A]">
+        <div className="flex h-20 w-full flex-col justify-start gap-2 overflow-hidden px-5">
           <div className="flex flex-col items-start">
             <p className="text-white">• {props.time}</p>
             {props.stat && <p className="text-white">• {props.stat}</p>}

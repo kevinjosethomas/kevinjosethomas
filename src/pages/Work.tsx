@@ -6,7 +6,6 @@ import Toggle from "ui/components/Work/Toggle";
 import Awards from "ui/components/Work/Awards";
 import PageWrapper from "ui/wrappers/PageWrapper";
 import Projects from "ui/components/Work/Projects";
-import Hackathons from "ui/components/Work/Hackathons";
 
 export default function Work() {
   const screens: Screen[] = [
@@ -17,10 +16,6 @@ export default function Work() {
     {
       label: "awards",
       component: <Awards />,
-    },
-    {
-      label: "hackathons",
-      component: <Hackathons />,
     },
   ];
   const [screen, setScreen] = useState<Screen>(screens[0]);
