@@ -90,7 +90,7 @@ export default function Projects() {
   return (
     <div className="grid w-full grid-cols-1 gap-4">
       {projects.map((project, i) => (
-        <Project key={i} {...project} />
+        <Project key={i} i={i + 1} {...project} />
       ))}
     </div>
   );

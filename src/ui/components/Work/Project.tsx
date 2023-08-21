@@ -1,8 +1,15 @@
+import { motion } from "framer-motion";
+
 import { Project, ProjectStatus } from "types";
 
 export default function ProjectCard(props: Project) {
   return (
-    <div className="flex h-32 items-center justify-between gap-4 overflow-hidden rounded-2xl border border-white border-opacity-20 pl-6">
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: 0.1 * props.i }}
+      className="flex h-32 items-center justify-between gap-4 overflow-hidden rounded-2xl border border-white border-opacity-20 pl-6"
+    >
       <div className="flex items-center gap-5">
         <img src={props.image} alt={props.name} className="h-16 w-16 rounded-lg" />
         <div className="flex flex-col">
@@ -38,6 +45,6 @@ export default function ProjectCard(props: Project) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

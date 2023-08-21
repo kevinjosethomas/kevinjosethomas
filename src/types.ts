@@ -4,6 +4,7 @@ export type Screen = {
 };
 
 export type Project = {
+  i: number;
   status: ProjectStatus;
   image: any;
   name: string;
