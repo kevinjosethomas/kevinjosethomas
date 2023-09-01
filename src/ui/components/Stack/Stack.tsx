@@ -49,7 +49,9 @@ export default function Stack() {
           </div>
           <div className="flex flex-col justify-center px-4">
             <p className="text-2xl font-medium text-white">{s.name}</p>
-            <p className="max-w-sm text-lg text-white">{s.description}</p>
+            <p className="max-w-sm text-lg leading-snug text-white text-opacity-80">
+              {s.description}
+            </p>
           </div>
         </motion.div>
       ))}

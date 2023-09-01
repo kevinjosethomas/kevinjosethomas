@@ -28,3 +28,7 @@ body,
 .font-std {
   font-family: "CircularStd", sans-serif;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

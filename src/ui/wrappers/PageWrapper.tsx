@@ -14,15 +14,18 @@ export default function PageWrapper(props: {
         <Navbar />
         {props.children}
       </div>
-      <div className="sticky top-10 flex w-1/3 overflow-visible">
+      <div className="sticky top-24 flex w-1/3 overflow-visible">
         <AnimatePresence>
           {props.image && (
             <motion.img
-              alt={props.image.alt}
-              className="w-full rounded-lg"
               layoutId="image"
               src={props.image.src}
-              transition={{ duration: 0.4 }}
+              alt={props.image.alt}
+              className="w-full rounded-lg"
+              transition={{ duration: 0.6 }}
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 10, opacity: 0 }}
             />
           )}
         </AnimatePresence>
