@@ -11,25 +11,25 @@ export default function Stack() {
       icon: Python,
       color: "bg-[#DFBA39]",
       name: "python",
-      description: "my go-to language for scripts, Discord bots, scrapers & libraries",
+      description: "for quick scripts, discord bots, scrapers and libraries",
     },
     {
       icon: TypeScript,
       color: "bg-[#3178C6]",
       name: "typescript",
-      description: "type my frontend applications (next/react) & APIs (express/fastify)",
+      description: "for all frontend applications (next/react) and APIs (fastify)",
     },
     {
       icon: PostgreSQL,
       color: "bg-[#4169E1]",
       name: "postgresql",
-      description: "my go-to SQL database software, with asyncpg (python) & pg (node)",
+      description: "go-to SQL database software, with asyncpg (python) & pg (typescript)",
     },
     {
       icon: React,
       color: "bg-[#087ea4]",
       name: "react",
-      description: "my go-to frontend framework, used for all my web applications so far",
+      description: "go-to frontend framework, usually with next for ssr",
     },
   ];
 

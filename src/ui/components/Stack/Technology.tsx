@@ -17,14 +17,18 @@ import PyPi from "assets/img/icon/pypi.svg";
 import Expo from "assets/img/icon/expo.svg";
 import Devpost from "assets/img/icon/devpost.svg";
 import VSC from "assets/img/icon/vsc.svg";
+import GitHub from "assets/img/icon/github.svg";
+import Framer from "assets/img/icon/framer.svg";
 
 export default function Technology() {
   const technology = [
     { name: "nextjs", icon: NextJS },
     { name: "tailwind", icon: Tailwind },
+    { name: "github", icon: GitHub },
     { name: "actions", icon: Actions },
     { name: "java", icon: Java },
     { name: "figma", icon: Figma },
+    { name: "framer", icon: Framer },
     { name: "react native", icon: RN },
     { name: "expo", icon: Expo },
     { name: "visual studio", icon: VSC },
@@ -47,7 +51,7 @@ export default function Technology() {
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 0, opacity: 0 }}
-          transition={{ duration: 0.1, delay: 1 + 0.1 * i }}
+          transition={{ duration: 0.2, delay: 0.2 + 0.1 * i }}
           className="flex items-center gap-3"
         >
           <img src={t.icon} alt={t.name} className="w-6" />
