@@ -77,8 +77,10 @@ export default function Awards() {
             </p>
           </div>
           <div className="flex flex-1 flex-col items-start gap-1 p-3 2xl:p-4 3xl:gap-0 3xl:p-5">
-            {award.description.map((line) => (
-              <p className="text-xs font-light text-white 2xl:text-sm 3xl:text-lg">{line}</p>
+            {award.description.map((line, i) => (
+              <p key={i} className="text-xs font-light text-white 2xl:text-sm 3xl:text-lg">
+                {line}
+              </p>
             ))}
           </div>
         </motion.div>
