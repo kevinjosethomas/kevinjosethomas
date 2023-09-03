@@ -7760,6 +7760,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-detect-click-outside@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/react-detect-click-outside/-/react-detect-click-outside-1.1.7.tgz#8dd5766544475ab0d55084b3e2a35165e9a47854"
+  integrity sha512-dMrBZD7JW0Eh/uYNmMLTNwFj6afGYxAnc80fDSGJdjXjxJddH8ZazyMg2emyb8CAx9Hilr+r1fY+tm7O7m9eJg==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"

@@ -1,4 +1,5 @@
 import Item from "./Item";
+import Dropdown from "./Dropdown";
 
 export default function Navbar() {
   const items = [
@@ -23,6 +24,7 @@ export default function Navbar() {
         {items.map((item, i) => (
           <Item key={i} {...item} />
         ))}
+        <Dropdown />
       </div>
     </div>
   );
