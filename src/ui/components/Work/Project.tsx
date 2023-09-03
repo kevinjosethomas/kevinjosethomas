@@ -38,7 +38,7 @@ export default function ProjectCard(props: Project) {
           </div>
           <div className="flex h-full w-full flex-wrap items-start gap-1">
             {props.tags.map((tag, i) => (
-              <div className="flex rounded bg-white bg-opacity-10 px-2">
+              <div key={i} className="flex rounded bg-white bg-opacity-10 px-2">
                 <p className="text-sm text-white">{tag}</p>
               </div>
             ))}

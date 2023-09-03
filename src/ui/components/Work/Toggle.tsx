@@ -13,8 +13,12 @@ export default function Toggle({
 }) {
   return (
     <div className="flex flex-row items-center rounded-full border-2 border-white border-opacity-10">
-      {screens.map((s) => (
-        <div className="relative flex cursor-pointer px-5 py-1" onClick={() => setScreen(s)}>
+      {screens.map((s, i) => (
+        <div
+          key={i}
+          className="relative flex cursor-pointer px-5 py-1"
+          onClick={() => setScreen(s)}
+        >
           {screen.label === s.label && (
             <motion.div
               layoutId="highlight"
