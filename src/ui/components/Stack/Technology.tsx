@@ -52,11 +52,11 @@ export default function Technology() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 0, opacity: 0 }}
           transition={{ duration: 0.2, delay: 0.2 + 0.1 * i }}
-          className="flex select-none items-center gap-3"
+          className="flex select-none items-center gap-2 3xl:gap-3"
           draggable="false"
         >
-          <img src={t.icon} alt={t.name} className="w-6" />
-          <p className="text-2xl text-[#CCCCCC]">{t.name}</p>
+          <img src={t.icon} alt={t.name} className="w-4 3xl:w-6" />
+          <p className="text-base text-[#CCCCCC] 3xl:text-2xl">{t.name}</p>
         </motion.div>
       ))}
     </div>

@@ -44,12 +44,19 @@ export default function Stack() {
           transition={{ duration: 0.3, delay: 0.1 * i }}
           className="flex overflow-hidden rounded-xl border border-white border-opacity-20"
         >
-          <div className={`flex h-40 w-40 select-none items-center justify-center ${s.color}`}>
-            <img src={s.icon} alt={s.name} draggable="false" className="h-16 w-16" />
+          <div
+            className={`flex min-h-[118px] min-w-[118px] select-none items-center justify-center 3xl:h-40 3xl:w-40 ${s.color}`}
+          >
+            <img
+              src={s.icon}
+              alt={s.name}
+              draggable="false"
+              className="h-10 w-10 3xl:h-16 3xl:w-16"
+            />
           </div>
           <div className="flex flex-col justify-center px-4">
-            <p className="text-2xl font-medium text-white">{s.name}</p>
-            <p className="max-w-sm text-lg leading-snug text-white text-opacity-80">
+            <p className="text-xl font-medium text-white 3xl:text-2xl">{s.name}</p>
+            <p className="max-w-sm text-base leading-snug text-white text-opacity-80 3xl:text-lg">
               {s.description}
             </p>
           </div>
