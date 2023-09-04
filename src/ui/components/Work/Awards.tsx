@@ -61,7 +61,7 @@ export default function Awards() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 * i }}
-          className="flex h-28 cursor-default overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-10 2xl:h-32 2xl:rounded-2xl"
+          className="flex h-24 cursor-default overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-10 2xl:h-28 2xl:h-32 2xl:rounded-2xl"
         >
           <div className="flex h-full w-40 flex-col justify-between border-r border-white border-opacity-20 bg-[#1A1A1A] p-3 2xl:w-48 2xl:p-4 3xl:w-64 3xl:p-5">
             <div className="flex flex-col">

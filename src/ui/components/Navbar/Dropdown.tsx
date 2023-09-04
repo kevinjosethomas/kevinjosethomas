@@ -28,7 +28,7 @@ export default function Container() {
         src={Caret}
         alt="dropdown"
         animate={controls}
-        className="h-6 cursor-pointer select-none"
+        className="h-4 cursor-pointer select-none 2xl:h-6"
         onClick={() => showDropdown((x) => !x)}
       />
       <AnimatePresence>{dropdown && <Dropdown />}</AnimatePresence>
@@ -55,7 +55,7 @@ function Dropdown() {
 
   return (
     <motion.div
-      className="absolute top-10 -left-4 z-50 flex flex-col rounded-md border bg-black py-2"
+      className="absolute top-6 -left-4 z-50 flex flex-col rounded-md border bg-black py-2 2xl:top-8"
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 10, opacity: 0 }}

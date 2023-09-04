@@ -16,16 +16,16 @@ export default function Projects() {
       image: Me,
 
       name: "kevinthomas.codes",
-      time: "Aug '23",
+      time: "August 2023",
       description: "my portfolio website to showcase my interests, projects, and achievements",
-      tags: ["typescript", "react"],
+      tags: ["typescript", "react", "framer"],
     },
     {
       status: ProjectStatus.IDLE,
       image: ChromeAI,
 
       name: "ChromeAI",
-      time: "Mar '23",
+      time: "Mar 2023 (idle)",
       description:
         "an intuitive ai-powered chrome extension used to put the power of gpt at your fingertips",
       tags: ["chrome", "react", "fastify", "postgresql", "typescript"],
@@ -35,15 +35,15 @@ export default function Projects() {
       image: MinecraftGlobal,
 
       name: "minecraft.global",
-      time: "May '21",
-      stat: "2000+ monthly active users",
+      time: "May 2021 (idle)",
+      stat: "3000+ monthly users",
       description: "a new minecraft server list with exciting new features and phenomenal ui",
       tags: ["next", "postgresql", "stripe"],
     },
     {
       status: ProjectStatus.OFFLINE,
       image: Turbo,
-      time: "Mar '21 → Dec '21",
+      time: "Mar 2021 → Dec 2021",
       name: "turbo",
       description: "a chromium-based web browser equipped with a vast array of developer tools",
       tags: ["chromium", "electron", "next"],
@@ -51,7 +51,7 @@ export default function Projects() {
     {
       status: ProjectStatus.OFFLINE,
       image: GHProfile,
-      time: "Nov '20 → Jun '23",
+      time: "Nov 2020 → Jun 2023",
       name: "ghprofile.me",
       stat: "135 subscriptions",
       description: "a clean and simple github readme view counter with graphs and embeds",
@@ -61,8 +61,8 @@ export default function Projects() {
       status: ProjectStatus.OFFLINE,
       image: Disbots,
       name: "disbots.gg",
-      time: "Jul '20 → Oct '20",
-      stat: "1000+ monthly active users",
+      time: "Jul 2020 → Oct 2020",
+      stat: "1000+ monthly users",
       description: "a discord bot listing website with clean, intuitive UI and many new features",
       tags: ["vue", "express", "socket.io"],
     },
@@ -78,7 +78,7 @@ export default function Projects() {
     {
       status: ProjectStatus.OFFLINE,
       image: Vidio,
-      time: "Mar '20 → Sep '20",
+      time: "Mar 2020 → Sep 2020",
       name: "vidio",
       stat: "400+ servers",
       description:
