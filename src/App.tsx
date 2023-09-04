@@ -10,7 +10,7 @@ import "ui/styles/tailwind.css";
 
 function App() {
   return (
-    <div className="grid h-full min-h-screen bg-black 4xl:items-center 4xl:justify-center">
+    <div className="grid h-full min-h-screen bg-black 4xl:items-start 4xl:justify-center 4xl:py-48">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

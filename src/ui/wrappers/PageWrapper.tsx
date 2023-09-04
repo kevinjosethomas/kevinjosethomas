@@ -9,12 +9,12 @@ export default function PageWrapper(props: {
   children?: ReactElement | ReactElement[];
 }) {
   return (
-    <div className="flex w-full max-w-screen-xl items-start justify-between py-24 px-36 2xl:max-w-screen-2xl 3xl:max-w-[1920px]">
+    <div className="flex w-full max-w-screen-xl items-start justify-between py-24 px-36 2xl:max-w-screen-2xl 3xl:max-w-[1920px] 4xl:py-0">
       <div className={`flex flex-col justify-start gap-4 2xl:gap-8 ${props.width}`}>
         <Navbar />
         {props.children}
       </div>
-      <div className="sticky top-24 flex w-1/3 overflow-visible">
+      <div className="sticky top-24 flex w-1/3 min-w-[30%] max-w-[30%] overflow-visible">
         <AnimatePresence>
           {props.image && (
             <motion.img
