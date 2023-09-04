@@ -44,7 +44,7 @@ function Dropdown() {
 
   return (
     <motion.div
-      className="absolute top-10 -left-4 z-10 flex flex-col rounded-md border bg-black py-2"
+      className="absolute top-10 -left-4 z-50 flex flex-col rounded-md border bg-black py-2"
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 10, opacity: 0 }}
