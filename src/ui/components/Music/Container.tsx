@@ -25,7 +25,7 @@ export default function Container({ i, type, data }: { i: number; type: string; 
           see more
         </a>
       </div>
-      <ScrollContainer vertical={false} className="flex gap-4 p-2">
+      <ScrollContainer vertical={false} className="flex cursor-grab gap-4 p-2">
         {data.map((x, i) => (
           <Item
             key={i}
