@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
@@ -39,7 +39,18 @@ export default function Container() {
 function Dropdown() {
   const dropdownItems = [
     { label: "music", href: "/music" },
-    { label: "recommendations", href: "" },
+    {
+      label: "github",
+      href: "https://github.com/kevinjosethomas",
+    },
+    {
+      label: "linkedin",
+      href: "https://linkedin.com/in/kevinjosethomas",
+    },
+    {
+      label: "instagram",
+      href: "https://instagram.com/kevinjosethomas",
+    },
   ];
 
   return (
@@ -51,14 +62,30 @@ function Dropdown() {
       transition={{ duration: 0.3 }}
     >
       {dropdownItems.map((x, i) => (
-        <Link
-          key={i}
-          to={x.href}
-          className="flex py-0.5 pl-4 pr-8 transition duration-300 hover:bg-white hover:bg-opacity-10"
-        >
-          <p className="text-lg text-white">{x.label}</p>
-        </Link>
+        <Item key={i} {...x} />
       ))}
     </motion.div>
+  );
+}
+
+function Item({ label, href }: { label: string; href: string }) {
+  const internal = href.startsWith("/");
+  const style = "flex py-0.5 pl-4 pr-8 transition duration-300 hover:bg-white hover:bg-opacity-10";
+
+  const Container = ({ children }: { children: React.ReactElement }) =>
+    internal ? (
+      <Link to={href} className={style}>
+        {children}
+      </Link>
+    ) : (
+      <a href={href} target="_blank" rel="noreferrer" className={style}>
+        {children}
+      </a>
+    );
+
+  return (
+    <Container>
+      <p className="text-lg text-white">{label}</p>
+    </Container>
   );
 }
