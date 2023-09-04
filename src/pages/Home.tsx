@@ -20,8 +20,8 @@ export default function Home() {
       href: "https://linkedin.com/in/kevinjosethomas",
     },
     {
-      label: "x",
-      href: "https://x.com/kevinjosethomas",
+      label: "instagram",
+      href: "https://instagram.com/kevinjosethomas",
     },
   ];
 
