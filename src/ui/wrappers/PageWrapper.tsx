@@ -27,19 +27,14 @@ export default function PageWrapper(props: {
                 alt={props.image.alt}
                 className="hidden w-full rounded-lg object-cover md:inline"
                 transition={{ duration: 0.6 }}
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 10, opacity: 0 }}
+                initial={{ y: 10 }}
+                animate={{ y: 0 }}
+                exit={{ y: 10 }}
               />
-              <motion.img
-                layoutId="image"
+              <img
                 src={props.smImage.src}
                 alt={props.smImage.alt}
                 className="w-full rounded-lg object-cover md:hidden"
-                transition={{ duration: 0.6 }}
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 10, opacity: 0 }}
               />
             </Fragment>
           )}
