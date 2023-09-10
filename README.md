@@ -1,15 +1,6 @@
-# Hello 👋 I'm Kevin Thomas //
+# hey! 👋 i'm kevin thomas //
 
-I'm a 15 y/o student & full-stack web developer experienced in Python, TypeScript, SQL and React. I'm working on developing efficient software with modern design and exceptional user experiences. I'm currently investing my time into learning new technology, participating in hackathons and working on a few side projects. You can learn more about my projects and the people I've worked with on my [portfolio](https://kevinthomas.codes/) and my [recommendations](https://github.com/kevinjosethomas/Testimonials).
-
-### A few of my short-term goals:
-
-- [ ] Learn a new language like Elixir
-- [ ] Create some a11y-related software
-- [ ] Revive some of my dead projects☠️
-- [ ] Balance time between school, friends & work
-- [ ] Make fat stacks with [minecraft.global](https://minecraft.global/) 💵💸
-- [ ] Find more music 🎵🎶
+i'm a high school junior from vancouver with a passion for computer science and software development. i'm working on developing efficient software with modern design and exceptional user experiences. outside of the academic grind, i invest my time into learning new tech, participating in hackathons and working on a few side projects. check out my work on my [portfolio](https://kevinjosethomas.com/) :)
 
 # Languages & Frameworks
 
@@ -28,7 +19,5 @@ No activity tracked
 ```
 
 <!--END_SECTION:waka-->
-
-# Discord Presence
 
 [![Discord Presence](https://lanyard.cnrad.dev/api/418707912836382721)](https:/kevinthomas.codes/)
