@@ -5,7 +5,9 @@ import { Project, ProjectStatus } from "types";
 
 export default function ProjectCard(props: Project) {
   return (
-    <motion.div
+    <motion.a
+      target="_blank"
+      href={props.href}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 * props.i }}
@@ -54,6 +56,6 @@ export default function ProjectCard(props: Project) {
           ))}
         </ScrollContainer>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }

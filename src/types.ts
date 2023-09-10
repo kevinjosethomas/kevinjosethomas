@@ -8,6 +8,7 @@ export type Project = {
   status: ProjectStatus;
   image: any;
   name: string;
+  href?: string;
   time: string;
   stat?: string;
   description: string;

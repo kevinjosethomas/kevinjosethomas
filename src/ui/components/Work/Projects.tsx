@@ -14,7 +14,6 @@ export default function Projects() {
     {
       status: ProjectStatus.ONLINE,
       image: Me,
-
       name: "kevinthomas.codes",
       time: "August 2023",
       description: "my portfolio website to showcase my interests, projects, and achievements",
@@ -23,8 +22,8 @@ export default function Projects() {
     {
       status: ProjectStatus.IDLE,
       image: ChromeAI,
-
       name: "ChromeAI",
+      href: "https://chromeai.co",
       time: "Mar 2023 (idle)",
       description: "an intuitive chrome extension that puts the power of gpt at your fingertips",
       tags: ["chrome", "react", "fastify", "postgresql", "typescript"],
@@ -32,8 +31,8 @@ export default function Projects() {
     {
       status: ProjectStatus.IDLE,
       image: MinecraftGlobal,
-
       name: "minecraft.global",
+      href: "https://minecraft.global",
       time: "May 2021 (idle)",
       stat: "3000+ monthly users",
       description: "a new minecraft server list with exciting new features and phenomenal ui",
