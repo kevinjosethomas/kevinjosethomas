@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import Image from "assets/img/banner/4.png";
+import smImage from "assets/img/banner/4-sm.png";
 import PageWrapper from "ui/wrappers/PageWrapper";
 import Container from "ui/components/Music/Container";
 
@@ -33,7 +34,11 @@ export default function Music() {
   }, []);
 
   return (
-    <PageWrapper width="md:w-1/2" image={{ alt: "me!", src: Image }}>
+    <PageWrapper
+      width="md:w-1/2"
+      image={{ alt: "me!", src: Image }}
+      smImage={{ alt: "me!", src: smImage }}
+    >
       <Container i={1} type="track" data={tracks} />
       <Container i={2} type="album" data={albums} />
       <Container i={3} type="artist" data={artists} />

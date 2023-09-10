@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 
-import Wave from "assets/img/icon/wave.png";
-import PageWrapper from "ui/wrappers/PageWrapper";
 import Image from "assets/img/banner/1.png";
+import Wave from "assets/img/icon/wave.png";
+import smImage from "assets/img/banner/1-sm.png";
+import PageWrapper from "ui/wrappers/PageWrapper";
 import Presence from "ui/components/Presence/Presence";
 
 export default function Home() {
@@ -26,7 +27,11 @@ export default function Home() {
   ];
 
   return (
-    <PageWrapper width="md:w-1/2" image={{ alt: "me!", src: Image }}>
+    <PageWrapper
+      width="md:w-1/2"
+      image={{ alt: "me!", src: Image }}
+      smImage={{ alt: "me!", src: smImage }}
+    >
       <div className="text-md flex flex-col items-start gap-4 text-white text-opacity-80 2xl:text-xl 3xl:text-2xl">
         <motion.p
           initial={{ opacity: 0, y: 10 }}

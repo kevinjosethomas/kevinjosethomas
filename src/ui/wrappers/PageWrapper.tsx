@@ -1,11 +1,12 @@
-import { ReactElement } from "react";
+import { Fragment, ReactElement } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Navbar from "ui/components/Navbar/Navbar";
 
 export default function PageWrapper(props: {
   width: string;
-  image?: { alt: string; src: string };
+  image: { alt: string; src: string };
+  smImage: { alt: string; src: string };
   children?: ReactElement | ReactElement[];
 }) {
   return (
@@ -19,16 +20,28 @@ export default function PageWrapper(props: {
       <div className="order-1 flex h-[125px] overflow-visible md:sticky md:top-24 md:order-2 md:h-auto md:w-1/3 md:min-w-[30%] md:max-w-[30%]">
         <AnimatePresence>
           {props.image && (
-            <motion.img
-              layoutId="image"
-              src={props.image.src}
-              alt={props.image.alt}
-              className="w-full rounded-lg object-cover"
-              transition={{ duration: 0.6 }}
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 10, opacity: 0 }}
-            />
+            <Fragment>
+              <motion.img
+                layoutId="image"
+                src={props.image.src}
+                alt={props.image.alt}
+                className="hidden w-full rounded-lg object-cover md:inline"
+                transition={{ duration: 0.6 }}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 10, opacity: 0 }}
+              />
+              <motion.img
+                layoutId="image"
+                src={props.smImage.src}
+                alt={props.smImage.alt}
+                className="w-full rounded-lg object-cover md:hidden"
+                transition={{ duration: 0.6 }}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 10, opacity: 0 }}
+              />
+            </Fragment>
           )}
         </AnimatePresence>
       </div>
