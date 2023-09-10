@@ -22,7 +22,6 @@ export default function PageWrapper(props: {
           {props.image && (
             <Fragment>
               <motion.img
-                layoutId="image"
                 src={props.image.src}
                 alt={props.image.alt}
                 className="hidden w-full rounded-lg object-cover md:inline"
