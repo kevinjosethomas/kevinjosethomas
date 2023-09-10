@@ -44,7 +44,7 @@ export default function Technology() {
   ];
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex w-full flex-row flex-wrap gap-x-3 gap-y-1.5 md:flex-col md:gap-1">
       {technology.map((t, i) => (
         <motion.div
           key={i}

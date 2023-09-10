@@ -6,8 +6,8 @@ import Technology from "ui/components/Stack/Technology";
 
 export default function Stack() {
   return (
-    <PageWrapper width="w-1/2" image={{ alt: "me!", src: Image }}>
-      <div className="grid w-full grid-cols-4 flex-col items-start gap-6">
+    <PageWrapper width="md:w-1/2" image={{ alt: "me!", src: Image }}>
+      <div className="flex w-full flex-col items-start gap-6 md:grid md:grid-cols-4">
         <StackList />
         <Technology />
       </div>

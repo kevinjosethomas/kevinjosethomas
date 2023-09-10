@@ -26,7 +26,7 @@ export default function Home() {
   ];
 
   return (
-    <PageWrapper width="w-1/2" image={{ alt: "me!", src: Image }}>
+    <PageWrapper width="md:w-1/2" image={{ alt: "me!", src: Image }}>
       <div className="text-md flex flex-col items-start gap-4 text-white text-opacity-80 2xl:text-xl 3xl:text-2xl">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -68,10 +68,10 @@ export default function Home() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.4 }}
-          className="flex"
+          className="flex flex-col md:flex-row"
         >
           reach out:{" "}
-          <div className="ml-2 flex items-center gap-2">
+          <div className="flex items-center gap-2 md:ml-2">
             {socials.map((s, i) => (
               <div
                 key={i}

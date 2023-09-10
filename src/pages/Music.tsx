@@ -33,7 +33,7 @@ export default function Music() {
   }, []);
 
   return (
-    <PageWrapper width="w-1/2" image={{ alt: "me!", src: Image }}>
+    <PageWrapper width="md:w-1/2" image={{ alt: "me!", src: Image }}>
       <Container i={1} type="track" data={tracks} />
       <Container i={2} type="album" data={albums} />
       <Container i={3} type="artist" data={artists} />

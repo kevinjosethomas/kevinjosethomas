@@ -25,7 +25,7 @@ export default function Toggle({
               className="absolute top-0 left-0 z-0 h-full w-full rounded-full bg-white bg-opacity-[0.15]"
             />
           )}
-          <p className="z-10 select-none text-white 2xl:text-lg">{s.label}</p>
+          <p className="z-10 select-none text-sm text-white md:text-base 2xl:text-lg">{s.label}</p>
         </div>
       ))}
     </div>

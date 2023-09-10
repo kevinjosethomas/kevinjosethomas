@@ -26,8 +26,7 @@ export default function Projects() {
 
       name: "ChromeAI",
       time: "Mar 2023 (idle)",
-      description:
-        "an intuitive ai-powered chrome extension used to put the power of gpt at your fingertips",
+      description: "an intuitive chrome extension that puts the power of gpt at your fingertips",
       tags: ["chrome", "react", "fastify", "postgresql", "typescript"],
     },
     {

@@ -34,7 +34,7 @@ export default function Stack() {
   ];
 
   return (
-    <div className="col-span-3 grid w-full grid-cols-1 gap-4">
+    <div className="grid w-full grid-cols-1 gap-4 md:col-span-3">
       {stack.map((s, i) => (
         <motion.div
           key={i}
