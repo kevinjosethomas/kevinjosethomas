@@ -57,8 +57,8 @@ export default function Home() {
           transition={{ duration: 0.3, delay: 0.2 }}
         >
           now, most of my life is off my computer: exploring yvr, volunteering, or playing badminton
-          and grinding my academic arc. i spend most of my time trying out new things, making new
-          friends and preparing for post-secondary.
+          and grinding for school. i spend most of my time trying out new things, making new friends
+          and preparing for post-secondary.
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
