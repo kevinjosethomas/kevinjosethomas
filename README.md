@@ -15,7 +15,7 @@ i'm a high school junior from vancouver with a passion for computer science and 
 <!--START_SECTION:waka-->
 
 ```txt
-No activity tracked
+JSON   0 secs          █████████████████████████   100.00 %
 ```
 
 <!--END_SECTION:waka-->
