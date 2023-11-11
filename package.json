@@ -10,7 +10,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "axios": "^1.5.0",
+    "axios": "^1.6.0",
     "framer-motion": "^7.10.2",
     "react": "^18.2.0",
     "react-detect-click-outside": "^1.1.7",
