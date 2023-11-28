@@ -14,7 +14,7 @@ export default function Projects() {
     {
       status: ProjectStatus.ONLINE,
       image: Me,
-      name: "kevinthomas.codes",
+      name: "kevinjosethomas.com",
       time: "August 2023",
       description: "my portfolio website to showcase my interests, projects, and achievements",
       tags: ["typescript", "react", "framer"],
