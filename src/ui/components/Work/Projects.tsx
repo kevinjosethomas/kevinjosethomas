@@ -1,6 +1,7 @@
 import Project from "./Project";
 import { ProjectStatus } from "types";
 import Me from "assets/img/projects/me.png";
+import BCYDC from "assets/img/projects/bcydc.png";
 import Turbo from "assets/img/projects/turbo.png";
 import Vidio from "assets/img/projects/vidio.png";
 import Disbots from "assets/img/projects/disbots.png";
@@ -13,10 +14,22 @@ export default function Projects() {
   const projects = [
     {
       status: ProjectStatus.ONLINE,
+      image: BCYDC,
+      name: "BCYDC",
+      time: "December 2023",
+      description:
+        "a community of over 120 high school developers in british columbia",
+      stat: "120+ members",
+      href: "https://bcydc.ca",
+      tags: ["community"],
+    },
+    {
+      status: ProjectStatus.ONLINE,
       image: Me,
       name: "kevinjosethomas.com",
       time: "August 2023",
-      description: "my portfolio website to showcase my interests, projects, and achievements",
+      description:
+        "my portfolio website to showcase my interests, projects, and achievements",
       tags: ["typescript", "react", "framer"],
     },
     {
@@ -25,7 +38,8 @@ export default function Projects() {
       name: "ChromeAI",
       href: "https://chromeai.co",
       time: "Mar 2023 (idle)",
-      description: "an intuitive chrome extension that puts the power of gpt at your fingertips",
+      description:
+        "an intuitive chrome extension that puts the power of gpt at your fingertips",
       tags: ["chrome", "react", "fastify", "postgresql", "typescript"],
     },
     {
@@ -35,7 +49,8 @@ export default function Projects() {
       href: "https://minecraft.global",
       time: "May 2021 (idle)",
       stat: "3000+ monthly users",
-      description: "a new minecraft server list with exciting new features and phenomenal ui",
+      description:
+        "a new minecraft server list with exciting new features and phenomenal ui",
       tags: ["next", "postgresql", "stripe"],
     },
     {
@@ -43,7 +58,8 @@ export default function Projects() {
       image: Turbo,
       time: "Mar 2021 → Dec 2021",
       name: "turbo",
-      description: "a chromium-based web browser equipped with a vast array of developer tools",
+      description:
+        "a chromium-based web browser equipped with a vast array of developer tools",
       tags: ["chromium", "electron", "next"],
     },
     {
@@ -52,7 +68,8 @@ export default function Projects() {
       time: "Nov 2020 → Jun 2023",
       name: "ghprofile.me",
       stat: "135 subscriptions",
-      description: "a clean and simple github readme view counter with graphs and embeds",
+      description:
+        "a clean and simple github readme view counter with graphs and embeds",
       tags: ["react", "fastify", "postgresql"],
     },
     {
@@ -61,7 +78,8 @@ export default function Projects() {
       name: "disbots.gg",
       time: "Jul 2020 → Oct 2020",
       stat: "1000+ monthly users",
-      description: "a discord bot listing website with clean, intuitive UI and many new features",
+      description:
+        "a discord bot listing website with clean, intuitive UI and many new features",
       tags: ["vue", "express", "socket.io"],
     },
     {
@@ -70,7 +88,8 @@ export default function Projects() {
       time: "Jun '20 → Dec '20",
       name: "hypixel stats",
       stat: "2500+ servers",
-      description: "a discord bot that brings hypixel player statistics to your discord server",
+      description:
+        "a discord bot that brings hypixel player statistics to your discord server",
       tags: ["python", "discord.py"],
     },
     {
