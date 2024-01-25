@@ -10,26 +10,27 @@ export default function Stack() {
     {
       icon: Python,
       color: "bg-[#DFBA39]",
-      name: "python",
-      description: "for quick scripts, discord bots, scrapers and libraries",
+      name: "Python",
+      description: "For quick scripts, discord bots, scrapers and libraries",
     },
     {
       icon: TypeScript,
       color: "bg-[#3178C6]",
-      name: "typescript",
-      description: "for all frontend applications (next/react) and APIs (fastify)",
+      name: "TypeScript",
+      description:
+        "For all frontend applications (next/react) and APIs (fastify)",
     },
     {
       icon: PostgreSQL,
       color: "bg-[#4169E1]",
-      name: "postgresql",
-      description: "go-to SQL database software, with asyncpg (python) & pg (typescript)",
+      name: "PostgreSQL",
+      description: "My go-to SQL database software, with asyncpg & pg",
     },
     {
       icon: React,
       color: "bg-[#087ea4]",
-      name: "react",
-      description: "go-to frontend framework, usually with next for ssr",
+      name: "React",
+      description: "My go-to frontend framework, usually with NextJS",
     },
   ];
 
@@ -55,7 +56,9 @@ export default function Stack() {
             />
           </div>
           <div className="flex flex-col justify-center px-4">
-            <p className="font-medium text-white 2xl:text-xl 3xl:text-2xl">{s.name}</p>
+            <p className="font-medium text-white 2xl:text-xl 3xl:text-2xl">
+              {s.name}
+            </p>
             <p className="max-w-sm text-sm leading-snug text-white text-opacity-80 2xl:text-base 3xl:text-lg">
               {s.description}
             </p>

@@ -22,25 +22,25 @@ import Framer from "assets/img/icon/framer.svg";
 
 export default function Technology() {
   const technology = [
-    { name: "nextjs", icon: NextJS },
-    { name: "tailwind", icon: Tailwind },
-    { name: "github", icon: GitHub },
-    { name: "actions", icon: Actions },
-    { name: "java", icon: Java },
-    { name: "figma", icon: Figma },
-    { name: "framer", icon: Framer },
-    { name: "react native", icon: RN },
-    { name: "expo", icon: Expo },
-    { name: "visual studio", icon: VSC },
-    { name: "chrome api", icon: Chrome },
-    { name: "discord api", icon: Discord },
-    { name: "stripe", icon: Stripe },
-    { name: "electron", icon: Electron },
-    { name: "postman", icon: Postman },
-    { name: "pypi", icon: PyPi },
-    { name: "devpost", icon: Devpost },
-    { name: "aws", icon: AWS },
-    { name: "ubuntu", icon: Ubuntu },
+    { name: "NextJS", icon: NextJS },
+    { name: "Tailwind", icon: Tailwind },
+    { name: "GitHub", icon: GitHub },
+    { name: "Actions", icon: Actions },
+    { name: "Java", icon: Java },
+    { name: "Figma", icon: Figma },
+    { name: "Framer", icon: Framer },
+    { name: "React Native", icon: RN },
+    { name: "Expo", icon: Expo },
+    { name: "Visual Studio", icon: VSC },
+    { name: "Chrome API", icon: Chrome },
+    { name: "Discord API", icon: Discord },
+    { name: "Stripe", icon: Stripe },
+    { name: "Electron", icon: Electron },
+    { name: "Postman", icon: Postman },
+    { name: "PyPI", icon: PyPi },
+    { name: "Devpost", icon: Devpost },
+    { name: "AWS", icon: AWS },
+    { name: "Ubuntu", icon: Ubuntu },
   ];
 
   return (
@@ -56,7 +56,9 @@ export default function Technology() {
           draggable="false"
         >
           <img src={t.icon} alt={t.name} className="w-4 3xl:w-6" />
-          <p className="text-sm text-[#CCCCCC] 2xl:text-base 3xl:text-2xl">{t.name}</p>
+          <p className="text-sm text-[#CCCCCC] 2xl:text-base 3xl:text-2xl">
+            {t.name}
+          </p>
         </motion.div>
       ))}
     </div>
