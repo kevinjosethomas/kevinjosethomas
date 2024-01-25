@@ -14,7 +14,11 @@ export default function ProjectCard(props: Project) {
       className="flex h-32 cursor-pointer flex-col items-center justify-between gap-4 overflow-hidden rounded-2xl border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-10 md:h-24 md:flex-row md:pl-4 2xl:h-32 2xl:pl-6"
     >
       <div className="flex items-center gap-3 p-4 !pb-0 md:gap-5 md:p-0">
-        <img src={props.image} alt={props.name} className="h-12 w-12 rounded-lg md:h-16 md:w-16" />
+        <img
+          src={props.image}
+          alt={props.name}
+          className="h-12 w-12 rounded-lg md:h-16 md:w-16"
+        />
         <div className="flex flex-col">
           <div className="flex items-center gap-3">
             <p className="font-std text-sm tracking-wide text-white md:text-lg 2xl:text-2xl">
@@ -48,7 +52,10 @@ export default function ProjectCard(props: Project) {
             </div>
           )}
           {props.tags.map((tag, i) => (
-            <div key={i} className="flex rounded bg-white bg-opacity-10 px-3 py-0.5">
+            <div
+              key={i}
+              className="flex rounded bg-white bg-opacity-10 px-3 py-0.5"
+            >
               <p className="whitespace-nowrap text-xs font-light text-white text-opacity-80 2xl:text-base 3xl:text-lg">
                 {tag}
               </p>

@@ -18,7 +18,7 @@ export default function Projects() {
       name: "BCYDC",
       time: "December 2023",
       description:
-        "a community of over 120 high school developers in british columbia",
+        "A community of over 120 high school developers in British Columbia",
       stat: "120+ members",
       href: "https://bcydc.ca",
       tags: ["community"],
@@ -29,7 +29,7 @@ export default function Projects() {
       name: "kevinjosethomas.com",
       time: "August 2023",
       description:
-        "my portfolio website to showcase my interests, projects, and achievements",
+        "My portfolio to showcase my interests, projects, and accomplishments",
       tags: ["typescript", "react", "framer"],
     },
     {
@@ -39,7 +39,7 @@ export default function Projects() {
       href: "https://chromeai.co",
       time: "Mar 2023 (idle)",
       description:
-        "an intuitive chrome extension that puts the power of gpt at your fingertips",
+        "An intuitive chrome extension that puts the power of GPT at your fingertips",
       tags: ["chrome", "react", "fastify", "postgresql", "typescript"],
     },
     {
@@ -50,7 +50,7 @@ export default function Projects() {
       time: "May 2021 (idle)",
       stat: "3000+ monthly users",
       description:
-        "a new minecraft server list with exciting new features and phenomenal ui",
+        "A new minecraft server list with exciting new features and phenomenal UI",
       tags: ["next", "postgresql", "stripe"],
     },
     {
@@ -59,7 +59,7 @@ export default function Projects() {
       time: "Mar 2021 → Dec 2021",
       name: "turbo",
       description:
-        "a chromium-based web browser equipped with a vast array of developer tools",
+        "A chromium-based web browser equipped with a vast array of developer tools",
       tags: ["chromium", "electron", "next"],
     },
     {
@@ -69,7 +69,7 @@ export default function Projects() {
       name: "ghprofile.me",
       stat: "135 subscriptions",
       description:
-        "a clean and simple github readme view counter with graphs and embeds",
+        "A clean and simple GitHub readme view counter with graphs and embeds",
       tags: ["react", "fastify", "postgresql"],
     },
     {
@@ -79,17 +79,17 @@ export default function Projects() {
       time: "Jul 2020 → Oct 2020",
       stat: "1000+ monthly users",
       description:
-        "a discord bot listing website with clean, intuitive UI and many new features",
+        "A discord bot listing website with clean intuitive UI and many new features",
       tags: ["vue", "express", "socket.io"],
     },
     {
       status: ProjectStatus.OFFLINE,
       image: HypixelStats,
       time: "Jun '20 → Dec '20",
-      name: "hypixel stats",
+      name: "Hypixel Stats",
       stat: "2500+ servers",
       description:
-        "a discord bot that brings hypixel player statistics to your discord server",
+        "A Discord bot that brings Hypixel player statistics to your Discord server",
       tags: ["python", "discord.py"],
     },
     {
@@ -99,7 +99,7 @@ export default function Projects() {
       name: "vidio",
       stat: "400+ servers",
       description:
-        "my first discord bot; a youtube simulator that allowed people to roleplay youtubers",
+        "A YouTube simulator Discord bot that allowed people to roleplay youtubers",
       tags: ["python", "discord.py"],
     },
   ];

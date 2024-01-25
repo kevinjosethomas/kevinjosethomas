@@ -7,12 +7,17 @@ import Awards from "ui/components/Work/Awards";
 import smImage from "assets/img/banner/2-sm.png";
 import PageWrapper from "ui/wrappers/PageWrapper";
 import Projects from "ui/components/Work/Projects";
+import Hackathons from "ui/components/Work/Hackathons";
 
 export default function Work() {
   const screens: Screen[] = [
     {
       label: "projects",
       component: <Projects />,
+    },
+    {
+      label: "hackathons",
+      component: <Hackathons />,
     },
     {
       label: "awards",
