@@ -16,8 +16,8 @@ i'm a high school junior from vancouver with a passion for computer science and 
 
 ```txt
 JavaScript   14 hrs 10 mins  ████████████▒░░░░░░░░░░░░   49.84 %
-Python       10 hrs 44 mins  █████████▒░░░░░░░░░░░░░░░   37.78 %
-TypeScript   2 hrs 4 mins    █▓░░░░░░░░░░░░░░░░░░░░░░░   07.30 %
+Python       10 hrs 35 mins  █████████▒░░░░░░░░░░░░░░░   37.21 %
+TypeScript   2 hrs 14 mins   ██░░░░░░░░░░░░░░░░░░░░░░░   07.86 %
 JSON         46 mins         ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.75 %
 Other        23 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.38 %
 ```
