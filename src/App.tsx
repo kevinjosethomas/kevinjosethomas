@@ -7,6 +7,7 @@ import Stack from "pages/Stack";
 import Music from "pages/Music";
 
 import "ui/styles/tailwind.css";
+import "tippy.js/dist/tippy.css";
 
 function App() {
   return (

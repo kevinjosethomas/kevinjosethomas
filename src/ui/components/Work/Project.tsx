@@ -1,3 +1,4 @@
+import Tippy from "@tippyjs/react";
 import { motion } from "framer-motion";
 import ScrollContainer from "react-indiana-drag-scroll";
 
@@ -24,15 +25,26 @@ export default function ProjectCard(props: Project) {
             <p className="font-std text-sm tracking-wide text-white md:text-lg 2xl:text-2xl">
               {props.name}
             </p>
-            <div
-              className={`h-2 w-2 rounded-full ${
+            <Tippy
+              content={
                 props.status === ProjectStatus.ONLINE
-                  ? "bg-green-600"
+                  ? "Active"
                   : props.status === ProjectStatus.IDLE
-                  ? "bg-yellow-600"
-                  : "bg-red-600"
-              }`}
-            />
+                  ? "Inactive"
+                  : "Canceled"
+              }
+              arrow={false}
+            >
+              <div
+                className={`h-2 w-2 rounded-full ${
+                  props.status === ProjectStatus.ONLINE
+                    ? "bg-green-600"
+                    : props.status === ProjectStatus.IDLE
+                    ? "bg-yellow-600"
+                    : "bg-red-600"
+                }`}
+              />
+            </Tippy>
           </div>
           <p className="max-w-xl text-xs font-light leading-tight text-white text-opacity-80 2xl:text-base 3xl:text-lg">
             {props.description}

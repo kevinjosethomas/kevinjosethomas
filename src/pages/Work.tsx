@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import { Screen } from "types";
 import Image from "assets/img/banner/2.png";
@@ -10,6 +11,9 @@ import Projects from "ui/components/Work/Projects";
 import Hackathons from "ui/components/Work/Hackathons";
 
 export default function Work() {
+  let [searchParams, setSearchParams] = useSearchParams();
+  let s = searchParams.get("s");
+
   const screens: Screen[] = [
     {
       label: "projects",
@@ -24,7 +28,11 @@ export default function Work() {
       component: <Awards />,
     },
   ];
-  const [screen, setScreen] = useState<Screen>(screens[0]);
+
+  let initialScreen =
+    screens.find((screen) => screen.label === s) || screens[0];
+
+  const [screen, setScreen] = useState<Screen>(initialScreen);
 
   return (
     <PageWrapper

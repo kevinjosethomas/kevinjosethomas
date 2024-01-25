@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import Tippy from "@tippyjs/react";
 import { motion } from "framer-motion";
 
 export default function Hackathons() {
@@ -94,11 +94,16 @@ export default function Hackathons() {
                 <p className="font-std text-sm tracking-wide text-white md:text-base 2xl:text-lg 3xl:text-2xl">
                   {hackathon.name}
                 </p>
-                <div
-                  className={`rounded-full w-2 h-2 ${
-                    hackathon.digital ? "bg-yellow-500" : "bg-green-500"
-                  }`}
-                />
+                <Tippy
+                  content={hackathon.digital ? "Digital" : "In-Person"}
+                  arrow={false}
+                >
+                  <div
+                    className={`rounded-full w-2 h-2 ${
+                      hackathon.digital ? "bg-yellow-500" : "bg-green-500"
+                    }`}
+                  />
+                </Tippy>
               </div>
               <p className="text-xs font-light leading-tight tracking-wide text-white 2xl:text-sm 3xl:text-base">
                 {hackathon.institution}
