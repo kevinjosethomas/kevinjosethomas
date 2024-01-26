@@ -24,8 +24,7 @@ export default function Awards() {
           <span className="inline-block">
             I wrote the 2023 CEMC Galois Contest, and achieved:
           </span>
-          <span className="inline-block">• National Honour Roll, Group IV</span>
-          ,
+          <span className="block">• National Honour Roll, Group IV</span>
           <span className="inline-block">• School Champion, Burnaby South</span>
         </p>
       ),

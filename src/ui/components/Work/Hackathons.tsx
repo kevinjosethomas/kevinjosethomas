@@ -11,8 +11,8 @@ export default function Hackathons() {
         <p>
           <span className="inline-block">
             For my first in-person hackathon, as one of the few high-school
-            hackers, I led a team of UBC students to develop a ML
-            image-recognition nutrition tracker in 24 hours. I won:
+            hackers, I worked with a team of UBC students to develop a ML
+            image-recognition nutrition tracker in 24 hours. We won:
           </span>
           <span className="inline-block">
             • 2nd place: Healthcare & Accessibility Track
@@ -30,8 +30,8 @@ export default function Hackathons() {
         <p>
           <span className="inline-block">
             In my attempt to get back into software development, I spent 26
-            hours developing a high school focused social media platform for
-            PantherHacks. I received:
+            hours developing a high school focused social media platform by
+            myself. I received:
           </span>
           <span className="inline-block">• Honourable Mention Award</span>
         </p>
@@ -46,7 +46,7 @@ export default function Hackathons() {
       description: (
         <p>
           <span className="inline-block">
-            As the youngest hacker among over 400 university students, I
+            As the youngest (solo) hacker among over 400 university students, I
             developed and showcased a freelance marketplace in under 36 hours. I
             won:
           </span>
@@ -68,8 +68,8 @@ export default function Hackathons() {
       description: (
         <p>
           <span className="inline-block">
-            As a first-time hacker, and the youngest participant among over 300
-            university students from around the world, I won:
+            As a first-time hacker, and the youngest (solo) participant among
+            over 300 university students from around the world, I won:
           </span>
           <span className="inline-block">• 1st place: Best UI / UX Design</span>
           <span className="inline-block">
