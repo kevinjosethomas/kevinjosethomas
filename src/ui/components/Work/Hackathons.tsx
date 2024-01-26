@@ -95,7 +95,12 @@ export default function Hackathons() {
           className="relative flex cursor-default flex-col overflow-hidden rounded-2xl border border-white border-opacity-20 md:h-24 md:flex-row 2xl:h-28 2xl:rounded-2xl 3xl:h-32"
         >
           {hackathon.winner && (
-            <div className="absolute flex py-1 items-center justify-center top-8 bg-opacity-60 -right-16 bg-blue-500 rotate-45 w-40">
+            <div className="md:flex absolute hidden py-1 items-center justify-center top-8 bg-opacity-60 -right-16 bg-blue-500 rotate-45 w-40">
+              <p className="text-xs mr-8 font-bold text-white">WINNER</p>
+            </div>
+          )}
+          {hackathon.winner && (
+            <div className="flex md:hidden absolute py-1 items-center justify-center bottom-6 bg-opacity-60 -right-16 bg-blue-500 -rotate-45 w-40">
               <p className="text-xs mr-8 font-bold text-white">WINNER</p>
             </div>
           )}
