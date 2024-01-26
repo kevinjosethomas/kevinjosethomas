@@ -5,7 +5,7 @@ export default function Hackathons() {
   const hackathons = [
     {
       name: "nwHacks",
-      time: "January 2024",
+      time: "Jan 2024",
       institution: "nwPlus",
       description: (
         <p>
@@ -20,6 +20,7 @@ export default function Hackathons() {
         </p>
       ),
       digital: false,
+      winner: true,
     },
     {
       name: "PantherHacks",
@@ -36,6 +37,7 @@ export default function Hackathons() {
         </p>
       ),
       digital: true,
+      winner: true,
     },
     {
       name: "WinHacks",
@@ -56,10 +58,12 @@ export default function Hackathons() {
         </p>
       ),
       digital: true,
+      winner: true,
+      prize: 1500,
     },
     {
       name: "BorderHacks",
-      time: "September 2021",
+      time: "Sep 2021",
       institution: "WindsorEssex",
       description: (
         <p>
@@ -75,6 +79,8 @@ export default function Hackathons() {
         </p>
       ),
       digital: true,
+      winner: true,
+      prize: 500,
     },
   ];
 
@@ -86,8 +92,13 @@ export default function Hackathons() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 * i }}
-          className="flex cursor-default flex-col overflow-hidden rounded-2xl border border-white border-opacity-20 md:h-24 md:flex-row 2xl:h-28 2xl:rounded-2xl 3xl:h-32"
+          className="relative flex cursor-default flex-col overflow-hidden rounded-2xl border border-white border-opacity-20 md:h-24 md:flex-row 2xl:h-28 2xl:rounded-2xl 3xl:h-32"
         >
+          {hackathon.winner && (
+            <div className="absolute flex py-1 items-center justify-center top-8 bg-opacity-60 -right-16 bg-blue-500 rotate-45 w-40">
+              <p className="text-xs mr-8 font-bold text-white">WINNER</p>
+            </div>
+          )}
           <div className="flex h-full w-full flex-row justify-between border-white border-opacity-20 bg-[#1A1A1A] p-3 md:w-40 md:flex-col md:border-r 2xl:w-48 2xl:p-4 3xl:w-64 3xl:p-5">
             <div className="flex flex-col">
               <div className="flex flex-row gap-3 items-center">
@@ -110,7 +121,10 @@ export default function Hackathons() {
               </p>
             </div>
             <p className="text-xs font-extralight leading-tight tracking-wide text-white 2xl:text-sm 3xl:text-base">
-              {hackathon.time}
+              {hackathon.time}{" "}
+              {hackathon.prize && (
+                <span className="text-blue-500 font-semibold">{`($${hackathon.prize})`}</span>
+              )}
             </p>
           </div>
           <div className="flex flex-1 flex-col items-start gap-1 p-3 2xl:p-4 3xl:gap-0 3xl:p-5">
