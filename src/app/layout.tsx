@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+
+import "@/ui/styles/tailwind.css";
+import Navbar from "@/ui/components/Navbar/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="grid h-full min-h-screen bg-black 4xl:items-start 4xl:justify-center 4xl:py-48">
+          <div className="flex w-full max-w-[100vw] flex-col items-start gap-4 2xl:gap-8 justify-betwee md:gap-0 md:py-24 md:px-36 2xl:max-w-screen-2xl 3xl:max-w-3xl 4xl:py-0">
+            <Navbar />
+            {children}
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
