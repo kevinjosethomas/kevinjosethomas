@@ -9,18 +9,22 @@ import {
   Project as ProjectType,
   Hackathon as HackathonType,
   Award as AwardType,
+  Repository as RepositoryType,
 } from "@/types";
+import Repository from "./Repository";
 
 export default function Container({
   projects,
   hackathons,
   awards,
+  opensource,
 }: {
   projects: ProjectType[];
   hackathons: HackathonType[];
   awards: AwardType[];
+  opensource: RepositoryType[];
 }) {
-  const screens = ["Projects", "Hackathons", "Awards"];
+  const screens = ["Projects", "Hackathons", "Opensource", "Awards"];
   const [screen, setScreen] = useState(screens[0]);
 
   return (
@@ -67,6 +71,12 @@ export default function Container({
               </p>
             </motion.a>
           </Fragment>
+        ) : screen == "Opensource" ? (
+          <div className="grid w-full auto-rows-fr grid-cols-2 gap-4">
+            {opensource.map((repository, i) => (
+              <Repository key={i} order={i} {...repository} />
+            ))}
+          </div>
         ) : (
           awards.map((awards, i) => <Award key={i} order={i} {...awards} />)
         )}

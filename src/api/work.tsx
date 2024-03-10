@@ -1,6 +1,7 @@
 import Notion from "./notion";
+import GitHub from "./github";
 
-import { Project, Hackathon, Award } from "@/types";
+import { Project, Hackathon, Award, Repository } from "@/types";
 
 async function FetchProjects() {
   const projects: Project[] = [];
@@ -70,4 +71,27 @@ async function FetchAwards() {
   return awards;
 }
 
-export { FetchProjects, FetchHackathons, FetchAwards };
+async function FetchOpensource() {
+  const repos: Repository[] = [];
+  const repos_raw = (
+    await GitHub.request("GET /users/{username}/repos", {
+      username: "kevinjosethomas",
+      per_page: 100,
+    })
+  ).data.sort((a: any, b: any) => b.stargazers_count - a.stargazers_count);
+
+  for (const repo of repos_raw) {
+    repos.push({
+      name: repo.name,
+      description: repo.description as string,
+      stars: repo.stargazers_count as number,
+      forks: repo.forks as number,
+      language: repo.language as string,
+      url: repo.html_url,
+    });
+  }
+
+  return repos;
+}
+
+export { FetchProjects, FetchHackathons, FetchAwards, FetchOpensource };

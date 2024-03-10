@@ -27,4 +27,14 @@ type Award = {
   description: string;
 };
 
-export type { Project, Hackathon, Award };
+type Repository = {
+  order?: number;
+  name: string;
+  description: string;
+  stars: number;
+  forks: number;
+  language: string;
+  url: string;
+};
+
+export type { Project, Hackathon, Award, Repository };
