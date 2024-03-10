@@ -1,5 +1,5 @@
 type Project = {
-  order: number;
+  order?: number;
   status: string;
   slug: string;
   name: string;
@@ -9,7 +9,7 @@ type Project = {
 };
 
 type Hackathon = {
-  order: number;
+  order?: number;
   winner: boolean;
   digital: boolean;
   prize: string;
@@ -19,4 +19,12 @@ type Hackathon = {
   description: string;
 };
 
-export type { Project, Hackathon };
+type Award = {
+  order?: number;
+  name: string;
+  organizer: string;
+  time: string;
+  description: string;
+};
+
+export type { Project, Hackathon, Award };

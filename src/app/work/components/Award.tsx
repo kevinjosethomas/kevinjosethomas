@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
-import { Hackathon as HackathonType } from "@/types";
+import { Award as AwardType } from "@/types";
 
-export default function Hackathon(props: HackathonType) {
+export default function Award(props: AwardType) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -23,25 +23,6 @@ export default function Hackathon(props: HackathonType) {
           {props.description}
         </p>
       </div>
-      <div className="flex w-full flex-row gap-2 overflow-scroll">
-        {props.winner && <Tag label="Winner" color="bg-yellow-700" />}
-        {props.prize && <Tag label={props.prize} color="bg-yellow-700" />}
-        {props.digital ? (
-          <Tag label="Digital" color="bg-sky-700" />
-        ) : (
-          <Tag label="In-Person" color="bg-green-700" />
-        )}
-      </div>
     </motion.div>
-  );
-}
-
-function Tag({ label, color }: { label: string; color: string }) {
-  return (
-    <div
-      className={`flex items-center gap-2 whitespace-nowrap rounded bg-opacity-40 px-3 py-1 ${color}`}
-    >
-      <p className="text-sm font-light text-white text-opacity-80">{label}</p>
-    </div>
   );
 }
