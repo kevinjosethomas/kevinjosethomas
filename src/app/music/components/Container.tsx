@@ -28,7 +28,10 @@ export default function Container({
       </div>
       <div className="flex w-full cursor-grab gap-4 overflow-scroll">
         {data.map((item, index) => (
-          <div className="group relative flex h-32 min-h-32 w-32 min-w-32 select-none items-end overflow-hidden p-2 duration-300 hover:scale-105">
+          <div
+            key={index}
+            className="group relative flex h-32 min-h-32 w-32 min-w-32 select-none items-end overflow-hidden p-2 duration-300 hover:scale-105"
+          >
             <div className="z-20 flex w-full flex-col transition duration-500 group-hover:opacity-0">
               <p className="w-full truncate whitespace-nowrap text-sm font-medium text-white text-opacity-80 3xl:text-lg">
                 {index + 1}. {item[type].name}

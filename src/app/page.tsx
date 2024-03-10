@@ -27,8 +27,8 @@ export default function Home() {
           transition={{ duration: 0.3 }}
           className="inline"
         >
-          I'm a high school junior from <Highlight>Vancouver</Highlight> with a
-          passion for computer science and software development.
+          I&apos;m a high school junior from <Highlight>Vancouver</Highlight>{" "}
+          with a passion for computer science and software development.
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -48,7 +48,7 @@ export default function Home() {
         >
           Although most of my time is in school, I enjoy learning about new
           technology, participating in hackathons and occasionally freelancing
-          or working on side projects. I'm currently working on{" "}
+          or working on side projects. I&apos;m currently working on{" "}
           <Highlight href="https://bcydc.ca/">BCYDC</Highlight>, a community for
           high school developers in British Columbia.
         </motion.div>
@@ -58,7 +58,7 @@ export default function Home() {
           transition={{ duration: 0.3, delay: 0.4 }}
           className="flex flex-col md:flex-row"
         >
-          I'm looking for new opportunities.
+          I&apos;m looking for new opportunities.
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -69,7 +69,7 @@ export default function Home() {
           Reach out:{" "}
           <div className="flex items-center gap-2 md:ml-2">
             {socials.map((s, i) => (
-              <a href={s.href} target="_blank" rel="noreferrer">
+              <a key={i} href={s.href} target="_blank" rel="noreferrer">
                 <Highlight>{s.label}</Highlight>
               </a>
             ))}

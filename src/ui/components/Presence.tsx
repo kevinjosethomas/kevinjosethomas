@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Fragment, memo } from "react";
 import { useLanyardWS } from "use-lanyard";
 
-const Presence = memo(function () {
+const Presence = memo(function Presence() {
   const data = useLanyardWS("418707912836382721");
 
   return (

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Fragment, useState } from "react";
-import { useSearchParams } from "next/navigation";
 
 import Award from "./Award";
 import Project from "./Project";
@@ -28,18 +27,14 @@ export default function Container({
 }) {
   const screens = ["projects", "hackathons", "opensource", "awards"];
 
-  const search = useSearchParams();
-  const initialScreen = search.get("s") || "";
-
-  const [screen, setScreen] = useState(
-    screens.includes(initialScreen) ? initialScreen : screens[0],
-  );
+  const [screen, setScreen] = useState(screens[0]);
 
   return (
     <div className="flex w-1/2 flex-col items-start gap-4">
       <div className="flex items-center rounded-full border-2 border-white border-opacity-20">
-        {screens.map((s) => (
+        {screens.map((s, i) => (
           <div
+            key={i}
             className="relative cursor-pointer px-6 py-1"
             onClick={() => setScreen(s)}
           >
