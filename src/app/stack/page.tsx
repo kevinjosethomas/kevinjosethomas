@@ -1,6 +1,7 @@
-import { Stack as StackType, Technology as TechnologyType } from "@/types";
 import StackView from "./components/Stack";
+import Banner from "@/ui/components/Banner";
 import Technology from "./components/Technology";
+import { Stack as StackType, Technology as TechnologyType } from "@/types";
 
 export default function Stack() {
   const stacks: StackType[] = [
@@ -57,17 +58,20 @@ export default function Stack() {
   ];
 
   return (
-    <div className="flex w-1/2 items-start gap-4">
-      <div className="grid grid-rows-4 gap-4">
-        {stacks.map((stack, i) => (
-          <StackView key={i} order={i} {...stack} />
-        ))}
+    <div className="flex w-full flex-row items-start justify-between">
+      <div className="flex w-1/2 items-start gap-4">
+        <div className="grid grid-rows-4 gap-4">
+          {stacks.map((stack, i) => (
+            <StackView key={i} order={i} {...stack} />
+          ))}
+        </div>
+        <div className="flex flex-col gap-1.5">
+          {technology.map((tech, i) => (
+            <Technology key={i} order={i} {...tech} />
+          ))}
+        </div>
       </div>
-      <div className="flex flex-col gap-1.5">
-        {technology.map((tech, i) => (
-          <Technology key={i} order={i} {...tech} />
-        ))}
-      </div>
+      <Banner src="/images/banners/3L.png" alt="Home" />
     </div>
   );
 }

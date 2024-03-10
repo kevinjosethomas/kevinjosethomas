@@ -1,3 +1,4 @@
+import Banner from "@/ui/components/Banner";
 import Container from "./components/Container";
 import {
   FetchHackathons,
@@ -13,11 +14,14 @@ export default async function Work() {
   const opensource = await FetchOpensource();
 
   return (
-    <Container
-      projects={projects}
-      hackathons={hackathons}
-      awards={awards}
-      opensource={opensource}
-    />
+    <div className="flex w-full flex-row items-start justify-between">
+      <Container
+        projects={projects}
+        hackathons={hackathons}
+        awards={awards}
+        opensource={opensource}
+      />
+      <Banner src="/images/banners/2L.png" alt="Home" />
+    </div>
   );
 }

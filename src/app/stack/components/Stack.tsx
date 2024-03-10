@@ -11,7 +11,7 @@ export default function Stack(props: StackType) {
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 10, opacity: 0 }}
       transition={{ duration: 0.3, delay: 0.1 * (props.order || 1) }}
-      className="flex overflow-hidden rounded-lg border border-white border-opacity-20"
+      className="flex overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-5"
     >
       <div
         className={`flex h-28 w-28 min-w-28 select-none items-center justify-center ${props.color}`}
