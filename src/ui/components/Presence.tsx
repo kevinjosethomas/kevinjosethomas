@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Fragment, memo } from "react";
 import { useLanyardWS } from "use-lanyard";
@@ -32,17 +31,14 @@ const Presence = memo(function () {
               </span>
             </p>
             <div className="flex items-center gap-1 text-xs 2xl:text-sm">
-              <Image
+              <p>
+                on <span className="text-white text-opacity-100">Spotify</span>
+              </p>
+              <img
                 src="/icons/spotify.svg"
                 alt="Spotify"
-                width={16}
-                height={16}
-                className="saturate-0"
+                className="saturate-0 w-3 h-3"
               />
-              <p>
-                on{" "}
-                <span className="font-semibold text-opacity-90">Spotify</span>
-              </p>
             </div>
           </div>
         </motion.a>
@@ -55,12 +51,10 @@ const Presence = memo(function () {
           transition={{ duration: 0.4, delay: 0.5 }}
           className="flex w-72 select-none items-center justify-start gap-2 overflow-hidden rounded-lg border border-white border-opacity-20 p-3 2xl:w-80 2xl:gap-3"
         >
-          <Image
+          <img
             src="/icons/spotify.svg"
             alt="Spotify"
-            width={20}
-            height={20}
-            className="saturate-0"
+            className="saturate-0 w-5 h-5"
           />
           <p className="2xl:text-lg 3xl:text-xl">currently not listening...</p>
         </motion.a>

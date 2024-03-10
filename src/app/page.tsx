@@ -56,7 +56,7 @@ export default function Home() {
         transition={{ duration: 0.3, delay: 0.4 }}
         className="flex flex-col md:flex-row"
       >
-        I'm also looking for new opportunities.
+        I'm looking for new opportunities.
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 10 }}
