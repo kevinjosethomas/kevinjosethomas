@@ -37,4 +37,18 @@ type Repository = {
   url: string;
 };
 
-export type { Project, Hackathon, Award, Repository };
+type Stack = {
+  order?: number;
+  icon: string;
+  color: string;
+  name: string;
+  description: string;
+};
+
+type Technology = {
+  order?: number;
+  icon: string;
+  name: string;
+};
+
+export type { Project, Hackathon, Award, Repository, Stack, Technology };
