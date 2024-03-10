@@ -6,8 +6,9 @@ I'm a high school junior from Vancouver with a passion for computer science and 
 [![TypeScript](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/444b2e5d-659f-41f5-81fe-3abafb75cb6c)](https://kevinjosethomas.com/stack)
 [![Python](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/34a174c4-54db-4c4e-9842-2324d47cb043)](https://kevinjosethomas.com/stack)
 [![PostgreSQL](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/46d6de1c-c483-4dc7-ab3a-87763af6fc78)](https://kevinjosethomas.com/stack)
-[![NextJS](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/53ddb70e-acec-4d45-aa2d-c2ee4b97fe12)](https://kevinjosethomas.com/stack)
+[![next](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/bc46bae5-1ad9-42a7-b7a2-427cbde7c994)](https://kevinjosethomas.com/stack)
 [![Stack](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/0b9b7eeb-8cce-4a56-bffd-3131dd4dd88c)](https://kevinjosethomas.com/stack)
+
 
 
 
