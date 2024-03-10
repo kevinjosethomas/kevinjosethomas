@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { motion } from "framer-motion";
 
 import Project from "./Project";
@@ -38,7 +38,20 @@ export default function Container({
         {screen == "Projects" ? (
           projects.map((project, i) => <Project key={i} {...project} />)
         ) : screen == "Hackathons" ? (
-          hackathons.map((hackathon, i) => <Hackathon key={i} {...hackathon} />)
+          <Fragment>
+            {hackathons.map((hackathon, i) => (
+              <Hackathon key={i} {...hackathon} />
+            ))}
+            <a
+              target="_blank"
+              href="https://devpost.com/kevinjosethomas/challenges"
+              className="flex w-full items-center justify-center rounded border border-white border-opacity-20 py-4 hover:bg-white hover:bg-opacity-5"
+            >
+              <p className="text-lg font-light text-white">
+                See my Devpost profile
+              </p>
+            </a>
+          </Fragment>
         ) : (
           <></>
         )}

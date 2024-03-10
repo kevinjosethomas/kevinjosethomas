@@ -14,7 +14,7 @@ const Presence = memo(function () {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.6 }}
-          className="flex w-72 select-none items-center justify-start gap-3 overflow-hidden rounded-lg border border-white border-opacity-20 p-3 2xl:w-80"
+          className="flex w-72 select-none items-center justify-start gap-3 overflow-hidden rounded-lg border border-white border-opacity-20 p-3 transition duration-300 hover:bg-white hover:bg-opacity-5 2xl:w-80"
         >
           {data.spotify.album_art_url && (
             <img
