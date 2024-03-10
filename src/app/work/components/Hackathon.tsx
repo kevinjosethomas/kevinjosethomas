@@ -14,12 +14,12 @@ export default function Hackathon(props: HackathonType) {
     >
       <div className="flex w-full flex-col">
         <div className="flex flex-row items-center gap-1">
-          <h3 className="text-lg font-medium text-white">{props.name}</h3>
+          <h3 className="font-medium text-white xl:text-lg">{props.name}</h3>
           <p className="mt-1 text-xs font-light text-white text-opacity-80">
             by {props.organizer} ({props.time})
           </p>
         </div>
-        <p className="text-sm font-light text-white text-opacity-80">
+        <p className="text-xs font-light text-white text-opacity-80 xl:text-sm">
           {props.description}
         </p>
       </div>
@@ -39,9 +39,11 @@ export default function Hackathon(props: HackathonType) {
 function Tag({ label, color }: { label: string; color: string }) {
   return (
     <div
-      className={`flex items-center gap-2 whitespace-nowrap rounded bg-opacity-40 px-3 py-1 ${color}`}
+      className={`flex items-center gap-2 whitespace-nowrap rounded bg-opacity-40 px-2 py-1 xl:px-3 ${color}`}
     >
-      <p className="text-sm font-light text-white text-opacity-80">{label}</p>
+      <p className="text-xs font-light text-white text-opacity-80 xl:text-sm">
+        {label}
+      </p>
     </div>
   );
 }

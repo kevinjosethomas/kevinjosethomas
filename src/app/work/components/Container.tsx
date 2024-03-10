@@ -35,10 +35,10 @@ export default function Container({
         {screens.map((s, i) => (
           <div
             key={i}
-            className="relative cursor-pointer px-6 py-1"
+            className="relative cursor-pointer px-3 py-1 xl:px-6"
             onClick={() => setScreen(s)}
           >
-            <p className="text-lg capitalize text-white">{s}</p>
+            <p className="capitalize text-white xl:text-lg">{s}</p>
             {screen == s && (
               <motion.div
                 layoutId="Highlight"
@@ -67,9 +67,9 @@ export default function Container({
                 duration: 0.3,
                 delay: 0.1 * (hackathons.length + 1),
               }}
-              className="flex w-full items-center justify-center rounded border border-white border-opacity-20 py-4 hover:bg-white hover:bg-opacity-5"
+              className="flex w-full items-center justify-center rounded border border-white border-opacity-20 py-2 hover:bg-white hover:bg-opacity-5 xl:py-4"
             >
-              <p className="text-lg font-light text-white">
+              <p className="font-light text-white xl:text-lg">
                 See my Devpost profile
               </p>
             </motion.a>

@@ -10,15 +10,15 @@ export default function Repository(props: RepositoryType) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 * (props.order || 0.1) }}
-      className="flex flex-col justify-between gap-4 rounded-lg border border-white border-opacity-20 p-4 transition duration-300 hover:bg-white hover:bg-opacity-5"
+      className="overflo-whidden flex flex-col justify-between gap-2 rounded-lg border border-white border-opacity-20 p-4 transition duration-300 hover:bg-white hover:bg-opacity-5 xl:gap-4"
     >
       <div className="flex flex-col">
-        <h3 className="text-lg font-medium text-white">{props.name}</h3>
-        <p className="text-sm font-light text-white text-opacity-80">
+        <h3 className="font-medium text-white xl:text-lg">{props.name}</h3>
+        <p className="text-xs font-light text-white text-opacity-80 xl:text-sm">
           {props.description}
         </p>
       </div>
-      <div className="flex items-center gap-2 text-white">
+      <div className="no-scrollbar flex w-full items-center gap-2 overflow-scroll text-white">
         {props.language && <Tag label={props.language} type="language" />}
         <Tag label={props.stars.toString()} type="stars" />
         <Tag label={props.forks.toString()} type="forks" />
@@ -64,7 +64,9 @@ function Tag({ label, type }: { label: string; type: string }) {
           className="w-3 text-white opacity-50"
         />
       )}
-      <p className="text-sm font-light text-white text-opacity-75">{label}</p>
+      <p className="text-xs font-light text-white text-opacity-75 xl:text-sm">
+        {label}
+      </p>
     </div>
   );
 }

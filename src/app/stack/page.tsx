@@ -31,7 +31,7 @@ export default function Stack() {
       color: "bg-[#087ea4]",
       name: "React",
       description:
-        "My go-to frontend framework for all website and applications, usually with NextJS",
+        "My go-to frontend framework for all websites, usually with NextJS",
     },
   ];
 
@@ -65,7 +65,7 @@ export default function Stack() {
             <StackView key={i} order={i} {...stack} />
           ))}
         </div>
-        <div className="flex flex-col gap-1.5">
+        <div className="flex flex-col gap-1 xl:gap-1.5">
           {technology.map((tech, i) => (
             <Technology key={i} order={i} {...tech} />
           ))}

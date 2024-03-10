@@ -20,7 +20,7 @@ export default function Project(props: ProjectType) {
         />
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
-            <h3 className="text-lg font-medium text-white">{props.name}</h3>
+            <h3 className="font-medium text-white xl:text-lg">{props.name}</h3>
             <div
               className={`h-2 w-2 rounded-full ${
                 props.status == "online"
@@ -31,12 +31,12 @@ export default function Project(props: ProjectType) {
               }`}
             />
           </div>
-          <p className="text-sm font-light text-white text-opacity-80">
+          <p className="text-xs font-light text-white text-opacity-80 xl:text-sm">
             {props.description}
           </p>
         </div>
       </div>
-      <div className="no-scrollbar flex w-full flex-row gap-2 overflow-scroll px-4 pb-4">
+      <div className="no-scrollbar flex w-full items-center gap-2 overflow-scroll px-4 pb-4">
         {props.stat.map((tag, i) => (
           <Tag key={i} {...tag} highlight />
         ))}
@@ -74,7 +74,7 @@ function Tag({
         />
       )}
 
-      <p className="text-sm font-light text-white">{label}</p>
+      <p className="text-xs font-light text-white xl:text-sm">{label}</p>
     </div>
   );
 }
