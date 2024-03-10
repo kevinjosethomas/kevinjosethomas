@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function Container({
   order,
   type,
@@ -8,7 +12,13 @@ export default function Container({
   data: any[];
 }) {
   return (
-    <div className="no-scrollbar flex w-full flex-col gap-2">
+    <motion.div
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: 10, opacity: 1 }}
+      transition={{ duration: 0.3, delay: order * 0.2 }}
+      className="no-scrollbar flex w-full flex-col gap-2"
+    >
       <div className="flex items-center justify-between">
         <div className="flex items-end gap-2">
           <span className="text-2xl font-medium capitalize text-white">
@@ -51,6 +61,6 @@ export default function Container({
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
