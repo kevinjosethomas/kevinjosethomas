@@ -19,18 +19,52 @@ export default function Repository(props: RepositoryType) {
         </p>
       </div>
       <div className="flex items-center gap-2 text-white">
-        <Tag label={props.language} />
-        <Tag label={props.stars.toString()} />
-        <Tag label={props.forks.toString()} />
+        {props.language && <Tag label={props.language} type="language" />}
+        <Tag label={props.stars.toString()} type="stars" />
+        <Tag label={props.forks.toString()} type="forks" />
       </div>
     </motion.a>
   );
 }
 
-function Tag({ label }: { label: string }) {
+function Tag({ label, type }: { label: string; type: string }) {
+  let color;
+  switch (label) {
+    case "TypeScript":
+      color = "bg-[#3178C6]";
+      break;
+    case "JavaScript":
+      color = "bg-[#F7DF1E]";
+      break;
+    case "Python":
+      color = "bg-[#FFD343]";
+      break;
+    case "HTML":
+      color = "bg-[#E34F26";
+      break;
+    case "CSS":
+      color = "bg-[#1572B6]";
+      break;
+  }
+
   return (
     <div className="flex items-center gap-2 whitespace-nowrap rounded bg-white bg-opacity-10 px-3 py-1">
-      <p className="text-sm font-light text-white">{label}</p>
+      {type == "language" ? (
+        <div className={`${color} h-1.5 w-1.5 rounded-full`} />
+      ) : type == "stars" ? (
+        <img
+          src="/icons/star.svg"
+          alt="Stars"
+          className="w-3 text-white opacity-50"
+        />
+      ) : (
+        <img
+          src="/icons/fork.svg"
+          alt="Forks"
+          className="w-3 text-white opacity-50"
+        />
+      )}
+      <p className="text-sm font-light text-white text-opacity-75">{label}</p>
     </div>
   );
 }
