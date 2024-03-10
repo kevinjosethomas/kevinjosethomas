@@ -1,16 +1,18 @@
-# hey! 👋 i'm kevin thomas //
+# Hello! 👋 I'm Kevin Thomas //
 
-i'm a high school junior from vancouver with a passion for computer science and software development. i'm working on developing efficient software with modern design and exceptional user experiences. outside of the academic grind, i invest my time into learning new tech, participating in hackathons and working on a few side projects. check out my work on my [portfolio](https://kevinjosethomas.com/) :)
+I'm a high school junior from Vancouver with a passion for computer science and software development. I'm working on developing efficient software with modern design and exceptional user experiences. Outside of the academic grind, I invest my time into learning new tech, participating in hackathons and working on a few side projects. Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️
 
-# technology
+# Technology
+[![TypeScript](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/444b2e5d-659f-41f5-81fe-3abafb75cb6c)](https://kevinjosethomas.com/stack)
+[![Python](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/34a174c4-54db-4c4e-9842-2324d47cb043)](https://kevinjosethomas.com/stack)
+[![PostgreSQL](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/46d6de1c-c483-4dc7-ab3a-87763af6fc78)](https://kevinjosethomas.com/stack)
+[![next](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/bc46bae5-1ad9-42a7-b7a2-427cbde7c994)](https://kevinjosethomas.com/stack)
+[![Stack](https://github.com/kevinjosethomas/kevinjosethomas/assets/46242684/0b9b7eeb-8cce-4a56-bffd-3131dd4dd88c)](https://kevinjosethomas.com/stack)
 
-[![Python](https://i.imgur.com/uJCFGqb.png)](https://kevinthomas.codes/stack)
-[![TypeScript](https://i.imgur.com/LlHxpmm.png)](https://kevinthomas.codes/stack)
-[![PostgreSQL](https://i.imgur.com/JtHCo5L.png)](https://kevinthomas.codes/stack)
-[![NextJS](https://i.imgur.com/S1zqWbT.png)](https://kevinthomas.codes/stack)
-[![Software](https://i.imgur.com/cdfHm5u.png)](https://kevinthomas.codes/stack)
 
-# grind hours
+
+
+# Code
 
 <!--START_SECTION:waka-->
 
@@ -22,5 +24,3 @@ CSS          0 secs          ░░░░░░░░░░░░░░░░░
 ```
 
 <!--END_SECTION:waka-->
-
-[![Discord Presence](https://lanyard.cnrad.dev/api/418707912836382721)](https:/kevinthomas.codes/)

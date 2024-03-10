@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
-
-import Caret from "assets/img/icon/caret.svg";
 
 export default function Container() {
   const controls = useAnimation();
@@ -25,18 +25,20 @@ export default function Container() {
   return (
     <div className="relative flex flex-col" ref={ref}>
       <motion.img
-        src={Caret}
+        src="/icons/caret.svg"
         alt="dropdown"
         animate={controls}
         className="h-4 cursor-pointer select-none 2xl:h-6"
         onClick={() => showDropdown((x) => !x)}
       />
-      <AnimatePresence>{dropdown && <Dropdown />}</AnimatePresence>
+      <AnimatePresence>
+        {dropdown && <Dropdown showDropdown={showDropdown} />}
+      </AnimatePresence>
     </div>
   );
 }
 
-function Dropdown() {
+function Dropdown(props: { showDropdown: (x: boolean) => void }) {
   const dropdownItems = [
     { label: "music", href: "/music" },
     {
@@ -47,19 +49,16 @@ function Dropdown() {
       label: "linkedin",
       href: "https://linkedin.com/in/kevinjosethomas",
     },
-    {
-      label: "instagram",
-      href: "https://instagram.com/kevinjosethomas",
-    },
   ];
 
   return (
     <motion.div
-      className="absolute right-0 top-6 z-50 flex flex-col rounded-md border bg-black py-2 md:right-auto md:-left-4 2xl:top-8"
+      className="absolute right-0 top-6 z-50 flex flex-col rounded-md border border-white border-opacity-20 bg-black py-2 md:-left-4 md:right-auto 2xl:top-8"
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 10, opacity: 0 }}
       transition={{ duration: 0.3 }}
+      onClick={() => props.showDropdown(false)}
     >
       {dropdownItems.map((x, i) => (
         <Item key={i} {...x} />
@@ -70,11 +69,12 @@ function Dropdown() {
 
 function Item({ label, href }: { label: string; href: string }) {
   const internal = href.startsWith("/");
-  const style = "flex py-0.5 pl-4 pr-8 transition duration-300 hover:bg-white hover:bg-opacity-10";
+  const style =
+    "flex py-0.5 pl-4 pr-8 transition duration-300 hover:bg-white hover:bg-opacity-10";
 
-  const Container = ({ children }: { children: React.ReactElement }) =>
+  const LinkContainer = ({ children }: { children: React.ReactElement }) =>
     internal ? (
-      <Link to={href} className={style}>
+      <Link href={href} className={style}>
         {children}
       </Link>
     ) : (
@@ -84,8 +84,8 @@ function Item({ label, href }: { label: string; href: string }) {
     );
 
   return (
-    <Container>
+    <LinkContainer>
       <p className="text-lg text-white">{label}</p>
-    </Container>
+    </LinkContainer>
   );
 }

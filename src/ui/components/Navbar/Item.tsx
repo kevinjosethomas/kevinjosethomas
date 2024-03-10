@@ -1,14 +1,21 @@
+"use client";
+
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Link, useMatch } from "react-router-dom";
+import { usePathname } from "next/navigation";
 
 export default function Item({ label, href }: { label: string; href: string }) {
+  const pathname = usePathname();
   return (
     <div className="relative">
-      <Link to={href}>
-        <p className="font-std text-lg text-white 2xl:text-2xl">{label}</p>
+      <Link href={href}>
+        <p className="text-lg text-white 2xl:text-2xl">{label}</p>
       </Link>
-      {useMatch(href) && (
-        <motion.div layoutId="underline" className="absolute h-0.5 w-full rounded-full bg-white" />
+      {pathname == href && (
+        <motion.div
+          layoutId="underline"
+          className="absolute h-0.5 w-full rounded-full bg-white"
+        />
       )}
     </div>
   );

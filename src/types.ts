@@ -1,22 +1,54 @@
-export type Screen = {
-  label: string;
-  component: React.ReactElement;
-};
-
-export type Project = {
-  i: number;
-  status: ProjectStatus;
-  image: any;
+type Project = {
+  order?: number;
+  status: string;
+  slug: string;
   name: string;
-  href?: string;
-  time: string;
-  stat?: string;
+  stat: { label: string; color: string }[];
+  tags: { label: string; color: string }[];
   description: string;
-  tags: string[];
 };
 
-export enum ProjectStatus {
-  OFFLINE,
-  IDLE,
-  ONLINE,
-}
+type Hackathon = {
+  order?: number;
+  winner: boolean;
+  digital: boolean;
+  prize: string;
+  name: string;
+  organizer: string;
+  time: string;
+  description: string;
+};
+
+type Award = {
+  order?: number;
+  name: string;
+  organizer: string;
+  time: string;
+  description: string;
+};
+
+type Repository = {
+  order?: number;
+  name: string;
+  description: string;
+  stars: number;
+  forks: number;
+  language: string;
+  url: string;
+};
+
+type Stack = {
+  order?: number;
+  icon: string;
+  color: string;
+  name: string;
+  description: string;
+};
+
+type Technology = {
+  order?: number;
+  icon: string;
+  name: string;
+};
+
+export type { Project, Hackathon, Award, Repository, Stack, Technology };
