@@ -4,12 +4,12 @@ export default function Banner({ src, alt }: { src: string; alt: string }) {
       <img
         src={`/images/banners/${src}L.png`}
         alt={alt}
-        className="hidden xl:inline"
+        className="hidden md:inline"
       />
       <img
         src={`/images/banners/${src}.png`}
         alt={alt}
-        className="w-full xl:hidden"
+        className="w-full md:hidden"
       />
     </div>
   );
