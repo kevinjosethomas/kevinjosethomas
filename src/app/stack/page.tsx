@@ -58,14 +58,14 @@ export default function Stack() {
   ];
 
   return (
-    <div className="flex w-full flex-row items-start justify-between">
-      <div className="order-2 flex items-start gap-4 md:order-1 md:w-1/2">
-        <div className="grid grid-rows-4 gap-4">
+    <div className="flex w-full items-start justify-between">
+      <div className="order-2 flex flex-col items-start gap-4 md:order-1 md:w-1/2 md:flex-row">
+        <div className="grid grid-rows-4 gap-2 md:gap-4">
           {stacks.map((stack, i) => (
             <StackView key={i} order={i} {...stack} />
           ))}
         </div>
-        <div className="flex flex-col gap-1 xl:gap-1.5">
+        <div className="flex flex-wrap gap-1.5 md:flex-col md:gap-1 xl:gap-1.5">
           {technology.map((tech, i) => (
             <Technology key={i} order={i} {...tech} />
           ))}

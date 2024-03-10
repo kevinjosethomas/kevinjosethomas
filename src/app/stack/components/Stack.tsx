@@ -14,13 +14,13 @@ export default function Stack(props: StackType) {
       className="flex overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-5"
     >
       <div
-        className={`flex min-h-16 min-w-16 select-none items-center justify-center xl:min-h-28 xl:min-w-28 ${props.color}`}
+        className={`flex min-h-20 min-w-20 select-none items-center justify-center md:min-h-16 md:min-w-16 xl:min-h-28 xl:min-w-28 ${props.color}`}
       >
         <img
           src={props.icon}
           alt={props.name}
           draggable="false"
-          className="h-6 w-6 xl:h-8 xl:w-8"
+          className="h-8 w-8 md:h-6 md:w-6 xl:h-8 xl:w-8"
         />
       </div>
       <div className="flex flex-col justify-center p-4">
