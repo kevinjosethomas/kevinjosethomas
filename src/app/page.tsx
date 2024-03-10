@@ -18,7 +18,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col w-1/2 items-start text-white text-md gap-4 2xl:text-xl font-light text-opacity-75">
+    <div className="text-md flex w-1/2 flex-col items-start gap-4 font-light text-white text-opacity-75 2xl:text-xl">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

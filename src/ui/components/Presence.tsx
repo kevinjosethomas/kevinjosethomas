@@ -14,7 +14,7 @@ const Presence = memo(function () {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.6 }}
-          className="flex w-72 select-none items-center justify-start gap-3 overflow-hidden rounded-lg border border-opacity-20 border-white p-3 2xl:w-80"
+          className="flex w-72 select-none items-center justify-start gap-3 overflow-hidden rounded-lg border border-white border-opacity-20 p-3 2xl:w-80"
         >
           {data.spotify.album_art_url && (
             <img
@@ -37,7 +37,7 @@ const Presence = memo(function () {
               <img
                 src="/icons/spotify.svg"
                 alt="Spotify"
-                className="saturate-0 w-3 h-3"
+                className="h-3 w-3 saturate-0"
               />
             </div>
           </div>
@@ -54,7 +54,7 @@ const Presence = memo(function () {
           <img
             src="/icons/spotify.svg"
             alt="Spotify"
-            className="saturate-0 w-5 h-5"
+            className="h-5 w-5 saturate-0"
           />
           <p className="2xl:text-lg 3xl:text-xl">currently not listening...</p>
         </motion.a>

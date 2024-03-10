@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <div className="grid h-full min-h-screen bg-black 4xl:items-start 4xl:justify-center 4xl:py-48">
-          <div className="flex w-full max-w-[100vw] flex-col items-start gap-4 2xl:gap-8 md:py-24 md:px-36 2xl:max-w-screen-2xl 3xl:max-w-[1920px] 4xl:py-0">
+          <div className="flex w-full max-w-[100vw] flex-col items-start gap-4 md:px-36 md:py-24 2xl:max-w-screen-2xl 2xl:gap-8 3xl:max-w-[1920px] 4xl:py-0">
             <Navbar />
             {children}
           </div>
