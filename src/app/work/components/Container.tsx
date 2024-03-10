@@ -35,10 +35,12 @@ export default function Container({
         {screens.map((s, i) => (
           <div
             key={i}
-            className="relative cursor-pointer px-3 py-1 xl:px-6"
+            className="relative cursor-pointer px-2 py-1 md:px-3 xl:px-6"
             onClick={() => setScreen(s)}
           >
-            <p className="capitalize text-white xl:text-lg">{s}</p>
+            <p className="text-sm capitalize text-white md:text-base xl:text-lg">
+              {s}
+            </p>
             {screen == s && (
               <motion.div
                 layoutId="Highlight"
