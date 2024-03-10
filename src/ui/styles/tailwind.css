@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: black;
+}
+
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;

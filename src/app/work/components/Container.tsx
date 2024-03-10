@@ -30,7 +30,7 @@ export default function Container({
   const [screen, setScreen] = useState(screens[0]);
 
   return (
-    <div className="flex w-1/2 flex-col items-start gap-4">
+    <div className="order-2 flex w-full flex-col items-start gap-4 md:order-1 md:w-1/2">
       <div className="flex items-center rounded-full border-2 border-white border-opacity-20">
         {screens.map((s, i) => (
           <div

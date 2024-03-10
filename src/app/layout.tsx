@@ -34,8 +34,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <div className="grid h-full min-h-screen bg-black 4xl:items-start 4xl:justify-center 4xl:py-48">
-          <div className="flex w-full max-w-[100vw] flex-col items-start gap-4 md:px-36 md:py-24 2xl:max-w-screen-2xl 2xl:gap-8 3xl:max-w-[1920px] 4xl:py-0">
+        <div className="relative m-4 grid h-full min-h-screen overflow-hidden bg-black pt-40 md:m-0 md:pt-0 4xl:items-start 4xl:justify-center 4xl:py-48">
+          <div className="flex w-full max-w-[calc(100vw-2rem)] flex-col items-start gap-4 md:max-w-[100vw] md:px-36 md:py-24 2xl:max-w-screen-2xl 2xl:gap-8 3xl:max-w-[1920px] 4xl:py-0">
             <Navbar />
             {children}
           </div>

@@ -59,7 +59,7 @@ export default function Stack() {
 
   return (
     <div className="flex w-full flex-row items-start justify-between">
-      <div className="flex w-1/2 items-start gap-4">
+      <div className="order-2 flex items-start gap-4 md:order-1 md:w-1/2">
         <div className="grid grid-rows-4 gap-4">
           {stacks.map((stack, i) => (
             <StackView key={i} order={i} {...stack} />
@@ -71,7 +71,7 @@ export default function Stack() {
           ))}
         </div>
       </div>
-      <Banner src="/images/banners/3L.png" alt="Stack" />
+      <Banner src="3" alt="Stack" />
     </div>
   );
 }
