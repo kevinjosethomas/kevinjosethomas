@@ -1,6 +1,8 @@
 "use client";
-import { Fragment, useState } from "react";
+
 import { motion } from "framer-motion";
+import { Fragment, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import Award from "./Award";
 import Project from "./Project";
@@ -24,8 +26,14 @@ export default function Container({
   awards: AwardType[];
   opensource: RepositoryType[];
 }) {
-  const screens = ["Projects", "Hackathons", "Opensource", "Awards"];
-  const [screen, setScreen] = useState(screens[0]);
+  const screens = ["projects", "hackathons", "opensource", "awards"];
+
+  const search = useSearchParams();
+  const initialScreen = search.get("s") || "";
+
+  const [screen, setScreen] = useState(
+    screens.includes(initialScreen) ? initialScreen : screens[0],
+  );
 
   return (
     <div className="flex w-1/2 flex-col items-start gap-4">
@@ -35,7 +43,7 @@ export default function Container({
             className="relative cursor-pointer px-6 py-1"
             onClick={() => setScreen(s)}
           >
-            <p className="text-lg text-white">{s}</p>
+            <p className="text-lg capitalize text-white">{s}</p>
             {screen == s && (
               <motion.div
                 layoutId="Highlight"
@@ -46,11 +54,11 @@ export default function Container({
         ))}
       </div>
       <div className="flex w-full flex-col items-start gap-4">
-        {screen == "Projects" ? (
+        {screen == "projects" ? (
           projects.map((project, i) => (
             <Project key={i} order={i} {...project} />
           ))
-        ) : screen == "Hackathons" ? (
+        ) : screen == "hackathons" ? (
           <Fragment>
             {hackathons.map((hackathon, i) => (
               <Hackathon key={i} order={i} {...hackathon} />
@@ -71,7 +79,7 @@ export default function Container({
               </p>
             </motion.a>
           </Fragment>
-        ) : screen == "Opensource" ? (
+        ) : screen == "opensource" ? (
           <div className="grid w-full auto-rows-fr grid-cols-2 gap-4">
             {opensource.map((repository, i) => (
               <Repository key={i} order={i} {...repository} />
