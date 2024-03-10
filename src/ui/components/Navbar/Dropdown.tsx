@@ -31,12 +31,14 @@ export default function Container() {
         className="h-4 cursor-pointer select-none 2xl:h-6"
         onClick={() => showDropdown((x) => !x)}
       />
-      <AnimatePresence>{dropdown && <Dropdown />}</AnimatePresence>
+      <AnimatePresence>
+        {dropdown && <Dropdown showDropdown={showDropdown} />}
+      </AnimatePresence>
     </div>
   );
 }
 
-function Dropdown() {
+function Dropdown(props: { showDropdown: (x: boolean) => void }) {
   const dropdownItems = [
     { label: "music", href: "/music" },
     {
@@ -51,11 +53,12 @@ function Dropdown() {
 
   return (
     <motion.div
-      className="absolute right-0 top-6 z-50 flex flex-col rounded-md border bg-black py-2 md:right-auto md:-left-4 2xl:top-8"
+      className="absolute right-0 top-6 z-50 flex flex-col rounded-md border bg-black py-2 md:-left-4 md:right-auto 2xl:top-8"
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 10, opacity: 0 }}
       transition={{ duration: 0.3 }}
+      onClick={() => props.showDropdown(false)}
     >
       {dropdownItems.map((x, i) => (
         <Item key={i} {...x} />

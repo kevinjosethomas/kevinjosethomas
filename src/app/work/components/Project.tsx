@@ -36,7 +36,7 @@ export default function Project(props: ProjectType) {
           </p>
         </div>
       </div>
-      <div className="flex w-full flex-row gap-2 overflow-scroll px-4 pb-4">
+      <div className="no-scrollbar flex w-full flex-row gap-2 overflow-scroll px-4 pb-4">
         {props.stat.map((tag, i) => (
           <Tag key={i} {...tag} highlight />
         ))}

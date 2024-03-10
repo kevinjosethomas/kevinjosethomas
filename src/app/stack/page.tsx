@@ -71,7 +71,7 @@ export default function Stack() {
           ))}
         </div>
       </div>
-      <Banner src="/images/banners/3L.png" alt="Home" />
+      <Banner src="/images/banners/3L.png" alt="Stack" />
     </div>
   );
 }

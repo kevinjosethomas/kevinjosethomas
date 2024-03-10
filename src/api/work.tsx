@@ -1,9 +1,10 @@
+import { cache } from "react";
+
 import Notion from "./notion";
 import GitHub from "./github";
-
 import { Project, Hackathon, Award, Repository } from "@/types";
 
-async function FetchProjects() {
+export const FetchProjects = cache(async () => {
   const projects: Project[] = [];
   const projects_raw: any = await Notion.databases.query({
     database_id: "0cb59344e6b3442b8a375c949622aa90",
@@ -28,9 +29,9 @@ async function FetchProjects() {
   }
 
   return projects;
-}
+});
 
-async function FetchHackathons() {
+export const FetchHackathons = cache(async () => {
   const hackathons: Hackathon[] = [];
   const hackathons_raw: any = await Notion.databases.query({
     database_id: "7bdc9362f0534cad976a7eb25af8c32c",
@@ -50,9 +51,9 @@ async function FetchHackathons() {
   }
 
   return hackathons;
-}
+});
 
-async function FetchAwards() {
+export const FetchAwards = cache(async () => {
   const awards: Award[] = [];
   const awards_raw: any = await Notion.databases.query({
     database_id: "ebad95f0019c4e29beb075a8b5a8c407",
@@ -69,9 +70,9 @@ async function FetchAwards() {
   }
 
   return awards;
-}
+});
 
-async function FetchOpensource() {
+export const FetchOpensource = cache(async () => {
   const repos: Repository[] = [];
   const repos_raw = (
     await GitHub.request("GET /users/{username}/repos", {
@@ -92,6 +93,4 @@ async function FetchOpensource() {
   }
 
   return repos;
-}
-
-export { FetchProjects, FetchHackathons, FetchAwards, FetchOpensource };
+});

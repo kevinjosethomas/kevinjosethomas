@@ -21,7 +21,7 @@ export default async function Work() {
         awards={awards}
         opensource={opensource}
       />
-      <Banner src="/images/banners/2L.png" alt="Home" />
+      <Banner src="/images/banners/2L.png" alt="Work" />
     </div>
   );
 }
