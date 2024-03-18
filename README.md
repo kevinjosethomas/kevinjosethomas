@@ -17,11 +17,11 @@ I'm a high school junior from Vancouver with a passion for computer science and 
 <!--START_SECTION:waka-->
 
 ```txt
-TypeScript   8 hrs 7 mins    ██████████████████████▓░░   91.32 %
-Bash         24 mins         █░░░░░░░░░░░░░░░░░░░░░░░░   04.64 %
-Markdown     11 mins         ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.20 %
-XML          4 mins          ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.75 %
-Git Config   1 min           ░░░░░░░░░░░░░░░░░░░░░░░░░   00.32 %
+TypeScript   4 hrs 12 mins   █████████████████████▓░░░   86.38 %
+Python       15 mins         █▒░░░░░░░░░░░░░░░░░░░░░░░   05.12 %
+JSON         10 mins         █░░░░░░░░░░░░░░░░░░░░░░░░   03.63 %
+Bash         8 mins          ▓░░░░░░░░░░░░░░░░░░░░░░░░   03.02 %
+XML          2 mins          ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.88 %
 ```
 
 <!--END_SECTION:waka-->
