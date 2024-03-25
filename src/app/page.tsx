@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <div className="flex w-full flex-row items-start justify-between">
-      <div className="text-md order-2 flex flex-col items-start gap-2 font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-4 2xl:text-xl">
+      <div className="order-2 flex flex-col items-start gap-2 text-base font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-4 2xl:text-xl">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

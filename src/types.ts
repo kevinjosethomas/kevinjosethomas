@@ -51,4 +51,12 @@ type Technology = {
   name: string;
 };
 
-export type { Project, Hackathon, Award, Repository, Stack, Technology };
+type Paper = {
+  index?: number;
+  order?: number;
+  name: string;
+  date: string;
+  tags: { label: string; color: string }[];
+};
+
+export type { Project, Hackathon, Award, Repository, Stack, Technology, Paper };

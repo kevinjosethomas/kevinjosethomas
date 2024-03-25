@@ -40,6 +40,7 @@ export default function Container() {
 
 function Dropdown(props: { showDropdown: (x: boolean) => void }) {
   const dropdownItems = [
+    { label: "papers", href: "/papers" },
     { label: "music", href: "/music" },
     {
       label: "github",
