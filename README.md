@@ -1,4 +1,4 @@
-# Hello! 👋 I'm Kevin Thomas //
+# Hello! 👋 I'm Kevin Thomas // [![wakatime](https://wakatime.com/badge/user/e9d16d74-e01d-4a37-8086-9257e0bde1c2.svg?style=flat-square)](https://wakatime.com/@e9d16d74-e01d-4a37-8086-9257e0bde1c2)
 
 I'm a high school junior from Vancouver with a passion for computer science and software development. I'm working on developing efficient software with modern design and exceptional user experiences. Outside of the academic grind, I invest my time into learning new tech, participating in hackathons and working on a few side projects. Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️
 
@@ -13,7 +13,6 @@ I'm a high school junior from Vancouver with a passion for computer science and 
 
 
 # Code
-
 <!--START_SECTION:waka-->
 
 ```txt
