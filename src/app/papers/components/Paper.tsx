@@ -12,9 +12,9 @@ export default function Paper(props: PaperType) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 * (props.index || 0.1) }}
-      className="group flex w-full grid-cols-10 flex-col items-start justify-start gap-2 rounded px-2 py-1 transition duration-300 hover:bg-white hover:bg-opacity-10 md:grid md:gap-4"
+      className="group flex w-full flex-col items-start justify-between gap-2 rounded px-2 py-1 transition duration-300 hover:bg-white hover:bg-opacity-10 md:flex-row md:items-center"
     >
-      <div className="relative col-span-7 flex w-full items-center gap-2 overflow-hidden">
+      <div className="relative flex items-center justify-start gap-2 overflow-hidden">
         <img src="/icons/paper.svg" alt="Paper" className="w-3 opacity-75" />
         <img
           src="/icons/paper-solid.svg"
@@ -23,13 +23,15 @@ export default function Paper(props: PaperType) {
         />
         <p className="truncate text-white text-opacity-75">{props.name}</p>
       </div>
-      <div className="col-span-3 flex items-center justify-end gap-4">
+      <div className="flex items-center justify-end gap-4">
         <div className="flex items-center gap-1">
           {props.tags.map((tag, index) => (
             <Tag key={index} {...tag} />
           ))}
         </div>
-        <p className="text-white text-opacity-75">{props.date}</p>
+        <p className="whitespace-nowrap text-white text-opacity-75">
+          {props.date}
+        </p>
       </div>
     </motion.a>
   );
