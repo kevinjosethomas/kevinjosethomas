@@ -1,4 +1,4 @@
-# Hello! 👋 I'm Kevin Thomas //
+# Hello! 👋 I'm Kevin Thomas // [![wakatime](https://wakatime.com/badge/user/e9d16d74-e01d-4a37-8086-9257e0bde1c2.svg?style=flat-square)](https://wakatime.com/@e9d16d74-e01d-4a37-8086-9257e0bde1c2)
 
 I'm a high school junior from Vancouver with a passion for computer science and software development. I'm working on developing efficient software with modern design and exceptional user experiences. Outside of the academic grind, I invest my time into learning new tech, participating in hackathons and working on a few side projects. Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️
 
@@ -13,15 +13,21 @@ I'm a high school junior from Vancouver with a passion for computer science and 
 
 
 # Code
-
 <!--START_SECTION:waka-->
 
 ```txt
-TypeScript    6 hrs 37 mins   ██████████████████▒░░░░░░   72.68 %
-Python        1 hr 44 mins    ████▓░░░░░░░░░░░░░░░░░░░░   19.16 %
-JavaScript    15 mins         ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.89 %
-Prisma        13 mins         ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.44 %
-JSON          5 mins          ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.94 %
+Total Time: 1,782 hrs 5 mins
+
+Python                     539 hrs 42 mins ███████▒░░░░░░░░░░░░░░░░░   29.85 %
+JavaScript                 417 hrs 29 mins █████▓░░░░░░░░░░░░░░░░░░░   23.09 %
+TypeScript                 293 hrs 15 mins ████░░░░░░░░░░░░░░░░░░░░░   16.22 %
+JSX                        198 hrs 33 mins ██▓░░░░░░░░░░░░░░░░░░░░░░   10.98 %
+HTML                       135 hrs 35 mins ██░░░░░░░░░░░░░░░░░░░░░░░   07.50 %
+JSON                       37 hrs 39 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.08 %
+CSS                        35 hrs 13 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.95 %
+Java                       31 hrs 5 mins   ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.72 %
+SQL                        28 hrs 47 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.59 %
+Other                      25 hrs 56 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.43 %
 ```
 
 <!--END_SECTION:waka-->
