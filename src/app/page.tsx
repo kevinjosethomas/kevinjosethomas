@@ -16,6 +16,10 @@ export default function Home() {
       label: "Linkedin",
       href: "https://linkedin.com/in/kevinjosethomas",
     },
+    {
+      label: "Email",
+      href: "mailto:kevin.jt2007@gmail.com",
+    },
   ];
 
   return (
@@ -58,16 +62,8 @@ export default function Home() {
           transition={{ duration: 0.3, delay: 0.4 }}
           className="flex flex-col md:flex-row"
         >
-          I&apos;m looking for new opportunities.
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.5 }}
-          className="flex flex-col md:flex-row"
-        >
-          Reach out:{" "}
-          <div className="flex items-center gap-2 md:ml-2">
+          Lets talk —{" "}
+          <div className="flex items-center gap-2 md:ml-1">
             {socials.map((s, i) => (
               <a key={i} href={s.href} target="_blank" rel="noreferrer">
                 <Highlight>{s.label}</Highlight>
