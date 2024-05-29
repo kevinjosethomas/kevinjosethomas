@@ -25,6 +25,7 @@ export const FetchProjects = cache(async () => {
         color: x.color,
       })),
       description: project.properties.description.rich_text[0]?.plain_text,
+      href: project.properties.href.url,
     });
   }
 

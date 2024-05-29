@@ -6,6 +6,7 @@ type Project = {
   stat: { label: string; color: string }[];
   tags: { label: string; color: string }[];
   description: string;
+  href?: string;
 };
 
 type Hackathon = {

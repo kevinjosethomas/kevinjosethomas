@@ -5,13 +5,35 @@ import { motion } from "framer-motion";
 import { Project as ProjectType } from "../../../types";
 
 export default function Project(props: ProjectType) {
+  let Container;
+  if (props.href) {
+    Container = ({ children }: { children: React.ReactNode }) => (
+      <motion.a
+        target="_blank"
+        href={props.href}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.1 * (props.order || 0.1) }}
+        className="flex w-full flex-col overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-5"
+      >
+        {children}
+      </motion.a>
+    );
+  } else {
+    Container = ({ children }: { children: React.ReactNode }) => (
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.1 * (props.order || 0.1) }}
+        className="flex w-full flex-col overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-5"
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.1 * (props.order || 0.1) }}
-      className="flex w-full flex-col overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-5"
-    >
+    <Container>
       <div className="flex w-full flex-row items-start gap-4 p-4">
         <img
           src={`/images/projects/${props.slug}.png`}
@@ -44,7 +66,7 @@ export default function Project(props: ProjectType) {
           <Tag key={i} {...tag} />
         ))}
       </div>
-    </motion.div>
+    </Container>
   );
 }
 
