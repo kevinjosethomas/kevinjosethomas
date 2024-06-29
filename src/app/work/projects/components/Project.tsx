@@ -20,14 +20,14 @@ export default function Project({
       >
         <Image src="/icons/left-arrow.svg" width={16} height={16} />
       </Link>
-      <div className="relative h-[300px] w-[1024px] select-none overflow-hidden">
+      <div className="relative h-[400px] w-[1024px] select-none overflow-hidden">
         <div className="absolute h-full w-full bg-gradient-to-b from-transparent to-black"></div>
         <Image
           draggable={false}
           src={`/images/banners/${banner}`}
           alt={name}
           width={1024}
-          height={300}
+          height={400}
         />
       </div>
       <div className="z-50 -mt-24 flex items-center gap-3">
