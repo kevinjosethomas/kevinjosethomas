@@ -18,7 +18,12 @@ export default function Project({
         href="/work"
         className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 transition duration-300 hover:bg-neutral-700"
       >
-        <Image src="/icons/left-arrow.svg" width={16} height={16} />
+        <Image
+          alt="Left Arrow"
+          src="/icons/left-arrow.svg"
+          width={16}
+          height={16}
+        />
       </Link>
       <div className="relative h-[400px] w-[1024px] select-none overflow-hidden">
         <div className="absolute h-full w-full bg-gradient-to-b from-transparent to-black"></div>
