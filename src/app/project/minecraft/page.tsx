@@ -1,6 +1,73 @@
+"use client";
+
+import { useState } from "react";
+import { Gallery } from "react-grid-gallery";
+import "yet-another-react-lightbox/styles.css";
+import Lightbox from "yet-another-react-lightbox";
+
 import Project from "../components/Project";
 
 export default function Minecraft() {
+  const [index, setIndex] = useState(-1);
+
+  const images = [
+    {
+      src: "/images/projects/minecraft/1.jpg",
+      width: 800,
+      height: 449,
+    },
+    {
+      src: "/images/projects/minecraft/2.jpg",
+      width: 1100,
+      height: 618,
+    },
+    {
+      src: "/images/projects/minecraft/3.jpg",
+      width: 2514,
+      height: 1266,
+    },
+    {
+      src: "/images/projects/minecraft/4.jpg",
+      width: 1824,
+      height: 1026,
+    },
+    {
+      src: "/images/projects/minecraft/5.jpg",
+      width: 1929,
+      height: 1095,
+    },
+    {
+      src: "/images/projects/minecraft/6.jpg",
+      width: 1920,
+      height: 1080,
+    },
+    {
+      src: "/images/projects/minecraft/7.jpg",
+      width: 1824,
+      height: 1026,
+    },
+    {
+      src: "/images/projects/minecraft/8.jpg",
+      width: 1920,
+      height: 1080,
+    },
+    {
+      src: "/images/projects/minecraft/9.jpg",
+      width: 1921,
+      height: 1126,
+    },
+    {
+      src: "/images/projects/minecraft/10.jpg",
+      width: 1100,
+      height: 618,
+    },
+    {
+      src: "/images/projects/minecraft/11.jpg",
+      width: 1100,
+      height: 618,
+    },
+  ];
+
   return (
     <Project
       name="minecraft.global"
@@ -44,6 +111,17 @@ export default function Minecraft() {
         skills I still utilize today. I've attached some images of the v2
         website, as well some screenshots from the v1 design process below.
       </p>
+      <Gallery
+        images={images}
+        enableImageSelection={false}
+        onClick={(i: number) => setIndex(i)}
+      />
+      <Lightbox
+        slides={images}
+        open={index >= 0}
+        index={index}
+        close={() => setIndex(-1)}
+      />
     </Project>
   );
 }
