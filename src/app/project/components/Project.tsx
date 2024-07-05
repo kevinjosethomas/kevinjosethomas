@@ -25,7 +25,7 @@ export default function Project({
           height={16}
         />
       </Link>
-      <div className="relative h-[400px] w-[1024px] select-none overflow-hidden">
+      <div className="relative -z-20 h-[400px] w-[1024px] select-none overflow-hidden">
         <div className="absolute h-full w-full bg-gradient-to-b from-transparent to-black"></div>
         <Image
           draggable={false}
@@ -44,7 +44,9 @@ export default function Project({
         />
         <p className="text-4xl font-bold text-white">{name}</p>
       </div>
-      <div className="flex flex-col">{children}</div>
+      <div className="flex flex-col gap-4 text-xl font-light leading-relaxed text-white text-opacity-70">
+        {children}
+      </div>
     </div>
   );
 }
