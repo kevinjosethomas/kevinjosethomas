@@ -95,11 +95,11 @@ export default function Minecraft() {
       <p>
         After our launch, we assisted over 200 Minecraft servers to connect with
         over 20,000 new players and we earned hundreds of dollars in ad revenue.
-        Unfortunately, despite having a phenomenal product, I didn't have the
-        time to commit to scaling the project to its full potential and stopped
-        working on it in early 2022. However, although being idle, the website
-        continues to help over 2000 Minecraft players find new servers every
-        month and also assists server owners with getting their projects
+        Unfortunately, despite having a phenomenal product, I didn&apos;t have
+        the time to commit to scaling the project to its full potential and
+        stopped working on it in early 2022. However, although being idle, the
+        website continues to help over 2000 Minecraft players find new servers
+        every month and also assists server owners with getting their projects
         discovered.
       </p>
       <p>
@@ -108,7 +108,7 @@ export default function Minecraft() {
         was an incredible learning experience and thoroughly tested my
         commitment and willpower. It helped me develop a stronger understanding
         of web development and modern tech stacks, and provided me with many
-        skills I still utilize today. I've attached some images of the v2
+        skills I still utilize today. I&apos;ve attached some images of the v2
         website, as well some screenshots from the v1 design process below.
       </p>
       <Gallery
