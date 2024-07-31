@@ -16,11 +16,11 @@ I'm a high school junior from Vancouver with a passion for computer science and 
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 1,860 hrs 27 mins
+Total Time: 1,860 hrs 53 mins
 
 Python                     570 hrs 57 mins ███████▓░░░░░░░░░░░░░░░░░   30.26 %
-JavaScript                 417 hrs 48 mins █████▓░░░░░░░░░░░░░░░░░░░   22.15 %
-TypeScript                 311 hrs 36 mins ████░░░░░░░░░░░░░░░░░░░░░   16.52 %
+JavaScript                 417 hrs 48 mins █████▓░░░░░░░░░░░░░░░░░░░   22.14 %
+TypeScript                 311 hrs 36 mins ████░░░░░░░░░░░░░░░░░░░░░   16.51 %
 JSX                        198 hrs 33 mins ██▓░░░░░░░░░░░░░░░░░░░░░░   10.52 %
 HTML                       135 hrs 38 mins █▓░░░░░░░░░░░░░░░░░░░░░░░   07.19 %
 JSON                       38 hrs 4 mins   ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.02 %
