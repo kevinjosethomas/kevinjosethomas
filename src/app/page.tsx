@@ -31,7 +31,7 @@ export default function Home() {
           transition={{ duration: 0.3 }}
           className="inline"
         >
-          I&apos;m a high school junior from <Highlight>Vancouver</Highlight>{" "}
+          I&apos;m a high school senior from <Highlight>Vancouver</Highlight>{" "}
           with a passion for computer science and software development.
         </motion.div>
         <motion.div
@@ -39,7 +39,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
         >
-          Over the last four years, I have built proficiency in{" "}
+          Over the last five years, I have built proficiency in{" "}
           <Highlight>Python</Highlight>, <Highlight>TypeScript</Highlight>,{" "}
           <Highlight>React</Highlight> and <Highlight>PostgreSQL</Highlight>. I
           use my full-stack experience to work on developing efficient software
@@ -50,11 +50,16 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
         >
-          Although most of my time is in school, I enjoy learning about new
-          technology, participating in hackathons and occasionally freelancing
-          or working on side projects. I&apos;m currently working on{" "}
-          <Highlight href="https://bcydc.ca/">BCYDC</Highlight>, a community for
-          high school developers in British Columbia.
+          I&apos;m currently working at the{" "}
+          <Highlight href="https://csslab.cs.toronto.edu/">
+            Computational Social Science Lab
+          </Highlight>{" "}
+          at the University of Toronto , where I help develop various projects
+          in the Maia ecosystem. I&apos;m also leading the{" "}
+          <Highlight href="https://bcydc.ca/">
+            British Columbia Youth Developer Collective
+          </Highlight>
+          , a community for high school developers in British Columbia.
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
