@@ -8,7 +8,7 @@ export default function Paper(props: PaperType) {
   return (
     <motion.a
       target="_blank"
-      href={`/papers/${props.order}.pdf`}
+      href={props.href}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 * (props.index || 0.1) }}

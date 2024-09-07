@@ -54,9 +54,9 @@ type Technology = {
 
 type Paper = {
   index?: number;
-  order?: number;
   name: string;
   date: string;
+  href: string;
   tags: { label: string; color: string }[];
 };
 
