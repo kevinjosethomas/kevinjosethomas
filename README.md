@@ -1,6 +1,10 @@
 # Hello! 👋 I'm Kevin Thomas
 
-I'm a high school senior from Vancouver with a passion for computer science and software development. I use my full-stack experience to develop efficient software with modern design and exceptional user experiences. I'm currently working at the [Computational Social Science Lab](https://csslab.cs.toronto.edu/) at the University of Toronto, where I help develop algorithmic teaching tools to enhance human-AI collaboration in chess. I'm also leading the [British Columbia Youth Developer Collective](https://bcydc.ca/), a community of over 300 high school developers in British Columbia. I enjoy exploring new cities, learning about new technology, and playing badminton :) Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️
+I'm a high school senior from Vancouver with a passion for computer science and software development. I use my full-stack experience to develop efficient software with modern design and exceptional user experiences.
+
+I'm currently working at the [Computational Social Science Lab](https://csslab.cs.toronto.edu/) at the University of Toronto, where I help develop algorithmic teaching tools to enhance human-AI collaboration in chess. I'm also leading the [British Columbia Youth Developer Collective](https://bcydc.ca/), a community of over 300 high school developers in British Columbia.
+
+I enjoy exploring new cities, learning about new technology, and playing badminton :) Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️
 
 ## Projects
 - **Maia Web:** A web platform built on top of Maia, a human-like neural network chess engine ([Website](https://maiachess.com/))
