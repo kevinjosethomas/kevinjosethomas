@@ -10,7 +10,7 @@ const font = Karla({ subsets: ["latin"] });
 const identity = {
   title: "Kevin Thomas",
   description:
-    "Hey! I'm Kevin Thomas, a high school junior from Vancouver with a passion for computer science and software development.",
+    "Hey! I'm Kevin Thomas, a high school senior from Vancouver with a passion for computer science and software development.",
 };
 export const metadata: Metadata = {
   ...identity,
