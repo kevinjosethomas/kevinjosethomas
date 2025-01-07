@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
-import { Hackathon as HackathonType } from "@/types";
+import { HackathonInterface } from "@/types";
 
-export default function Hackathon(props: HackathonType) {
+export default function Hackathon(props: HackathonInterface) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}

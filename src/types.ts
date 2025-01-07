@@ -1,15 +1,20 @@
-type Project = {
-  order?: number;
+type Tag = {
+  name: string;
+  color: string;
+};
+
+interface ProjectInterface {
+  id?: number;
   status: string;
   slug: string;
   name: string;
-  stat: { label: string; color: string }[];
-  tags: { label: string; color: string }[];
+  tags: Tag[];
   description: string;
+  stat?: Tag;
   href?: string;
-};
+}
 
-type Hackathon = {
+interface HackathonInterface {
   order?: number;
   winner: boolean;
   digital: boolean;
@@ -18,17 +23,17 @@ type Hackathon = {
   organizer: string;
   time: string;
   description: string;
-};
+}
 
-type Award = {
+interface AwardInterface {
   order?: number;
   name: string;
   organizer: string;
   time: string;
   description: string;
-};
+}
 
-type Repository = {
+interface RepositoryInterface {
   order?: number;
   name: string;
   description: string;
@@ -36,28 +41,36 @@ type Repository = {
   forks: number;
   language: string;
   url: string;
-};
+}
 
-type Stack = {
+interface StackInterface {
   order?: number;
   icon: string;
   color: string;
   name: string;
   description: string;
-};
+}
 
-type Technology = {
+interface TechnologyInterface {
   order?: number;
   icon: string;
   name: string;
-};
+}
 
-type Paper = {
+interface PaperInterface {
   index?: number;
   name: string;
   date: string;
   href: string;
   tags: { label: string; color: string }[];
-};
+}
 
-export type { Project, Hackathon, Award, Repository, Stack, Technology, Paper };
+export type {
+  ProjectInterface,
+  HackathonInterface,
+  AwardInterface,
+  RepositoryInterface,
+  StackInterface,
+  TechnologyInterface,
+  PaperInterface,
+};

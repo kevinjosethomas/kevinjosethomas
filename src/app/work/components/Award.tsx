@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
-import { Award as AwardType } from "@/types";
+import { AwardInterface } from "@/types";
 
-export default function Award(props: AwardType) {
+export default function Award(props: AwardInterface) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}

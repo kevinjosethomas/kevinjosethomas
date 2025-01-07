@@ -9,7 +9,7 @@ export default function Item({ label, href }: { label: string; href: string }) {
   return (
     <div className="relative">
       <Link href={href}>
-        <p className="text-lg text-white 2xl:text-2xl">{label}</p>
+        <p className="select-none text-lg text-white 2xl:text-2xl">{label}</p>
       </Link>
       {pathname == href && (
         <motion.div

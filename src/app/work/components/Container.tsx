@@ -7,23 +7,23 @@ import Award from "./Award";
 import Project from "./Project";
 import Hackathon from "./Hackathon";
 import {
-  Project as ProjectType,
-  Hackathon as HackathonType,
-  Award as AwardType,
-  Repository as RepositoryType,
+  AwardInterface,
+  ProjectInterface,
+  HackathonInterface,
+  RepositoryInterface,
 } from "@/types";
 import Repository from "./Repository";
 
 export default function Container({
-  projects,
-  hackathons,
-  awards,
-  opensource,
+  AWARDS,
+  PROJECTS,
+  HACKATHONS,
+  OPENSOURCE,
 }: {
-  projects: ProjectType[];
-  hackathons: HackathonType[];
-  awards: AwardType[];
-  opensource: RepositoryType[];
+  AWARDS: AwardInterface[];
+  PROJECTS: ProjectInterface[];
+  HACKATHONS: HackathonInterface[];
+  OPENSOURCE: RepositoryInterface[];
 }) {
   const screens = ["projects", "hackathons", "opensource", "awards"];
 
@@ -38,7 +38,7 @@ export default function Container({
             className="relative cursor-pointer px-2 py-1 md:px-3 xl:px-6"
             onClick={() => setScreen(s)}
           >
-            <p className="text-sm capitalize text-white md:text-base xl:text-lg">
+            <p className="select-none text-sm capitalize text-white md:text-base xl:text-lg">
               {s}
             </p>
             {screen == s && (
@@ -52,13 +52,13 @@ export default function Container({
       </div>
       <div className="flex w-full flex-col items-start gap-4">
         {screen == "projects" ? (
-          projects.map((project, i) => (
-            <Project key={i} order={i} {...project} />
+          PROJECTS.map((project: ProjectInterface, i: number) => (
+            <Project key={i} {...project} />
           ))
         ) : screen == "hackathons" ? (
           <Fragment>
-            {hackathons.map((hackathon, i) => (
-              <Hackathon key={i} order={i} {...hackathon} />
+            {HACKATHONS.map((hackathon: HackathonInterface, i: number) => (
+              <Hackathon key={i} {...hackathon} />
             ))}
             <motion.a
               target="_blank"
@@ -67,7 +67,7 @@ export default function Container({
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.3,
-                delay: 0.1 * (hackathons.length + 1),
+                delay: 0.1 * (HACKATHONS.length + 1),
               }}
               className="flex w-full items-center justify-center rounded border border-white border-opacity-20 py-2 hover:bg-white hover:bg-opacity-5 xl:py-4"
             >
@@ -78,12 +78,12 @@ export default function Container({
           </Fragment>
         ) : screen == "opensource" ? (
           <div className="grid w-full auto-rows-fr grid-cols-2 gap-4">
-            {opensource.map((repository, i) => (
+            {OPENSOURCE.map((repository, i) => (
               <Repository key={i} order={i} {...repository} />
             ))}
           </div>
         ) : (
-          awards.map((awards, i) => <Award key={i} order={i} {...awards} />)
+          AWARDS.map((awards, i) => <Award key={i} {...awards} />)
         )}
       </div>
     </div>

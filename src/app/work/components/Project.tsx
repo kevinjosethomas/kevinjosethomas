@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
-import { Project as ProjectType } from "../../../types";
+import { ProjectInterface } from "@/types";
 
-export default function Project(props: ProjectType) {
+export default function Project(props: ProjectInterface) {
   let Container;
   if (props.href) {
     Container = function Container({
@@ -18,7 +18,7 @@ export default function Project(props: ProjectType) {
           href={props.href}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.1 * (props.order || 0.1) }}
+          transition={{ duration: 0.3, delay: 0.1 * (props.id || 0.1) }}
           className="flex w-full flex-col overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-5"
         >
           {children}
@@ -35,7 +35,7 @@ export default function Project(props: ProjectType) {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.1 * (props.order || 0.1) }}
+          transition={{ duration: 0.3, delay: 0.1 * (props.id || 0.1) }}
           className="flex w-full flex-col overflow-hidden rounded-lg border border-white border-opacity-20 transition duration-300 hover:bg-white hover:bg-opacity-5"
         >
           {children}
@@ -48,9 +48,9 @@ export default function Project(props: ProjectType) {
     <Container>
       <div className="flex w-full flex-row items-start gap-4 p-4">
         <img
-          src={`/images/projects/${props.slug}.png`}
-          className="h-16 w-16 rounded"
           alt={props.name}
+          className="h-16 w-16 rounded"
+          src={`/images/projects/${props.slug}.png`}
         />
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
@@ -71,9 +71,7 @@ export default function Project(props: ProjectType) {
         </div>
       </div>
       <div className="no-scrollbar flex w-full items-center gap-2 overflow-scroll px-4 pb-4">
-        {props.stat.map((tag, i) => (
-          <Tag key={i} {...tag} highlight />
-        ))}
+        {props.stat && <Tag {...props.stat} highlight />}
         {props.tags.map((tag, i) => (
           <Tag key={i} {...tag} />
         ))}
@@ -83,11 +81,11 @@ export default function Project(props: ProjectType) {
 }
 
 function Tag({
-  label,
+  name,
   color,
   highlight,
 }: {
-  label: string;
+  name: string;
   color: string;
   highlight?: boolean;
 }) {
@@ -107,8 +105,7 @@ function Tag({
           style={{ backgroundColor: color }}
         />
       )}
-
-      <p className="text-xs font-light text-white xl:text-sm">{label}</p>
+      <p className="text-xs font-light text-white xl:text-sm">{name}</p>
     </div>
   );
 }
