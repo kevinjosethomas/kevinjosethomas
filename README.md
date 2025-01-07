@@ -15,7 +15,7 @@ I enjoy exploring new cities, learning about new technology, and playing badmint
 - **Maia Web:** A web platform built on top of Maia, a human-like neural network chess engine ([Website](https://maiachess.com/))
 - **Sign Language Translation:** An opensource ASL fingerspell recognition and semantic pose retrieval interface ([GitHub](https://github.com/kevinjosethomas/sign-language-processing), [Paper](https://arxiv.org/abs/2408.09311), [Video](https://www.youtube.com/watch?v=uuPxMWQRoXc))
 - **minecraft.global:** (400k+ visits) An intuitive Minecraft server list with exciting new features and phenomenal UI ([GitHub](https://github.com/kevinjosethomas?tab=repositories&q=minecraft&type=&language=&sort=), [Website](https://minecraft.global/))
-- **py-mon:** (120k+ downloads) A developer tool to automatically restart application when file changes are detected ([GitHub](https://github.com/kevinjosethomas/py-mon), [PyPi](https://pypi.org/project/py-mon/), [Stats](https://pypistats.org/packages/py-mon))
+- **py-mon:** (120k+ downloads) A developer tool to automatically restart a Python application when file changes are detected ([GitHub](https://github.com/kevinjosethomas/py-mon), [PyPi](https://pypi.org/project/py-mon/), [Stats](https://pypistats.org/packages/py-mon))
 - And many more ([GitHub](https://github.com/kevinjosethomas?tab=repositories), [Website](https://kevinjosethomas.com/work))
 
 ## Technology
