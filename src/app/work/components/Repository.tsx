@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
-import { Repository as RepositoryType } from "@/types";
+import { RepositoryInterface } from "@/types";
 
-export default function Repository(props: RepositoryType) {
+export default function Repository(props: RepositoryInterface) {
   return (
     <motion.a
       href={props.url}

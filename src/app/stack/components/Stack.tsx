@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
-import { Stack as StackType } from "@/types";
+import { StackInterface } from "@/types";
 
-export default function Stack(props: StackType) {
+export default function Stack(props: StackInterface) {
   return (
     <motion.div
       initial={{ y: 10, opacity: 0 }}

@@ -1,10 +1,10 @@
 import StackView from "./components/Stack";
 import Banner from "@/ui/components/Banner";
 import Technology from "./components/Technology";
-import { Stack as StackType, Technology as TechnologyType } from "@/types";
+import { StackInterface, TechnologyInterface } from "@/types";
 
 export default function Stack() {
-  const stacks: StackType[] = [
+  const stacks: StackInterface[] = [
     {
       icon: "/images/stack/python.svg",
       color: "bg-[#DFBA39]",
@@ -35,7 +35,7 @@ export default function Stack() {
     },
   ];
 
-  const technology: TechnologyType[] = [
+  const technology: TechnologyInterface[] = [
     { name: "NextJS", icon: "/images/stack/nextjs.svg" },
     { name: "Tailwind", icon: "/images/stack/tailwind.svg" },
     { name: "GitHub", icon: "/images/stack/github.svg" },

@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
-import { Technology as TechnologyType } from "@/types";
+import { TechnologyInterface } from "@/types";
 
-export default function Technology(props: TechnologyType) {
+export default function Technology(props: TechnologyInterface) {
   return (
     <motion.div
       initial={{ y: 10, opacity: 0 }}

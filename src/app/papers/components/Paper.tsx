@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
-import { Paper as PaperType } from "@/types";
+import { PaperInterface } from "@/types";
 
-export default function Paper(props: PaperType) {
+export default function Paper(props: PaperInterface) {
   return (
     <motion.a
       target="_blank"

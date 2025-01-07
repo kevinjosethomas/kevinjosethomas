@@ -1,6 +1,6 @@
-import { Paper } from "@/types";
+import { PaperInterface } from "@/types";
 
-export const Papers: Paper[] = [
+export const Papers: PaperInterface[] = [
   {
     name: "An Open-Source American Sign Language Fingerspell Recognition and Semantic Pose Retrieval Interface",
     href: "https://arxiv.org/abs/2408.09311",
@@ -9,7 +9,7 @@ export const Papers: Paper[] = [
   },
 ];
 
-export const LiteraryPapers: Paper[] = [
+export const LiteraryPapers: PaperInterface[] = [
   {
     name: "Responsible AI: Developing Artificial Intelligence with Moral Courage",
     href: "/papers/5.pdf",
