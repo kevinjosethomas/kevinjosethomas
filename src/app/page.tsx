@@ -50,30 +50,42 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
         >
-          I&apos;m currently:
-          <ul className="flex list-outside list-disc flex-col gap-1">
+          Right now, I&apos;m:
+          <ul className="flex list-outside list-disc flex-col gap-0.5 pl-4 md:pl-0">
             <li>
-              Working at UToronto&apos;s{" "}
-              <Highlight href="https://csslab.cs.toronto.edu/">
+              Working at the{" "}
+              <Highlight
+                icon="/icons/csslab.png"
+                href="https://csslab.cs.toronto.edu/"
+                rotate={1}
+              >
                 Computational Social Science Lab
               </Highlight>
-              , where I help develop algorithmic teaching tools to enhance
-              human-AI collaboration in chess
+              within the University of Toronto, where I help develop algorithmic
+              teaching tools to enhance human-AI collaboration in chess
             </li>
             <li>
               Organizing{" "}
-              <Highlight href="https://scrapyard.hackclub.com/">
-                Hack Club Scrapyard
+              <Highlight
+                icon="/icons/scrapyard.svg"
+                href="https://scrapyard.hackclub.com/"
+                rotate={2}
+              >
+                Hack Club Scrapyard,
               </Highlight>
-              , a global hackathon happening in Los Angeles and 100+ cities
-              around the world this winter!
+              a global high school hackathon happening in Los Angeles and 100+
+              cities around the world this winter!
             </li>
             <li>
               Leading the{" "}
-              <Highlight href="https://bcydc.ca/">
-                British Columbia Youth Developer Collective
+              <Highlight
+                icon="/icons/bcydc.svg"
+                href="https://bcydc.ca/"
+                rotate={1}
+              >
+                British Columbia Youth Developer Collective,
               </Highlight>
-              , a community of over 300 high school developers in British
+              a community of over 300 high school developers in British
               Columbia.
             </li>
           </ul>
