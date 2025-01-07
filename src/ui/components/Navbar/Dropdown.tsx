@@ -43,11 +43,19 @@ function Dropdown(props: { showDropdown: (x: boolean) => void }) {
     { label: "papers", href: "/papers" },
     { label: "music", href: "/music" },
     {
+      label: "knowledgebase",
+      href: "https://knowledge.kevinjosethomas.com/",
+    },
+  ];
+  const socials = [
+    {
       label: "github",
+      icon: "/icons/github.svg",
       href: "https://github.com/kevinjosethomas",
     },
     {
       label: "linkedin",
+      icon: "/icons/linkedin.svg",
       href: "https://linkedin.com/in/kevinjosethomas",
     },
   ];
@@ -61,9 +69,23 @@ function Dropdown(props: { showDropdown: (x: boolean) => void }) {
       transition={{ duration: 0.3 }}
       onClick={() => props.showDropdown(false)}
     >
-      {dropdownItems.map((x, i) => (
-        <Item key={i} {...x} />
-      ))}
+      <div className="flex flex-col">
+        {dropdownItems.map((x, i) => (
+          <Item key={i} {...x} />
+        ))}
+      </div>
+      <div className="mx-4 mb-2 mt-1 h-[1px] rounded bg-white/30" />
+      <div className="flex flex-row gap-2 px-4 py-1">
+        {socials.map((x, i) => (
+          <a href={x.href} key={i} target="_blank" rel="noreferrer">
+            <img
+              src={x.icon}
+              alt={x.label}
+              className="h-5 w-5 opacity-50 transition duration-300 hover:opacity-70"
+            />
+          </a>
+        ))}
+      </div>
     </motion.div>
   );
 }
