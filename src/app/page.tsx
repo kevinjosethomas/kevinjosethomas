@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
+import Banner from "@/ui/components/Banner";
 import Presence from "@/ui/components/Presence";
 import Highlight from "@/ui/components/Highlight";
-import Banner from "@/ui/components/Banner";
 
 export default function Home() {
   const socials = [
@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <div className="flex w-full flex-row items-start justify-between">
-      <div className="order-2 flex flex-col items-start gap-2 text-base font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-4 2xl:text-xl">
+      <div className="order-2 flex flex-col items-start gap-2 text-base font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-4 2xl:text-lg">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,16 +50,33 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
         >
-          I&apos;m currently working at the{" "}
-          <Highlight href="https://csslab.cs.toronto.edu/">
-            Computational Social Science Lab
-          </Highlight>{" "}
-          at the University of Toronto , where I help develop various projects
-          in the Maia ecosystem. I&apos;m also leading the{" "}
-          <Highlight href="https://bcydc.ca/">
-            British Columbia Youth Developer Collective
-          </Highlight>
-          , a community for high school developers in British Columbia.
+          I&apos;m currently:
+          <ul className="flex list-outside list-disc flex-col gap-1">
+            <li>
+              Working at UToronto&apos;s{" "}
+              <Highlight href="https://csslab.cs.toronto.edu/">
+                Computational Social Science Lab
+              </Highlight>
+              , where I help develop algorithmic teaching tools to enhance
+              human-AI collaboration in chess
+            </li>
+            <li>
+              Organizing{" "}
+              <Highlight href="https://scrapyard.hackclub.com/">
+                Hack Club Scrapyard
+              </Highlight>
+              , a global hackathon happening in Los Angeles and 100+ cities
+              around the world this winter!
+            </li>
+            <li>
+              Leading the{" "}
+              <Highlight href="https://bcydc.ca/">
+                British Columbia Youth Developer Collective
+              </Highlight>
+              , a community of over 300 high school developers in British
+              Columbia.
+            </li>
+          </ul>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
