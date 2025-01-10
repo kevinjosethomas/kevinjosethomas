@@ -34,7 +34,7 @@ I enjoy exploring new cities, learning about new technology, and playing badmint
 Total Time: 2,128 hrs 20 mins
 
 Python                     619 hrs         ███████▒░░░░░░░░░░░░░░░░░   28.72 %
-TypeScript                 486 hrs 6 mins  █████▓░░░░░░░░░░░░░░░░░░░   22.55 %
+TypeScript                 486 hrs 7 mins  █████▓░░░░░░░░░░░░░░░░░░░   22.55 %
 JavaScript                 425 hrs 17 mins █████░░░░░░░░░░░░░░░░░░░░   19.73 %
 JSX                        198 hrs 33 mins ██▒░░░░░░░░░░░░░░░░░░░░░░   09.21 %
 HTML                       136 hrs 2 mins  █▓░░░░░░░░░░░░░░░░░░░░░░░   06.31 %
