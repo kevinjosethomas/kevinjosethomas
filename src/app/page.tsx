@@ -56,7 +56,7 @@ export default function Home() {
               Working at the{" "}
               <Highlight
                 icon="/icons/csslab.png"
-                href="https://csslab.cs.toronto.edu/"
+                href="https://maiachess.com/"
                 rotate={1}
               >
                 Computational Social Science Lab
