@@ -141,7 +141,7 @@ const PROJECTS: ProjectInterface[] = [
     slug: "minecraft.global",
     name: "minecraft.global",
     stat: {
-      name: "275,000+ Visits",
+      name: "400,000+ Visits",
       color: "#44FE8C",
     },
     tags: [TAGS.NEXTJS, TAGS.POSTGRESQL, TAGS.STRIPE],
