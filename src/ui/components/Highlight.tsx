@@ -1,17 +1,19 @@
 export default function Highlight({
-  children,
   icon,
   href,
   rotate,
+  children,
+  className,
 }: {
   children: string;
+  className?: string;
   icon?: string;
   href?: string;
   rotate?: number;
 }) {
   const Content = () => (
     <div
-      className={`group relative inline-flex items-center bg-blue-600 bg-opacity-0 transition duration-300 hover:bg-opacity-30 ${icon && "gap-0.5 px-1.5"}`}
+      className={`group relative inline-flex items-center bg-blue-600 bg-opacity-0 transition duration-300 hover:bg-opacity-30 ${icon && "gap-0.5"} ${className}`}
     >
       {icon && (
         <img
