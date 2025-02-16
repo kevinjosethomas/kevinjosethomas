@@ -29,7 +29,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
+            transition={{ duration: 0.3, delay: 0.05 }}
             className="inline"
           >
             I&apos;m a high school senior from
@@ -43,7 +43,7 @@ export default function Home() {
             <motion.li
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
             >
               Working at UToronto&apos;s{" "}
               <Highlight
@@ -59,7 +59,7 @@ export default function Home() {
             <motion.li
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
             >
               Organizing
               <Highlight
@@ -76,7 +76,7 @@ export default function Home() {
             <motion.li
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
             >
               Leading the
               <Highlight
@@ -97,7 +97,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.5 }}
+            transition={{ duration: 0.3, delay: 0.25 }}
             className="inline"
           >
             Prior to this, I:
@@ -106,7 +106,7 @@ export default function Home() {
             <motion.li
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
             >
               Organized{" "}
               <Highlight
@@ -121,7 +121,7 @@ export default function Home() {
             <motion.li
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.7 }}
+              transition={{ duration: 0.3, delay: 0.35 }}
             >
               Worked on neural sign language translation, where I developed an
               open-source ASL fingerspell recognition and pose production model
@@ -129,7 +129,7 @@ export default function Home() {
                 <motion.li
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.8 }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
                 >
                   See my{" "}
                   <Highlight href="https://arxiv.org/abs/2408.09311">
@@ -149,7 +149,7 @@ export default function Home() {
             <motion.li
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.9 }}
+              transition={{ duration: 0.3, delay: 0.45 }}
             >
               Attended hackathons in{" "}
               <Highlight
@@ -180,7 +180,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 1 }}
+          transition={{ duration: 0.3, delay: 0.5 }}
         >
           <p>
             You can read my thoughts, notes and blog in my{" "}

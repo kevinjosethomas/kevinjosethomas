@@ -3,9 +3,7 @@
 import { motion } from "framer-motion";
 import { Fragment, useState } from "react";
 
-import Award from "./Award";
 import Project from "./Project";
-import Hackathon from "./Hackathon";
 import {
   AwardInterface,
   ProjectInterface,
@@ -13,6 +11,8 @@ import {
   RepositoryInterface,
 } from "@/types";
 import Repository from "./Repository";
+import AwardTimeline from "./AwardTimeline";
+import HackathonTimeline from "./HackathonTimeline";
 
 export default function Container({
   AWARDS,
@@ -57,9 +57,7 @@ export default function Container({
           ))
         ) : screen == "hackathons" ? (
           <Fragment>
-            {HACKATHONS.map((hackathon: HackathonInterface, i: number) => (
-              <Hackathon key={i} {...hackathon} />
-            ))}
+            <HackathonTimeline hackathons={HACKATHONS} />
             <motion.a
               target="_blank"
               href="https://devpost.com/kevinjosethomas/challenges"
@@ -69,7 +67,7 @@ export default function Container({
                 duration: 0.3,
                 delay: 0.1 * (HACKATHONS.length + 1),
               }}
-              className="flex w-full items-center justify-center rounded border border-white border-opacity-20 py-2 hover:bg-white hover:bg-opacity-5 xl:py-4"
+              className="flex w-full items-center justify-center rounded border border-white border-opacity-20 py-2 hover:bg-white hover:bg-opacity-5 xl:py-3"
             >
               <p className="font-light text-white xl:text-lg">
                 See my Devpost profile
@@ -83,7 +81,7 @@ export default function Container({
             ))}
           </div>
         ) : (
-          AWARDS.map((awards, i) => <Award key={i} {...awards} />)
+          <AwardTimeline awards={AWARDS} />
         )}
       </div>
     </div>
