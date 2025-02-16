@@ -11,15 +11,19 @@ export default function Highlight({
   href?: string;
   rotate?: number;
 }) {
-  const Content = () => (
+  const content = (
     <div
-      className={`group relative inline-flex items-center bg-blue-600 bg-opacity-0 transition duration-300 hover:bg-opacity-30 ${icon && "gap-0.5"} ${className}`}
+      className={`group relative inline-flex items-center bg-blue-600 bg-opacity-0 transition duration-300 hover:bg-opacity-30 ${
+        icon && "gap-0.5"
+      } ${className}`}
     >
       {icon && (
         <img
           src={icon}
           alt={icon}
-          className={`mr-1 h-3 w-3 ${rotate === 1 ? "rotate-12" : "-rotate-12"} duration-200 group-hover:rotate-0`}
+          className={`mr-1 h-3 w-3 ${
+            rotate === 1 ? "rotate-12" : "-rotate-12"
+          } duration-200 group-hover:rotate-0`}
         />
       )}
       <p className="z-40 text-white text-opacity-100">{children}</p>
@@ -30,10 +34,10 @@ export default function Highlight({
   if (href) {
     return (
       <a href={href} target="_blank">
-        <Content />
+        {content}
       </a>
     );
-  } else {
-    return <Content />;
   }
+
+  return content;
 }
