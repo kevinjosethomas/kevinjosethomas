@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <div className="flex w-full flex-row items-start justify-between">
-      <div className="order-2 flex flex-col items-start gap-2 text-base font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-6 2xl:text-lg">
+      <div className="order-2 flex flex-col items-start gap-4 text-base font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-6 2xl:text-lg">
         <div className="flex flex-col gap-2">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -92,7 +92,6 @@ export default function Home() {
             </motion.li>
           </ul>
         </div>
-
         <div className="flex flex-col">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -153,8 +152,8 @@ export default function Home() {
             >
               Attended hackathons in{" "}
               <Highlight
-                href="https://www.youtube.com/watch?v=UZEm5lONg7g"
                 icon="/icons/summit.svg"
+                href="https://www.youtube.com/watch?v=UZEm5lONg7g"
               >
                 San Francisco
               </Highlight>
@@ -170,7 +169,7 @@ export default function Home() {
                 UBC
               </Highlight>
               , and a{" "}
-              <Highlight href="https://youtu.be/hiG3fYq3xUU?si=XgL9ljrLBGPp4E_U&t=438">
+              <Highlight href="https://youtu.be/hiG3fYq3xUU?t=438">
                 train across Canada
               </Highlight>
               !
@@ -183,7 +182,7 @@ export default function Home() {
           transition={{ duration: 0.3, delay: 0.5 }}
         >
           <p>
-            You can read my thoughts, notes and blog in my{" "}
+            You can read my thoughts, notes, and blog in my{" "}
             <Highlight href="https://knowledge.kevinjosethomas.com/">
               Knowledgebase
             </Highlight>
