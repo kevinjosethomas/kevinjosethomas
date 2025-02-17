@@ -4,10 +4,8 @@ I'm a high school senior from Vancouver with a passion for computer science and 
 
 I'm currently:
 
-
-
 - Working at the [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/csslab.png?raw=true" width="14" height="14" /> Computational Social Science Lab](https://maiachess.com/) within the University of Toronto, where I help develop algorithmic teaching tools to enhance human-AI collaboration in chess
-- Organizing [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/scrapyard.svg" width="14" height="14" /> Hack Club Scrapyard](https://scrapyard.hackclub.com/), a global high school hackathon happening in Los Angeles and 100+ cities around the world this winter!
+- Organizing [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/scrapyard.svg" width="14" height="14" /> Hack Club Scrapyard](https://scrapyard.hackclub.com/), a global high school hackathon happening in Austin, Texas and 100+ cities around the world this winter!
 - Leading the [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/bcydc.svg" width="14" height="14" /> British Columbia Youth Developer Collective](https://bcydc.ca/), a community of over 300 high school developers in British Columbia.
 
 Prior to this, I:
