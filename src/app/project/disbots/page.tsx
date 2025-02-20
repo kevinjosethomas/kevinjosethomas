@@ -1,4 +1,6 @@
+"use client";
 import Project from "../components/Project";
+import DisbotsContent from "./disbots.mdx";
 
 export default function Disbots() {
   return (
@@ -12,6 +14,9 @@ export default function Disbots() {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
+      <div className="prose prose-invert max-w-none">
+        <DisbotsContent />
+      </div>
       <p>
         During my Grade 8 year, my school went digital because of the COVID
         pandemic, and I found myself with a lot of free time to code and do

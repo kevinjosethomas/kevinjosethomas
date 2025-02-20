@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Project from "../components/Project";
 import { Gallery } from "react-grid-gallery";
+import MinecraftContent from "./minecraft.mdx";
 import "yet-another-react-lightbox/styles.css";
 import Lightbox from "yet-another-react-lightbox";
-
-import Project from "../components/Project";
 
 export default function Minecraft() {
   const [index, setIndex] = useState(-1);
@@ -74,6 +74,9 @@ export default function Minecraft() {
       image="minecraft.global.png"
       banner="minecraft.global.png"
     >
+      <div className="prose prose-invert max-w-none">
+        <MinecraftContent />
+      </div>
       <p>
         When I moved from Toronto to Vancouver in mid-2021, my friend and I
         started working on a Minecraft server marketplace that would help server

@@ -1,4 +1,7 @@
+"use client";
+
 import Project from "../components/Project";
+import BCYDCContent from "./bcydc.mdx";
 
 export default function BCYDC() {
   return (
@@ -7,7 +10,9 @@ export default function BCYDC() {
       image="bcydc.png"
       banner="bcydc.png"
     >
-      <p>hi</p>
+      <div className="prose prose-invert max-w-none">
+        <BCYDCContent />
+      </div>
     </Project>
   );
 }
