@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <div className="flex w-full flex-col">
-      <div className="flex w-full flex-row items-start justify-between">
+      <div className="flex min-h-[80vh] w-full flex-row items-start justify-between">
         <div className="order-2 flex flex-col items-start gap-4 text-base font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-6 2xl:text-lg">
           <div className="flex flex-col gap-2">
             <motion.div
@@ -273,7 +273,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
-        className="mt-48 w-full border-t border-white border-opacity-10 pt-24"
+        className="mt-6 w-full border-t border-white border-opacity-10 pt-16"
       >
         <Timeline entries={TIMELINE} />
       </motion.div>
