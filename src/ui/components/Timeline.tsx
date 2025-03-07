@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { TimelineEntry } from "@/data/timeline";
 
 interface TimelineProps {
@@ -11,6 +11,8 @@ interface TimelineProps {
 
 export default function Timeline({ entries }: TimelineProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const entryRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const openModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
@@ -36,6 +38,37 @@ export default function Timeline({ entries }: TimelineProps) {
     });
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportHeight = window.innerHeight;
+      const viewportCenter = window.scrollY + viewportHeight / 2;
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      entryRefs.current.forEach((ref, index) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const entryCenter = window.scrollY + rect.top + rect.height / 2;
+          const distance = Math.abs(entryCenter - viewportCenter);
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        }
+      });
+
+      setActiveIndex(closestIndex);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="w-full">
       <h2 className="mb-8 text-2xl font-medium text-white">Timeline</h2>
@@ -45,12 +78,19 @@ export default function Timeline({ entries }: TimelineProps) {
           {entries.map((entry, index) => (
             <motion.div
               key={index}
+              ref={(el) => (entryRefs.current[index] = el)}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="relative pl-12"
+              className={`relative pl-12 transition-all duration-500 ${
+                activeIndex === index ? "opacity-100" : "opacity-70"
+              }`}
             >
-              <div className="absolute left-4 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-white" />
+              <div
+                className={`absolute left-4 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-white transition-all duration-500 ${
+                  activeIndex === index ? "scale-125" : ""
+                }`}
+              ></div>
               <p className="mb-1 text-sm text-white text-opacity-50">
                 {formatDate(entry.date)}
               </p>
@@ -61,11 +101,11 @@ export default function Timeline({ entries }: TimelineProps) {
                 {entry.description}
               </p>
               {entry.images.length > 0 && (
-                <div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-3">
                   {entry.images.map((image, imgIndex) => (
                     <div
                       key={imgIndex}
-                      className="group relative h-36 cursor-pointer overflow-hidden transition-all duration-300"
+                      className="group relative h-40 cursor-pointer overflow-hidden rounded-md transition-all duration-300"
                       onClick={() => openModal(image)}
                     >
                       <div className="flex h-full items-center justify-center">
@@ -75,7 +115,9 @@ export default function Timeline({ entries }: TimelineProps) {
                           width={0}
                           height={160}
                           sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, 33vw"
-                          className="h-36 w-auto object-contain grayscale filter transition-all duration-300 group-hover:filter-none"
+                          className={`h-40 w-auto object-contain transition-all duration-500 ${
+                            activeIndex === index ? "" : "grayscale"
+                          } group-hover:filter-none`}
                         />
                       </div>
                     </div>
