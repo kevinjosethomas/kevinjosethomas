@@ -101,11 +101,11 @@ export default function Timeline({ entries }: TimelineProps) {
                 {entry.description}
               </p>
               {entry.images.length > 0 && (
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-1">
                   {entry.images.map((image, imgIndex) => (
                     <div
                       key={imgIndex}
-                      className="group relative h-40 cursor-pointer overflow-hidden rounded-md transition-all duration-300"
+                      className="group relative h-36 cursor-pointer overflow-hidden transition-all duration-300"
                       onClick={() => openModal(image)}
                     >
                       <div className="flex h-full items-center justify-center">
@@ -115,7 +115,7 @@ export default function Timeline({ entries }: TimelineProps) {
                           width={0}
                           height={160}
                           sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, 33vw"
-                          className={`h-40 w-auto object-contain transition-all duration-500 ${
+                          className={`h-36 w-auto object-contain transition-all duration-500 ${
                             activeIndex === index ? "" : "grayscale"
                           } group-hover:filter-none`}
                         />
