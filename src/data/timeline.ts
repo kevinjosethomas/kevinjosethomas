@@ -32,7 +32,7 @@ export const timelineEntries: TimelineEntry[] = [
     ],
   },
   {
-    date: "2025-02-15",
+    date: "2024-11-16",
     title: "Won 1st place at UBC's Ascend Business Case Competition",
     description:
       "Worked with classmates to place 1st in the Novice Category at the Ascend Business Case Competition at UBC Sauder, competing against 150 high school students in developing an international expansion plan for Lotte Yukimi Daifuku.",

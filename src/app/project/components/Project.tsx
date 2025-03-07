@@ -35,17 +35,19 @@ export default function Project({
           height={400}
         />
       </div>
-      <div className="z-50 -mt-24 flex items-center gap-3">
-        <Image
-          src={`/images/projects/${image}`}
-          alt={name}
-          width={48}
-          height={48}
-        />
-        <p className="text-4xl font-bold text-white">{name}</p>
-      </div>
-      <div className="flex flex-col gap-4 text-xl font-light leading-relaxed text-white text-opacity-70">
-        {children}
+      <div className="flex w-[800px] flex-col items-start justify-start gap-4 self-center">
+        <div className="z-50 -mt-24 flex items-center gap-3">
+          <Image
+            src={`/images/projects/${image}`}
+            alt={name}
+            width={48}
+            height={48}
+          />
+          <p className="text-4xl font-bold text-white">{name}</p>
+        </div>
+        <div className="flex flex-col gap-4 text-xl font-light leading-relaxed text-white text-opacity-70">
+          {children}
+        </div>
       </div>
     </div>
   );
