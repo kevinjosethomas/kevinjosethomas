@@ -50,6 +50,48 @@ export const timelineEntries: TimelineEntry[] = [
       "/images/timeline/yvrhacks-4.jpg",
     ],
   },
+  {
+    date: "2024-09-15",
+    title: "Attended Hack the North at the University of Waterloo!",
+    description:
+      "Spent the weekend building Sign Engine, a modular sign language processing architecture to enable real-time sign language translation in various use-cases. In addition to building the modular API, I implemented the API in two client applications: a Chrome extension that adds a sign language interpreter to YouTube videos, and a web application that reads users' lips (using the Symphonic Labs API) and translates into ASL",
+    images: [
+      "/images/timeline/hackthenorth-1.jpg",
+      "/images/timeline/hackthenorth-2.jpg",
+    ],
+  },
+  {
+    date: "2024-07-24",
+    title: "Spent a week on a train hackathon across Canada",
+    description:
+      "Spent the weekend with 50 other high school students from around the world onboard the Hack Club Boreal Express, a 7-day hackathon onboard a train across Canada! We were hit by the Jasper wildfires so we couldn't make it to Montreal, but we toured the Linus Tech Tips office and had a great time in Vancouver!",
+    images: [
+      "/images/timeline/boreal-1.jpg",
+      "/images/timeline/boreal-2.jpg",
+      "/images/timeline/boreal-3.png",
+    ],
+  },
+  {
+    date: "2024-05-25",
+    title: "Published my work on Sign Language Processing",
+    description:
+      "Gave a talk about my sign language work (An Open-Source American Sign Language Fingerspell Recognition and Semantic Pose Retrieval Interface) to my classmates at Burnaby South, as well as UBC's SLPAA research team. Presented and shared my work through my demo YouTube video, and published my preprint on Cornell University's arXiv!",
+    images: [
+      "/images/timeline/asl-1.png",
+      "/images/timeline/asl-2.jpg",
+      "/images/timeline/asl-3.jpg",
+      "/images/timeline/asl-4.jpg",
+      "/images/timeline/asl-5.jpg",
+      "/images/timeline/asl-6.jpg",
+    ],
+  },
+  {
+    date: "2024-02-11",
+    title: "Attended the Hack Club Leaders' Summit in San Francisco",
+    description:
+      "Spent the weekend with 50 other high school students from around the world at the first ever Hack Club Leaders' Summit in San Francisco! Iterated on cool projects to bring back to our local program clubs, met other leaders from around the world, and discussed the future with Tom Preston-Werner, the Founder of GitHub!",
+    images: ["/images/timeline/summit-1.jpg", "/images/timeline/summit-2.jpg"],
+  },
 ];
 
 export default timelineEntries;

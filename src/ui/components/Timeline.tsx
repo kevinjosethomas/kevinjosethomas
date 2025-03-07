@@ -14,21 +14,33 @@ export default function Timeline({ entries }: TimelineProps) {
 
   const openModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
-    // Prevent body scrolling when modal is open
     document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setSelectedImage(null);
-    // Re-enable body scrolling
     document.body.style.overflow = "auto";
+  };
+
+  const formatDate = (dateString: string) => {
+    const [year, month, day] = dateString
+      .split("-")
+      .map((num) => parseInt(num, 10));
+
+    const date = new Date(year, month - 1, day);
+
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
   };
 
   return (
     <div className="w-full">
       <h2 className="mb-8 text-2xl font-medium text-white">Timeline</h2>
       <div className="relative">
-        <div className="absolute left-4 top-0 mt-2 h-full w-0.5 bg-white bg-opacity-10"></div>
+        <div className="absolute left-4 top-0 h-full w-0.5 bg-white bg-opacity-10"></div>
         <div className="flex flex-col gap-12 md:max-w-[60vw]">
           {entries.map((entry, index) => (
             <motion.div
@@ -38,26 +50,22 @@ export default function Timeline({ entries }: TimelineProps) {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="relative pl-12"
             >
-              <div className="absolute left-4 top-1.5 h-2.5 w-2.5 -translate-x-[4px] rounded-full bg-white" />
+              <div className="absolute left-4 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-white" />
               <p className="mb-1 text-sm text-white text-opacity-50">
-                {new Date(entry.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                {formatDate(entry.date)}
               </p>
-              <h3 className="mb-1 text-xl font-medium text-white">
+              <h3 className="mb-2 text-xl font-medium text-white">
                 {entry.title}
               </h3>
-              <p className="mb-3 text-base font-light text-white text-opacity-75">
+              <p className="mb-4 text-base text-white text-opacity-75">
                 {entry.description}
               </p>
               {entry.images.length > 0 && (
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-1">
                   {entry.images.map((image, imgIndex) => (
                     <div
                       key={imgIndex}
-                      className="group relative h-40 cursor-pointer overflow-hidden rounded-md transition-all duration-300"
+                      className="group relative h-36 cursor-pointer overflow-hidden transition-all duration-300"
                       onClick={() => openModal(image)}
                     >
                       <div className="flex h-full items-center justify-center">
@@ -67,7 +75,7 @@ export default function Timeline({ entries }: TimelineProps) {
                           width={0}
                           height={160}
                           sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, 33vw"
-                          className="h-40 w-auto object-contain saturate-[0.15] filter transition-all duration-300 group-hover:filter-none"
+                          className="h-36 w-auto object-contain grayscale filter transition-all duration-300 group-hover:filter-none"
                         />
                       </div>
                     </div>
@@ -94,7 +102,7 @@ export default function Timeline({ entries }: TimelineProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="relative max-h-[90vh] max-w-[90vw] overflow-hidden"
+              className="relative max-h-[90vh] max-w-[90vw] overflow-hidden rounded-lg"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
