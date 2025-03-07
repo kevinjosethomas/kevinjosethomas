@@ -10,7 +10,7 @@ export const timelineEntries: TimelineEntry[] = [
     date: "2025-03-03",
     title: "Organized Hack Club Scrapyard Flagship in Austin, TX",
     description:
-      "After four months of planning, we brought together 100 students from around the world to code together and build the scrappiest projects ever :) We're  running 80+ satellite hackathons in cities around the world on March 15-16! See scrapyard.hackclub.com",
+      "We brought together 100 students from around the world to code together and build the scrappiest projects ever. In two weeks, on March 15-16, we're running 80+ satellite hackathons in cities around the world! See scrapyard.hackclub.com",
     images: [
       "/images/timeline/scrapyard-1.jpeg",
       "/images/timeline/scrapyard-2.jpeg",

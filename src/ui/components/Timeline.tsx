@@ -28,7 +28,7 @@ export default function Timeline({ entries }: TimelineProps) {
     <div className="w-full">
       <h2 className="mb-8 text-2xl font-medium text-white">Timeline</h2>
       <div className="relative">
-        <div className="absolute left-4 top-0 h-full w-0.5 bg-white bg-opacity-10"></div>
+        <div className="absolute left-4 top-0 mt-2 h-full w-0.5 bg-white bg-opacity-10"></div>
         <div className="flex flex-col gap-12 md:max-w-[60vw]">
           {entries.map((entry, index) => (
             <motion.div
@@ -38,7 +38,7 @@ export default function Timeline({ entries }: TimelineProps) {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="relative pl-12"
             >
-              <div className="absolute left-4 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-white"></div>
+              <div className="absolute left-4 top-1.5 h-2.5 w-2.5 -translate-x-[4px] rounded-full bg-white" />
               <p className="mb-1 text-sm text-white text-opacity-50">
                 {new Date(entry.date).toLocaleDateString("en-US", {
                   year: "numeric",
@@ -46,10 +46,10 @@ export default function Timeline({ entries }: TimelineProps) {
                   day: "numeric",
                 })}
               </p>
-              <h3 className="mb-2 text-xl font-medium text-white">
+              <h3 className="mb-1 text-xl font-medium text-white">
                 {entry.title}
               </h3>
-              <p className="mb-4 text-base text-white text-opacity-75">
+              <p className="mb-3 text-base font-light text-white text-opacity-75">
                 {entry.description}
               </p>
               {entry.images.length > 0 && (
@@ -67,7 +67,7 @@ export default function Timeline({ entries }: TimelineProps) {
                           width={0}
                           height={160}
                           sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, 33vw"
-                          className="h-40 w-auto object-contain grayscale filter transition-all duration-300 group-hover:filter-none"
+                          className="h-40 w-auto object-contain saturate-[0.15] filter transition-all duration-300 group-hover:filter-none"
                         />
                       </div>
                     </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 import Banner from "@/ui/components/Banner";
 import Presence from "@/ui/components/Presence";
@@ -9,20 +10,40 @@ import Timeline from "@/ui/components/Timeline";
 import { TIMELINE } from "@/data";
 
 export default function Home() {
-  const socials = [
-    {
-      label: "GitHub",
-      href: "https://github.com/kevinjosethomas",
-    },
-    {
-      label: "Linkedin",
-      href: "https://linkedin.com/in/kevinjosethomas",
-    },
-    {
-      label: "Email",
-      href: "mailto:kevin.jt2007@gmail.com",
-    },
-  ];
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+
+  const scrollToTimeline = () => {
+    timelineRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setShowScrollIndicator(false);
+      } else {
+        setShowScrollIndicator(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // const socials = [
+  //   {
+  //     label: "GitHub",
+  //     href: "https://github.com/kevinjosethomas",
+  //   },
+  //   {
+  //     label: "Linkedin",
+  //     href: "https://linkedin.com/in/kevinjosethomas",
+  //   },
+  //   {
+  //     label: "Email",
+  //     href: "mailto:kevin.jt2007@gmail.com",
+  //   },
+  // ];
 
   return (
     <div className="flex w-full flex-col">
@@ -212,11 +233,47 @@ export default function Home() {
         </div>
         <Banner src="1" alt="Home" />
       </div>
+      <AnimatePresence>
+        {showScrollIndicator && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-8 left-1/2 z-10 -translate-x-1/2"
+          >
+            <motion.button
+              onClick={scrollToTimeline}
+              className="flex items-center gap-2 rounded-full border border-white border-opacity-20 bg-black bg-opacity-70 px-5 py-2 text-sm text-white backdrop-blur-sm transition-all duration-500 hover:border-opacity-40 hover:bg-opacity-80"
+              whileHover={{
+                boxShadow: "0 0 8px rgba(255, 255, 255, 0.3)",
+                y: -2,
+              }}
+            >
+              <span>See what&apos;s up</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 5v14M5 12l7 7 7-7" />
+              </svg>
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <motion.div
+        ref={timelineRef}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
-        className="mt-24 w-full pt-16"
+        className="mt-48 w-full border-t border-white border-opacity-10 pt-24"
       >
         <Timeline entries={TIMELINE} />
       </motion.div>
