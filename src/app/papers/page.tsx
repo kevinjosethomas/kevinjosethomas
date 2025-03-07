@@ -13,7 +13,7 @@ export default async function PaperPage() {
           <Paper key={index} index={index} {...paper} />
         ))}
       </div>
-      <Banner src="5" alt="Papers" />
+      <Banner src="4" alt="Papers" />
     </div>
   );
 }

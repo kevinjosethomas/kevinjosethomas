@@ -13,7 +13,7 @@ export default async function Music() {
         <Container order={2} type="album" data={albums} />
         <Container order={3} type="artist" data={artists} />
       </div>
-      <Banner src="4" alt="Music" />
+      <Banner src="5" alt="Music" />
     </div>
   );
 }
