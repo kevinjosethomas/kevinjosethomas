@@ -31,6 +31,25 @@ export const timelineEntries: TimelineEntry[] = [
       "/images/timeline/kscale-5.jpeg",
     ],
   },
+  {
+    date: "2025-02-15",
+    title: "Won 1st place at UBC's Ascend Business Case Competition",
+    description:
+      "Worked with classmates to place 1st in the Novice Category at the Ascend Business Case Competition at UBC Sauder, competing against 150 high school students in developing an international expansion plan for Lotte Yukimi Daifuku.",
+    images: ["/images/timeline/ascend-1.jpg", "/images/timeline/ascend-2.jpg"],
+  },
+  {
+    date: "2024-09-30",
+    title: "Organized yvrHacks—British Columbia's biggest youth hackathon",
+    description:
+      "Led the British Columbia Youth Collective to organize the biggest youth hackathon in British Columbia: 60+ students, $4000+ prizes and 500+ hours of collective hacking! See yvrhacks.ca",
+    images: [
+      "/images/timeline/yvrhacks-1.jpg",
+      "/images/timeline/yvrhacks-2.jpg",
+      "/images/timeline/yvrhacks-3.jpg",
+      "/images/timeline/yvrhacks-4.jpg",
+    ],
+  },
 ];
 
 export default timelineEntries;
