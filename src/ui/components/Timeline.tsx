@@ -38,6 +38,46 @@ export default function Timeline({ entries }: TimelineProps) {
     });
   };
 
+  // Parse markdown links in text
+  const parseMarkdownLinks = (text: string) => {
+    // Regular expression to match markdown links: [text](url)
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    // Find all markdown links in the text
+    while ((match = linkRegex.exec(text)) !== null) {
+      // Add text before the link
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+
+      // Add the link as JSX
+      const [_, linkText, linkUrl] = match;
+      parts.push(
+        <a
+          key={match.index}
+          href={linkUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border-b border-white border-opacity-30 transition-all duration-200 hover:border-opacity-70 hover:text-white"
+        >
+          {linkText}
+        </a>,
+      );
+
+      lastIndex = match.index + match[0].length;
+    }
+
+    // Add remaining text after the last link
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const viewportHeight = window.innerHeight;
@@ -98,7 +138,7 @@ export default function Timeline({ entries }: TimelineProps) {
                 {entry.title}
               </h3>
               <p className="mb-4 text-base text-white text-opacity-75">
-                {entry.description}
+                {parseMarkdownLinks(entry.description)}
               </p>
               {entry.images.length > 0 && (
                 <div className="flex flex-wrap gap-1">
