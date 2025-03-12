@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <div className="flex w-full flex-col">
       <div className="flex min-h-[80vh] w-full flex-row items-start justify-between">
-        <div className="order-2 flex flex-col items-start gap-4 text-base font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-6 2xl:text-lg">
+        <div className="order-2 flex flex-col items-start gap-4 text-base font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-8">
           <div className="flex flex-col gap-2">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -63,7 +63,7 @@ export default function Home() {
               with a passion for computer science and software development.
               I&apos;m currently:
             </motion.div>
-            <ul className="flex list-outside list-disc flex-col gap-0.5 pl-4 md:pl-4">
+            <ul className="flex list-outside list-disc flex-col gap-1.5 pl-4 md:pl-4">
               <motion.li
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -116,7 +116,7 @@ export default function Home() {
               </motion.li>
             </ul>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-2">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -125,7 +125,7 @@ export default function Home() {
             >
               Prior to this, I:
             </motion.div>
-            <ul className="flex list-outside list-disc flex-col gap-0.5 pl-4 md:pl-4">
+            <ul className="flex list-outside list-disc flex-col gap-1.5 pl-4 md:pl-4">
               <motion.li
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
