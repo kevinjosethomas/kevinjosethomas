@@ -39,15 +39,15 @@ I enjoy exploring new cities, learning about new technology, and playing badmint
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 2,263 hrs 3 mins
+Total Time: 2,263 hrs 38 mins
 
-Python                     664 hrs 10 mins ███████▒░░░░░░░░░░░░░░░░░   28.99 %
+Python                     664 hrs 10 mins ███████▒░░░░░░░░░░░░░░░░░   28.98 %
 TypeScript                 560 hrs 13 mins ██████░░░░░░░░░░░░░░░░░░░   24.45 %
-JavaScript                 428 hrs 20 mins ████▓░░░░░░░░░░░░░░░░░░░░   18.70 %
-JSX                        198 hrs 33 mins ██▒░░░░░░░░░░░░░░░░░░░░░░   08.67 %
-HTML                       136 hrs 3 mins  █▒░░░░░░░░░░░░░░░░░░░░░░░   05.94 %
+JavaScript                 428 hrs 20 mins ████▓░░░░░░░░░░░░░░░░░░░░   18.69 %
+JSX                        198 hrs 33 mins ██░░░░░░░░░░░░░░░░░░░░░░░   08.66 %
+HTML                       136 hrs 33 mins █▒░░░░░░░░░░░░░░░░░░░░░░░   05.96 %
 JSON                       44 hrs 43 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.95 %
-CSS                        37 hrs 59 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.66 %
+CSS                        38 hrs 3 mins   ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.66 %
 Java                       31 hrs 5 mins   ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.36 %
 SQL                        28 hrs 48 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.26 %
 Other                      27 hrs 54 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.22 %
