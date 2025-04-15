@@ -83,19 +83,18 @@ export default function Home() {
               <motion.li
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.15 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
               >
-                Organizing
+                Contracting for{" "}
                 <Highlight
-                  icon="/icons/scrapyard.svg"
-                  href="https://scrapyard.hackclub.com/"
-                  className="mx-1 px-0.5"
+                  icon="/icons/kscale.svg"
+                  href="https://kscale.dev/"
                   rotate={2}
                 >
-                  Hack Club Scrapyard,
+                  K-Scale Labs (YC24)
                 </Highlight>
-                a global high school hackathon happening in Austin, Texas and
-                100+ cities around the world this winter!
+                , where I help engineer the software layer for two humanoid
+                robots
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, y: 10 }}
@@ -129,17 +128,19 @@ export default function Home() {
               <motion.li
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
+                transition={{ duration: 0.3, delay: 0.15 }}
               >
-                Organized{" "}
+                Organized
                 <Highlight
-                  rotate={1}
-                  icon="/icons/yvrhacks.png"
-                  href="https://bcydc.ca/program/yvrhacks"
+                  icon="/icons/scrapyard.svg"
+                  href="https://scrapyard.hackclub.com/"
+                  className="mx-1 px-0.5"
+                  rotate={2}
                 >
-                  yvrHacks
+                  Hack Club Scrapyard,
                 </Highlight>
-                , British Columbia&apos;s biggest high school hackathon
+                a global high school hackathon in Austin, Texas and 60+ cities
+                around the world! (C$200,000 in funding)
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, y: 10 }}

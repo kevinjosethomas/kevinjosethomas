@@ -7,10 +7,29 @@ export interface TimelineEntry {
 
 export const timelineEntries: TimelineEntry[] = [
   {
+    date: "2025-04-13",
+    title: "Back to Palo Alto for K-Scale Labs",
+    description:
+      "Headed back to visit Palo Alto—learning about robotics, fundraising and reinforcement learning from designers, researchers, and engineers at K-Scale Labs! Will contract back in Canada!",
+    images: [
+      "/images/timeline/kscale2-1.jpg",
+      "/images/timeline/kscale2-2.jpg",
+    ],
+  },
+  {
+    date: "2025-03-15",
+    title: "Organized Scrapyard Vancouver",
+    description:
+      "My team at the British Columbia Youth Developer Collective brought together 85+ students from around British Columbia to work on cool scrappy projects—and we also broke our previous record for British Columbia's largest youth hackathon!",
+    images: ["/images/timeline/scrapyard-vancouver-1.jpg",
+      "/images/timeline/scrapyard-vancouver-2.jpg",
+    ],
+  },
+  {
     date: "2025-03-03",
     title: "Organized Hack Club Scrapyard Flagship in Austin, TX",
     description:
-      "We raised C$200,000 and flew in 100 students from around the world to build the scrappiest projects in Austin, TX. In two weeks, on March 15-16, we're running 80+ satellite hackathons in cities around the world! See [scrapyard.hackclub.com](https://scrapyard.hackclub.com)",
+      "We raised C$200,000 and flew in 100 students from around the world to build the scrappiest projects in Austin, TX. In two weeks, on March 15-16, we're running 60+ satellite hackathons in cities around the world! See [scrapyard.hackclub.com](https://scrapyard.hackclub.com)",
     images: [
       "/images/timeline/scrapyard-1.jpeg",
       "/images/timeline/scrapyard-2.jpeg",
@@ -20,9 +39,9 @@ export const timelineEntries: TimelineEntry[] = [
   },
   {
     date: "2025-02-25",
-    title: "Contracted for K-Scale Labs (YC24) in Palo Alto, CA",
+    title: "Visited K-Scale Labs (YC24) in Palo Alto, CA",
     description:
-      "Spent the week building robot heads for an opensource humanoid robotics startup in Palo Alto!",
+      "Spent the week learning at an opensource humanoid robotics startup! Will contract back in Canada!",
     images: [
       "/images/timeline/kscale-1.jpeg",
       "/images/timeline/kscale-2.jpeg",
@@ -47,14 +66,13 @@ export const timelineEntries: TimelineEntry[] = [
       "/images/timeline/yvrhacks-1.jpg",
       "/images/timeline/yvrhacks-2.jpg",
       "/images/timeline/yvrhacks-3.jpg",
-      "/images/timeline/yvrhacks-4.jpg",
     ],
   },
   {
     date: "2024-09-15",
     title: "Attended Hack the North at the University of Waterloo!",
     description:
-      "Spent the weekend building [Sign Engine](https://devpost.com/software/sign-engine), a modular sign language processing architecture to enable real-time sign language translation in various use-cases. In addition to building the modular API, I implemented the API in two client applications: a Chrome extension that adds a sign language interpreter to YouTube videos, and a web application that reads users' lips (using the Symphonic Labs API) and translates into ASL",
+      "Spent the weekend building [Sign Engine](https://devpost.com/software/sign-engine), a modular sign language processing API to enable real-time sign language translation, which I used to build a Chrome extension for live ASL interpretation of YouTube videos and a website that reads lips and translates into ASL",
     images: [
       "/images/timeline/hackthenorth-1.jpg",
       "/images/timeline/hackthenorth-2.jpg",
@@ -91,6 +109,27 @@ export const timelineEntries: TimelineEntry[] = [
     description:
       "Spent the weekend with 50 other high school students from around the world at the first ever [Hack Club Leaders' Summit](https://summit.hackclub.com) in San Francisco! Iterated on cool projects to bring back to our local program clubs, met other leaders from around the world, and discussed the future with Tom Preston-Werner, the Founder of GitHub!",
     images: ["/images/timeline/summit-1.jpg", "/images/timeline/summit-2.jpg"],
+  },
+  {
+    date: "2024-01-20",
+    title: "Won nwHacks 2024—my first in-person hackathon",
+    description:
+      "Attended nwHacks—Western Canada's biggest university-level hackathon (around 800 hackers)! I built NutriSnap—a computer vision React Native application that uses your phone camera to scan UPC codes or take photos of your food to track your nutrition.",
+    images: ["/images/timeline/nwhacks-1.jpg", "/images/timeline/nwhacks-2.jpg"],
+  },
+  {
+    date: "2023-07-28",
+    title: "Spent a month at Shad Western University",
+    description:
+      "Selected for Shad at Western University—where I spent a month with 80 other students from across Canada experiencing post-secondary life through lectures, workshops, and a month-long design project.",
+    images: ["/images/timeline/shad-1.jpg", "/images/timeline/shad-2.jpg"],
+  },
+  {
+    date: "2023-02-25",
+    title: "Placed 6th at Math Challengers",
+    description:
+      "Placed 6th individually at Math Challengers @ UBC, a math competition for high school students across British Columbia! Also placed 3rd as a team—qualifying for team provincials.",
+    images: ["/images/timeline/mathchallengers-1.jpg", "/images/timeline/mathchallengers-2.jpg"],
   },
 ];
 

@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useState, useRef, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { TimelineEntry } from "@/data/timeline";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 interface TimelineProps {
   entries: TimelineEntry[];
@@ -104,13 +104,6 @@ export default function Timeline({ entries }: TimelineProps) {
       const scrollPosition = window.scrollY + window.innerHeight;
       const documentHeight = document.body.scrollHeight;
 
-      const isNearBottom = scrollPosition >= documentHeight - 300;
-
-      if (isNearBottom && entries.length > 0) {
-        setActiveIndex(entries.length - 1);
-        return;
-      }
-
       let closestIndex = 0;
       let closestDistance = Infinity;
 
@@ -162,7 +155,7 @@ export default function Timeline({ entries }: TimelineProps) {
   ]);
 
   return (
-    <div className="w-full">
+    <div className="w-full mb-40">
       <h2 className="mb-8 text-2xl font-medium text-white">Timeline</h2>
       <div className="relative">
         <div className="absolute left-4 top-0 h-full w-0.5 bg-white bg-opacity-10"></div>
@@ -220,10 +213,6 @@ export default function Timeline({ entries }: TimelineProps) {
           ))}
         </div>
       </div>
-
-      {/* Add padding at the bottom to ensure the last entry can be scrolled to center */}
-      <div className="h-[15vh]"></div>
-
       <AnimatePresence>
         {selectedImage && (
           <motion.div
