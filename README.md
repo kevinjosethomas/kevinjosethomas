@@ -39,11 +39,11 @@ Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️ You can
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 2,304 hrs 10 mins
+Total Time: 2,305 hrs 1 min
 
-Python                     695 hrs 22 mins ███████▒░░░░░░░░░░░░░░░░░   29.81 %
-TypeScript                 565 hrs 54 mins ██████░░░░░░░░░░░░░░░░░░░   24.26 %
-JavaScript                 428 hrs 21 mins ████▓░░░░░░░░░░░░░░░░░░░░   18.36 %
+Python                     696 hrs 13 mins ███████▒░░░░░░░░░░░░░░░░░   29.83 %
+TypeScript                 565 hrs 54 mins ██████░░░░░░░░░░░░░░░░░░░   24.25 %
+JavaScript                 428 hrs 21 mins ████▓░░░░░░░░░░░░░░░░░░░░   18.35 %
 JSX                        198 hrs 33 mins ██░░░░░░░░░░░░░░░░░░░░░░░   08.51 %
 HTML                       136 hrs 33 mins █▒░░░░░░░░░░░░░░░░░░░░░░░   05.85 %
 JSON                       45 hrs 45 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.96 %
