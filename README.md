@@ -5,18 +5,18 @@ I'm a high school senior from Vancouver with a passion for computer science and 
 I'm currently:
 
 - Working at the [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/csslab.png?raw=true" width="14" height="14" /> Computational Social Science Lab](https://maiachess.com/) within the University of Toronto, where I help develop algorithmic teaching tools to enhance human-AI collaboration in chess
-- Organizing [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/scrapyard.svg" width="14" height="14" /> Hack Club Scrapyard](https://scrapyard.hackclub.com/), a global high school hackathon happening in Austin, Texas and 100+ cities around the world this winter!
+- Contracting for [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/kscale.svg?raw=true" width="14" height="14" /> K-Scale Labs (YC24)](https://kscale.dev/), where I help engineer the software layer for two humanoid robots
 - Leading the [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/bcydc.svg" width="14" height="14" /> British Columbia Youth Developer Collective](https://bcydc.ca/), a community of over 300 high school developers in British Columbia.
 
 Prior to this, I:
 
+- Organized [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/scrapyard.svg" width="14" height="14" /> Hack Club Scrapyard](https://scrapyard.hackclub.com/), a global high school hackathon in Austin, Texas and 60+ cities around the world! (C$200,000 in funding)
 - Organized [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/yvrhacks.png?raw=true" width="14" height="14" /> yvrHacks](https://bcydc.ca/program/yvrhacks), British Columbia's biggest high school hackathon
 - Worked on neural sign language translation, where I developed an open-source ASL fingerspell recognition and pose production model
   - See my [arXiv preprint](https://arxiv.org/abs/2408.09311), [demo video](https://www.youtube.com/watch?v=uuPxMWQRoXc), and [code](https://github.com/kevinjosethomas/sign-language-processing)
 - Attended hackathons in [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/summit.svg" width="14" height="14" /> San Francisco](https://www.youtube.com/watch?v=UZEm5lONg7g), [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/htn.svg" width="14" height="14" /> UWaterloo](https://devpost.com/software/sign-engine), [UBC](https://devpost.com/software/nutrition-facts), and [a train across Canada](https://youtu.be/hiG3fYq3xUU?t=438)!
 
-I enjoy exploring new cities, learning about new technology, and playing badminton :) Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️ You can read my thoughts, notes, and blog in my
-[Knowledgebase](https://knowledge.kevinjosethomas.com)!
+Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️ You can read my thoughts, notes, and blog in my [Knowledgebase](https://knowledge.kevinjosethomas.com)!
 
 ## Projects
 
@@ -39,14 +39,14 @@ I enjoy exploring new cities, learning about new technology, and playing badmint
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 2,301 hrs 6 mins
+Total Time: 2,307 hrs 28 mins
 
-Python                     694 hrs 9 mins  ███████▒░░░░░░░░░░░░░░░░░   29.79 %
-TypeScript                 565 hrs 11 mins ██████░░░░░░░░░░░░░░░░░░░   24.26 %
-JavaScript                 428 hrs 21 mins ████▓░░░░░░░░░░░░░░░░░░░░   18.39 %
-JSX                        198 hrs 33 mins ██░░░░░░░░░░░░░░░░░░░░░░░   08.52 %
-HTML                       136 hrs 33 mins █▒░░░░░░░░░░░░░░░░░░░░░░░   05.86 %
-JSON                       45 hrs 45 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.96 %
+Python                     697 hrs 27 mins ███████▒░░░░░░░░░░░░░░░░░   29.85 %
+TypeScript                 565 hrs 55 mins ██████░░░░░░░░░░░░░░░░░░░   24.22 %
+JavaScript                 428 hrs 21 mins ████▓░░░░░░░░░░░░░░░░░░░░   18.34 %
+JSX                        198 hrs 33 mins ██░░░░░░░░░░░░░░░░░░░░░░░   08.50 %
+HTML                       136 hrs 33 mins █▒░░░░░░░░░░░░░░░░░░░░░░░   05.85 %
+JSON                       45 hrs 57 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.97 %
 CSS                        38 hrs 3 mins   ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.63 %
 Java                       31 hrs 5 mins   ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.33 %
 SQL                        29 hrs 8 mins   ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.25 %
