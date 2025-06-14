@@ -6,16 +6,16 @@ export interface TimelineEntry {
 }
 
 export const timelineEntries: TimelineEntry[] = [
-  {
-    date: "2025-04-13",
-    title: "Back to Palo Alto for K-Scale Labs",
-    description:
-      "Headed back to visit Palo Alto—learning about robotics, fundraising and reinforcement learning from designers, researchers, and engineers at K-Scale Labs! Will contract back in Canada!",
-    images: [
-      "/images/timeline/kscale2-1.jpg",
-      "/images/timeline/kscale2-2.jpg",
-    ],
-  },
+  // {
+  //   date: "2025-04-13",
+  //   title: "Back to Palo Alto for K-Scale Labs",
+  //   description:
+  //     "Headed back to visit Palo Alto—learning about robotics, fundraising and reinforcement learning from designers, researchers, and engineers at K-Scale Labs! Will contract back in Canada!",
+  //   images: [
+  //     "/images/timeline/kscale2-1.jpg",
+  //     "/images/timeline/kscale2-2.jpg",
+  //   ],
+  // },
   {
     date: "2025-03-15",
     title: "Organized Scrapyard Vancouver",
@@ -37,19 +37,19 @@ export const timelineEntries: TimelineEntry[] = [
       "/images/timeline/scrapyard-4.jpg",
     ],
   },
-  {
-    date: "2025-02-25",
-    title: "Visited K-Scale Labs (YC24) in Palo Alto, CA",
-    description:
-      "Spent the week learning at an opensource humanoid robotics startup! Will contract back in Canada!",
-    images: [
-      "/images/timeline/kscale-1.jpeg",
-      "/images/timeline/kscale-2.jpeg",
-      "/images/timeline/kscale-3.jpeg",
-      "/images/timeline/kscale-4.jpeg",
-      "/images/timeline/kscale-5.jpeg",
-    ],
-  },
+  // {
+  //   date: "2025-02-25",
+  //   title: "Visited K-Scale Labs (YC24) in Palo Alto, CA",
+  //   description:
+  //     "Spent the week learning at an opensource humanoid robotics startup! Will contract back in Canada!",
+  //   images: [
+  //     "/images/timeline/kscale-1.jpeg",
+  //     "/images/timeline/kscale-2.jpeg",
+  //     "/images/timeline/kscale-3.jpeg",
+  //     "/images/timeline/kscale-4.jpeg",
+  //     "/images/timeline/kscale-5.jpeg",
+  //   ],
+  // },
   {
     date: "2024-11-16",
     title: "Won 1st place at UBC's Ascend Business Case Competition",
