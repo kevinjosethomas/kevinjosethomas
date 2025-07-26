@@ -39,18 +39,18 @@ Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️ You can
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 2,425 hrs 39 mins
+Total Time: 2,429 hrs 1 min
 
-Python                     705 hrs 15 mins ███████▒░░░░░░░░░░░░░░░░░   28.73 %
-TypeScript                 666 hrs 18 mins ██████▓░░░░░░░░░░░░░░░░░░   27.15 %
-JavaScript                 429 hrs 40 mins ████▒░░░░░░░░░░░░░░░░░░░░   17.51 %
-JSX                        198 hrs 33 mins ██░░░░░░░░░░░░░░░░░░░░░░░   08.09 %
-HTML                       136 hrs 44 mins █▒░░░░░░░░░░░░░░░░░░░░░░░   05.57 %
-JSON                       47 hrs 43 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.94 %
+Python                     705 hrs 15 mins ███████▒░░░░░░░░░░░░░░░░░   28.69 %
+TypeScript                 668 hrs 22 mins ██████▓░░░░░░░░░░░░░░░░░░   27.19 %
+JavaScript                 429 hrs 43 mins ████▒░░░░░░░░░░░░░░░░░░░░   17.48 %
+JSX                        198 hrs 33 mins ██░░░░░░░░░░░░░░░░░░░░░░░   08.08 %
+HTML                       136 hrs 44 mins █▒░░░░░░░░░░░░░░░░░░░░░░░   05.56 %
+JSON                       48 hrs 50 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.99 %
 CSS                        39 hrs 37 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.61 %
 Java                       31 hrs 20 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.28 %
-SQL                        29 hrs 21 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.20 %
-Other                      28 hrs 46 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.17 %
+SQL                        29 hrs 21 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.19 %
+Other                      28 hrs 50 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.17 %
 ```
 
 <!--END_SECTION:waka-->
