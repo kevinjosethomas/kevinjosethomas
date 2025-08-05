@@ -1,20 +1,18 @@
 # Hello! 👋 I'm Kevin Thomas
 
-I'm a high school senior from Vancouver with a passion for computer science and software development. I use my full-stack experience to develop efficient software with modern design and exceptional user experiences.
+I'm an incoming Computer Science student at the University of Waterloo. I use my full-stack experience to develop efficient software with modern design and exceptional user experiences.
 
 I'm currently:
 
 - Working at the [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/csslab.png?raw=true" width="14" height="14" /> Computational Social Science Lab](https://maiachess.com/) within the University of Toronto, where I help develop algorithmic teaching tools to enhance human-AI collaboration in chess
-- Contracting for [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/kscale.svg?raw=true" width="14" height="14" /> K-Scale Labs (YC24)](https://kscale.dev/), where I help engineer the software layer for two humanoid robots
-- Leading the [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/bcydc.svg" width="14" height="14" /> British Columbia Youth Developer Collective](https://bcydc.ca/), a community of over 300 high school developers in British Columbia.
 
 Prior to this, I:
 
+- Contracted for [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/kscale.svg?raw=true" width="14" height="14" /> K-Scale Labs (YC24)](https://kscale.dev/), where I helped engineer the software layer for two humanoid robots
 - Organized [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/scrapyard.svg" width="14" height="14" /> Hack Club Scrapyard](https://scrapyard.hackclub.com/), a global high school hackathon in Austin, Texas and 60+ cities around the world! (C$200,000 in funding)
-- Organized [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/yvrhacks.png?raw=true" width="14" height="14" /> yvrHacks](https://bcydc.ca/program/yvrhacks), British Columbia's biggest high school hackathon
+- Led the [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/bcydc.svg" width="14" height="14" /> British Columbia Youth Developer Collective](https://bcydc.ca/), a community of over 350 high school developers in British Columbia.
 - Worked on neural sign language translation, where I developed an open-source ASL fingerspell recognition and pose production model
   - See my [arXiv preprint](https://arxiv.org/abs/2408.09311), [demo video](https://www.youtube.com/watch?v=uuPxMWQRoXc), and [code](https://github.com/kevinjosethomas/sign-language-processing)
-- Attended hackathons in [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/summit.svg" width="14" height="14" /> San Francisco](https://www.youtube.com/watch?v=UZEm5lONg7g), [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/htn.svg" width="14" height="14" /> UWaterloo](https://devpost.com/software/sign-engine), [UBC](https://devpost.com/software/nutrition-facts), and [a train across Canada](https://youtu.be/hiG3fYq3xUU?t=438)!
 
 Check out my work on my [portfolio](https://kevinjosethomas.com/) ✌️ You can read my thoughts, notes, and blog in my [Knowledgebase](https://knowledge.kevinjosethomas.com)!
 
