@@ -21,7 +21,7 @@ export default function Highlight({
         <img
           src={icon}
           alt={icon}
-          className={`mr-1 h-3 w-3 ${
+          className={`mr-1 h-3 ${
             rotate === 1 ? "rotate-12" : "-rotate-12"
           } duration-200 group-hover:rotate-0`}
         />

@@ -40,8 +40,10 @@ export default function Container() {
 
 function Dropdown(props: { showDropdown: (x: boolean) => void }) {
   const dropdownItems = [
-    { label: "papers", href: "/papers" },
-    { label: "music", href: "/music" },
+    { label: "my work", href: "/work" },
+    { label: "my stack", href: "/stack" },
+    { label: "my papers", href: "/papers" },
+    { label: "now playing", href: "/music" },
     {
       label: "knowledgebase",
       href: "https://knowledge.kevinjosethomas.com/",
@@ -52,6 +54,11 @@ function Dropdown(props: { showDropdown: (x: boolean) => void }) {
       label: "github",
       icon: "/icons/github.svg",
       href: "https://github.com/kevinjosethomas",
+    },
+    {
+      label: "x",
+      icon: "/icons/x.svg",
+      href: "https://x.com/kevinjosethomas",
     },
     {
       label: "linkedin",
@@ -75,13 +82,19 @@ function Dropdown(props: { showDropdown: (x: boolean) => void }) {
         ))}
       </div>
       <div className="mx-4 mb-2 mt-1 h-[1px] rounded bg-white/30" />
-      <div className="flex flex-row gap-2 px-4 py-1">
+      <div className="flex flex-row items-center justify-center gap-4 px-4 py-3">
         {socials.map((x, i) => (
-          <a href={x.href} key={i} target="_blank" rel="noreferrer">
+          <a
+            href={x.href}
+            key={i}
+            target="_blank"
+            rel="noreferrer"
+            className="group"
+          >
             <img
               src={x.icon}
               alt={x.label}
-              className="h-5 w-5 opacity-50 transition duration-300 hover:opacity-70"
+              className="h-5 w-5 opacity-60 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100"
             />
           </a>
         ))}

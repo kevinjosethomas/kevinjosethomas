@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 import Banner from "@/ui/components/Banner";
-import Presence from "@/ui/components/Presence";
 import Highlight from "@/ui/components/Highlight";
 import Timeline from "@/ui/components/Timeline";
 import { TIMELINE } from "@/data";
@@ -12,6 +11,22 @@ import { TIMELINE } from "@/data";
 export default function Home() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+
+  const featuredArticles = [
+    {
+      title: "Another Week at K-Scale Labs",
+      href: "https://knowledge.kevinjosethomas.com/Thoughts/Another-Week-at-K-Scale-Labs",
+    },
+    {
+      title:
+        "Reflecting on Scrapyard — What We Did in Austin TX and 60+ Cities around the World",
+      href: "https://knowledge.kevinjosethomas.com/Thoughts/Reflecting-on-Scrapyard-%E2%80%94-What-We-Did-in-Austin-TX-and-60+-Cities-around-the-World",
+    },
+    {
+      title: "Stanford CS229 Lecture 1",
+      href: "https://knowledge.kevinjosethomas.com/Learning/Stanford-CS229/CS229-Lecture-1",
+    },
+  ];
 
   const scrollToTimeline = () => {
     timelineRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,186 +63,128 @@ export default function Home() {
   return (
     <div className="flex w-full flex-col">
       <div className="flex min-h-[80vh] w-full flex-row items-start justify-between">
-        <div className="order-2 flex flex-col items-start gap-4 text-base font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-8">
-          <div className="flex flex-col gap-2">
+        <div className="order-2 flex flex-col items-start gap-4 text-lg font-light text-white text-opacity-75 md:order-1 md:w-1/2 xl:gap-8 xl:text-lg">
+          <div className="flex flex-col gap-6">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.05 }}
-              className="inline"
+              transition={{ duration: 0.3, delay: 0.1 }}
             >
               I&apos;m an incoming Computer Science student at the University of
-              Waterloo. I&apos;m currently:
-            </motion.div>
-            <ul className="flex list-outside list-disc flex-col gap-1.5 pl-4 md:pl-4">
-              <motion.li
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
+              Waterloo. Currently, I lead engineering for the{" "}
+              <Highlight
+                rotate={1}
+                icon="/icons/maia.png"
+                href="https://maiachess.com/"
+                className="px-0.5"
               >
-                Working at the University of Toronto&apos;s{" "}
-                <Highlight
-                  icon="/icons/csslab.png"
-                  href="https://maiachess.com/"
-                  rotate={1}
-                >
-                  Computational Social Science Lab
-                </Highlight>
-                , where I develop the Maia Platform to enhance human-AI
-                collaboration in chess
-              </motion.li>
-            </ul>
-          </div>
-          <div className="flex flex-col gap-2">
+                Maia Chess
+              </Highlight>{" "}
+              project, where I get to work with{" "}
+              <Highlight href="https://www.cs.toronto.edu/~ashton/">
+                Dr. Ashton Anderson
+              </Highlight>{" "}
+              at UofT&apos;s Computational Social Science Lab.
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.25 }}
-              className="inline"
+              transition={{ duration: 0.3, delay: 0.2 }}
             >
-              Prior to this, I:
+              Previously, I was a contract software engineering intern at{" "}
+              <Highlight
+                icon="/icons/kscale.svg"
+                href="https://kscale.dev/"
+                rotate={2}
+              >
+                K-Scale Labs (YC24)
+              </Highlight>
+              , and worked on{" "}
+              <Highlight href="https://arxiv.org/abs/2408.09311">
+                neural sign language translation
+              </Highlight>
+              , developing an open-source ASL fingerspelling and pose-generation
+              model.{" "}
             </motion.div>
-            <ul className="flex list-outside list-disc flex-col gap-1.5 pl-4 md:pl-4">
-              <motion.li
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                Contracted for{" "}
-                <Highlight
-                  icon="/icons/kscale.svg"
-                  href="https://kscale.dev/"
-                  rotate={2}
-                >
-                  K-Scale Labs (YC24)
-                </Highlight>
-                , where I helped engineer the software layer for two humanoid
-                robots
-              </motion.li>
 
-              <motion.li
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.15 }}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+            >
+              I also organized{" "}
+              <Highlight
+                icon="/icons/scrapyard.svg"
+                href="https://scrapyard.hackclub.com/"
+                className="px-0.5"
+                rotate={2}
               >
-                Organized
-                <Highlight
-                  icon="/icons/scrapyard.svg"
-                  href="https://scrapyard.hackclub.com/"
-                  className="mx-1 px-0.5"
-                  rotate={2}
-                >
-                  Hack Club Scrapyard,
-                </Highlight>
-                a global high school hackathon in Austin, Texas and 60+ cities
-                around the world! (C$200,000 in funding)
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }}
+                Hack Club Scrapyard
+              </Highlight>
+              , a global high school hackathon in Austin TX and 60+ cities
+              around the world (C$200,000 in funding), and founded{" "}
+              <Highlight
+                icon="/icons/bcydc.svg"
+                href="https://bcydc.ca/"
+                className="px-0.5"
+                rotate={1}
               >
-                Founded the
-                <Highlight
-                  icon="/icons/bcydc.svg"
-                  href="https://bcydc.ca/"
-                  className="mx-1 px-0.5"
-                  rotate={1}
-                >
-                  British Columbia Youth Developer Collective,
-                </Highlight>
-                a community of over 350 high school developers in British
-                Columbia.
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.35 }}
-              >
-                Worked on neural sign language translation, where I developed an
-                open-source ASL fingerspell recognition and pose production
-                model
-                <ul className="mt-1 flex list-outside list-disc flex-col gap-0.5 pl-8">
-                  <motion.li
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.4 }}
-                  >
-                    See my{" "}
-                    <Highlight href="https://arxiv.org/abs/2408.09311">
-                      arXiv preprint
-                    </Highlight>
-                    ,{" "}
-                    <Highlight href="https://www.youtube.com/watch?v=uuPxMWQRoXc">
-                      demo video
-                    </Highlight>
-                    , and{" "}
-                    <Highlight href="https://github.com/kevinjosethomas/sign-language-processing">
-                      code
-                    </Highlight>
-                  </motion.li>
-                </ul>
-              </motion.li>
-              {/* <motion.li
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.45 }}
-              >
-                Attended hackathons in{" "}
-                <Highlight
-                  icon="/icons/summit.svg"
-                  href="https://www.youtube.com/watch?v=UZEm5lONg7g"
-                >
-                  San Francisco
-                </Highlight>
-                ,{" "}
-                <Highlight
-                  icon="/icons/htn.svg"
-                  href="https://devpost.com/software/sign-engine"
-                >
-                  UWaterloo
-                </Highlight>
-                ,{" "}
-                <Highlight href="https://devpost.com/software/nutrition-facts">
-                  UBC
-                </Highlight>
-                , and a{" "}
-                <Highlight href="https://youtu.be/hiG3fYq3xUU?t=438">
-                  train across Canada
-                </Highlight>
-                !
-              </motion.li> */}
-            </ul>
+                BCYDC
+              </Highlight>
+              , a community of over 350 high school developers across BC.
+            </motion.div>
           </div>
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.5 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
+            className="flex w-full items-center justify-center py-2"
           >
-            <p>
-              You can read my thoughts, notes, and blog in my{" "}
-              <Highlight href="https://knowledge.kevinjosethomas.com/">
-                Knowledgebase
-              </Highlight>
-              !
-            </p>
-          </motion.div>
-          {/* <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.6 }}
-            className="flex flex-col md:flex-row"
-          >
-            Lets talk —{" "}
-            <div className="flex items-center gap-2 md:ml-1">
-              {socials.map((s, i) => (
-                <a key={i} href={s.href} target="_blank" rel="noreferrer">
-                  <Highlight>{s.label}</Highlight>
-                </a>
-              ))}
+            <div className="flex items-center gap-3 text-sm text-white text-opacity-20">
+              <span>—</span>
+              <span>×</span>
+              <span>—</span>
             </div>
-          </motion.div> */}
-          {/* <Presence /> */}
+          </motion.div>
+
+          <div className="flex w-full flex-col gap-1">
+            <motion.div
+              className="text-sm"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.5 }}
+            >
+              <p>
+                I try to blog my thoughts, and notes from things I learn, in my{" "}
+                <Highlight href="https://knowledge.kevinjosethomas.com/">
+                  Knowledgebase
+                </Highlight>
+                . Here are three new articles:
+              </p>
+            </motion.div>
+
+            <motion.ul
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.6 }}
+              className="list-outside list-disc pl-6"
+            >
+              {featuredArticles.map((article, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.65 + i * 0.05 }}
+                >
+                  <Highlight href={article.href} className="text-sm">
+                    {article.title}
+                  </Highlight>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
         </div>
         <Banner src="1" alt="Home" />
       </div>
