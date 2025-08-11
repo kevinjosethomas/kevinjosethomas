@@ -56,12 +56,8 @@ export default function Home() {
               transition={{ duration: 0.3, delay: 0.05 }}
               className="inline"
             >
-              I&apos;m a high school senior from
-              <Highlight href="https://vancouver.ca/" className="mx-0.5 px-0.5">
-                Vancouver
-              </Highlight>
-              with a passion for computer science and software development.
-              I&apos;m currently:
+              I&apos;m an incoming Computer Science student at the University of
+              Waterloo. I&apos;m currently:
             </motion.div>
             <ul className="flex list-outside list-disc flex-col gap-1.5 pl-4 md:pl-4">
               <motion.li
@@ -69,7 +65,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
               >
-                Working at UToronto&apos;s{" "}
+                Working at the University of Toronto&apos;s{" "}
                 <Highlight
                   icon="/icons/csslab.png"
                   href="https://maiachess.com/"
@@ -79,39 +75,6 @@ export default function Home() {
                 </Highlight>
                 , where I develop the Maia Platform to enhance human-AI
                 collaboration in chess
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                Contracting for{" "}
-                <Highlight
-                  icon="/icons/kscale.svg"
-                  href="https://kscale.dev/"
-                  rotate={2}
-                >
-                  K-Scale Labs (YC24)
-                </Highlight>
-                , where I help engineer the software layer for two humanoid
-                robots
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }}
-              >
-                Leading the
-                <Highlight
-                  icon="/icons/bcydc.svg"
-                  href="https://bcydc.ca/"
-                  className="mx-1 px-0.5"
-                  rotate={1}
-                >
-                  British Columbia Youth Developer Collective,
-                </Highlight>
-                a community of over 300 high school developers in British
-                Columbia.
               </motion.li>
             </ul>
           </div>
@@ -128,6 +91,23 @@ export default function Home() {
               <motion.li
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+              >
+                Contracted for{" "}
+                <Highlight
+                  icon="/icons/kscale.svg"
+                  href="https://kscale.dev/"
+                  rotate={2}
+                >
+                  K-Scale Labs (YC24)
+                </Highlight>
+                , where I helped engineer the software layer for two humanoid
+                robots
+              </motion.li>
+
+              <motion.li
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.15 }}
               >
                 Organized
@@ -141,6 +121,23 @@ export default function Home() {
                 </Highlight>
                 a global high school hackathon in Austin, Texas and 60+ cities
                 around the world! (C$200,000 in funding)
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+              >
+                Founded the
+                <Highlight
+                  icon="/icons/bcydc.svg"
+                  href="https://bcydc.ca/"
+                  className="mx-1 px-0.5"
+                  rotate={1}
+                >
+                  British Columbia Youth Developer Collective,
+                </Highlight>
+                a community of over 350 high school developers in British
+                Columbia.
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, y: 10 }}
@@ -171,7 +168,7 @@ export default function Home() {
                   </motion.li>
                 </ul>
               </motion.li>
-              <motion.li
+              {/* <motion.li
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.45 }}
@@ -199,7 +196,7 @@ export default function Home() {
                   train across Canada
                 </Highlight>
                 !
-              </motion.li>
+              </motion.li> */}
             </ul>
           </div>
           <motion.div
