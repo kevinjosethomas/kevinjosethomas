@@ -101,8 +101,6 @@ export default function Timeline({ entries }: TimelineProps) {
     const handleScroll = () => {
       const viewportHeight = window.innerHeight;
       const viewportCenter = window.scrollY + viewportHeight / 2;
-      const scrollPosition = window.scrollY + window.innerHeight;
-      const documentHeight = document.body.scrollHeight;
 
       let closestIndex = 0;
       let closestDistance = Infinity;
@@ -155,7 +153,7 @@ export default function Timeline({ entries }: TimelineProps) {
   ]);
 
   return (
-    <div className="w-full mb-40">
+    <div className="mb-40 w-full">
       <h2 className="mb-8 text-2xl font-medium text-white">Timeline</h2>
       <div className="relative">
         <div className="absolute left-4 top-0 h-full w-0.5 bg-white bg-opacity-10"></div>
@@ -255,7 +253,7 @@ export default function Timeline({ entries }: TimelineProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="relative max-h-[90vh] max-w-[90vw] overflow-hidden rounded-lg"
+              className="relative max-h-[90vh] max-w-[90vw] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <Image

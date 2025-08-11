@@ -12,7 +12,7 @@ export default function Highlight({
   rotate?: number;
 }) {
   const content = (
-    <div
+    <p
       className={`group relative inline-flex items-center bg-blue-600 bg-opacity-0 transition duration-300 hover:bg-opacity-30 ${
         icon && "gap-0.5"
       } ${className}`}
@@ -28,7 +28,7 @@ export default function Highlight({
       )}
       <p className="z-40 text-white text-opacity-100">{children}</p>
       <div className="absolute bottom-0 left-0 h-[0.1rem] w-full bg-blue-500 opacity-0 transition duration-300 group-hover:opacity-50" />
-    </div>
+    </p>
   );
 
   if (href) {

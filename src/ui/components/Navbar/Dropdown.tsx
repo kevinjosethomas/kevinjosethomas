@@ -94,7 +94,7 @@ function Dropdown(props: { showDropdown: (x: boolean) => void }) {
             <img
               src={x.icon}
               alt={x.label}
-              className="h-5 w-5 opacity-60 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100"
+              className="h-5 w-5 opacity-60 transition-all duration-300 group-hover:opacity-100"
             />
           </a>
         ))}

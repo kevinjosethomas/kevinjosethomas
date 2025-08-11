@@ -157,9 +157,9 @@ export default function Home() {
             className="flex w-full select-none items-center justify-center py-2"
           >
             <div className="flex items-center gap-3 text-sm text-white text-opacity-20">
-              <span>—</span>
+              <div className="h-px w-6 bg-white bg-opacity-20"></div>
               <span>×</span>
-              <span>—</span>
+              <div className="h-px w-6 bg-white bg-opacity-20"></div>
             </div>
           </motion.div>
 
@@ -171,11 +171,12 @@ export default function Home() {
               transition={{ duration: 0.3, delay: 0.5 }}
             >
               <p>
-                I try to blog my thoughts, and notes from things I learn, in my{" "}
+                I try to blog my thoughts, and write takeaways from inspiring
+                resources, in my{" "}
                 <Highlight href="https://knowledge.kevinjosethomas.com/">
                   Knowledgebase
                 </Highlight>
-                . Here are three new articles:
+                . Here are a few articles:
               </p>
             </motion.div>
 

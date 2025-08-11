@@ -7,10 +7,22 @@ export interface TimelineEntry {
 
 export const timelineEntries: TimelineEntry[] = [
   {
+    date: "2025-08-01",
+    title: "A Month at CSSLab in Toronto",
+    description:
+      "Spent a month living in Toronto, continuing my work with Dr. Ashton Anderson at the CSSLab. Launched maiachess.com in open beta and began exploring research directions in political polarization, multi-agent debate, and LLMs for long-term well-being and alignment.",
+    images: [
+      "/images/timeline/toronto-1.jpg",
+      "/images/timeline/toronto-2.jpg",
+      "/images/timeline/toronto-3.jpg",
+    ],
+  },
+  {
     date: "2025-06-20",
-    title: "Graduated high school",
-    description: "Exiting the sandbox",
-    images: ["/images/timeline/grad-1.jpg", "/images/timeline/grad-2.jpg"],
+    title: "Graduated High School",
+    description:
+      "Thank you Burnaby South Class of 2025! Coming this fall, I'll be studying Computer Science at the University of Waterloo :) ",
+    images: ["/images/timeline/grad-1.jpg"],
   },
   {
     date: "2025-04-13",
@@ -89,7 +101,7 @@ export const timelineEntries: TimelineEntry[] = [
     date: "2024-07-24",
     title: "Spent a week on a train hackathon across Canada",
     description:
-      "Spent the weekend with 50 other high school students from around the world onboard the [Hack Club Boreal Express](https://boreal.hackclub.com), a 7-day hackathon onboard a train across Canada! We were hit by the Jasper wildfires so we couldn't make it to Montreal, but we toured the Linus Tech Tips office and had a great time in Vancouver!",
+      "Selected among 50 high school students from around the world to board the [Hack Club Boreal Express](https://boreal.hackclub.com), a 7-day hackathon onboard a train across Canada!",
     images: [
       "/images/timeline/boreal-1.jpg",
       "/images/timeline/boreal-2.jpg",
@@ -114,7 +126,7 @@ export const timelineEntries: TimelineEntry[] = [
     date: "2024-02-11",
     title: "Attended the Hack Club Leaders' Summit in San Francisco",
     description:
-      "Spent the weekend with 50 other high school students from around the world at the first ever [Hack Club Leaders' Summit](https://summit.hackclub.com) in San Francisco! Iterated on cool projects to bring back to our local program clubs, met other leaders from around the world, and discussed the future with Tom Preston-Werner, the Founder of GitHub!",
+      "Selected among 50 high school students from around the world to join GitHub Co-founder Tom Preston-Werner for the first ever [Hack Club Leaders' Summit](https://summit.hackclub.com)!",
     images: ["/images/timeline/summit-1.jpg", "/images/timeline/summit-2.jpg"],
   },
   {
