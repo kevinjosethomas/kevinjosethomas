@@ -6,22 +6,29 @@ export interface TimelineEntry {
 }
 
 export const timelineEntries: TimelineEntry[] = [
-  // {
-  //   date: "2025-04-13",
-  //   title: "Back to Palo Alto for K-Scale Labs",
-  //   description:
-  //     "Headed back to visit Palo Alto—learning about robotics, fundraising and reinforcement learning from designers, researchers, and engineers at K-Scale Labs! Will contract back in Canada!",
-  //   images: [
-  //     "/images/timeline/kscale2-1.jpg",
-  //     "/images/timeline/kscale2-2.jpg",
-  //   ],
-  // },
+  {
+    date: "2025-06-20",
+    title: "Graduated high school",
+    description: "Exiting the sandbox",
+    images: ["/images/timeline/grad-1.jpg", "/images/timeline/grad-2.jpg"],
+  },
+  {
+    date: "2025-04-13",
+    title: "Back to Palo Alto for K-Scale Labs",
+    description:
+      "Headed back to visit Palo Alto—learning about robotics, fundraising and reinforcement learning from designers, researchers, and engineers at K-Scale Labs!",
+    images: [
+      "/images/timeline/kscale2-1.jpg",
+      "/images/timeline/kscale2-2.jpg",
+    ],
+  },
   {
     date: "2025-03-15",
     title: "Organized Scrapyard Vancouver",
     description:
       "My team at the British Columbia Youth Developer Collective brought together 85+ students from around British Columbia to work on cool scrappy projects—and we also broke our previous record for British Columbia's largest youth hackathon!",
-    images: ["/images/timeline/scrapyard-vancouver-1.jpg",
+    images: [
+      "/images/timeline/scrapyard-vancouver-1.jpg",
       "/images/timeline/scrapyard-vancouver-2.jpg",
     ],
   },
@@ -37,19 +44,19 @@ export const timelineEntries: TimelineEntry[] = [
       "/images/timeline/scrapyard-4.jpg",
     ],
   },
-  // {
-  //   date: "2025-02-25",
-  //   title: "Visited K-Scale Labs (YC24) in Palo Alto, CA",
-  //   description:
-  //     "Spent the week learning at an opensource humanoid robotics startup! Will contract back in Canada!",
-  //   images: [
-  //     "/images/timeline/kscale-1.jpeg",
-  //     "/images/timeline/kscale-2.jpeg",
-  //     "/images/timeline/kscale-3.jpeg",
-  //     "/images/timeline/kscale-4.jpeg",
-  //     "/images/timeline/kscale-5.jpeg",
-  //   ],
-  // },
+  {
+    date: "2025-02-25",
+    title: "Visited K-Scale Labs (YC24) in Palo Alto, CA",
+    description:
+      "Spent the week learning at an opensource humanoid robotics startup! ",
+    images: [
+      "/images/timeline/kscale-1.jpeg",
+      "/images/timeline/kscale-2.jpeg",
+      "/images/timeline/kscale-3.jpeg",
+      "/images/timeline/kscale-4.jpeg",
+      "/images/timeline/kscale-5.jpeg",
+    ],
+  },
   {
     date: "2024-11-16",
     title: "Won 1st place at UBC's Ascend Business Case Competition",
@@ -115,7 +122,10 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Won nwHacks 2024—my first in-person hackathon",
     description:
       "Attended nwHacks—Western Canada's biggest university-level hackathon (around 800 hackers)! I built NutriSnap—a computer vision React Native application that uses your phone camera to scan UPC codes or take photos of your food to track your nutrition.",
-    images: ["/images/timeline/nwhacks-1.jpg", "/images/timeline/nwhacks-2.jpg"],
+    images: [
+      "/images/timeline/nwhacks-1.jpg",
+      "/images/timeline/nwhacks-2.jpg",
+    ],
   },
   {
     date: "2023-07-28",
@@ -129,7 +139,10 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Placed 6th at Math Challengers",
     description:
       "Placed 6th individually at Math Challengers @ UBC, a math competition for high school students across British Columbia! Also placed 3rd as a team—qualifying for team provincials.",
-    images: ["/images/timeline/mathchallengers-1.jpg", "/images/timeline/mathchallengers-2.jpg"],
+    images: [
+      "/images/timeline/mathchallengers-1.jpg",
+      "/images/timeline/mathchallengers-2.jpg",
+    ],
   },
 ];
 
