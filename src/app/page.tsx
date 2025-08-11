@@ -6,6 +6,7 @@ import { useRef, useEffect, useState } from "react";
 import Banner from "@/ui/components/Banner";
 import Highlight from "@/ui/components/Highlight";
 import Timeline from "@/ui/components/Timeline";
+import Tooltip from "@/ui/components/Tooltip";
 import { TIMELINE } from "@/data";
 
 export default function Home() {
@@ -79,8 +80,13 @@ export default function Home() {
                 className="px-0.5"
               >
                 Maia Chess
-              </Highlight>{" "}
-              project, where I get to work with{" "}
+              </Highlight>
+              project{" "}
+              <Tooltip
+                number={1}
+                content="Maia is an open research project on human–AI collaboration in chess, modeling individual playing styles and exploring AI-powered personalized education. As the most-played bot on Lichess (5M+ games), Maia uses chess as a testbed for broader ML research."
+              />{" "}
+              , where I get to work with{" "}
               <Highlight href="https://www.cs.toronto.edu/~ashton/">
                 Dr. Ashton Anderson
               </Highlight>{" "}
@@ -92,7 +98,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
             >
-              Previously, I was a contract software engineering intern at{" "}
+              Previously, I was a contract SWE intern at{" "}
               <Highlight
                 icon="/icons/kscale.svg"
                 href="https://kscale.dev/"
@@ -100,10 +106,18 @@ export default function Home() {
               >
                 K-Scale Labs (YC24)
               </Highlight>
+              <Tooltip
+                number={2}
+                content="K-Scale Labs is developing America’s first open-source, general-purpose humanoid robot. We are building a complete in-house stack spanning hardware, software, RL, and sim to enable a fully capable general-purpose humanoid."
+              />
               , and worked on{" "}
               <Highlight href="https://arxiv.org/abs/2408.09311">
                 neural sign language translation
               </Highlight>
+              <Tooltip
+                number={3}
+                content="With my high school also being BC’s only school for the Deaf, I was inspired to build a CV model to recognize ASL fingerspelling from live video and generate sign language poses for real-time translation between students. ASL translation remains an unsolved problem and should be developed in close collaboration with the Deaf community."
+              />
               , developing an open-source ASL fingerspelling and pose-generation
               model.{" "}
             </motion.div>
@@ -140,7 +154,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.4 }}
-            className="flex w-full items-center justify-center py-2"
+            className="flex w-full select-none items-center justify-center py-2"
           >
             <div className="flex items-center gap-3 text-sm text-white text-opacity-20">
               <span>—</span>
@@ -169,7 +183,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.6 }}
-              className="list-outside list-disc pl-6"
+              className="flex list-outside list-disc flex-col -space-y-1 pl-6"
             >
               {featuredArticles.map((article, i) => (
                 <motion.li
