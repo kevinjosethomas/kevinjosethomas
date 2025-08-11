@@ -53,7 +53,6 @@ export const timelineEntries: TimelineEntry[] = [
       "/images/timeline/scrapyard-1.jpeg",
       "/images/timeline/scrapyard-2.jpeg",
       "/images/timeline/scrapyard-3.jpg",
-      "/images/timeline/scrapyard-4.jpg",
     ],
   },
   {
@@ -64,9 +63,6 @@ export const timelineEntries: TimelineEntry[] = [
     images: [
       "/images/timeline/kscale-1.jpeg",
       "/images/timeline/kscale-2.jpeg",
-      "/images/timeline/kscale-3.jpeg",
-      "/images/timeline/kscale-4.jpeg",
-      "/images/timeline/kscale-5.jpeg",
     ],
   },
   {

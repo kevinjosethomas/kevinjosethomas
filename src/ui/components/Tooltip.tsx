@@ -1,18 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import {
-  useFloating,
-  autoUpdate,
-  offset,
-  flip,
-  shift,
-  useHover,
-  useClick,
-  useDismiss,
-  useRole,
-  useInteractions,
-} from "@floating-ui/react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface TooltipProps {
@@ -22,56 +10,93 @@ interface TooltipProps {
 }
 
 export default function Tooltip({ content, number, className = "" }: TooltipProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+  const triggerRef = useRef<HTMLElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
-  const { refs, floatingStyles, context } = useFloating({
-    open: isOpen,
-    onOpenChange: setIsOpen,
-    placement: "bottom",
-    middleware: [offset(16), flip(), shift({ padding: 16 })],
-    whileElementsMounted: autoUpdate,
-  });
+  const showTooltip = () => {
+    if (triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      const tooltipWidth = 280; // Fixed width for calculation
+      const viewportWidth = window.innerWidth;
+      const padding = 16;
+      
+      // Calculate optimal left position
+      let left = rect.left + rect.width / 2 - tooltipWidth / 2;
+      
+      // Ensure tooltip stays within viewport bounds
+      if (left < padding) {
+        left = padding;
+      } else if (left + tooltipWidth > viewportWidth - padding) {
+        left = viewportWidth - tooltipWidth - padding;
+      }
+      
+      setPosition({
+        top: rect.bottom + window.scrollY + 12,
+        left: left + window.scrollX,
+      });
+    }
+    setIsVisible(true);
+  };
 
-  const hover = useHover(context, { 
-    move: false,
-    delay: { open: 100, close: 0 }
-  });
-  const click = useClick(context);
-  const dismiss = useDismiss(context);
-  const role = useRole(context, { role: "tooltip" });
+  const hideTooltip = () => setIsVisible(false);
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    hover,
-    click,
-    dismiss,
-    role,
-  ]);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node) &&
+          triggerRef.current && !triggerRef.current.contains(event.target as Node)) {
+        hideTooltip();
+      }
+    };
+
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('touchstart', handleClickOutside);
+      }, 100);
+      
+      return () => {
+        clearTimeout(timer);
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('touchstart', handleClickOutside);
+      };
+    }
+  }, [isVisible]);
 
   return (
-    <span className="relative inline-block">
+    <>
       <sup
-        ref={refs.setReference}
+        ref={triggerRef}
         className={`cursor-help text-xs text-white/50 transition-colors hover:text-white/70 ${className}`}
-        {...getReferenceProps()}
+        onMouseEnter={showTooltip}
+        onMouseLeave={hideTooltip}
+        onClick={showTooltip}
+        onTouchStart={showTooltip}
       >
         {number}
       </sup>
-      {isOpen && (
-        <AnimatePresence>
+      <AnimatePresence>
+        {isVisible && (
           <motion.div
-            ref={refs.setFloating}
-            style={floatingStyles}
+            ref={tooltipRef}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="z-50 w-64 max-w-sm rounded border border-white/40 bg-black px-3 py-2 text-xs text-white shadow-lg"
-            {...getFloatingProps()}
+            className="fixed z-50 rounded border border-white/40 bg-black px-3 py-2 text-xs text-white shadow-lg"
+            style={{
+              top: `${position.top}px`,
+              left: `${position.left}px`,
+              width: '280px',
+              maxWidth: 'calc(100vw - 2rem)',
+              pointerEvents: 'none',
+            }}
           >
             {content}
           </motion.div>
-        </AnimatePresence>
-      )}
-    </span>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
