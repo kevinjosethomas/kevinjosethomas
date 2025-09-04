@@ -14,7 +14,7 @@ const karla = Karla({
 const identity = {
   title: "Kevin Thomas",
   description:
-    "Hey! I'm Kevin Thomas, a high school senior from Vancouver with a passion for computer science and software development.",
+    "Hey! I'm Kevin Thomas, a computer science student at UWaterloo. I currently lead engineering for the Maia Chess project at UofT's CSSLab. Previously, I built was a SWE intern at K-Scale Labs, where I built software for open-source robotics.",
 };
 export const metadata: Metadata = {
   ...identity,

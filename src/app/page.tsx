@@ -71,8 +71,8 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              I&apos;m an incoming Computer Science student at the University of
-              Waterloo. Currently, I lead engineering for the{" "}
+              I&apos;m a Computer Science student at the University of Waterloo.
+              Currently, I lead engineering for the{" "}
               <Highlight
                 rotate={1}
                 icon="/icons/maia.png"

@@ -22,7 +22,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Graduated High School",
     description:
       "Thank you Burnaby South Class of 2025! Coming this fall, I'll be studying Computer Science at the University of Waterloo :) ",
-    images: ["/images/timeline/grad-1.jpg"],
+    images: [],
   },
   {
     date: "2025-04-13",
