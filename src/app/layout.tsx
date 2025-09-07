@@ -4,6 +4,7 @@ import { Karla } from "next/font/google";
 
 import "@/ui/styles/tailwind.css";
 import Navbar from "@/ui/components/Navbar/Navbar";
+import { PostHogProvider } from "@/providers/PostHogProvider";
 
 const karla = Karla({
   subsets: ["latin"],
@@ -38,22 +39,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${karla.variable} font-sans`}>
-        <div className="relative m-4 grid h-full min-h-screen overflow-hidden bg-black pt-40 md:m-0 md:pt-0 4xl:items-start 4xl:justify-center 4xl:py-48">
-          <div className="flex w-full max-w-[calc(100vw-2rem)] flex-col items-start gap-4 md:max-w-[100vw] md:px-36 md:py-24 2xl:max-w-screen-2xl 2xl:gap-4 3xl:max-w-[1920px] 4xl:py-0">
-            <Navbar />
-            {children}
+        <PostHogProvider>
+          <div className="relative m-4 grid h-full min-h-screen overflow-hidden bg-black pt-40 md:m-0 md:pt-0 4xl:items-start 4xl:justify-center 4xl:py-48">
+            <div className="flex w-full max-w-[calc(100vw-2rem)] flex-col items-start gap-4 md:max-w-[100vw] md:px-36 md:py-24 2xl:max-w-screen-2xl 2xl:gap-4 3xl:max-w-[1920px] 4xl:py-0">
+              <Navbar />
+              {children}
+            </div>
           </div>
-        </div>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-9QYTSWW7WK" />
-        <Script id="google-analytics">
-          {`
+          <Script src="https://www.googletagmanager.com/gtag/js?id=G-9QYTSWW7WK" />
+          <Script id="google-analytics">
+            {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
             gtag('config', 'G-9QYTSWW7WK');
           `}
-        </Script>
+          </Script>
+        </PostHogProvider>
       </body>
     </html>
   );
