@@ -98,7 +98,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
             >
-              Previously, I was a contract SWE intern at{" "}
+              Previously, I was a SWE intern at{" "}
               <Highlight
                 icon="/icons/kscale.svg"
                 href="https://kscale.dev/"
@@ -110,7 +110,7 @@ export default function Home() {
                 number={2}
                 content="K-Scale Labs is developing America’s first open-source, general-purpose humanoid robot. We are building a complete in-house stack spanning hardware, software, RL, and sim to enable a fully capable general-purpose humanoid."
               />
-              , and worked on{" "}
+              in Palo Alto. I also worked on{" "}
               <Highlight href="https://arxiv.org/abs/2408.09311">
                 neural sign language translation
               </Highlight>

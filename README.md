@@ -3,8 +3,7 @@
 I'm a Computer Science student at the University of Waterloo. 
 Currently, I lead engineering for the [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/maia.png?raw=true" width="14" height="14" /> Maia Chess](https://maiachess.com/) project, where I get to work with  Dr. Ashton Anderson at UofT's Computational Social Science Lab.
 
-
-Previously, I was a contract SWE intern at [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/kscale.svg?raw=true" width="14" height="14" /> K-Scale Labs (YC24)](https://kscale.dev/), and worked on [neural sign language translation](https://arxiv.org/abs/2408.09311), developing an open-source ASL fingerspelling and pose-generation model.
+Previously, I was a SWE intern at [<img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/kscale.svg?raw=true" width="14" height="14" /> K-Scale Labs (YC24)](https://kscale.dev/) in Palo Alto. I also worked on [neural sign language translation](https://arxiv.org/abs/2408.09311), developing an open-source ASL fingerspelling and pose-generation model.
 
 I also organized [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/scrapyard.svg" width="14" height="14" /> Hack Club Scrapyard](https://scrapyard.hackclub.com/), a global high school hackathon in Austin TX and 60+ cities around the world (C$200,000 in funding), and founded [<img src="https://raw.githubusercontent.com/kevinjosethomas/kevinjosethomas/108355f0abaaaf0f25b6c61e60a776b654345b73/public/icons/bcydc.svg" width="14" height="14" /> British Columbia Youth Developer Collective](https://bcydc.ca/), a community of over 350 high school developers across BC.
 
