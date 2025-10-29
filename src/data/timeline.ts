@@ -10,20 +10,20 @@ export const timelineEntries: TimelineEntry[] = [
     date: "2025-08-01",
     title: "A Month at CSSLab in Toronto",
     description:
-      "Spent a month living in Toronto, continuing my work with Dr. Ashton Anderson at the CSSLab. Launched maiachess.com in open beta and began exploring research directions in political polarization, multi-agent debate, and LLMs for long-term well-being and alignment.",
+      "Spent a month in Toronto, continuing my work with Dr. Ashton Anderson at the CSSLab. Launched maiachess.com in open beta and began exploring research directions in political polarization, multi-agent debate, and LLMs for long-term well-being.",
     images: [
       "/images/timeline/toronto-1.jpg",
       "/images/timeline/toronto-2.jpg",
       "/images/timeline/toronto-3.jpg",
     ],
   },
-  {
-    date: "2025-06-20",
-    title: "Graduated High School",
-    description:
-      "Thank you Burnaby South Class of 2025! Coming this fall, I'll be studying Computer Science at the University of Waterloo :) ",
-    images: [],
-  },
+  // {
+  //   date: "2025-06-20",
+  //   title: "Graduated High School",
+  //   description:
+  //     "Thank you Burnaby South Class of 2025! Coming this fall, I'll be studying Computer Science at the University of Waterloo :) ",
+  //   images: [],
+  // },
   {
     date: "2025-04-13",
     title: "Back to Palo Alto for K-Scale Labs",
