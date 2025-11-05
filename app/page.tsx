@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Stack from "@/components/Stack";
 
 export default function Home() {
   const spotlightedProjects = [
@@ -157,7 +158,7 @@ export default function Home() {
             </li>
             <li>
               <a href="https://kevinjosethomas.com/writing/2">
-                <p>Reflecting on Scrapyard— What We Did in Austin TX and..</p>
+                <p>Reflecting on Scrapyard— What We Did in Austin TX and...</p>
               </a>
             </li>
             <li>
@@ -170,7 +171,7 @@ export default function Home() {
       </div>
 
       {/* Projects Section */}
-      <div className="border-border grid w-full grid-cols-3">
+      <div className="border-border grid w-full grid-cols-3 border-b">
         <div className="border-border flex flex-col items-start justify-start border-r p-16">
           <h3 className="text-2xl font-semibold">Projects</h3>
         </div>
@@ -186,6 +187,8 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      <Stack />
     </div>
   );
 }
