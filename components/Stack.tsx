@@ -110,7 +110,7 @@ export default function Stack() {
   };
 
   return (
-    <div className="grid w-full grid-rows-4 gap-4 py-16 md:grid-cols-4 md:grid-rows-1 md:gap-0 md:py-0">
+    <div className="border-border grid w-full grid-rows-4 gap-4 border-b py-16 md:grid-cols-4 md:grid-rows-1 md:gap-0 md:py-0">
       <div className="border-border flex flex-col items-start justify-start gap-4 border-r px-16 py-0 md:p-16">
         {stack.slice(0, 6).map((item) => (
           <StackItem key={item.name} item={item} />

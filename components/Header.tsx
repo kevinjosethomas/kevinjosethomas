@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -16,8 +17,17 @@ export default function Header() {
         </div>
 
         <div className="hidden items-center justify-start gap-6 md:flex">
-          <Image src="/icons/x.svg" alt="X" width={20} height={20} />
-          <Image src="/icons/github.svg" alt="GitHub" width={20} height={20} />
+          <Link href="https://x.com/kevinjosethomas" target="_blank">
+            <Image src="/icons/x.svg" alt="X" width={20} height={20} />
+          </Link>
+          <Link href="https://github.com/kevinjosethomas" target="_blank">
+            <Image
+              src="/icons/github.svg"
+              alt="GitHub"
+              width={20}
+              height={20}
+            />
+          </Link>
         </div>
 
         <button
