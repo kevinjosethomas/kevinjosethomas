@@ -7,6 +7,8 @@ export default function CSSLab() {
       bannerImage="/experience/banners/csslab.png"
       bannerAlt="CSSLab"
       title="CSSLab"
+      dateRange="JUL 2024 - PRESENT"
+      siteUrl="https://csslab.cs.toronto.edu"
       backgroundPattern={<DotsPattern />}
       associatedProjectIds={["maia"]}
     >

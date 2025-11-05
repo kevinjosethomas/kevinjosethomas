@@ -7,6 +7,8 @@ export default function KScale() {
       bannerImage="/experience/banners/k-scale.png"
       bannerAlt="K-Scale Labs"
       title="K-Scale Labs"
+      dateRange="JAN - APR 2025"
+      siteUrl="https://kscale.dev"
       backgroundPattern={<GridPattern />}
       associatedProjectIds={["emx", "kos"]}
     >
