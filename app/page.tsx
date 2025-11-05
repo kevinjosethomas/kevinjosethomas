@@ -78,19 +78,18 @@ export default function Home() {
   return (
     <div className="flex w-full flex-col items-start justify-start">
       {/* Hero Section */}
-      <div className="border-border relative flex h-[708px] w-full flex-col items-start justify-center overflow-hidden border-b p-24">
+      <div className="border-border relative flex h-[708px] w-full flex-col items-start justify-center overflow-hidden border-b p-16 md:p-24">
         <div className="z-10 flex max-w-md flex-col items-start justify-start gap-6 tracking-wide">
-          <p className="font-micro5 text-4xl">hey!</p>
+          <p className="font-micro5 text-4xl tracking-wider">hey!</p>
           <p className="text-xl">
-            Currently, I lead engineering for the Maia Chess project— the
-            world&apos;s most popular chess bot.
+            I&apos;m studying CS @ UWaterloo. Currently, I lead engineering for
+            the Maia Chess project— the world&apos;s most popular chess bot.
           </p>
           <p className="text-xl">
-            Previously, I was SWE at K-Scale Labs in Palo Alto. Studying CS at
-            UWaterloo.
+            Previously SWE intern @ K-Scale Labs in Palo Alto.
           </p>
         </div>
-        <div className="pointer-events-none absolute -right-56 -bottom-72 h-[1000px] w-[1000px] overflow-hidden">
+        <div className="pointer-events-none absolute -right-56 -bottom-[600px] h-[1000px] w-[1000px] overflow-hidden md:-bottom-72">
           <Globe />
         </div>
       </div>
