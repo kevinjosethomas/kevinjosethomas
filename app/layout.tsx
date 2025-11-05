@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <div className="mx-auto flex min-h-screen max-w-[1280px] flex-col items-center">
           <Header />
-          <main className="border-border border">{children}</main>
+          <main className="border-border w-full border">{children}</main>
           <Footer />
         </div>
       </body>

@@ -11,9 +11,15 @@ export default function Header() {
     <>
       <header className="flex w-full items-center justify-between px-6 py-4 md:py-12 lg:px-0">
         <div className="flex items-center justify-start gap-6">
-          <h1 className="text-2xl font-bold md:text-3xl">kevin thomas</h1>
-          <p className="text-secondary hidden text-xl md:block">projects</p>
-          <p className="text-secondary hidden text-xl md:block">writing</p>
+          <Link href="/">
+            <h1 className="text-2xl font-bold md:text-3xl">kevin thomas</h1>
+          </Link>
+          <Link href="/projects">
+            <h3 className="text-secondary hidden text-xl md:block">projects</h3>
+          </Link>
+          <Link href="https://knowledge.kevinjosethomas.com" target="_blank">
+            <h3 className="text-secondary hidden text-xl md:block">writing</h3>
+          </Link>
         </div>
 
         <div className="hidden items-center justify-start gap-6 md:flex">
@@ -54,42 +60,38 @@ export default function Header() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 bg-black transition-transform duration-300 md:hidden ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-0 z-40 bg-black px-16 transition-transform duration-100 md:hidden ${
+          isMenuOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <nav className="flex h-full flex-col items-center justify-center gap-0">
-          <button
-            onClick={() => setIsMenuOpen(false)}
-            className="border-border flex w-full items-center justify-center border-t border-b py-12 text-3xl font-semibold tracking-wide transition-colors hover:bg-white/5"
-          >
-            projects
-          </button>
-          <button
-            onClick={() => setIsMenuOpen(false)}
-            className="border-border flex w-full items-center justify-center border-b py-12 text-3xl font-semibold tracking-wide transition-colors hover:bg-white/5"
-          >
-            writing
-          </button>
+        <nav className="flex h-full flex-col items-start justify-between py-16">
+          <div className="flex flex-col items-start justify-start gap-4">
+            <Link
+              href="/"
+              className="flex w-full items-start justify-start text-3xl font-semibold tracking-wide transition-colors hover:bg-white/5"
+            >
+              <h1 className="text-2xl font-bold md:text-3xl">kevin thomas</h1>
+            </Link>
+            <Link href="/projects">
+              <h3 className="text-secondary text-xl md:block">projects</h3>
+            </Link>
+            <Link href="https://knowledge.kevinjosethomas.com" target="_blank">
+              <h3 className="text-secondary text-xl md:block">writing</h3>
+            </Link>
+          </div>
 
-          <div className="border-border mt-8 flex w-full items-center justify-center gap-12 border-t border-b py-10">
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="transition-opacity hover:opacity-70"
-            >
+          <div className="flex w-full items-center justify-center gap-8 py-10">
+            <Link href="https://x.com/kevinjosethomas" target="_blank">
               <Image src="/icons/x.svg" alt="X" width={24} height={24} />
-            </button>
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="transition-opacity hover:opacity-70"
-            >
+            </Link>
+            <Link href="https://github.com/kevinjosethomas" target="_blank">
               <Image
                 src="/icons/github.svg"
                 alt="GitHub"
                 width={24}
                 height={24}
               />
-            </button>
+            </Link>
           </div>
         </nav>
       </div>
