@@ -1,6 +1,77 @@
 import Image from "next/image";
 
 export default function Home() {
+  const spotlightedProjects = [
+    {
+      id: "emx",
+      name: "Emotional Matrix (EMX)",
+      date: "2025",
+      href: "/project/emx",
+      image: "/projects/emx.png",
+    },
+    {
+      id: "maia",
+      name: "Maia Chess",
+      date: "2024-",
+      href: "/project/maia",
+      image: "/projects/maia.png",
+    },
+    {
+      id: "turbo",
+      name: "Turbo Browser",
+      date: "2021",
+      href: "/project/turbo",
+      image: "/projects/turbo.png",
+    },
+    {
+      id: "kos",
+      name: "kos-sdk",
+      date: "2025",
+      href: "/project/kos-sdk",
+      image: "/projects/kos.png",
+    },
+
+    {
+      id: "asl",
+      name: "Neural Sign Language Translation",
+      date: "2024",
+      href: "/project/asl",
+      image: "/projects/asl.png",
+    },
+
+    {
+      id: "scrapyard",
+      name: "Hack Club Scrapyard",
+      date: "2024",
+      href: "/project/scrapyard",
+      image: "/projects/scrapyard.png",
+    },
+  ];
+
+  const Project = ({
+    project,
+  }: {
+    project: (typeof spotlightedProjects)[number];
+  }) => {
+    return (
+      <div className="border-border flex flex-col border-t border-b border-l">
+        <div className="relative">
+          <div className="absolute top-0 left-0 h-full w-full" />
+          <Image
+            src={project.image}
+            alt={project.name}
+            width={346}
+            height={225}
+          />
+        </div>
+        <div className="flex items-center justify-between p-4">
+          <p className="text-sm">{project.name}</p>
+          <p className="text-secondary text-sm">{project.date}</p>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="flex w-full flex-col items-start justify-start">
       {/* Hero Section */}
@@ -73,7 +144,7 @@ export default function Home() {
       </div>
 
       {/* Writing Section */}
-      <div className="border-border flex w-full flex-row items-start justify-between">
+      <div className="border-border flex w-full flex-row items-start justify-between border-b">
         <div className="flex flex-col items-start justify-start p-16">
           <h3 className="text-2xl font-semibold">Writing</h3>
         </div>
@@ -95,6 +166,24 @@ export default function Home() {
               </a>
             </li>
           </ul>
+        </div>
+      </div>
+
+      {/* Projects Section */}
+      <div className="border-border grid w-full grid-cols-3">
+        <div className="border-border flex flex-col items-start justify-start border-r p-16">
+          <h3 className="text-2xl font-semibold">Projects</h3>
+        </div>
+
+        <div className="border-border flex flex-col items-end gap-6 border-r py-16">
+          {spotlightedProjects.slice(0, 3).map((project) => (
+            <Project key={project.id} project={project} />
+          ))}
+        </div>
+        <div className="border-border flex flex-col items-end gap-6 border-r py-16">
+          {spotlightedProjects.slice(3).map((project) => (
+            <Project key={project.id} project={project} />
+          ))}
         </div>
       </div>
     </div>
