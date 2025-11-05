@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Header() {
   return (
     <header className="flex w-full items-center justify-between py-12">
@@ -7,8 +9,8 @@ export default function Header() {
         <p className="text-secondary text-xl">writing</p>
       </div>
       <div className="flex items-center justify-start gap-6">
-        <p className="text-secondary text-xl">x</p>
-        <p className="text-secondary text-xl">gh</p>
+        <Image src="/icons/x.svg" alt="X" width={20} height={20} />
+        <Image src="/icons/github.svg" alt="GitHub" width={20} height={20} />
       </div>
     </header>
   );

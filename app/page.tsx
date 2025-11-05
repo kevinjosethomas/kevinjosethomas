@@ -55,10 +55,11 @@ export default function Home() {
     project: (typeof spotlightedProjects)[number];
   }) => {
     return (
-      <div className="border-border flex flex-col border-t border-b border-l">
+      <div className="border-border flex w-full flex-col border-t border-b border-l">
         <div className="relative">
           <div className="absolute top-0 left-0 h-full w-full" />
           <Image
+            className="h-full w-full object-cover"
             src={project.image}
             alt={project.name}
             width={346}
@@ -115,9 +116,10 @@ export default function Home() {
       </div>
 
       {/* Experience Section */}
-      <div className="border-border grid grid-cols-2 border-b">
+      <div className="border-border grid w-full grid-cols-2 border-b">
         <div className="relative">
           <Image
+            className="h-full w-full object-cover"
             src="/experience/k-scale.png"
             alt="K-Scale Labs"
             width={592}
@@ -133,6 +135,7 @@ export default function Home() {
         </div>
         <div className="relative">
           <Image
+            className="h-full w-full object-cover"
             src="/experience/csslab.png"
             alt="CSSLab"
             width={592}
@@ -176,12 +179,12 @@ export default function Home() {
           <h3 className="text-2xl font-semibold">Projects</h3>
         </div>
 
-        <div className="border-border flex flex-col items-end gap-6 border-r py-16">
+        <div className="border-border flex flex-col items-end gap-6 border-r py-16 pl-16">
           {spotlightedProjects.slice(0, 3).map((project) => (
             <Project key={project.id} project={project} />
           ))}
         </div>
-        <div className="border-border flex flex-col items-end gap-6 border-r py-16">
+        <div className="border-border flex flex-col items-end gap-6 border-r py-16 pl-16">
           {spotlightedProjects.slice(3).map((project) => (
             <Project key={project.id} project={project} />
           ))}
@@ -189,6 +192,18 @@ export default function Home() {
       </div>
 
       <Stack />
+
+      {/* Publication Section */}
+      <div className="border-border flex w-full flex-col items-start border-t p-16">
+        <div className="flex items-center gap-2">
+          <Image src="/icons/arxiv.svg" alt="arXiv" width={16} height={16} />
+          <p className="text-secondary text-sm">arXiv:2408.09311 [cs.CL]</p>
+        </div>
+        <p className="text-2xl font-semibold">
+          An Open-Source American Sign Language Fingerspell Recognition and
+          Semantic Pose Retrieval Interface
+        </p>
+      </div>
     </div>
   );
 }

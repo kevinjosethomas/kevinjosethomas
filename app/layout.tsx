@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Karla, Micro_5 } from "next/font/google";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const karla = Karla({
   variable: "--font-karla",
@@ -29,9 +30,10 @@ export default function RootLayout({
       <body
         className={`${karla.variable} ${micro5.variable} bg-black antialiased`}
       >
-        <div className="mx-auto flex min-h-screen w-[1280px] flex-col items-center">
+        <div className="mx-auto flex min-h-screen max-w-[1280px] flex-col items-center">
           <Header />
-          <main className="border-border w-[1184px] border">{children}</main>
+          <main className="border-border border">{children}</main>
+          <Footer />
         </div>
       </body>
     </html>
