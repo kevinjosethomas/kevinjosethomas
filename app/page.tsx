@@ -116,7 +116,7 @@ export default function Home() {
       </div>
 
       {/* Experience Section */}
-      <div className="border-border grid w-full grid-cols-2 border-b">
+      <div className="border-border grid w-full grid-rows-2 border-b md:grid-cols-2 md:grid-rows-1">
         <div className="relative">
           <Image
             className="h-full w-full object-cover"
@@ -148,11 +148,11 @@ export default function Home() {
       </div>
 
       {/* Writing Section */}
-      <div className="border-border flex w-full flex-row items-start justify-between border-b">
-        <div className="flex flex-col items-start justify-start p-16">
+      <div className="border-border flex w-full flex-col items-start justify-between gap-8 border-b md:flex-row md:gap-0">
+        <div className="flex flex-col items-start justify-start px-16 pt-16 md:p-16">
           <h3 className="text-2xl font-semibold">Writing</h3>
         </div>
-        <div className="flex flex-col items-end justify-start p-16">
+        <div className="flex flex-col items-end justify-start px-16 pb-16 md:p-16">
           <ul className="flex list-disc flex-col items-start justify-start text-xl font-light">
             <li>
               <a href="https://kevinjosethomas.com/writing/1">
@@ -174,17 +174,17 @@ export default function Home() {
       </div>
 
       {/* Projects Section */}
-      <div className="border-border grid w-full grid-cols-3 border-b">
-        <div className="border-border flex flex-col items-start justify-start border-r p-16">
+      <div className="border-border grid w-full grid-cols-1 gap-6 border-b md:grid-cols-3 md:gap-0">
+        <div className="border-border flex flex-col items-start justify-start border-r px-16 pt-16 md:p-16">
           <h3 className="text-2xl font-semibold">Projects</h3>
         </div>
 
-        <div className="border-border flex flex-col items-end gap-6 border-r py-16 pl-16">
+        <div className="border-border flex flex-col items-center gap-6 border-r py-0 md:items-end md:py-16 md:pl-16">
           {spotlightedProjects.slice(0, 3).map((project) => (
             <Project key={project.id} project={project} />
           ))}
         </div>
-        <div className="border-border flex flex-col items-end gap-6 border-r py-16 pl-16">
+        <div className="border-border flex flex-col items-center gap-6 border-r py-0 md:items-end md:py-16 md:pl-16">
           {spotlightedProjects.slice(3).map((project) => (
             <Project key={project.id} project={project} />
           ))}
