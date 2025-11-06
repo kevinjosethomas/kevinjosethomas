@@ -24,7 +24,7 @@ export const projects: Project[] = [
     date: "2021",
     href: "/project/turbo",
     image: "/projects/turbo.png",
-    github: "https://github.com/kevinjosethomas/turbo-browser",
+    github: "https://github.com/kevinjosethomas/turbo",
   },
   {
     id: "kos",
@@ -51,7 +51,6 @@ export const projects: Project[] = [
     href: "/project/scrapyard",
     image: "/projects/scrapyard.png",
     github: "https://github.com/hackclub/scrapyard",
-    website: "https://scrapyard.hackclub.com",
     youtube: "https://www.youtube.com/watch?v=8iM1W8kXrQA",
     blog: "https://knowledge.kevinjosethomas.com/Thoughts/Reflecting-on-Scrapyard-—-What-We-Did-in-Austin-TX-and-60+-Cities-around-the-World",
   },
