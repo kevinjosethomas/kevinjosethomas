@@ -46,12 +46,7 @@ const Highlight = ({
 
   if (href) {
     return (
-      <Link
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-        className={sharedClasses}
-      >
+      <Link href={href} className={sharedClasses}>
         {content}
       </Link>
     );

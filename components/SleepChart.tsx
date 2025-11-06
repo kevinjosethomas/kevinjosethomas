@@ -157,7 +157,7 @@ export default function SleepChart({ data }: SleepChartProps) {
 
   return (
     <div className="sleep-chart-outer relative flex h-full w-full flex-col">
-      <div className="sleep-chart-container relative flex h-full w-full overflow-hidden">
+      <div className="sleep-chart-container relative flex h-full min-h-[300px] w-full overflow-hidden">
         <div className="relative flex flex-1 px-2">
           <div className="pointer-events-none absolute inset-0 -left-20">
             {/* Gridlines */}

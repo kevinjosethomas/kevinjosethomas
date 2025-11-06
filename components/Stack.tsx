@@ -110,23 +110,23 @@ export default function Stack() {
   };
 
   return (
-    <div className="border-border grid w-full grid-rows-4 gap-4 border-b py-16 md:grid-cols-4 md:grid-rows-1 md:gap-0 md:py-0">
-      <div className="border-border flex flex-col items-start justify-start gap-4 border-r px-16 py-0 md:p-16">
+    <div className="border-border grid w-full grid-cols-2 grid-rows-2 border-b p-0 md:grid-cols-4 md:grid-rows-1 md:p-0">
+      <div className="border-border flex flex-col items-start justify-start gap-4 border-r border-b p-6 md:border-b-0 md:p-16">
         {stack.slice(0, 6).map((item) => (
           <StackItem key={item.name} item={item} />
         ))}
       </div>
-      <div className="border-border flex flex-col items-start justify-start gap-4 border-r px-16 py-0 md:p-16">
+      <div className="border-border flex flex-col items-start justify-start gap-4 border-r border-b p-6 md:border-b-0 md:p-16">
         {stack.slice(6, 12).map((item) => (
           <StackItem key={item.name} item={item} />
         ))}
       </div>
-      <div className="border-border flex flex-col items-start justify-start gap-4 border-r px-16 py-0 md:p-16">
+      <div className="border-border flex flex-col items-start justify-start gap-4 border-r p-6 md:p-16">
         {stack.slice(12, 18).map((item) => (
           <StackItem key={item.name} item={item} />
         ))}
       </div>
-      <div className="flex flex-col items-start justify-start gap-4 px-16 py-0 md:p-16">
+      <div className="flex flex-col items-start justify-start gap-4 p-6 md:p-16">
         {stack.slice(18, 24).map((item) => (
           <StackItem key={item.name} item={item} />
         ))}

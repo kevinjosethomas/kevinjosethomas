@@ -58,9 +58,9 @@ export default async function Home() {
   return (
     <div className="flex w-full flex-col items-start justify-start">
       {/* Hero Section */}
-      <div className="border-border relative grid w-full grid-cols-6 items-center border-b">
-        <div className="text-secondary col-span-4 flex max-w-2xl flex-col gap-8 p-16 text-lg">
-          <p className="text-lg font-bold tracking-wide">( ^_^)／</p>
+      <div className="border-border relative flex w-full flex-col items-center border-b md:grid md:grid-cols-6 md:grid-rows-1">
+        <div className="text-secondary flex w-full flex-col gap-8 p-6 text-lg md:col-span-4 md:w-auto md:max-w-2xl md:p-16">
+          <p className="font-bold tracking-wide">( ^_^)／</p>
           <p>
             I&apos;m a Computer Science student at the University of Waterloo.
             Currently, I lead engineering for the{" "}
@@ -91,7 +91,7 @@ export default async function Home() {
               number={3}
               content="With my high school also being BC's only school for the Deaf, I was inspired to build a CV model to classify ASL fingerspelling and generate sign language poses for real-time translation between students. ASL translation remains an unsolved problem and should be developed in close collaboration with the Deaf community."
             />{" "}
-            and organized hackathons for Hack Club.{" "}
+            and organized for Hack Club.{" "}
             <Tooltip
               number={4}
               content="I organized Hack Club Scrapyard—a global high school hackathon ($200,000 in funding) in Austin TX and 60+ cities around the world. I also founded the British Columbia Youth Developer Collective, a community of over 400 high school developers across BC."
@@ -139,16 +139,22 @@ export default async function Home() {
       </div>
 
       {/* Writing Section */}
-      <div className="border-border flex w-full flex-col items-start justify-between gap-8 border-b md:flex-row md:gap-0">
-        <div className="flex flex-col items-start justify-start px-16 pt-16 md:p-16">
+      <div className="border-border flex w-full flex-col items-start justify-start gap-4 overflow-x-hidden border-b p-6 md:flex-row md:justify-between md:gap-0 md:p-16">
+        <div className="flex flex-col items-start justify-start">
           <h3 className="text-2xl font-semibold">Writing</h3>
         </div>
-        <div className="flex flex-col items-end justify-start px-16 pb-16 md:p-16">
-          <ul className="flex list-disc flex-col items-start justify-start text-xl font-light">
+        <div className="flex w-full flex-col items-start justify-start overflow-x-hidden md:items-end">
+          <ul className="flex list-inside list-disc flex-col items-start justify-start text-lg font-light md:text-xl">
             {featuredArticles.map((article) => (
-              <li key={article.id}>
-                <Link href={article.href} target="_blank">
-                  <p className="hover:underline">{article.title}</p>
+              <li key={article.id} className="whitespace-nowrap">
+                <Link
+                  href={article.href}
+                  target="_blank"
+                  className="inline-block whitespace-nowrap"
+                >
+                  <p className="text-secondary text-ellipsis hover:underline md:text-white">
+                    {article.title}
+                  </p>
                 </Link>
               </li>
             ))}
@@ -157,8 +163,8 @@ export default async function Home() {
       </div>
 
       {/* Projects Section */}
-      <div className="border-border grid w-full grid-cols-1 gap-6 border-b md:grid-cols-3 md:gap-0">
-        <div className="sticky top-0 flex flex-col items-start justify-start gap-4 self-start px-16 pt-16 md:p-16">
+      <div className="border-border grid w-full grid-cols-1 border-b pb-6 md:grid-cols-3 md:pb-0">
+        <div className="top-0 flex flex-col items-start justify-start gap-4 self-start p-6 md:sticky md:p-16">
           <h3 className="text-2xl font-semibold">Projects</h3>
           <p className="text-secondary text-base">
             I build across domains to learn fast and contribute everywhere I
@@ -182,7 +188,7 @@ export default async function Home() {
       <Stack />
 
       {/* Publication Section */}
-      <div className="border-border flex w-full flex-col items-start border-b p-16">
+      <div className="border-border flex w-full flex-col items-start border-b p-6 py-10 md:p-16">
         <Link
           href="https://arxiv.org/abs/2408.09311"
           target="_blank"
@@ -194,7 +200,7 @@ export default async function Home() {
               arXiv:2408.09311 [cs.CL]
             </p>
           </div>
-          <p className="text-2xl font-semibold group-hover:opacity-70">
+          <p className="text-lg font-semibold group-hover:opacity-70 md:text-2xl">
             An Open-Source American Sign Language Fingerspell Recognition and
             Semantic Pose Retrieval Interface
           </p>
@@ -203,7 +209,7 @@ export default async function Home() {
 
       {/* Analytics Section */}
       {sheetData && (
-        <div className="divide-border grid h-96 w-full grid-cols-1 gap-0 divide-x md:grid-cols-2">
+        <div className="divide-border flex w-full flex-col gap-0 divide-y md:grid md:h-96 md:grid-cols-2 md:divide-x md:divide-y-0">
           <WorkChart data={sheetData.overview} />
           <SleepChart data={sheetData.sleep} />
         </div>

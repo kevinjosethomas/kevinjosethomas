@@ -98,13 +98,11 @@ export default function Geometry() {
   };
 
   useEffect(() => {
-    setShape(SHAPES[Math.floor(Math.random() * SHAPES.length)]);
-
     return () => stopCycling();
   }, []);
 
   return (
-    <div className="relative col-span-2 flex aspect-square h-full w-full items-center justify-center px-16 select-none">
+    <div className="relative col-span-2 hidden aspect-square h-full w-full items-center justify-center px-16 select-none md:flex">
       <div className="relative flex h-full flex-col items-center justify-center py-16">
         {/* Content */}
         <div

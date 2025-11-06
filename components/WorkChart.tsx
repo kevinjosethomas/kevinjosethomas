@@ -105,7 +105,7 @@ export default function WorkChart({ data }: WorkScoreChartProps) {
 
   return (
     <div className="flex flex-col outline-none **:outline-none focus:outline-none **:focus:outline-none">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="100%" minHeight="300px">
         <AreaChart
           data={chartData}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
