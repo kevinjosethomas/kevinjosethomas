@@ -31,8 +31,13 @@ export default function ProjectsPage() {
   return (
     <div className="flex w-full flex-col items-start justify-start">
       <div className="border-border grid w-full grid-cols-1 gap-6 border-b md:grid-cols-3 md:gap-0">
-        <div className="sticky top-0 flex flex-col items-start justify-start self-start px-16 pt-16 md:p-16">
+        <div className="sticky top-0 flex flex-col items-start justify-start gap-4 self-start px-16 pt-16 md:p-16">
           <h3 className="text-2xl font-semibold">Projects</h3>
+          <p className="text-secondary text-base">
+            I build across domains to learn fast and contribute everywhere I
+            can—whether it&apos;s robotics, applied ML, accessibility, or
+            anything in between.
+          </p>
         </div>
 
         <div className="border-border divide-border flex flex-col items-center divide-y border-x py-0 md:items-end md:py-8">
