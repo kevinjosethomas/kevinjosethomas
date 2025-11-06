@@ -2,6 +2,7 @@ import Image from "next/image";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import { ReactNode } from "react";
+import ArrowIcon from "./ArrowIcon";
 
 interface ExperienceLayoutProps {
   bannerImage: string;
@@ -49,20 +50,7 @@ export default function ExperienceLayout({
               className="group border-border text-secondary flex items-center gap-2 rounded-md border px-3 py-1.5 text-sm transition-all hover:border-white/20 hover:text-white"
             >
               <span>View Site</span>
-              <svg
-                className="h-4 w-4 transition-transform group-hover:translate-x-0.25 group-hover:-translate-y-0.25"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
+              <ArrowIcon className="h-3 w-3" />
             </a>
           </div>
           <p className="text-secondary text-sm tracking-wider uppercase">
@@ -74,9 +62,11 @@ export default function ExperienceLayout({
         </div>
       </div>
 
-      <div className="border-border flex w-full flex-col items-start justify-start gap-8 border-t p-16">
-        <h2 className="text-2xl font-semibold">Associated Projects</h2>
-        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="border-border grid w-full grid-cols-1 gap-6 border-t md:grid-cols-4 md:gap-0">
+        <div className="border-border flex flex-col items-start justify-start border-r px-16 pt-16 md:p-16">
+          <h2 className="text-2xl font-semibold">Projects</h2>
+        </div>
+        <div className="col-span-3 grid w-full grid-cols-3 gap-6 p-16">
           {associatedProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

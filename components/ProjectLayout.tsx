@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ReactNode } from "react";
+import ArrowIcon from "./ArrowIcon";
 
 interface ProjectLayoutProps {
   bannerImage: string;
@@ -29,21 +30,8 @@ function CTA({ href, icon, text, borderClass }: CallToActionProps) {
     >
       {icon}
       <div className="flex items-center justify-start gap-4">
-        <span className="text-xl">{text}</span>{" "}
-        <svg
-          className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 16 16"
-          xmlns="http://www.w3.org/2000/svg"
-          strokeWidth={1.5}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4.5 2.5h9v9M13 3L3 13"
-          />
-        </svg>
+        <span className="text-xl">{text}</span>
+        <ArrowIcon className="h-3 w-3" />
       </div>
     </a>
   );
