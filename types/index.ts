@@ -4,4 +4,7 @@ export interface Project {
   date: string;
   href: string;
   image: string;
+  github?: string;
+  website?: string;
+  images?: string[];
 }
