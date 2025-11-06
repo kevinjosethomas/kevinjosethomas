@@ -175,12 +175,22 @@ export default async function Home() {
 
         <div className="border-border flex flex-col items-center gap-6 border-x py-0 md:items-end md:py-16 md:pl-16">
           {spotlightedProjects.slice(0, 3).map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              dark={20}
+              saturate={75}
+            />
           ))}
         </div>
         <div className="border-border flex flex-col items-center gap-6 border-r py-0 md:items-end md:py-16 md:pl-16">
           {spotlightedProjects.slice(3).map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              dark={20}
+              saturate={75}
+            />
           ))}
         </div>
       </div>

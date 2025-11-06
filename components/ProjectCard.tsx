@@ -1,23 +1,39 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/types";
 
 interface ProjectCardProps {
   project: Project;
+  dark?: number;
+  saturate?: number;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({
+  project,
+  dark = 0,
+  saturate = 100,
+}: ProjectCardProps) {
   return (
     <Link href={project.href} className="group">
-      <div className="border-border flex w-full flex-col border transition-colors hover:border-white/20">
+      <div className="border-border flex w-full flex-col border transition-colors hover:border-white/20 md:border-r-0">
         <div className="relative">
-          <div className="absolute top-0 left-0 h-full w-full" />
+          {dark > 0 && (
+            <div
+              className="absolute top-0 left-0 z-10 h-full w-full bg-black transition-opacity duration-300 group-hover:opacity-0!"
+              style={{ opacity: dark / 100 }}
+            />
+          )}
           <Image
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover transition-all duration-300 group-hover:saturate-100!"
             src={project.image}
             alt={project.name}
             width={346}
             height={225}
+            style={{
+              filter: `saturate(${saturate}%)`,
+            }}
           />
         </div>
         <div className="flex items-center justify-between p-4">
@@ -51,4 +67,3 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     </Link>
   );
 }
-
