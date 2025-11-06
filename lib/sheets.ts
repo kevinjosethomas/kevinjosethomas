@@ -50,18 +50,46 @@ export async function fetchSheetRows(
   return rows.map((row) => row.toObject());
 }
 
+export type SleepData = {
+  date: string;
+  start: string;
+  end: string;
+};
+
+export type OverviewData = {
+  date: string;
+  overallScore: string;
+  sleepScore: string;
+  workScore: string;
+  workoutScore: string;
+};
+
 export async function fetchBothSheets(limit = 15): Promise<{
-  sleep: SheetRow[];
-  overview: SheetRow[];
+  sleep: SleepData[];
+  overview: OverviewData[];
 }> {
   const [sleepRows, overviewRows] = await Promise.all([
     fetchSheetRows({ worksheetId: SLEEP_WORKSHEET_ID, limit }),
     fetchSheetRows({ worksheetId: OVERVIEW_WORKSHEET_ID, limit }),
   ]);
 
+  const sleep: SleepData[] = sleepRows.map((row) => ({
+    date: (row.Date as string) || "",
+    start: (row.Start as string) || "",
+    end: (row.End as string) || "",
+  }));
+
+  const overview: OverviewData[] = overviewRows.map((row) => ({
+    date: (row.Date as string) || "",
+    overallScore: (row["Overall Score"] as string) || "",
+    sleepScore: (row["Sleep Score"] as string) || "",
+    workScore: (row["Work Score"] as string) || "",
+    workoutScore: (row["Workout Score"] as string) || "",
+  }));
+
   return {
-    sleep: sleepRows,
-    overview: overviewRows,
+    sleep,
+    overview,
   };
 }
 

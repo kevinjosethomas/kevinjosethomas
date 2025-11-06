@@ -6,8 +6,24 @@ import Tooltip from "@/components/Tooltip";
 import { projects } from "@/data/projects";
 import Highlight from "@/components/Highlight";
 import ProjectCard from "@/components/ProjectCard";
+import WorkChart from "@/components/WorkChart";
+import SleepChart from "@/components/SleepChart";
 
-export default function Home() {
+async function getSheetData() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/sheets`,
+      { next: { revalidate: 3600 } },
+    );
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+export default async function Home() {
+  const sheetData = await getSheetData();
   const featuredArticles = [
     {
       id: "kscale",
@@ -166,7 +182,7 @@ export default function Home() {
       <Stack />
 
       {/* Publication Section */}
-      <div className="flex w-full flex-col items-start p-16">
+      <div className="border-border flex w-full flex-col items-start border-b p-16">
         <Link
           href="https://arxiv.org/abs/2408.09311"
           target="_blank"
@@ -184,6 +200,14 @@ export default function Home() {
           </p>
         </Link>
       </div>
+
+      {/* Analytics Section */}
+      {sheetData && (
+        <div className="divide-border grid h-96 w-full grid-cols-1 gap-0 divide-x md:grid-cols-2">
+          <WorkChart data={sheetData.overview} />
+          <SleepChart data={sheetData.sleep} />
+        </div>
+      )}
     </div>
   );
 }
