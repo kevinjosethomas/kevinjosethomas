@@ -65,14 +65,33 @@ function CustomTooltip({ active, payload, coordinate }: CustomTooltipProps) {
 
     if (left === undefined || top === undefined) return null;
 
+    // Calculate smart positioning to prevent overflow
+    const tooltipWidth = 96; // w-24 = 6rem = 96px
+    const viewportWidth = window.innerWidth;
+    const tooltipHalfWidth = tooltipWidth / 2;
+
+    let transform = "translate(-50%, -120%)";
+    let adjustedLeft = left;
+
+    // Check if tooltip would overflow on the left
+    if (left - tooltipHalfWidth < 16) {
+      transform = "translate(0, -120%)";
+      adjustedLeft = 16;
+    }
+    // Check if tooltip would overflow on the right
+    else if (left + tooltipHalfWidth > viewportWidth - 16) {
+      transform = "translate(-100%, -120%)";
+      adjustedLeft = viewportWidth - 16;
+    }
+
     return (
       <div
         className="border-border pointer-events-none flex w-24 flex-col border bg-black px-2 py-1 text-sm"
         style={{
           position: "absolute",
-          left: `${left}px`,
+          left: `${adjustedLeft}px`,
           top: `${top}px`,
-          transform: "translate(-50%, -120%)",
+          transform,
         }}
       >
         <p className="text-secondary text-xs">{fullDate}</p>

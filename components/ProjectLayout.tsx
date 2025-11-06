@@ -29,7 +29,7 @@ function CTA({ href, icon, text, borderClass }: CallToActionProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`border-border group flex flex-col items-start justify-center gap-8 bg-black/20 p-8 transition-all ${borderClass}`}
+      className={`border-border group flex flex-row items-center justify-start gap-4 bg-black/20 p-6 transition-all md:flex-col md:items-start md:justify-center md:gap-8 md:p-8 ${borderClass}`}
     >
       {icon}
       <div className="flex items-center justify-start gap-4">
@@ -55,8 +55,8 @@ export default function ProjectLayout({
 }: ProjectLayoutProps) {
   return (
     <div className="h-full">
-      <div className="grid w-full grid-cols-4 items-start justify-between">
-        <div className="z-10 col-span-3 flex flex-col items-start justify-start gap-4 p-16">
+      <div className="flex w-full flex-col md:grid md:grid-cols-4 md:items-start md:justify-between">
+        <div className="z-10 flex flex-col items-start justify-start gap-4 p-6 md:col-span-3 md:p-16">
           <div className="flex w-full flex-col items-start justify-start gap-2">
             <h1 className="text-4xl font-bold">{title}</h1>
             <p className="text-secondary text-sm tracking-wider uppercase">
@@ -70,7 +70,7 @@ export default function ProjectLayout({
 
         {/* Right side - Links */}
         {(github || website || arxiv || youtube || blog) && (
-          <div className="border-border flex h-full flex-col border-l py-16">
+          <div className="border-border flex h-full flex-col border-l md:py-16">
             {arxiv && (
               <CTA
                 href={arxiv}
@@ -175,23 +175,23 @@ export default function ProjectLayout({
       </div>
 
       {images && images.length > 0 && (
-        <section className="border-border relative mt-12 w-full overflow-hidden border-t bg-black/10">
+        <section className="md:border-border relative w-full overflow-hidden bg-black/10 md:mt-12 md:border-t">
           <div className="relative flex w-full flex-col items-start justify-start gap-10">
-            <div className="flex w-full flex-nowrap overflow-x-auto pb-6">
+            <div className="flex w-full flex-col flex-nowrap overflow-x-auto pb-6 md:flex-row">
               {images.map((image, index) => {
                 return (
                   <div
                     key={image}
-                    className="border-border relative flex-shrink-0 border-r py-8"
+                    className="border-border relative shrink-0 border-r md:py-8"
                   >
-                    <div className="border-border border-y pl-8">
+                    <div className="border-border border-y px-8 md:pr-0 md:pl-8">
                       <Image
                         src={image}
                         width={300}
                         height={300}
                         draggable={false}
                         alt={`${title} - Image ${index + 1}`}
-                        className="border-border h-56 w-auto border-l object-contain select-none"
+                        className="border-border h-56 w-auto border-x object-contain select-none md:border-r-0 md:border-l"
                       />
                     </div>
                   </div>
