@@ -3,10 +3,11 @@ import type { Project } from "@/types";
 export const projects: Project[] = [
   {
     id: "emx",
-    name: "Emotional Matrix (EMX)",
+    name: "Emotional Matrix",
     date: "2025",
     href: "/project/emx",
     image: "/projects/emx.png",
+    github: "https://github.com/kevinjosethomas/emx",
   },
   {
     id: "maia",
@@ -14,6 +15,8 @@ export const projects: Project[] = [
     date: "2024-",
     href: "/project/maia",
     image: "/projects/maia.png",
+    github: "https://github.com/CSSLab/maia-platform-frontend",
+    website: "https://maiachess.com",
   },
   {
     id: "turbo",
@@ -21,13 +24,15 @@ export const projects: Project[] = [
     date: "2021",
     href: "/project/turbo",
     image: "/projects/turbo.png",
+    github: "https://github.com/kevinjosethomas/turbo-browser",
   },
   {
     id: "kos",
     name: "kos-sdk",
     date: "2025",
-    href: "/project/kos-sdk",
+    href: "/project/kos",
     image: "/projects/kos.png",
+    github: "https://github.com/kscalelabs/kos-zbot",
   },
   {
     id: "asl",
@@ -35,6 +40,8 @@ export const projects: Project[] = [
     date: "2024",
     href: "/project/asl",
     image: "/projects/asl.png",
+    github: "https://github.com/kevinjosethomas/sign-language-processing",
+    arxiv: "https://arxiv.org/abs/2408.09311",
   },
   {
     id: "scrapyard",
@@ -42,5 +49,7 @@ export const projects: Project[] = [
     date: "2024",
     href: "/project/scrapyard",
     image: "/projects/scrapyard.png",
+    github: "https://github.com/hackclub/scrapyard",
+    website: "https://scrapyard.hackclub.com",
   },
 ];

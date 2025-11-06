@@ -7,4 +7,5 @@ export interface Project {
   github?: string;
   website?: string;
   images?: string[];
+  arxiv?: string;
 }
