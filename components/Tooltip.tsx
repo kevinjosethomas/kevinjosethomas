@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
@@ -8,10 +9,8 @@ type TooltipProps = {
   number: number;
 };
 
-let tooltipIdCounter = 0;
-
 export default function Tooltip({ content, number }: TooltipProps) {
-  const tooltipId = `tooltip-${tooltipIdCounter++}`;
+  const tooltipId = useId();
 
   return (
     <>

@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="flex w-full items-center justify-between px-6 py-4 md:px-0 md:py-12">
-      <p>kjthomas@uwaterloo.ca</p>
+      <a href="mailto:kjthomas@uwaterloo.ca">kjthomas@uwaterloo.ca</a>
       <div className="flex items-center justify-end gap-4">
         <Link href="https://x.com/kevinjosethomas" target="_blank">
           <Image
