@@ -1,26 +1,27 @@
+import Link from "next/link";
 import Image from "next/image";
 import Stack from "@/components/Stack";
-import Globe from "@/components/Globe";
-import Link from "next/link";
+import Banner from "@/components/Banner";
+import Tooltip from "@/components/Tooltip";
 import { projects } from "@/data/projects";
+import Highlight from "@/components/Highlight";
 import ProjectCard from "@/components/ProjectCard";
 
 export default function Home() {
-  const spotlightedWriting = [
+  const featuredArticles = [
     {
       id: "kscale",
-      name: "Another Week at K-Scale Labs",
-
+      title: "Another Week at K-Scale Labs",
       href: "https://knowledge.kevinjosethomas.com/Thoughts/Another-Week-at-K-Scale-Labs",
     },
     {
       id: "scrapyard",
-      name: "Reflecting on Scrapyard— What We Did in Austin TX and...",
+      title: "Reflecting on Scrapyard— What We Did in Austin TX and...",
       href: "https://knowledge.kevinjosethomas.com/Thoughts/Reflecting-on-Scrapyard-—-What-We-Did-in-Austin-TX-and-60+-Cities-around-the-World",
     },
     {
       id: "cs229",
-      name: "Stanford CS229 Lecture 1",
+      title: "Stanford CS229 Lecture 1",
       href: "https://knowledge.kevinjosethomas.com/Learning/Stanford-CS229/CS229-Lecture-1",
     },
   ];
@@ -41,20 +42,52 @@ export default function Home() {
   return (
     <div className="flex w-full flex-col items-start justify-start">
       {/* Hero Section */}
-      <div className="border-border relative flex h-[708px] w-full flex-col items-start justify-center overflow-hidden border-b p-16 md:p-24">
-        <div className="z-10 flex max-w-md flex-col items-start justify-start gap-6 tracking-wide">
-          <p className="font-micro5 text-4xl tracking-wider">hey!</p>
-          <p className="text-xl">
-            I&apos;m studying CS @ UWaterloo. Currently, I lead engineering for
-            the Maia Chess project— the world&apos;s most popular chess bot.
+      <div className="border-border relative grid w-full grid-cols-6 items-center border-b">
+        <div className="text-secondary col-span-4 flex max-w-2xl flex-col gap-8 p-16 text-lg">
+          <p className="text-lg font-bold tracking-wide">( ^_^)／</p>
+          <p>
+            I&apos;m a Computer Science student at the University of Waterloo.
+            Currently, I lead engineering for the{" "}
+            <Highlight
+              rotate={1}
+              href="https://maiachess.com/"
+              className="px-0.5"
+            >
+              Maia Chess
+            </Highlight>
+            <Tooltip
+              number={1}
+              content="Maia is an open research project on human-AI collaboration in chess— studying how neural networks can model human behaviour. As the most-played bot on Lichess, Maia uses chess as a testbed for broader ML research."
+            />{" "}
+            project— the world&apos;s most popular chess bot.
           </p>
-          <p className="text-xl">
-            Previously SWE intern @ K-Scale Labs in Palo Alto.
+          <p>
+            Previously, I was a SWE intern at{" "}
+            <Highlight href="https://kscale.dev/" rotate={2}>
+              K-Scale Labs
+            </Highlight>
+            <Tooltip
+              number={2}
+              content="K-Scale Labs is developing America's first open-source, general-purpose humanoid robot— building a complete in-house stack spanning hardware, software, RL, and simulation to enable a fully capable general-purpose humanoid."
+            />{" "}
+            in Palo Alto. I also worked on{" "}
+            <Highlight href="https://arxiv.org/abs/2408.09311">
+              neural sign language translation
+            </Highlight>
+            ,
+            <Tooltip
+              number={3}
+              content="With my high school also being BC's only school for the Deaf, I was inspired to build a CV model to classify ASL fingerspelling and generate sign language poses for real-time translation between students. ASL translation remains an unsolved problem and should be developed in close collaboration with the Deaf community."
+            />{" "}
+            and organized hackathons for Hack Club.{" "}
+            <Tooltip
+              number={4}
+              content="I organized Hack Club Scrapyard—a global high school hackathon ($200,000 in funding) in Austin TX and 60+ cities around the world. I also founded the British Columbia Youth Developer Collective, a community of over 400 high school developers across BC."
+            />
           </p>
         </div>
-        <div className="pointer-events-none absolute -right-56 -bottom-[600px] h-[1000px] w-[1000px] overflow-hidden md:-bottom-72">
-          <Globe />
-        </div>
+
+        <Banner />
       </div>
 
       {/* Experience Section */}
@@ -100,10 +133,10 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-end justify-start px-16 pb-16 md:p-16">
           <ul className="flex list-disc flex-col items-start justify-start text-xl font-light">
-            {spotlightedWriting.map((writing) => (
-              <li key={writing.id}>
-                <Link href={writing.href} target="_blank">
-                  <p className="hover:underline">{writing.name}</p>
+            {featuredArticles.map((article) => (
+              <li key={article.id}>
+                <Link href={article.href} target="_blank">
+                  <p className="hover:underline">{article.title}</p>
                 </Link>
               </li>
             ))}

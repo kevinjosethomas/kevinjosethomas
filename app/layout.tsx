@@ -1,18 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Karla, Micro_5 } from "next/font/google";
+import { Karla } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const karla = Karla({
   variable: "--font-karla",
   subsets: ["latin"],
-});
-
-const micro5 = Micro_5({
-  variable: "--font-micro5",
-  subsets: ["latin"],
-  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -27,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${karla.variable} ${micro5.variable} bg-black antialiased`}
-      >
+      <body className={`${karla.variable} bg-black antialiased`}>
         <div className="mx-auto flex min-h-screen max-w-[1280px] flex-col items-center">
           <Header />
           <main className="border-border w-full border">{children}</main>
