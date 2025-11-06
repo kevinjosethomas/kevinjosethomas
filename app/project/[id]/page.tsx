@@ -44,6 +44,7 @@ export default async function ProjectPage({ params }: PageProps) {
       bannerAlt={project.name}
       title={project.name}
       dateRange={project.date}
+      arxiv={project.arxiv}
       github={project.github}
       website={project.website}
       images={project.images}

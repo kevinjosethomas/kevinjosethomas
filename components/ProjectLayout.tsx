@@ -7,6 +7,7 @@ interface ProjectLayoutProps {
   bannerAlt: string;
   title: string;
   dateRange: string;
+  arxiv?: string;
   github?: string;
   website?: string;
   children: ReactNode;
@@ -44,6 +45,7 @@ export default function ProjectLayout({
   dateRange,
   github,
   website,
+  arxiv,
   children,
   images,
 }: ProjectLayoutProps) {
@@ -71,8 +73,23 @@ export default function ProjectLayout({
         </div>
 
         {/* Right side - Links */}
-        {(github || website) && (
+        {(github || website || arxiv) && (
           <div className="border-border flex h-full flex-col border-l py-16">
+            {arxiv && (
+              <CTA
+                href={arxiv}
+                icon={
+                  <Image
+                    src="/icons/arxiv.svg"
+                    alt="arXiv"
+                    width={28}
+                    height={28}
+                  />
+                }
+                text="View arXiv"
+                borderClass="border-y"
+              />
+            )}
             {github && (
               <CTA
                 href={github}
