@@ -55,6 +55,14 @@ export default async function Home() {
     spotlightedProjectIds.includes(project.id),
   );
 
+  const interleavedProjects = [];
+  const leftColumn = spotlightedProjects.slice(0, 3);
+  const rightColumn = spotlightedProjects.slice(3);
+  for (let i = 0; i < Math.max(leftColumn.length, rightColumn.length); i++) {
+    if (leftColumn[i]) interleavedProjects.push(leftColumn[i]);
+    if (rightColumn[i]) interleavedProjects.push(rightColumn[i]);
+  }
+
   return (
     <div className="flex w-full flex-col items-start justify-start">
       {/* Hero Section */}
@@ -172,7 +180,20 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="border-border flex flex-col items-center gap-6 border-x py-0 md:items-end md:py-16 md:pl-16">
+        {/* Mobile: Interleaved order */}
+        <div className="flex flex-col items-center gap-6 py-0 md:hidden">
+          {interleavedProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              dark={20}
+              saturate={75}
+            />
+          ))}
+        </div>
+
+        {/* Desktop: Two columns */}
+        <div className="border-border hidden flex-col items-center gap-6 border-x py-0 md:flex md:items-end md:py-16 md:pl-16">
           {spotlightedProjects.slice(0, 3).map((project) => (
             <ProjectCard
               key={project.id}
@@ -182,7 +203,7 @@ export default async function Home() {
             />
           ))}
         </div>
-        <div className="border-border flex flex-col items-center gap-6 border-r py-0 md:items-end md:py-16 md:pl-16">
+        <div className="border-border hidden flex-col items-center gap-6 border-r py-0 md:flex md:items-end md:py-16 md:pl-16">
           {spotlightedProjects.slice(3).map((project) => (
             <ProjectCard
               key={project.id}

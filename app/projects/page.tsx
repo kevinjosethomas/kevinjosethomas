@@ -4,6 +4,14 @@ import ProjectCard from "@/components/ProjectCard";
 export default function ProjectsPage() {
   const midpoint = Math.ceil(projects.length / 2);
 
+  const interleavedProjects = [];
+  const leftColumn = projects.slice(0, midpoint);
+  const rightColumn = projects.slice(midpoint);
+  for (let i = 0; i < Math.max(leftColumn.length, rightColumn.length); i++) {
+    if (leftColumn[i]) interleavedProjects.push(leftColumn[i]);
+    if (rightColumn[i]) interleavedProjects.push(rightColumn[i]);
+  }
+
   return (
     <div className="flex w-full flex-col items-start justify-start p-6 md:p-0">
       <div className="border-border grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:border-b">
@@ -16,13 +24,19 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        <div className="border-border flex flex-col items-center gap-6 py-0 md:items-end md:border-x md:py-16 md:pl-16">
+        <div className="flex flex-col items-center gap-6 py-0 md:hidden">
+          {interleavedProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+
+        <div className="border-border hidden flex-col items-center gap-6 py-0 md:flex md:items-end md:border-x md:py-16 md:pl-16">
           {projects.slice(0, midpoint).map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
-        <div className="flex flex-col items-center gap-6 py-0 md:items-end md:py-16 md:pl-16">
+        <div className="hidden flex-col items-center gap-6 py-0 md:flex md:items-end md:py-16 md:pl-16">
           {projects.slice(midpoint).map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
