@@ -78,6 +78,8 @@ export default function ProjectLayout({
                   <Image
                     src="/icons/arxiv.svg"
                     alt="arXiv"
+                    className="select-none"
+                    draggable={false}
                     width={28}
                     height={28}
                   />
@@ -93,6 +95,8 @@ export default function ProjectLayout({
                   <Image
                     src="/icons/github.svg"
                     alt="GitHub"
+                    className="select-none"
+                    draggable={false}
                     width={28}
                     height={28}
                   />
@@ -107,7 +111,7 @@ export default function ProjectLayout({
                 icon={
                   <div className="text-secondary">
                     <svg
-                      className="h-7 w-7"
+                      className="h-7 w-7 select-none"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -132,7 +136,7 @@ export default function ProjectLayout({
                 icon={
                   <div className="text-secondary">
                     <svg
-                      className="h-7 w-7"
+                      className="h-7 w-7 select-none"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"

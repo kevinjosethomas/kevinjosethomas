@@ -26,7 +26,7 @@ export default function ProjectCard({
             />
           )}
           <Image
-            className="h-full w-full object-cover transition-all duration-300 group-hover:saturate-100!"
+            className="h-full w-full object-cover transition-all duration-300 select-none group-hover:saturate-100!"
             src={project.image}
             alt={project.name}
             width={346}
@@ -34,6 +34,7 @@ export default function ProjectCard({
             style={{
               filter: `saturate(${saturate}%)`,
             }}
+            draggable={false}
           />
         </div>
         <div className="flex items-center justify-between p-4">

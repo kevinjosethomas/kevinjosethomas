@@ -64,9 +64,7 @@ export default async function Home() {
           <p>
             I&apos;m a Computer Science student at the University of Waterloo.
             Currently, I lead engineering for the{" "}
-            <Highlight rotate={1} href="/work/csslab" className="px-0.5">
-              Maia Chess
-            </Highlight>
+            <Highlight href="/work/csslab">Maia Chess</Highlight>
             <Tooltip
               number={1}
               content="Maia is an open research project on human-AI collaboration in chess— studying how neural networks can model human behaviour. As the most-played bot on Lichess, Maia uses chess as a testbed for broader ML research."
@@ -75,15 +73,13 @@ export default async function Home() {
           </p>
           <p>
             Previously, I was a SWE intern at{" "}
-            <Highlight href="/work/kscale" rotate={2}>
-              K-Scale Labs
-            </Highlight>
+            <Highlight href="/work/kscale">K-Scale Labs</Highlight>
             <Tooltip
               number={2}
               content="K-Scale Labs is developing America's first open-source, general-purpose humanoid robot— building a complete in-house stack spanning hardware, software, RL, and simulation to enable a fully capable general-purpose humanoid."
             />{" "}
             in Palo Alto. I also worked on{" "}
-            <Highlight href="/project/asl" rotate={2}>
+            <Highlight href="/project/asl">
               neural sign language translation
             </Highlight>
             ,
@@ -107,14 +103,16 @@ export default async function Home() {
         <Link href="/work/kscale">
           <div className="relative transition-all duration-300 hover:saturate-150">
             <Image
-              className="h-full w-full object-cover"
+              draggable={false}
+              className="h-full w-full object-cover select-none"
               src="/experience/k-scale.png"
               alt="K-Scale Labs"
               width={592}
               height={350}
             />
             <Image
-              className="absolute right-6 bottom-6"
+              draggable={false}
+              className="absolute right-6 bottom-6 select-none"
               src="/experience/k-scale-logo.svg"
               alt="K-Scale Labs"
               width={192}
@@ -125,7 +123,8 @@ export default async function Home() {
         <Link href="/work/csslab">
           <div className="relative transition-all duration-300 hover:saturate-200">
             <Image
-              className="h-full w-full object-cover"
+              draggable={false}
+              className="h-full w-full object-cover select-none"
               src="/experience/csslab.png"
               alt="CSSLab"
               width={592}
@@ -205,7 +204,14 @@ export default async function Home() {
           className="group"
         >
           <div className="flex items-center gap-2">
-            <Image src="/icons/arxiv.svg" alt="arXiv" width={16} height={16} />
+            <Image
+              alt="arXiv"
+              src="/icons/arxiv.svg"
+              className="select-none"
+              draggable={false}
+              width={16}
+              height={16}
+            />
             <p className="text-secondary text-sm group-hover:opacity-70">
               arXiv:2408.09311 [cs.CL]
             </p>

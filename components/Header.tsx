@@ -24,12 +24,21 @@ export default function Header() {
 
         <div className="hidden items-center justify-start gap-6 md:flex">
           <Link href="https://x.com/kevinjosethomas" target="_blank">
-            <Image src="/icons/x.svg" alt="X" width={20} height={20} />
+            <Image
+              src="/icons/x.svg"
+              alt="X"
+              className="select-none"
+              draggable={false}
+              width={20}
+              height={20}
+            />
           </Link>
           <Link href="https://github.com/kevinjosethomas" target="_blank">
             <Image
               src="/icons/github.svg"
               alt="GitHub"
+              className="select-none"
+              draggable={false}
               width={20}
               height={20}
             />
@@ -91,7 +100,14 @@ export default function Header() {
               target="_blank"
               onClick={() => setIsMenuOpen(false)}
             >
-              <Image src="/icons/x.svg" alt="X" width={24} height={24} />
+              <Image
+                src="/icons/x.svg"
+                alt="X"
+                className="select-none"
+                draggable={false}
+                width={24}
+                height={24}
+              />
             </Link>
             <Link
               href="https://github.com/kevinjosethomas"
@@ -101,6 +117,8 @@ export default function Header() {
               <Image
                 src="/icons/github.svg"
                 alt="GitHub"
+                className="select-none"
+                draggable={false}
                 width={24}
                 height={24}
               />

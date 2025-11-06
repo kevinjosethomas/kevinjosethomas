@@ -24,7 +24,8 @@ export default function GridPattern() {
           alt="Head"
           width={236}
           height={236}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover select-none"
+          draggable={false}
         />
       </div>
 
@@ -42,7 +43,8 @@ export default function GridPattern() {
           alt="Gaze"
           width={354}
           height={236}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover select-none"
+          draggable={false}
         />
       </div>
 
@@ -63,4 +65,3 @@ export default function GridPattern() {
     </div>
   );
 }
-

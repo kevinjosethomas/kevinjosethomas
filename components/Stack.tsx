@@ -103,7 +103,14 @@ export default function Stack() {
   const StackItem = ({ item }: { item: (typeof stack)[number] }) => {
     return (
       <div key={item.name} className="flex items-center justify-start gap-2">
-        <Image src={item.icon} alt={item.name} width={20} height={20} />
+        <Image
+          src={item.icon}
+          alt={item.name}
+          width={20}
+          height={20}
+          draggable={false}
+          className="select-none"
+        />
         <p className="text-secondary text-sm">{item.name}</p>
       </div>
     );

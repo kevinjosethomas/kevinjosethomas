@@ -32,7 +32,8 @@ export default function ExperienceLayout({
   return (
     <div>
       <Image
-        className="h-full w-full object-cover"
+        draggable={false}
+        className="h-full w-full object-cover select-none"
         src={bannerImage}
         alt={bannerAlt}
         width={1280}
