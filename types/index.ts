@@ -8,4 +8,6 @@ export interface Project {
   website?: string;
   images?: string[];
   arxiv?: string;
+  youtube?: string;
+  blog?: string;
 }

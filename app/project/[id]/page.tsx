@@ -47,6 +47,8 @@ export default async function ProjectPage({ params }: PageProps) {
       arxiv={project.arxiv}
       github={project.github}
       website={project.website}
+      youtube={project.youtube}
+      blog={project.blog}
       images={project.images}
     >
       <Content />

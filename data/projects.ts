@@ -42,6 +42,7 @@ export const projects: Project[] = [
     image: "/projects/asl.png",
     github: "https://github.com/kevinjosethomas/sign-language-processing",
     arxiv: "https://arxiv.org/abs/2408.09311",
+    youtube: "https://www.youtube.com/watch?v=uuPxMWQRoXc",
   },
   {
     id: "scrapyard",
@@ -51,5 +52,7 @@ export const projects: Project[] = [
     image: "/projects/scrapyard.png",
     github: "https://github.com/hackclub/scrapyard",
     website: "https://scrapyard.hackclub.com",
+    youtube: "https://www.youtube.com/watch?v=8iM1W8kXrQA",
+    blog: "https://knowledge.kevinjosethomas.com/Thoughts/Reflecting-on-Scrapyard-—-What-We-Did-in-Austin-TX-and-60+-Cities-around-the-World",
   },
 ];
