@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${karla.variable} bg-black antialiased`}>
-        <div className="mx-auto flex min-h-screen max-w-[1280px] flex-col items-center">
+        <div className="mx-auto flex min-h-screen max-w-[1400px] flex-col items-center">
           <Header />
           <main className="border-border w-full border">{children}</main>
           <Footer />

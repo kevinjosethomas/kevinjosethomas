@@ -69,22 +69,35 @@ export default function Header() {
             <Link
               href="/"
               className="flex w-full items-start justify-start text-3xl font-semibold tracking-wide transition-colors hover:bg-white/5"
+              onClick={() => setIsMenuOpen(false)}
             >
               <h1 className="text-2xl font-bold md:text-3xl">kevin thomas</h1>
             </Link>
-            <Link href="/projects">
+            <Link href="/projects" onClick={() => setIsMenuOpen(false)}>
               <h3 className="text-secondary text-xl md:block">projects</h3>
             </Link>
-            <Link href="https://knowledge.kevinjosethomas.com" target="_blank">
+            <Link
+              href="https://knowledge.kevinjosethomas.com"
+              target="_blank"
+              onClick={() => setIsMenuOpen(false)}
+            >
               <h3 className="text-secondary text-xl md:block">writing</h3>
             </Link>
           </div>
 
           <div className="flex w-full items-center justify-center gap-8 py-10">
-            <Link href="https://x.com/kevinjosethomas" target="_blank">
+            <Link
+              href="https://x.com/kevinjosethomas"
+              target="_blank"
+              onClick={() => setIsMenuOpen(false)}
+            >
               <Image src="/icons/x.svg" alt="X" width={24} height={24} />
             </Link>
-            <Link href="https://github.com/kevinjosethomas" target="_blank">
+            <Link
+              href="https://github.com/kevinjosethomas"
+              target="_blank"
+              onClick={() => setIsMenuOpen(false)}
+            >
               <Image
                 src="/icons/github.svg"
                 alt="GitHub"

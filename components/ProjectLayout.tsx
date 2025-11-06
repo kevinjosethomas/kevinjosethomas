@@ -184,7 +184,7 @@ export default function ProjectLayout({
                     key={image}
                     className="border-border relative shrink-0 border-r md:py-8"
                   >
-                    <div className="border-border border-y px-8 md:pr-0 md:pl-8">
+                    <div className="border-border border-y px-6 md:pr-0 md:pl-8">
                       <Image
                         src={image}
                         width={300}
