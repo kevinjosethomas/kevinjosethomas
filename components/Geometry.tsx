@@ -77,9 +77,7 @@ const renderShape = (shape: ShapeId) => {
 };
 
 export default function Geometry() {
-  const [shape, setShape] = useState<ShapeId>(
-    () => SHAPES[Math.floor(Math.random() * SHAPES.length)],
-  );
+  const [shape, setShape] = useState<ShapeId>("diamond");
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const meshPatternId = `mesh-${useId()}`;
 
@@ -100,6 +98,8 @@ export default function Geometry() {
   };
 
   useEffect(() => {
+    setShape(SHAPES[Math.floor(Math.random() * SHAPES.length)]);
+
     return () => stopCycling();
   }, []);
 

@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
   Dot,
 } from "recharts";
+import InfoTooltip from "./InfoTooltip";
 
 type DataPoint = {
   date: string;
@@ -103,10 +104,7 @@ export default function WorkChart({ data }: WorkScoreChartProps) {
   });
 
   return (
-    <div className="divide-border flex flex-col divide-y outline-none **:outline-none focus:outline-none **:focus:outline-none">
-      <div className="flex items-center justify-center px-4 py-2">
-        <p className="text-secondary text-sm">Time Spent in Deep Work (7d)</p>
-      </div>
+    <div className="flex flex-col outline-none **:outline-none focus:outline-none **:focus:outline-none">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           data={chartData}
@@ -137,12 +135,22 @@ export default function WorkChart({ data }: WorkScoreChartProps) {
             strokeWidth={2}
             fill="url(#colorGradient)"
             dot={
-              <Dot r={4} fill="white" stroke="currentColor" strokeWidth={2} />
+              <Dot r={4} fill="currentColor" fillOpacity={1} strokeWidth={0} />
             }
-            activeDot={{ r: 6 }}
+            activeDot={{
+              r: 6,
+              fill: "currentColor",
+              fillOpacity: 1,
+              strokeWidth: 0,
+            }}
           />
         </AreaChart>
       </ResponsiveContainer>
+      <div className="border-border flex items-center justify-between border-t px-4 py-2">
+        <div />
+        <p className="text-secondary text-sm">Time Spent in Deep Work (7d)</p>
+        <InfoTooltip content="This chart shows the total time I've dedicated 100% of my focus into working on a single task over the last 7 days." />
+      </div>
     </div>
   );
 }

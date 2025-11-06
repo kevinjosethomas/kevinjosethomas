@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import * as React from "react";
+import InfoTooltip from "./InfoTooltip";
 
 type SleepData = {
   date: string;
@@ -109,15 +110,21 @@ export default function SleepChart({ data }: SleepChartProps) {
     event: React.MouseEvent<HTMLDivElement>,
   ) => {
     setFocusedIndex(index);
-    const rect = event.currentTarget.getBoundingClientRect();
-    setTooltip({
-      date: bar.fullDate,
-      start: bar.start,
-      end: bar.end,
-      duration: formatDuration(bar.durationMinutes),
-      x: rect.left + rect.width / 2,
-      y: rect.top,
-    });
+    const barRect = event.currentTarget.getBoundingClientRect();
+    const containerRect = event.currentTarget
+      .closest(".sleep-chart-outer")
+      ?.getBoundingClientRect();
+
+    if (containerRect) {
+      setTooltip({
+        date: bar.fullDate,
+        start: bar.start,
+        end: bar.end,
+        duration: formatDuration(bar.durationMinutes),
+        x: barRect.left - containerRect.left + barRect.width / 2,
+        y: barRect.top - containerRect.top,
+      });
+    }
   };
 
   React.useEffect(() => {
@@ -126,15 +133,20 @@ export default function SleepChart({ data }: SleepChartProps) {
       const barElement = document.querySelector(
         `.sleep-bar-${focusedIndex}`,
       ) as HTMLElement;
-      if (barElement) {
-        const rect = barElement.getBoundingClientRect();
+      const containerElement = document.querySelector(
+        ".sleep-chart-outer",
+      ) as HTMLElement;
+
+      if (barElement && containerElement) {
+        const barRect = barElement.getBoundingClientRect();
+        const containerRect = containerElement.getBoundingClientRect();
         setTooltip({
           date: firstBar.fullDate,
           start: firstBar.start,
           end: firstBar.end,
           duration: formatDuration(firstBar.durationMinutes),
-          x: rect.left + rect.width / 2,
-          y: rect.top,
+          x: barRect.left - containerRect.left + barRect.width / 2,
+          y: barRect.top - containerRect.top,
         });
       }
     }
@@ -144,11 +156,8 @@ export default function SleepChart({ data }: SleepChartProps) {
   if (!data || data.length === 0) return null;
 
   return (
-    <div className="divide-border relative flex h-full w-full flex-col divide-y overflow-x-hidden">
-      <div className="flex items-center justify-center px-4 py-2">
-        <p className="text-secondary text-sm">Time Spent Asleep (7d)</p>
-      </div>
-      <div className="relative flex h-full w-full overflow-x-hidden">
+    <div className="sleep-chart-outer relative flex h-full w-full flex-col">
+      <div className="sleep-chart-container relative flex h-full w-full overflow-hidden">
         <div className="relative flex flex-1 px-2">
           <div className="pointer-events-none absolute inset-0 -left-20">
             {/* Gridlines */}
@@ -158,10 +167,12 @@ export default function SleepChart({ data }: SleepChartProps) {
               return (
                 <div
                   key={label}
-                  className="border-border border-opacity-10 absolute w-full border-t"
+                  className="absolute w-full border-t"
                   style={{
                     top: `${topPercent}%`,
                     right: "-2.5rem",
+                    borderColor: "currentColor",
+                    opacity: 0.1,
                   }}
                 />
               );
@@ -210,25 +221,30 @@ export default function SleepChart({ data }: SleepChartProps) {
             );
           })}
         </div>
-
-        {/* Tooltip */}
-        {tooltip && (
-          <div
-            className="border-border pointer-events-none fixed z-50 flex w-32 flex-col border bg-black px-2 py-1 text-sm"
-            style={{
-              left: `${tooltip.x}px`,
-              top: `${tooltip.y}px`,
-              transform: "translate(-50%, -120%)",
-            }}
-          >
-            <p className="text-secondary text-xs">{tooltip.date}</p>
-            <p className="font-medium">{tooltip.duration}</p>
-            <p className="text-secondary text-xs">
-              {tooltip.start} - {tooltip.end}
-            </p>
-          </div>
-        )}
       </div>
+      <div className="border-border flex items-center justify-between border-t px-4 py-2">
+        <div />
+        <p className="text-secondary text-sm">Time Spent Asleep (7d)</p>
+        <InfoTooltip content="This chart visualizes my sleep habits over the last 7 days. My sleep data is sourced from my Apple Watch and is automatically synced to my tracker Google Sheet every morning." />
+      </div>
+
+      {/* Tooltip */}
+      {tooltip && (
+        <div
+          className="border-border pointer-events-none absolute z-50 flex w-32 flex-col border bg-black px-2 py-1 text-sm"
+          style={{
+            left: `${tooltip.x}px`,
+            top: `${tooltip.y}px`,
+            transform: "translate(-50%, -120%)",
+          }}
+        >
+          <p className="text-secondary text-xs">{tooltip.date}</p>
+          <p className="font-medium">{tooltip.duration}</p>
+          <p className="text-secondary text-xs">
+            {tooltip.start} - {tooltip.end}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
