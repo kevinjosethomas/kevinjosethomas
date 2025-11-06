@@ -142,11 +142,11 @@ export default function Home() {
 
       {/* Projects Section */}
       <div className="border-border grid w-full grid-cols-1 gap-6 border-b md:grid-cols-3 md:gap-0">
-        <div className="border-border flex flex-col items-start justify-start border-r px-16 pt-16 md:p-16">
+        <div className="sticky top-0 flex flex-col items-start justify-start self-start px-16 pt-16 md:p-16">
           <h3 className="text-2xl font-semibold">Projects</h3>
         </div>
 
-        <div className="border-border flex flex-col items-center gap-6 border-r py-0 md:items-end md:py-16 md:pl-16">
+        <div className="border-border flex flex-col items-center gap-6 border-x py-0 md:items-end md:py-16 md:pl-16">
           {spotlightedProjects.slice(0, 3).map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
