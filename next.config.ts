@@ -10,6 +10,19 @@ const nextConfig: NextConfig = {
     };
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: "/relay-mgKa/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/relay-mgKa/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+    ];
+  },
+  skipMiddlewareUrlNormalize: true,
 };
 
 const withMDX = createMDX({

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Karla } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PostHogClient from "@/lib/posthog";
 
 const karla = Karla({
   variable: "--font-karla",
@@ -29,11 +30,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const posthog = PostHogClient();
+  await posthog.shutdown();
+
   return (
     <html lang="en">
       <body className={`${karla.variable} bg-black antialiased`}>
