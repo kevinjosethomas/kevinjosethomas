@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Stack from "@/components/Stack";
-import Banner from "@/components/Banner";
+import Geometry from "@/components/Geometry";
 import Tooltip from "@/components/Tooltip";
 import { projects } from "@/data/projects";
 import Highlight from "@/components/Highlight";
@@ -48,11 +48,7 @@ export default function Home() {
           <p>
             I&apos;m a Computer Science student at the University of Waterloo.
             Currently, I lead engineering for the{" "}
-            <Highlight
-              rotate={1}
-              href="https://maiachess.com/"
-              className="px-0.5"
-            >
+            <Highlight rotate={1} href="/work/csslab" className="px-0.5">
               Maia Chess
             </Highlight>
             <Tooltip
@@ -63,7 +59,7 @@ export default function Home() {
           </p>
           <p>
             Previously, I was a SWE intern at{" "}
-            <Highlight href="https://kscale.dev/" rotate={2}>
+            <Highlight href="/work/kscale" rotate={2}>
               K-Scale Labs
             </Highlight>
             <Tooltip
@@ -71,7 +67,7 @@ export default function Home() {
               content="K-Scale Labs is developing America's first open-source, general-purpose humanoid robot— building a complete in-house stack spanning hardware, software, RL, and simulation to enable a fully capable general-purpose humanoid."
             />{" "}
             in Palo Alto. I also worked on{" "}
-            <Highlight href="https://arxiv.org/abs/2408.09311">
+            <Highlight href="/project/asl" rotate={2}>
               neural sign language translation
             </Highlight>
             ,
@@ -87,7 +83,7 @@ export default function Home() {
           </p>
         </div>
 
-        <Banner />
+        <Geometry />
       </div>
 
       {/* Experience Section */}
