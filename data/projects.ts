@@ -8,6 +8,12 @@ export const projects: Project[] = [
     href: "/project/emx",
     image: "/projects/emx.png",
     github: "https://github.com/kevinjosethomas/emx",
+    images: [
+      "/projects/images/emx-1.png",
+      "/projects/images/emx-2.png",
+      "/projects/images/emx-3.png",
+      "/projects/images/emx-4.png",
+    ],
   },
   {
     id: "maia",
@@ -17,6 +23,7 @@ export const projects: Project[] = [
     image: "/projects/maia.png",
     github: "https://github.com/CSSLab/maia-platform-frontend",
     website: "https://maiachess.com",
+    images: ["/projects/images/maia-1.png"],
   },
   {
     id: "turbo",
@@ -25,6 +32,10 @@ export const projects: Project[] = [
     href: "/project/turbo",
     image: "/projects/turbo.png",
     github: "https://github.com/kevinjosethomas/turbo",
+    images: [
+      "/projects/images/turbo-1.png",
+      "/projects/images/turbo-2.png",
+    ],
   },
   {
     id: "kos",
@@ -33,6 +44,11 @@ export const projects: Project[] = [
     href: "/project/kos",
     image: "/projects/kos.png",
     github: "https://github.com/kscalelabs/kos-zbot",
+    images: [
+      "/projects/images/kos-1.png",
+      "/projects/images/kos-2.png",
+      "/projects/images/kos-3.png",
+    ],
   },
   {
     id: "asl",
@@ -43,6 +59,14 @@ export const projects: Project[] = [
     github: "https://github.com/kevinjosethomas/sign-language-processing",
     arxiv: "https://arxiv.org/abs/2408.09311",
     youtube: "https://www.youtube.com/watch?v=uuPxMWQRoXc",
+    images: [
+      "/projects/images/asl-1.png",
+      "/projects/images/asl-2.jpg",
+      "/projects/images/asl-3.jpg",
+      "/projects/images/asl-4.jpg",
+      "/projects/images/asl-5.jpg",
+      "/projects/images/asl-6.jpg",
+    ],
   },
   {
     id: "scrapyard",
@@ -53,5 +77,6 @@ export const projects: Project[] = [
     github: "https://github.com/hackclub/scrapyard",
     youtube: "https://www.youtube.com/watch?v=8iM1W8kXrQA",
     blog: "https://knowledge.kevinjosethomas.com/Thoughts/Reflecting-on-Scrapyard-—-What-We-Did-in-Austin-TX-and-60+-Cities-around-the-World",
+    images: ["/projects/images/scrapyard-1.jpg", "/projects/images/scrapyard-2.png"],
   },
 ];

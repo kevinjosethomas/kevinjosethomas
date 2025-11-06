@@ -56,7 +56,6 @@ export default function ProjectLayout({
   return (
     <div className="h-full">
       <div className="grid w-full grid-cols-4 items-start justify-between">
-        {/* Left side - Content */}
         <div className="z-10 col-span-3 flex flex-col items-start justify-start gap-4 p-16">
           <div className="flex w-full flex-col items-start justify-start gap-2">
             <h1 className="text-4xl font-bold">{title}</h1>
@@ -175,27 +174,32 @@ export default function ProjectLayout({
         )}
       </div>
 
-      {/* Images section - only render if images exist */}
       {images && images.length > 0 && (
-        <div className="border-border flex w-full flex-col items-start justify-start gap-8 border-t p-16">
-          <h2 className="text-2xl font-semibold">Project Images</h2>
-          <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className="border-border overflow-hidden rounded-lg border"
-              >
-                <Image
-                  src={image}
-                  alt={`${title} - Image ${index + 1}`}
-                  width={400}
-                  height={300}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            ))}
+        <section className="border-border relative mt-12 w-full overflow-hidden border-t bg-black/10">
+          <div className="relative flex w-full flex-col items-start justify-start gap-10">
+            <div className="flex w-full flex-nowrap overflow-x-auto pb-6">
+              {images.map((image, index) => {
+                return (
+                  <div
+                    key={image}
+                    className="border-border relative flex-shrink-0 border-r py-8"
+                  >
+                    <div className="border-border border-y pl-8">
+                      <Image
+                        src={image}
+                        width={300}
+                        height={300}
+                        draggable={false}
+                        alt={`${title} - Image ${index + 1}`}
+                        className="border-border h-56 w-auto border-l object-contain select-none"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        </section>
       )}
     </div>
   );
