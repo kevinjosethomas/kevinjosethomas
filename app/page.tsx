@@ -132,11 +132,11 @@ export default async function Home() {
       </div>
 
       {/* Writing Section */}
-      <div className="border-border flex w-full flex-col items-start justify-start gap-4 overflow-x-hidden border-b p-6 md:flex-row md:justify-between md:gap-0 md:p-16">
+      <div className="border-border flex w-full flex-col items-start justify-start gap-4 overflow-x-hidden border-b p-6 md:flex-row md:justify-between md:gap-8 md:p-16 lg:gap-0">
         <div className="flex flex-col items-start justify-start">
           <h3 className="text-2xl font-semibold">Writing</h3>
         </div>
-        <div className="flex w-full flex-col items-start justify-start overflow-x-hidden md:items-end">
+        <div className="flex w-full flex-1 flex-col items-start justify-start overflow-x-hidden lg:items-end">
           <ul className="flex list-inside list-disc flex-col items-start justify-start text-lg font-light md:text-xl">
             {featuredArticles.map((article) => (
               <li key={article.id} className="whitespace-nowrap">
