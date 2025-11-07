@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   webpack: (config) => {
     config.resolve.extensionAlias = {
@@ -22,7 +23,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  skipMiddlewareUrlNormalize: true,
+  skipProxyUrlNormalize: true,
 };
 
 const withMDX = createMDX({

@@ -1,29 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import Stack from "@/components/Stack";
+import Charts from "@/components/Charts";
 import Geometry from "@/components/Geometry";
 import Tooltip from "@/components/Tooltip";
 import { projects } from "@/data/projects";
 import Highlight from "@/components/Highlight";
 import ProjectCard from "@/components/ProjectCard";
-import WorkChart from "@/components/WorkChart";
-import SleepChart from "@/components/SleepChart";
-
-async function getSheetData() {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/sheets`,
-      { next: { revalidate: 3600 } },
-    );
-    if (!res.ok) return null;
-    return await res.json();
-  } catch {
-    return null;
-  }
-}
 
 export default async function Home() {
-  const sheetData = await getSheetData();
   const featuredArticles = [
     {
       id: "kscale",
@@ -244,13 +229,7 @@ export default async function Home() {
         </Link>
       </div>
 
-      {/* Analytics Section */}
-      {sheetData && (
-        <div className="divide-border flex w-full flex-col gap-0 divide-y md:grid md:h-96 md:grid-cols-2 md:divide-x md:divide-y-0">
-          <WorkChart data={sheetData.overview} />
-          <SleepChart data={sheetData.sleep} />
-        </div>
-      )}
+      <Charts />
     </div>
   );
 }
