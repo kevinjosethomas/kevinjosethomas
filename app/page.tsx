@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Project } from "@/types";
 import Stack from "@/components/Stack";
 import Charts from "@/components/Charts";
 import Geometry from "@/components/Geometry";
@@ -33,19 +34,19 @@ export default async function Home() {
     "turbo",
     "kos",
     "asl",
-    "scrapyard",
+    "valorant",
   ];
 
-  const spotlightedProjects = projects.filter((project) =>
-    spotlightedProjectIds.includes(project.id),
+  const spotlightedProjects = spotlightedProjectIds.map(
+    (id) => projects.find((project) => project.id === id) as Project,
   );
 
-  const interleavedProjects = [];
+  const interleavedProjects: Project[] = [];
   const leftColumn = spotlightedProjects.slice(0, 3);
   const rightColumn = spotlightedProjects.slice(3);
   for (let i = 0; i < Math.max(leftColumn.length, rightColumn.length); i++) {
-    if (leftColumn[i]) interleavedProjects.push(leftColumn[i]);
-    if (rightColumn[i]) interleavedProjects.push(rightColumn[i]);
+    if (leftColumn[i]) interleavedProjects.push(leftColumn[i] as Project);
+    if (rightColumn[i]) interleavedProjects.push(rightColumn[i] as Project);
   }
 
   return (
@@ -168,24 +169,14 @@ export default async function Home() {
         {/* Mobile: Interleaved order */}
         <div className="flex flex-col items-center gap-6 py-0 md:hidden">
           {interleavedProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              dark={20}
-              saturate={75}
-            />
+            <ProjectCard key={project.id} project={project} dark={20} />
           ))}
         </div>
 
         {/* Desktop: Two columns */}
         <div className="border-border hidden flex-col items-center gap-6 border-x py-0 md:flex md:items-end md:py-16 md:pl-16">
           {spotlightedProjects.slice(0, 3).map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              dark={20}
-              saturate={75}
-            />
+            <ProjectCard key={project.id} project={project} dark={20} />
           ))}
         </div>
         <div className="border-border hidden flex-col items-center gap-6 border-r py-0 md:flex md:items-end md:py-16 md:pl-16">
