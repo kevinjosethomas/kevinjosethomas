@@ -117,5 +117,6 @@ export const projects: Project[] = [
     date: "2020",
     href: "/project/disbots",
     image: "/projects/disbots.png",
+    images: ["/projects/images/disbots-1.png"],
   },
 ];
