@@ -2,11 +2,10 @@ import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 
 export default function ProjectsPage() {
-  const midpoint = Math.ceil(projects.length / 2);
+  const leftColumn = projects.filter((_, index) => index % 2 === 0);
+  const rightColumn = projects.filter((_, index) => index % 2 === 1);
 
   const interleavedProjects = [];
-  const leftColumn = projects.slice(0, midpoint);
-  const rightColumn = projects.slice(midpoint);
   for (let i = 0; i < Math.max(leftColumn.length, rightColumn.length); i++) {
     if (leftColumn[i]) interleavedProjects.push(leftColumn[i]);
     if (rightColumn[i]) interleavedProjects.push(rightColumn[i]);
@@ -31,13 +30,13 @@ export default function ProjectsPage() {
         </div>
 
         <div className="border-border hidden flex-col items-center gap-6 py-0 md:flex md:items-end md:border-x md:py-16 md:pl-16">
-          {projects.slice(0, midpoint).map((project) => (
+          {leftColumn.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
         <div className="hidden flex-col items-center gap-6 py-0 md:flex md:items-end md:py-16 md:pl-16">
-          {projects.slice(midpoint).map((project) => (
+          {rightColumn.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
