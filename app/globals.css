@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+:root {
+  --border: #1f1f1f;
+}
+
+@theme inline {
+  --color-border: var(--border);
+  --color-secondary: #aaaaaa;
+
+  --text-sm: 16px;
+  --text-base: 18px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 28px;
+  --text-3xl: 32px;
+  --text-4xl: 48px;
+}
+
+body {
+  font-family: var(--font-karla);
+  color: #ffffff;
+}
+
+.font-micro5 {
+  font-family: var(--font-micro5);
+}
