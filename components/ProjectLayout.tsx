@@ -71,115 +71,112 @@ export default function ProjectLayout({
         {/* Right side - Links */}
         {(github || website || arxiv || youtube || blog) && (
           <div className="border-border flex h-full flex-col border-l md:py-16">
-            {arxiv && (
-              <CTA
-                href={arxiv}
-                icon={
-                  <Image
-                    src="/icons/arxiv.svg"
-                    alt="arXiv"
-                    className="select-none"
-                    draggable={false}
-                    width={28}
-                    height={28}
-                  />
-                }
-                text="View arXiv"
-                borderClass="border-y"
-              />
-            )}
-            {github && (
-              <CTA
-                href={github}
-                icon={
-                  <Image
-                    src="/icons/github.svg"
-                    alt="GitHub"
-                    className="select-none"
-                    draggable={false}
-                    width={28}
-                    height={28}
-                  />
-                }
-                text="View GitHub"
-                borderClass="border-y"
-              />
-            )}
-            {website && (
-              <CTA
-                href={website}
-                icon={
-                  <div className="text-secondary">
-                    <svg
-                      className="h-7 w-7 select-none"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                      />
-                    </svg>
-                  </div>
-                }
-                text="Visit Website"
-                borderClass="border-b"
-              />
-            )}
-            {youtube && (
-              <CTA
-                href={youtube}
-                icon={
-                  <div className="text-secondary">
-                    <svg
-                      className="h-7 w-7 select-none"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                    </svg>
-                  </div>
-                }
-                text="Watch YouTube"
-                borderClass="border-b"
-              />
-            )}
-            {blog && (
-              <CTA
-                href={blog}
-                icon={
-                  <div className="text-secondary">
-                    <svg
-                      className="h-7 w-7"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                      />
-                    </svg>
-                  </div>
-                }
-                text="Read Blog"
-                borderClass="border-b"
-              />
-            )}
+            <div className="border-border flex w-full flex-col divide-y border-y">
+              {arxiv && (
+                <CTA
+                  href={arxiv}
+                  icon={
+                    <Image
+                      src="/icons/arxiv.svg"
+                      alt="arXiv"
+                      className="select-none"
+                      draggable={false}
+                      width={28}
+                      height={28}
+                    />
+                  }
+                  text="View arXiv"
+                />
+              )}
+              {github && (
+                <CTA
+                  href={github}
+                  icon={
+                    <Image
+                      src="/icons/github.svg"
+                      alt="GitHub"
+                      className="select-none"
+                      draggable={false}
+                      width={28}
+                      height={28}
+                    />
+                  }
+                  text="View GitHub"
+                />
+              )}
+              {website && (
+                <CTA
+                  href={website}
+                  icon={
+                    <div className="text-secondary">
+                      <svg
+                        className="h-7 w-7 select-none"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                        />
+                      </svg>
+                    </div>
+                  }
+                  text="Visit Website"
+                />
+              )}
+              {youtube && (
+                <CTA
+                  href={youtube}
+                  icon={
+                    <div className="text-secondary">
+                      <svg
+                        className="h-7 w-7 select-none"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                      </svg>
+                    </div>
+                  }
+                  text="Watch YouTube"
+                />
+              )}
+              {blog && (
+                <CTA
+                  href={blog}
+                  icon={
+                    <div className="text-secondary">
+                      <svg
+                        className="h-7 w-7"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+                        />
+                      </svg>
+                    </div>
+                  }
+                  text="Read Blog"
+                />
+              )}
+            </div>
           </div>
         )}
       </div>
 
       {images && images.length > 0 && (
-        <section className="md:border-border relative w-full overflow-hidden bg-black/10 md:mt-12 md:border-t">
+        <section className="md:border-border relative w-full overflow-hidden bg-black/10 md:border-t">
           <div className="relative flex w-full flex-col items-start justify-start gap-10">
             <div className="flex w-full flex-col flex-nowrap overflow-x-auto pb-6 md:flex-row">
               {images.map((image, index) => {

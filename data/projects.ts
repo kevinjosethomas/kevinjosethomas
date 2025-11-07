@@ -49,6 +49,7 @@ export const projects: Project[] = [
     href: "/project/minecraft",
     image: "/projects/minecraft.png",
     images: [
+      "/projects/images/minecraft.png",
       "/projects/images/minecraft-1.png",
       "/projects/images/minecraft-2.jpg",
       "/projects/images/minecraft-3.jpg",
@@ -87,6 +88,7 @@ export const projects: Project[] = [
     href: "/project/valorant",
     image: "/projects/valorant.png",
     github: "https://github.com/kevinjosethomas/valorant-store-scanner",
+    images: ["/projects/images/valorant-1.png"],
   },
   {
     id: "scrapyard",
@@ -103,6 +105,15 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "chromeai",
+    name: "ChromeAI",
+    date: "2023",
+    href: "/project/chromeai",
+    image: "/projects/chromeai.png",
+    website: "https://chrome-ai.vercel.app",
+    images: ["/projects/images/chromeai-1.png"],
+  },
+  {
     id: "turbo",
     name: "Turbo Browser",
     date: "2021",
@@ -111,6 +122,7 @@ export const projects: Project[] = [
     github: "https://github.com/kevinjosethomas/turbo",
     images: ["/projects/images/turbo-1.png", "/projects/images/turbo-2.png"],
   },
+
   {
     id: "disbots",
     name: "disbots.gg",

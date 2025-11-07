@@ -1,0 +1,5 @@
+In early 2023, when ChatGPT was just beginning to gain widespread adoption, there was still no intuitive way to use AI across all of my web browsing. With spring break coming up, I spent a week building ChromeAI, a browser extension that allowed users to use AI across all of their web browsing: writing, paraphrasing, explanations, translations, proofreading, and more.
+
+The goal was to make it as easy-to-adopt as possible, and I engineered the extension and API to be built around the select interaction. Essentially, by selecting any text—whether on the page, in a textarea, or in a chat—the extension would immediately extract the selected content as context, and the user could easily run inference with a single command which would then output the result in the user's clipboard.
+
+More of a learning project, I spent a lot of time exploring the Chrome Extension API, and also studying payment gateways and the Stripe API. I also built a custom API layer on top of the OpenAI API to handle the inference, and a custom UI for the extension. I also built a custom API layer on top of the OpenAI API to handle the inference, and a custom UI for the extension.
