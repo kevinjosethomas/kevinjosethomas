@@ -2,10 +2,22 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
@@ -69,11 +81,11 @@ export default function Header() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 bg-black px-16 transition-transform duration-100 md:hidden ${
+        className={`fixed inset-0 z-40 min-h-[120vh] bg-black px-16 transition-transform duration-100 md:hidden ${
           isMenuOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <nav className="flex h-full flex-col items-start justify-between py-16">
+        <nav className="flex h-screen flex-col items-start justify-start gap-16 py-16">
           <div className="flex flex-col items-start justify-start gap-4">
             <Link
               href="/"
@@ -94,7 +106,7 @@ export default function Header() {
             </Link>
           </div>
 
-          <div className="flex w-full items-center justify-center gap-8 py-10">
+          <div className="flex w-full items-center justify-center gap-8">
             <Link
               href="https://x.com/kevinjosethomas"
               target="_blank"
