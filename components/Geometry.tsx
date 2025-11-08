@@ -116,32 +116,6 @@ export default function Geometry() {
           <div className="absolute inset-0 flex items-center justify-center">
             {renderShape(shape)}
           </div>
-          <div className="absolute inset-0 opacity-20">
-            <svg viewBox="0 0 160 160" className="h-full w-full">
-              <defs>
-                <pattern
-                  id={meshPatternId}
-                  x="0"
-                  y="0"
-                  width="0.2"
-                  height="0.2"
-                  patternUnits="objectBoundingBox"
-                >
-                  <path
-                    d="M0 0H1V1H0z"
-                    fill="currentColor"
-                    className="text-border/30"
-                  />
-                </pattern>
-              </defs>
-              <rect
-                width="160"
-                height="160"
-                fill={`url(#${meshPatternId})`}
-                className="text-border/20"
-              />
-            </svg>
-          </div>
         </div>
         {/* Top gridline */}
         <div className="bg-border absolute top-16 -left-16 h-px w-[calc(100%+128px)]" />

@@ -25,3 +25,13 @@ body {
 .font-micro5 {
   font-family: var(--font-micro5);
 }
+
+.highlight-icon {
+  transition: transform 200ms;
+  transform: rotate(0deg);
+}
+
+.group:hover .highlight-icon,
+.group:focus-visible .highlight-icon {
+  transform: rotate(var(--highlight-icon-rotate, -12deg));
+}

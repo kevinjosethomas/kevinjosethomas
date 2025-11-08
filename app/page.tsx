@@ -58,7 +58,9 @@ export default async function Home() {
           <p>
             I&apos;m a Computer Science student at the University of Waterloo.
             Currently, I lead engineering for the{" "}
-            <Highlight href="/work/csslab">Maia Chess</Highlight>
+            <Highlight href="/work/csslab" icon="/icons/maia.png">
+              Maia Chess
+            </Highlight>
             <Tooltip
               number={1}
               content="Maia is an open research project on human-AI collaboration in chess— studying how neural networks can model human behaviour. As the most-played bot on Lichess, Maia uses chess as a testbed for broader ML research."
@@ -67,7 +69,9 @@ export default async function Home() {
           </p>
           <p>
             Previously, I was a SWE intern at{" "}
-            <Highlight href="/work/kscale">K-Scale Labs</Highlight>
+            <Highlight href="/work/kscale" icon="/icons/kscale.svg" rotate={1}>
+              K-Scale Labs
+            </Highlight>
             <Tooltip
               number={2}
               content="K-Scale Labs is developing America's first open-source, general-purpose humanoid robot— building a complete in-house stack spanning hardware, software, RL, and simulation to enable a fully capable general-purpose humanoid."
