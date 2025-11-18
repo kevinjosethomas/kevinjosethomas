@@ -165,7 +165,7 @@ export default function ScreenTimePie({ data, days = 14 }: ScreenTimePieProps) {
           {Math.round(totalMinutes % 60)}m
         </p>
       </div>
-      <div className="min-h-[200px] flex-1">
+      <div className="min-h-[300px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -174,8 +174,8 @@ export default function ScreenTimePie({ data, days = 14 }: ScreenTimePieProps) {
               nameKey="name"
               cx="50%"
               cy="50%"
-              innerRadius={40}
-              outerRadius={60}
+              innerRadius={55}
+              outerRadius={75}
               paddingAngle={2}
               strokeWidth={0}
               label={(props) => {
@@ -219,14 +219,6 @@ export default function ScreenTimePie({ data, days = 14 }: ScreenTimePieProps) {
             <Tooltip content={<CustomTooltip />} />
           </PieChart>
         </ResponsiveContainer>
-      </div>
-      <div className="flex flex-wrap items-center gap-3 px-4 py-3">
-        {dataWithColors.slice(0, 6).map((entry) => (
-          <div key={entry.name} className="flex items-center gap-2">
-            <div className="h-2 w-2" style={{ backgroundColor: entry.color }} />
-            <p className="text-secondary text-xs">{entry.name}</p>
-          </div>
-        ))}
       </div>
     </div>
   );

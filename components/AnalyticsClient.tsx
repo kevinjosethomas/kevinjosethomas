@@ -4,7 +4,7 @@ import { useState } from "react";
 import ProjectBreakdownChart from "@/components/ProjectBreakdownChart";
 import ProjectTotalsPie from "@/components/ProjectTotalsPie";
 import type { ProcessedWorkData } from "@/lib/work";
-import type { SleepData, ScreenTimeData } from "@/lib/sheets";
+import type { SleepData, ScreenTimeData, OverviewData } from "@/lib/sheets";
 import SleepMetricsChart from "@/components/SleepMetricsChart";
 import ScreenTimePie from "@/components/ScreenTimePie";
 
@@ -17,6 +17,7 @@ type AnalyticsClientProps = {
   workData: ProcessedWorkData;
   sleepData: SleepData[];
   screenTimeData: ScreenTimeData[];
+  overviewData: OverviewData[];
 };
 
 function parseTimeToMinutes(timeStr: string): number {
@@ -35,13 +36,51 @@ export default function AnalyticsClient({
   workData,
   sleepData,
   screenTimeData,
+  overviewData,
 }: AnalyticsClientProps) {
-  const hasData = workData.dailyData.length > 0;
-  const defaultDays = hasData ? Math.min(14, workData.dailyData.length) : 0;
-  const [days, setDays] = useState(defaultDays);
+  // Filter out today's data - only include data up to yesterday
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  // Filter work data by days and calculate project totals (without cutoff date)
-  const filteredWorkData = workData.dailyData.slice(0, days);
+  const filteredWorkDataAll = workData.dailyData.filter((d) => {
+    const dataDate = new Date(d.date);
+    return dataDate < today;
+  });
+
+  const filteredSleepDataAll = sleepData.filter((d) => {
+    const dataDate = new Date(d.date);
+    return dataDate < today;
+  });
+
+  const filteredScreenTimeDataAll = screenTimeData.filter((d) => {
+    const dataDate = new Date(d.date);
+    return dataDate < today;
+  });
+
+  const filteredOverviewDataAll = overviewData.filter((d) => {
+    const dataDate = new Date(d.date);
+    return dataDate < today;
+  });
+
+  const hasData = filteredWorkDataAll.length > 0;
+  const defaultDays = hasData ? Math.min(14, filteredWorkDataAll.length) : 0;
+  const [days, setDays] = useState(defaultDays);
+  const [showWorkRating, setShowWorkRating] = useState(false);
+  const [showSleepRating, setShowSleepRating] = useState(false);
+
+  const isAllTime = days === filteredWorkDataAll.length;
+
+  const cutoffDate = new Date("2025-04-06");
+  let workDataToUse = filteredWorkDataAll;
+
+  if (!isAllTime) {
+    workDataToUse = filteredWorkDataAll.filter((d) => {
+      const parsedDate = new Date(d.date);
+      return parsedDate >= cutoffDate;
+    });
+  }
+
+  const filteredWorkData = workDataToUse.slice(0, days);
 
   const filteredProjectTotals: Record<string, number> = {};
   filteredWorkData.forEach((d) => {
@@ -51,14 +90,14 @@ export default function AnalyticsClient({
     });
   });
 
-  const filteredSleepData = sleepData.slice(0, days);
+  const filteredSleepData = filteredSleepDataAll.slice(0, days);
   const sleepMinutes = filteredSleepData.reduce((sum, entry) => {
     return sum + parseTimeToMinutes(entry.time);
   }, 0);
 
   const screenDateSet = new Set<string>();
   const filteredScreenData: ScreenTimeData[] = [];
-  for (const entry of screenTimeData) {
+  for (const entry of filteredScreenTimeDataAll) {
     if (!screenDateSet.has(entry.date)) {
       if (screenDateSet.size >= days) break;
       screenDateSet.add(entry.date);
@@ -89,9 +128,9 @@ export default function AnalyticsClient({
 
   const handlePresetClick = (preset: TimePreset) => {
     if (preset.days === "all") {
-      setDays(workData.dailyData.length);
+      setDays(filteredWorkDataAll.length);
     } else {
-      setDays(Math.min(preset.days, workData.dailyData.length));
+      setDays(Math.min(preset.days, filteredWorkDataAll.length));
     }
   };
 
@@ -104,7 +143,7 @@ export default function AnalyticsClient({
           {presets.map((preset) => {
             const isActive =
               preset.days === "all"
-                ? days === workData.dailyData.length
+                ? days === filteredWorkDataAll.length
                 : days === preset.days;
             return (
               <button
@@ -126,12 +165,13 @@ export default function AnalyticsClient({
       {/* First Row: Work Sessions */}
       <div className="divide-border grid w-full grid-cols-4 divide-x">
         <div className="col-span-3 flex flex-col">
-          <div className="border-border flex h-14 items-center justify-between border-b px-4">
-            <p className="text-sm font-medium">Work Sessions</p>
-          </div>
-          <div>
-            <ProjectBreakdownChart data={workData.dailyData} days={days} />
-          </div>
+          <ProjectBreakdownChart
+            data={filteredWorkDataAll}
+            overviewData={filteredOverviewDataAll}
+            days={days}
+            showRating={showWorkRating}
+            onToggleRating={() => setShowWorkRating(!showWorkRating)}
+          />
         </div>
         <div className="border-border border-b">
           <ProjectTotalsPie
@@ -144,10 +184,16 @@ export default function AnalyticsClient({
 
       <div className="divide-border grid w-full grid-cols-4 divide-x">
         <div className="border-border col-span-3 border-b">
-          <SleepMetricsChart data={sleepData} days={days} />
+          <SleepMetricsChart
+            data={filteredSleepDataAll}
+            overviewData={filteredOverviewDataAll}
+            days={days}
+            showRating={showSleepRating}
+            onToggleRating={() => setShowSleepRating(!showSleepRating)}
+          />
         </div>
         <div className="border-border border-b">
-          <ScreenTimePie data={screenTimeData} days={days} />
+          <ScreenTimePie data={filteredScreenTimeDataAll} days={days} />
         </div>
       </div>
     </div>

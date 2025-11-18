@@ -18,6 +18,7 @@ export default async function AnalyticsPage() {
       workData={workData}
       sleepData={sheetsData.sleep}
       screenTimeData={screenTimeData}
+      overviewData={sheetsData.overview}
     />
   );
 }

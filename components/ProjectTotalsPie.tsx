@@ -123,7 +123,7 @@ export default function ProjectTotalsPie({
           Total: {Math.floor(totalMinutes / 60)}h
         </p>
       </div>
-      <div className="max-h-[300px] flex-1">
+      <div className="min-h-[300px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -178,7 +178,7 @@ export default function ProjectTotalsPie({
           </PieChart>
         </ResponsiveContainer>
       </div>
-      <div className="border-border flex h-[140px] flex-col gap-2 border-b px-4 py-3">
+      <div className="flex h-[140px] flex-col gap-2 px-4 py-3">
         <p>Time spent</p>
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between">

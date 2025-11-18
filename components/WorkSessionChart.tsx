@@ -2,14 +2,16 @@
 
 import { Tooltip } from "recharts";
 import {
-  AreaChart,
+  ComposedChart,
   Area,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   ResponsiveContainer,
   Dot,
 } from "recharts";
+import type { OverviewData } from "@/lib/sheets";
 
 type DailyWorkData = {
   date: string;
@@ -21,6 +23,7 @@ type DailyWorkData = {
 
 type WorkSessionChartProps = {
   data: DailyWorkData[];
+  overviewData: OverviewData[];
   days?: number;
 };
 
@@ -31,6 +34,7 @@ type CustomTooltipProps = {
     dataKey: string;
     payload?: {
       fullDate?: string;
+      rawRating?: number;
     };
   }>;
 };
@@ -53,6 +57,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     const minutes = payload[0]?.value || 0;
     const fullDate = payload[0]?.payload?.fullDate || "";
+    const rawRating = payload[0]?.payload?.rawRating;
 
     const hours = Math.floor(minutes / 60);
     const mins = Math.round(minutes % 60);
@@ -63,6 +68,9 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
         <p className="text-sm font-medium">
           {hours}h {mins}m
         </p>
+        {rawRating !== undefined && rawRating > 0 && (
+          <p className="text-secondary mt-1 text-xs">Rating: {rawRating}/7</p>
+        )}
       </div>
     );
   }
@@ -71,11 +79,20 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 
 export default function WorkSessionChart({
   data,
+  overviewData,
   days = 7,
 }: WorkSessionChartProps) {
   if (!data || data.length === 0) return null;
 
   const recentDays = data.slice(0, days).reverse();
+
+  const ratingMap = new Map<string, number>();
+  overviewData.forEach((d) => {
+    const rating = parseFloat(d.r);
+    if (!isNaN(rating)) {
+      ratingMap.set(d.date, rating);
+    }
+  });
 
   const chartData = recentDays.map((d, index) => {
     const dateParts = d.date.split(",");
@@ -83,15 +100,21 @@ export default function WorkSessionChart({
     const dateStr = dateParts[1]?.trim();
     const formattedDate = `${dayOfWeek}, ${dateStr}`;
 
+    const rating = ratingMap.get(d.date) || 0;
+    const scaledRating = rating > 0 ? (rating / 7) * 600 : 0;
+
     return {
       index,
       day: dayOfWeek.slice(0, 3),
       minutes: d.totalMinutes,
       fullDate: formattedDate,
+      rating: scaledRating,
+      rawRating: rating,
     };
   });
 
   const pastelBlue = "#a5b4fc";
+  const deepBlue = "#3b82f6";
 
   const projectTotals = new Map<string, number>();
   recentDays.forEach((d) => {
@@ -106,10 +129,10 @@ export default function WorkSessionChart({
 
   return (
     <div className="flex flex-col outline-none **:outline-none focus:outline-none **:focus:outline-none">
-      <ResponsiveContainer width="100%" height="100%" minHeight="300px">
-        <AreaChart
+      <ResponsiveContainer width="100%" height={300}>
+        <ComposedChart
           data={chartData}
-          margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         >
           <defs>
             <linearGradient id="workGradient" x1="0" y1="0" x2="0" y2="1">
@@ -145,7 +168,16 @@ export default function WorkSessionChart({
               strokeWidth: 0,
             }}
           />
-        </AreaChart>
+          <Line
+            type="monotone"
+            dataKey="rating"
+            name="Rating"
+            stroke={deepBlue}
+            strokeWidth={2}
+            dot={false}
+            isAnimationActive={false}
+          />
+        </ComposedChart>
       </ResponsiveContainer>
       <div className="border-border grid grid-cols-2 gap-4 border-t p-4 md:grid-cols-5 md:p-6">
         {projectArray.map((project, index) => {

@@ -1,19 +1,23 @@
 "use client";
 
 import {
-  AreaChart,
+  ComposedChart,
   Area,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import type { SleepData } from "@/lib/sheets";
+import type { SleepData, OverviewData } from "@/lib/sheets";
 
 type SleepMetricsChartProps = {
   data: SleepData[];
+  overviewData: OverviewData[];
   days?: number;
+  showRating?: boolean;
+  onToggleRating?: () => void;
 };
 
 type CustomTooltipProps = {
@@ -26,6 +30,7 @@ type CustomTooltipProps = {
     payload?: {
       date?: string;
       score?: string;
+      rawRating?: number;
     };
   }>;
 };
@@ -42,16 +47,45 @@ function parseTimeToMinutes(timeStr: string): number {
   return hours * 60 + minutes;
 }
 
+function getRatingLabel(rating: number): string {
+  const roundedRating = Math.round(rating);
+  switch (roundedRating) {
+    case 1:
+      return "Very Unpleasant Day";
+    case 2:
+      return "Unpleasant Day";
+    case 3:
+      return "Slightly Unpleasant Day";
+    case 4:
+      return "Neutral Day";
+    case 5:
+      return "Slightly Pleasant Day";
+    case 6:
+      return "Pleasant Day";
+    case 7:
+      return "Very Pleasant Day";
+    default:
+      return "";
+  }
+}
+
 function CustomTooltip({ active, payload }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     const date = payload[0]?.payload?.date || "";
     const score = payload[0]?.payload?.score || "";
+    const rawRating = payload[0]?.payload?.rawRating;
 
     return (
       <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
-        <p className="text-secondary mb-1 text-xs">{date}</p>
-        {score && <p className="mb-2 text-xs font-medium">Score: {score}</p>}
+        <p className="text-secondary mb-2 text-xs">{date}</p>
+        {score && (
+          <div className="mb-2 flex items-center gap-2 border-b border-white/10 pb-2">
+            <p className="text-secondary text-xs">Score:</p>
+            <p className="text-xs font-medium">{score}</p>
+          </div>
+        )}
         {payload.map((entry, index) => {
+          if (entry.dataKey === "rating") return null;
           const hours = Math.floor(entry.value / 60);
           const mins = Math.round(entry.value % 60);
           return (
@@ -67,6 +101,13 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
             </div>
           );
         })}
+        {rawRating !== undefined && rawRating > 0 && (
+          <div className="mt-2 flex items-center gap-2 border-t border-white/10 pt-2">
+            <div className="h-2 w-2" style={{ backgroundColor: "#3b82f6" }} />
+            <p className="text-secondary text-xs">Rating:</p>
+            <p className="text-xs font-medium">{getRatingLabel(rawRating)}</p>
+          </div>
+        )}
       </div>
     );
   }
@@ -75,7 +116,10 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 
 export default function SleepMetricsChart({
   data,
+  overviewData,
   days = 14,
+  showRating = false,
+  onToggleRating,
 }: SleepMetricsChartProps) {
   if (!data || data.length === 0) {
     return (
@@ -87,11 +131,26 @@ export default function SleepMetricsChart({
 
   const recentDays = data.slice(0, days).reverse();
 
+  // Create a map of date to rating from overview data
+  // r is the numeric value (1-7) where 1=Very Unpleasant, 4=Neutral, 7=Very Pleasant
+  const ratingMap = new Map<string, number>();
+  overviewData.forEach((d) => {
+    const rating = parseFloat(d.r);
+    if (!isNaN(rating)) {
+      ratingMap.set(d.date, rating);
+    }
+  });
+
   const chartData = recentDays.map((d, index) => {
     const totalMinutes = parseTimeToMinutes(d.time);
     const remMinutes = parseTimeToMinutes(d.rem);
     const deepMinutes = parseTimeToMinutes(d.deep);
     const lightMinutes = Math.max(0, totalMinutes - remMinutes - deepMinutes);
+
+    // Scale rating (1-7) to fit on the same axis as sleep (0-600 minutes)
+    // Map 1-7 to roughly 85-600 range for visibility
+    const rating = ratingMap.get(d.date) || 0;
+    const scaledRating = rating > 0 ? (rating / 7) * 600 : 0;
 
     return {
       index,
@@ -101,6 +160,8 @@ export default function SleepMetricsChart({
       rem: remMinutes,
       deep: deepMinutes,
       light: lightMinutes,
+      rating: scaledRating,
+      rawRating: rating,
     };
   });
 
@@ -112,21 +173,33 @@ export default function SleepMetricsChart({
   const avgHours = Math.floor(avgTotal / 60);
   const avgMins = Math.round(avgTotal % 60);
 
-  const pastelPurple = "#d8b4fe";
-  const pastelBlue = "#a5b4fc";
-  const pastelCyan = "#a5f3fc";
+  const pastelPurple = "#5F4D71";
+  const pastelBlue = "#474D70";
+  const pastelCyan = "#476B70";
+  const deepBlue = "#3b82f6";
 
   return (
     <div className="flex h-full flex-col">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
-        <p className="text-sm font-medium">Sleep</p>
-        <p className="text-secondary text-xs">
-          Avg: {avgHours}h {avgMins}m
-        </p>
+        <p className="text-sm font-medium">Sleep & Rating</p>
+        <div className="flex items-center gap-3">
+          <p className="text-secondary text-xs">
+            Avg: {avgHours}h {avgMins}m
+          </p>
+          {onToggleRating && (
+            <button
+              onClick={onToggleRating}
+              className="border-border cursor-pointer border px-2 py-1 text-xs transition-colors hover:bg-white/10"
+              title={showRating ? "Hide rating" : "Show rating"}
+            >
+              {showRating ? "Hide Rating" : "Show Rating"}
+            </button>
+          )}
+        </div>
       </div>
       <div className="min-h-[200px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
+          <ComposedChart
             data={chartData}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
@@ -154,7 +227,7 @@ export default function SleepMetricsChart({
               stroke={pastelPurple}
               strokeWidth={0}
               fill={pastelPurple}
-              fillOpacity={0.4}
+              fillOpacity={0.8}
               isAnimationActive={false}
             />
             <Area
@@ -165,7 +238,7 @@ export default function SleepMetricsChart({
               stroke={pastelBlue}
               strokeWidth={0}
               fill={pastelBlue}
-              fillOpacity={0.4}
+              fillOpacity={0.8}
               isAnimationActive={false}
             />
             <Area
@@ -176,10 +249,21 @@ export default function SleepMetricsChart({
               stroke={pastelCyan}
               strokeWidth={0}
               fill={pastelCyan}
-              fillOpacity={0.4}
+              fillOpacity={0.8}
               isAnimationActive={false}
             />
-          </AreaChart>
+            {showRating && (
+              <Line
+                type="monotone"
+                dataKey="rating"
+                name="Rating"
+                stroke={deepBlue}
+                strokeWidth={2}
+                dot={false}
+                isAnimationActive={false}
+              />
+            )}
+          </ComposedChart>
         </ResponsiveContainer>
       </div>
     </div>
