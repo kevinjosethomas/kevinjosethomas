@@ -107,7 +107,13 @@ export default function ProjectBreakdownChart({
 }: ProjectBreakdownChartProps) {
   if (!data || data.length === 0) return null;
 
-  const recentDays = data.slice(0, days).reverse();
+  const cutoffDate = new Date("2025-03-29");
+  const filteredData = data.filter((d) => {
+    const parsedDate = new Date(d.date);
+    return parsedDate >= cutoffDate;
+  });
+
+  const recentDays = filteredData.slice(0, days).reverse();
 
   const projectTotals = new Map<string, number>();
   recentDays.forEach((d) => {
@@ -161,6 +167,7 @@ export default function ProjectBreakdownChart({
           <Tooltip
             cursor={{ stroke: "#a5b4fc", strokeWidth: 1, strokeOpacity: 0.3 }}
             content={<CustomTooltip />}
+            isAnimationActive={false}
           />
           {projectArray.map((project, index) => (
             <Area
@@ -169,14 +176,15 @@ export default function ProjectBreakdownChart({
               dataKey={project}
               stackId="1"
               fill={COLORS[index % COLORS.length]}
-              fillOpacity={0.3}
+              fillOpacity={0.4}
               strokeWidth={0}
+              isAnimationActive={false}
             />
           ))}
         </AreaChart>
       </ResponsiveContainer>
       <div className="border-border grid grid-cols-2 gap-4 border-t p-4 md:grid-cols-6 md:p-6">
-        {projectArray.map((project, index) => {
+        {projectArray.slice(0, 12).map((project, index) => {
           const totalMinutes = projectTotals.get(project) || 0;
           const hours = Math.floor(totalMinutes / 60);
           const mins = Math.round(totalMinutes % 60);
@@ -184,12 +192,12 @@ export default function ProjectBreakdownChart({
           return (
             <div key={project} className="flex items-start gap-2">
               <div
-                className="mt-1 h-2 w-2 rounded-full"
+                className="mt-1.5 h-2.5 w-2.5 rounded-full"
                 style={{ backgroundColor: COLORS[index % COLORS.length] }}
               />
               <div className="flex flex-col">
-                <p className="text-xs">{project}</p>
-                <p className="text-secondary text-xxs">
+                <p className="text-sm">{project}</p>
+                <p className="text-secondary text-xs">
                   {hours}h {mins}m
                 </p>
               </div>

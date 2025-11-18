@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ProjectBreakdownChart from "@/components/ProjectBreakdownChart";
+import ProjectTotalsPie from "@/components/ProjectTotalsPie";
 import type { ProcessedWorkData } from "@/lib/work";
 
 type TimePreset = {
@@ -15,7 +16,7 @@ type AnalyticsClientProps = {
 
 export default function AnalyticsClient({ workData }: AnalyticsClientProps) {
   const hasData = workData.dailyData.length > 0;
-  const defaultDays = hasData ? Math.min(30, workData.dailyData.length) : 0;
+  const defaultDays = hasData ? Math.min(14, workData.dailyData.length) : 0;
   const [days, setDays] = useState(defaultDays);
 
   if (!hasData) {
@@ -27,11 +28,10 @@ export default function AnalyticsClient({ workData }: AnalyticsClientProps) {
   }
 
   const presets: TimePreset[] = [
+    { label: "7d", days: 7 },
     { label: "14d", days: 14 },
-    { label: "30d", days: 30 },
-    { label: "6m", days: 180 },
-    { label: "1y", days: 365 },
-    { label: "all", days: "all" },
+    { label: "1m", days: 30 },
+    { label: "3m", days: 90 },
   ];
 
   const handlePresetClick = (preset: TimePreset) => {
@@ -44,9 +44,9 @@ export default function AnalyticsClient({ workData }: AnalyticsClientProps) {
 
   return (
     <div className="flex min-h-screen w-full bg-black text-white">
-      <div className="grid w-full grid-cols-2">
-        <div className="flex flex-col">
-          <div className="border-border flex items-center justify-between border-b p-4">
+      <div className="divide-border grid w-full grid-cols-4 divide-x">
+        <div className="col-span-3 flex flex-col">
+          <div className="border-border flex h-14 items-center justify-between border-b px-4">
             <p className="text-sm font-medium">Work Sessions</p>
             <div className="flex items-center gap-2">
               {presets.map((preset) => {
@@ -58,7 +58,7 @@ export default function AnalyticsClient({ workData }: AnalyticsClientProps) {
                   <button
                     key={preset.label}
                     onClick={() => handlePresetClick(preset)}
-                    className={`border-border border px-2 py-1 text-xs transition-colors ${
+                    className={`border-border cursor-pointer border px-2 py-1 text-xs transition-colors ${
                       isActive
                         ? "bg-white text-black"
                         : "text-secondary bg-black hover:bg-white/10"
@@ -74,7 +74,9 @@ export default function AnalyticsClient({ workData }: AnalyticsClientProps) {
             <ProjectBreakdownChart data={workData.dailyData} days={days} />
           </div>
         </div>
-        <div className="border-border border-l"></div>
+        <div className="border-border border-b">
+          <ProjectTotalsPie projectTotals={workData.projectTotals} />
+        </div>
       </div>
     </div>
   );
