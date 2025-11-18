@@ -183,7 +183,7 @@ export default function ProjectBreakdownChart({
           ))}
         </AreaChart>
       </ResponsiveContainer>
-      <div className="border-border grid grid-cols-2 gap-4 border-t p-4 md:grid-cols-6 md:p-6">
+      <div className="border-border grid h-[140px] grid-cols-2 gap-4 border-y p-4 md:grid-cols-6 md:p-6">
         {projectArray.slice(0, 12).map((project, index) => {
           const totalMinutes = projectTotals.get(project) || 0;
           const hours = Math.floor(totalMinutes / 60);

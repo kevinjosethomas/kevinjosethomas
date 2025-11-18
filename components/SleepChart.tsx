@@ -3,12 +3,7 @@
 import { useState } from "react";
 import * as React from "react";
 import InfoTooltip from "./InfoTooltip";
-
-type SleepData = {
-  date: string;
-  start: string;
-  end: string;
-};
+import type { SleepData } from "@/lib/sheets";
 
 type SleepChartProps = {
   data: SleepData[];

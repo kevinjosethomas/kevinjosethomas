@@ -5,6 +5,8 @@ import type { ProjectTimeData } from "@/lib/work";
 
 type ProjectTotalsPieProps = {
   projectTotals: ProjectTimeData;
+  sleepMinutes?: number;
+  screenMinutes?: number;
 };
 
 type TooltipPayload = {
@@ -62,6 +64,8 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 
 export default function ProjectTotalsPie({
   projectTotals,
+  sleepMinutes = 0,
+  screenMinutes = 0,
 }: ProjectTotalsPieProps) {
   const totalMinutes = Object.values(projectTotals).reduce(
     (sum, minutes) => sum + minutes,
@@ -81,7 +85,7 @@ export default function ProjectTotalsPie({
     );
   }
 
-  const threshold = totalMinutes * 0.03;
+  const threshold = totalMinutes * 0.05;
   const { filteredData, otherTotal } = rawData.reduce<{
     filteredData: { name: string; value: number }[];
     otherTotal: number;
@@ -119,7 +123,7 @@ export default function ProjectTotalsPie({
           Total: {Math.floor(totalMinutes / 60)}h
         </p>
       </div>
-      <div className="max-h-[320px] flex-1">
+      <div className="max-h-[300px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -128,10 +132,43 @@ export default function ProjectTotalsPie({
               nameKey="name"
               cx="50%"
               cy="50%"
-              innerRadius={60}
-              outerRadius={90}
+              innerRadius={55}
+              outerRadius={75}
               paddingAngle={2}
               strokeWidth={0}
+              label={(props) => {
+                const { name, percent, cx, cy, midAngle, outerRadius } =
+                  props as unknown as {
+                    name: string;
+                    percent: number;
+                    cx: number;
+                    cy: number;
+                    midAngle: number;
+                    outerRadius: number;
+                  };
+                const RADIAN = Math.PI / 180;
+                const radius = outerRadius + 30;
+                const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                return (
+                  <text
+                    x={x}
+                    y={y}
+                    fill="currentColor"
+                    textAnchor={x > cx ? "start" : "end"}
+                    dominantBaseline="central"
+                    fontSize={12}
+                    opacity={0.7}
+                  >
+                    {`${name} ${(percent * 100).toFixed(0)}%`}
+                  </text>
+                );
+              }}
+              labelLine={{
+                stroke: "currentColor",
+                strokeOpacity: 0.3,
+                strokeWidth: 1,
+              }}
             >
               {dataWithColors.map((entry) => (
                 <Cell key={entry.name} fill={entry.color} fillOpacity={0.4} />
@@ -140,6 +177,30 @@ export default function ProjectTotalsPie({
             <Tooltip content={<CustomTooltip />} />
           </PieChart>
         </ResponsiveContainer>
+      </div>
+      <div className="border-border flex h-[140px] flex-col gap-2 border-b px-4 py-3">
+        <p>Time spent</p>
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center justify-between">
+            <p className="text-secondary text-sm">Deep Work</p>
+            <p className="text-sm font-medium">
+              {Math.floor(totalMinutes / 60)}h {Math.round(totalMinutes % 60)}m
+            </p>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-secondary text-sm">Asleep</p>
+            <p className="text-sm font-medium">
+              {Math.floor(sleepMinutes / 60)}h {Math.round(sleepMinutes % 60)}m
+            </p>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-secondary text-sm">Screen Time</p>
+            <p className="text-sm font-medium">
+              {Math.floor(screenMinutes / 60)}h {Math.round(screenMinutes % 60)}
+              m
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

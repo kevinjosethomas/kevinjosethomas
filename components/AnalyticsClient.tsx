@@ -4,6 +4,7 @@ import { useState } from "react";
 import ProjectBreakdownChart from "@/components/ProjectBreakdownChart";
 import ProjectTotalsPie from "@/components/ProjectTotalsPie";
 import type { ProcessedWorkData } from "@/lib/work";
+import type { SleepData, ScreenTimeData } from "@/lib/sheets";
 
 type TimePreset = {
   label: string;
@@ -12,12 +13,38 @@ type TimePreset = {
 
 type AnalyticsClientProps = {
   workData: ProcessedWorkData;
+  sleepData: SleepData[];
+  screenTimeData: ScreenTimeData[];
 };
 
-export default function AnalyticsClient({ workData }: AnalyticsClientProps) {
+function parseTimeToMinutes(timeStr: string): number {
+  if (!timeStr || timeStr.trim() === "") return 0;
+
+  const hourMatch = timeStr.match(/(\d+)h/);
+  const minuteMatch = timeStr.match(/(\d+)m/);
+
+  const hours = hourMatch ? parseInt(hourMatch[1], 10) : 0;
+  const minutes = minuteMatch ? parseInt(minuteMatch[1], 10) : 0;
+
+  return hours * 60 + minutes;
+}
+
+export default function AnalyticsClient({
+  workData,
+  sleepData,
+  screenTimeData,
+}: AnalyticsClientProps) {
   const hasData = workData.dailyData.length > 0;
   const defaultDays = hasData ? Math.min(14, workData.dailyData.length) : 0;
   const [days, setDays] = useState(defaultDays);
+
+  const sleepMinutes = sleepData.reduce((sum, entry) => {
+    return sum + parseTimeToMinutes(entry.time);
+  }, 0);
+
+  const screenMinutes = screenTimeData.reduce((sum, entry) => {
+    return sum + parseTimeToMinutes(entry.duration);
+  }, 0);
 
   if (!hasData) {
     return (
@@ -75,7 +102,11 @@ export default function AnalyticsClient({ workData }: AnalyticsClientProps) {
           </div>
         </div>
         <div className="border-border border-b">
-          <ProjectTotalsPie projectTotals={workData.projectTotals} />
+          <ProjectTotalsPie
+            projectTotals={workData.projectTotals}
+            sleepMinutes={sleepMinutes}
+            screenMinutes={screenMinutes}
+          />
         </div>
       </div>
     </div>
