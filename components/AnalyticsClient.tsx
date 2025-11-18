@@ -5,6 +5,8 @@ import ProjectBreakdownChart from "@/components/ProjectBreakdownChart";
 import ProjectTotalsPie from "@/components/ProjectTotalsPie";
 import type { ProcessedWorkData } from "@/lib/work";
 import type { SleepData, ScreenTimeData } from "@/lib/sheets";
+import SleepMetricsChart from "@/components/SleepMetricsChart";
+import ScreenTimePie from "@/components/ScreenTimePie";
 
 type TimePreset = {
   label: string;
@@ -38,11 +40,34 @@ export default function AnalyticsClient({
   const defaultDays = hasData ? Math.min(14, workData.dailyData.length) : 0;
   const [days, setDays] = useState(defaultDays);
 
-  const sleepMinutes = sleepData.reduce((sum, entry) => {
+  // Filter work data by days and calculate project totals (without cutoff date)
+  const filteredWorkData = workData.dailyData.slice(0, days);
+
+  const filteredProjectTotals: Record<string, number> = {};
+  filteredWorkData.forEach((d) => {
+    Object.entries(d.projects).forEach(([project, minutes]) => {
+      filteredProjectTotals[project] =
+        (filteredProjectTotals[project] || 0) + minutes;
+    });
+  });
+
+  const filteredSleepData = sleepData.slice(0, days);
+  const sleepMinutes = filteredSleepData.reduce((sum, entry) => {
     return sum + parseTimeToMinutes(entry.time);
   }, 0);
 
-  const screenMinutes = screenTimeData.reduce((sum, entry) => {
+  const screenDateSet = new Set<string>();
+  const filteredScreenData: ScreenTimeData[] = [];
+  for (const entry of screenTimeData) {
+    if (!screenDateSet.has(entry.date)) {
+      if (screenDateSet.size >= days) break;
+      screenDateSet.add(entry.date);
+    }
+    if (screenDateSet.has(entry.date)) {
+      filteredScreenData.push(entry);
+    }
+  }
+  const screenMinutes = filteredScreenData.reduce((sum, entry) => {
     return sum + parseTimeToMinutes(entry.duration);
   }, 0);
 
@@ -59,6 +84,7 @@ export default function AnalyticsClient({
     { label: "14d", days: 14 },
     { label: "1m", days: 30 },
     { label: "3m", days: 90 },
+    { label: "All", days: "all" },
   ];
 
   const handlePresetClick = (preset: TimePreset) => {
@@ -70,32 +96,38 @@ export default function AnalyticsClient({
   };
 
   return (
-    <div className="flex min-h-screen w-full bg-black text-white">
+    <div className="flex min-h-screen w-full flex-col bg-black text-white">
+      {/* Top Bar: Time Controls */}
+      <div className="border-border flex h-14 items-center justify-between border-b px-4">
+        <p className="text-sm font-medium">Analytics</p>
+        <div className="flex items-center gap-2">
+          {presets.map((preset) => {
+            const isActive =
+              preset.days === "all"
+                ? days === workData.dailyData.length
+                : days === preset.days;
+            return (
+              <button
+                key={preset.label}
+                onClick={() => handlePresetClick(preset)}
+                className={`border-border cursor-pointer border px-2 py-1 text-xs transition-colors ${
+                  isActive
+                    ? "bg-white text-black"
+                    : "text-secondary bg-black hover:bg-white/10"
+                }`}
+              >
+                {preset.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* First Row: Work Sessions */}
       <div className="divide-border grid w-full grid-cols-4 divide-x">
         <div className="col-span-3 flex flex-col">
           <div className="border-border flex h-14 items-center justify-between border-b px-4">
             <p className="text-sm font-medium">Work Sessions</p>
-            <div className="flex items-center gap-2">
-              {presets.map((preset) => {
-                const isActive =
-                  preset.days === "all"
-                    ? days === workData.dailyData.length
-                    : days === preset.days;
-                return (
-                  <button
-                    key={preset.label}
-                    onClick={() => handlePresetClick(preset)}
-                    className={`border-border cursor-pointer border px-2 py-1 text-xs transition-colors ${
-                      isActive
-                        ? "bg-white text-black"
-                        : "text-secondary bg-black hover:bg-white/10"
-                    }`}
-                  >
-                    {preset.label}
-                  </button>
-                );
-              })}
-            </div>
           </div>
           <div>
             <ProjectBreakdownChart data={workData.dailyData} days={days} />
@@ -103,10 +135,19 @@ export default function AnalyticsClient({
         </div>
         <div className="border-border border-b">
           <ProjectTotalsPie
-            projectTotals={workData.projectTotals}
+            projectTotals={filteredProjectTotals}
             sleepMinutes={sleepMinutes}
             screenMinutes={screenMinutes}
           />
+        </div>
+      </div>
+
+      <div className="divide-border grid w-full grid-cols-4 divide-x">
+        <div className="border-border col-span-3 border-b">
+          <SleepMetricsChart data={sleepData} days={days} />
+        </div>
+        <div className="border-border border-b">
+          <ScreenTimePie data={screenTimeData} days={days} />
         </div>
       </div>
     </div>
