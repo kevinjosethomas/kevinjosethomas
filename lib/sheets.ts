@@ -15,9 +15,13 @@ const OVERVIEW_WORKSHEET_ID = parseInt(
   process.env.OVERVIEW_WORKSHEET_ID as string,
 );
 const WORK_WORKSHEET_ID = parseInt(process.env.WORK_WORKSHEET_ID as string);
-const WORKOUT_WORKSHEET_ID = parseInt(process.env.WORKOUT_WORKSHEET_ID as string);
+const WORKOUT_WORKSHEET_ID = parseInt(
+  process.env.WORKOUT_WORKSHEET_ID as string,
+);
 const MONEY_WORKSHEET_ID = parseInt(process.env.MONEY_WORKSHEET_ID as string);
-const SCREENTIME_WORKSHEET_ID = parseInt(process.env.SCREENTIME_WORKSHEET_ID as string);
+const SCREENTIME_WORKSHEET_ID = parseInt(
+  process.env.SCREENTIME_WORKSHEET_ID as string,
+);
 
 type SheetRow = Record<string, unknown>;
 
@@ -62,7 +66,6 @@ export type SleepData = {
   deep: string;
   time: string;
   score: string;
-  notes: string;
 };
 
 export type OverviewData = {
@@ -72,7 +75,6 @@ export type OverviewData = {
   sleepScore: string;
   workScore: string;
   workoutScore: string;
-  notes: string;
   r: string;
 };
 
@@ -85,7 +87,6 @@ export type WorkSessionData = {
   endTime: string;
   duration: string;
   date: string;
-  notes: string;
 };
 
 export type WorkoutData = {
@@ -98,7 +99,6 @@ export type WorkoutData = {
   distance: string;
   pace: string;
   time: string;
-  notes: string;
 };
 
 export type MoneyData = {
@@ -107,7 +107,6 @@ export type MoneyData = {
   amount: string;
   tag: string;
   merchant: string;
-  notes: string;
 };
 
 export type ScreenTimeData = {
@@ -135,7 +134,6 @@ export async function fetchBothSheets(limit = 15): Promise<{
     deep: (row.Deep as string) || "",
     time: (row.Time as string) || "",
     score: (row.Score as string) || "",
-    notes: (row.Notes as string) || "",
   }));
 
   const overview: OverviewData[] = overviewRows.map((row) => ({
@@ -145,7 +143,6 @@ export async function fetchBothSheets(limit = 15): Promise<{
     sleepScore: (row["Sleep Score"] as string) || "",
     workScore: (row["Work Score"] as string) || "",
     workoutScore: (row["Workout Score"] as string) || "",
-    notes: (row.Notes as string) || "",
     r: (row.R as string) || "",
   }));
 
@@ -177,7 +174,6 @@ export async function fetchWorkSessions(
     endTime: (row.End as string) || "",
     duration: (row.Time as string) || "",
     date: (row.Date as string) || "",
-    notes: (row.Notes as string) || "",
   }));
 
   console.log("First mapped row:", mappedRows[0]);
@@ -185,9 +181,7 @@ export async function fetchWorkSessions(
   return mappedRows;
 }
 
-export async function fetchWorkouts(
-  limit?: number,
-): Promise<WorkoutData[]> {
+export async function fetchWorkouts(limit?: number): Promise<WorkoutData[]> {
   const rows = await fetchSheetRows({
     worksheetId: WORKOUT_WORKSHEET_ID,
     limit,
@@ -203,13 +197,10 @@ export async function fetchWorkouts(
     distance: (row.Distance as string) || "",
     pace: (row.Pace as string) || "",
     time: (row.Time as string) || "",
-    notes: (row.Notes as string) || "",
   }));
 }
 
-export async function fetchMoney(
-  limit?: number,
-): Promise<MoneyData[]> {
+export async function fetchMoney(limit?: number): Promise<MoneyData[]> {
   const rows = await fetchSheetRows({
     worksheetId: MONEY_WORKSHEET_ID,
     limit,
@@ -221,7 +212,6 @@ export async function fetchMoney(
     amount: (row.Amount as string) || "",
     tag: (row.Tag as string) || "",
     merchant: (row.Merchant as string) || "",
-    notes: (row.Notes as string) || "",
   }));
 }
 
