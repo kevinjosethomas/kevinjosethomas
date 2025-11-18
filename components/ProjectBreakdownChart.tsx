@@ -222,7 +222,7 @@ export default function ProjectBreakdownChart({
   return (
     <div className="flex h-full flex-col">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
-        <p className="text-sm font-medium">Work Sessions</p>
+        <p className="text-sm font-medium">Work Trends</p>
         <div className="flex items-center gap-3">
           <p className="text-secondary text-xs">
             Avg: {avgHours}h {avgMins}m

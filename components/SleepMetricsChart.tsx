@@ -131,8 +131,6 @@ export default function SleepMetricsChart({
 
   const recentDays = data.slice(0, days).reverse();
 
-  // Create a map of date to rating from overview data
-  // r is the numeric value (1-7) where 1=Very Unpleasant, 4=Neutral, 7=Very Pleasant
   const ratingMap = new Map<string, number>();
   overviewData.forEach((d) => {
     const rating = parseFloat(d.r);
@@ -147,8 +145,6 @@ export default function SleepMetricsChart({
     const deepMinutes = parseTimeToMinutes(d.deep);
     const lightMinutes = Math.max(0, totalMinutes - remMinutes - deepMinutes);
 
-    // Scale rating (1-7) to fit on the same axis as sleep (0-600 minutes)
-    // Map 1-7 to roughly 85-600 range for visibility
     const rating = ratingMap.get(d.date) || 0;
     const scaledRating = rating > 0 ? (rating / 7) * 600 : 0;
 
@@ -181,7 +177,7 @@ export default function SleepMetricsChart({
   return (
     <div className="flex h-full flex-col">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
-        <p className="text-sm font-medium">Sleep & Rating</p>
+        <p className="text-sm font-medium">Sleep Trends</p>
         <div className="flex items-center gap-3">
           <p className="text-secondary text-xs">
             Avg: {avgHours}h {avgMins}m

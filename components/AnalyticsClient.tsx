@@ -4,9 +4,17 @@ import { useState } from "react";
 import ProjectBreakdownChart from "@/components/ProjectBreakdownChart";
 import ProjectTotalsPie from "@/components/ProjectTotalsPie";
 import type { ProcessedWorkData } from "@/lib/work";
-import type { SleepData, ScreenTimeData, OverviewData } from "@/lib/sheets";
+import type {
+  SleepData,
+  ScreenTimeData,
+  OverviewData,
+  WorkoutData,
+  MoneyData,
+} from "@/lib/sheets";
 import SleepMetricsChart from "@/components/SleepMetricsChart";
 import ScreenTimePie from "@/components/ScreenTimePie";
+import WorkoutWeeklyChart from "@/components/WorkoutWeeklyChart";
+import MoneyWeeklyChart from "@/components/MoneyWeeklyChart";
 
 type TimePreset = {
   label: string;
@@ -18,6 +26,8 @@ type AnalyticsClientProps = {
   sleepData: SleepData[];
   screenTimeData: ScreenTimeData[];
   overviewData: OverviewData[];
+  workoutData: WorkoutData[];
+  moneyData: MoneyData[];
 };
 
 function parseTimeToMinutes(timeStr: string): number {
@@ -37,6 +47,8 @@ export default function AnalyticsClient({
   sleepData,
   screenTimeData,
   overviewData,
+  workoutData,
+  moneyData,
 }: AnalyticsClientProps) {
   // Filter out today's data - only include data up to yesterday
   const today = new Date();
@@ -62,8 +74,18 @@ export default function AnalyticsClient({
     return dataDate < today;
   });
 
+  const filteredWorkoutDataAll = workoutData.filter((d) => {
+    const dataDate = new Date(d.date);
+    return dataDate < today;
+  });
+
+  const filteredMoneyDataAll = moneyData.filter((d) => {
+    const dataDate = new Date(d.date);
+    return dataDate < today;
+  });
+
   const hasData = filteredWorkDataAll.length > 0;
-  const defaultDays = hasData ? Math.min(14, filteredWorkDataAll.length) : 0;
+  const defaultDays = hasData ? Math.min(90, filteredWorkDataAll.length) : 0;
   const [days, setDays] = useState(defaultDays);
   const [showWorkRating, setShowWorkRating] = useState(false);
   const [showSleepRating, setShowSleepRating] = useState(false);
@@ -119,10 +141,10 @@ export default function AnalyticsClient({
   }
 
   const presets: TimePreset[] = [
-    { label: "7d", days: 7 },
     { label: "14d", days: 14 },
     { label: "1m", days: 30 },
     { label: "3m", days: 90 },
+    { label: "6m", days: 180 },
     { label: "All", days: "all" },
   ];
 
@@ -179,6 +201,15 @@ export default function AnalyticsClient({
             sleepMinutes={sleepMinutes}
             screenMinutes={screenMinutes}
           />
+        </div>
+      </div>
+
+      <div className="divide-border grid w-full grid-cols-4 divide-x">
+        <div className="border-border col-span-2 border-b">
+          <WorkoutWeeklyChart data={filteredWorkoutDataAll} days={days} />
+        </div>
+        <div className="border-border col-span-2 border-b">
+          <MoneyWeeklyChart data={filteredMoneyDataAll} days={days} />
         </div>
       </div>
 
