@@ -8,6 +8,7 @@
   --color-border: var(--border);
   --color-secondary: #aaaaaa;
 
+  --text-xxs: 10px;
   --text-sm: 16px;
   --text-base: 18px;
   --text-lg: 20px;

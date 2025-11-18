@@ -14,6 +14,7 @@ const SLEEP_WORKSHEET_ID = parseInt(process.env.SLEEP_WORKSHEET_ID as string);
 const OVERVIEW_WORKSHEET_ID = parseInt(
   process.env.OVERVIEW_WORKSHEET_ID as string,
 );
+const WORK_WORKSHEET_ID = parseInt(process.env.WORK_WORKSHEET_ID as string);
 
 type SheetRow = Record<string, unknown>;
 
@@ -40,7 +41,7 @@ async function loadWorksheet(worksheetId: number) {
 export async function fetchSheetRows(
   options: FetchSheetRowsOptions = {},
 ): Promise<SheetRow[]> {
-  const worksheetId = options.worksheetId || SLEEP_WORKSHEET_ID;
+  const worksheetId = options.worksheetId as number;
   const worksheet = await loadWorksheet(worksheetId);
   const { limit } = options;
 
@@ -62,6 +63,18 @@ export type OverviewData = {
   sleepScore: string;
   workScore: string;
   workoutScore: string;
+};
+
+export type WorkSessionData = {
+  name: string;
+  subject: string;
+  priority: string;
+  focusLevel: string;
+  startTime: string;
+  endTime: string;
+  duration: string;
+  date: string;
+  notes: string;
 };
 
 export async function fetchBothSheets(limit = 15): Promise<{
@@ -91,6 +104,36 @@ export async function fetchBothSheets(limit = 15): Promise<{
     sleep,
     overview,
   };
+}
+
+export async function fetchWorkSessions(
+  limit?: number,
+): Promise<WorkSessionData[]> {
+  const rows = await fetchSheetRows({
+    worksheetId: WORK_WORKSHEET_ID,
+    limit,
+  });
+
+  if (rows.length > 0) {
+    console.log("First row keys:", Object.keys(rows[0]));
+    console.log("First row data:", rows[0]);
+  }
+
+  const mappedRows = rows.map((row) => ({
+    name: (row.Task as string) || "",
+    subject: (row.Subject as string) || "",
+    priority: (row.Priority as string) || "",
+    focusLevel: (row["Focus Level"] as string) || "",
+    startTime: (row.Start as string) || "",
+    endTime: (row.End as string) || "",
+    duration: (row.Time as string) || "",
+    date: (row.Date as string) || "",
+    notes: (row.Notes as string) || "",
+  }));
+
+  console.log("First mapped row:", mappedRows[0]);
+
+  return mappedRows;
 }
 
 export const sheetScopes = REQUIRED_SCOPES;
