@@ -1,6 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip as RechartsTooltip,
+} from "recharts";
 import ProjectBreakdownChart from "@/components/ProjectBreakdownChart";
 import ProjectTotalsPie from "@/components/ProjectTotalsPie";
 import type { ProcessedWorkData } from "@/lib/work";
@@ -15,6 +24,7 @@ import SleepMetricsChart from "@/components/SleepMetricsChart";
 import ScreenTimePie from "@/components/ScreenTimePie";
 import WorkoutWeeklyChart from "@/components/WorkoutWeeklyChart";
 import MoneyWeeklyChart from "@/components/MoneyWeeklyChart";
+import Tooltip from "@/components/Tooltip";
 
 type TimePreset = {
   label: string;
@@ -156,9 +166,89 @@ export default function AnalyticsClient({
 
   return (
     <div className="flex min-h-screen w-full flex-col overflow-x-hidden bg-black text-white">
-      {/* Top Bar: Time Controls */}
+      {/* Hero Section */}
+      <div className="border-border relative flex flex-col items-start justify-center overflow-hidden border-b px-8 py-10 text-left md:px-20 md:py-32 xl:py-48">
+        {/* Decorative line graph with grid */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-15 md:opacity-30">
+          <ResponsiveContainer width="100%" height="100%" aspect={1.5}>
+            <AreaChart
+              data={[
+                { x: 0, y: 2 },
+                { x: 1, y: 2 },
+                { x: 2, y: 3 },
+                { x: 3, y: 3 },
+                { x: 4, y: 4 },
+                { x: 5, y: 4 },
+                { x: 6, y: 5 },
+                { x: 7, y: 5 },
+                { x: 8, y: 5 },
+                { x: 9, y: 6 },
+              ]}
+              margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+            >
+              <defs>
+                <linearGradient id="heroGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#86efac" stopOpacity={0.6} />
+                  <stop offset="100%" stopColor="#86efac" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid
+                strokeDasharray="0"
+                stroke="white"
+                strokeOpacity={0.25}
+              />
+              <XAxis
+                dataKey="x"
+                hide
+                type="number"
+                domain={[0, 9]}
+                ticks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+              />
+              <YAxis
+                hide
+                type="number"
+                domain={[0, 6]}
+                ticks={[0, 1, 2, 3, 4, 5, 6]}
+              />
+              <RechartsTooltip
+                cursor={{
+                  stroke: "#86efac",
+                  strokeWidth: 2,
+                }}
+                content={() => null}
+                isAnimationActive={false}
+              />
+              <Area
+                type="linear"
+                dataKey="y"
+                stroke="#86efac"
+                strokeWidth={3}
+                fill="url(#heroGradient)"
+                dot={{ fill: "#86efac", r: 5, fillOpacity: 1, strokeWidth: 0 }}
+                isAnimationActive={false}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="relative z-10 flex max-w-lg flex-col items-start gap-2 md:gap-4">
+          <h1 className="text-2xl font-bold tracking-tight md:text-6xl">
+            Analytics
+          </h1>
+          <p className="text-secondary text-base leading-relaxed md:text-lg">
+            I track my time, health, mood and money—mostly automatically—to
+            understand the patterns that shape my life. Data is the closest
+            thing we have to truth; the better we use it, the better we live.
+            <Tooltip
+              number={1}
+              content="Eventually, this data could be useful to LLMs: understanding my patterns, helping me make better decisions, and creating context-aware agents that can help me leverage my time  more effectively."
+            />
+          </p>
+        </div>
+      </div>
+
+      {/* Time Controls */}
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
-        <p className="text-sm font-medium">Analytics</p>
+        <p className="text-sm font-medium">Time Range</p>
         <div className="flex items-center gap-2">
           {presets.map((preset) => {
             const isActive =
