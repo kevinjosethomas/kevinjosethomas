@@ -155,7 +155,7 @@ export default function AnalyticsClient({
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-black text-white">
+    <div className="flex min-h-screen w-full flex-col overflow-x-hidden bg-black text-white">
       {/* Top Bar: Time Controls */}
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
         <p className="text-sm font-medium">Analytics</p>
@@ -183,8 +183,8 @@ export default function AnalyticsClient({
       </div>
 
       {/* First Row: Work Sessions */}
-      <div className="divide-border grid w-full grid-cols-4 divide-x">
-        <div className="col-span-3 flex flex-col">
+      <div className="divide-border grid w-full grid-cols-1 md:grid-cols-4 md:divide-x">
+        <div className="border-border flex flex-col border-b md:col-span-3 md:border-b-0">
           <ProjectBreakdownChart
             data={filteredWorkDataAll}
             overviewData={filteredOverviewDataAll}
@@ -200,15 +200,15 @@ export default function AnalyticsClient({
         </div>
       </div>
 
-      <div className="divide-border grid w-full grid-cols-4 divide-x">
-        <div className="border-border col-span-2 border-b">
+      <div className="divide-border grid w-full grid-cols-1 md:grid-cols-4 md:divide-x">
+        <div className="border-border border-b md:col-span-2">
           <WorkoutWeeklyChart
             data={filteredWorkoutDataAll}
             days={days}
             todayTimestamp={todayTimestamp}
           />
         </div>
-        <div className="border-border col-span-2 border-b">
+        <div className="border-border border-b md:col-span-2">
           <MoneyWeeklyChart
             data={filteredMoneyDataAll}
             days={days}
@@ -217,8 +217,8 @@ export default function AnalyticsClient({
         </div>
       </div>
 
-      <div className="divide-border grid w-full grid-cols-4 divide-x">
-        <div className="border-border col-span-3 border-b">
+      <div className="divide-border grid w-full grid-cols-1 md:grid-cols-4 md:divide-x">
+        <div className="border-border border-b md:col-span-3">
           <SleepMetricsChart
             data={filteredSleepDataAll}
             overviewData={filteredOverviewDataAll}
