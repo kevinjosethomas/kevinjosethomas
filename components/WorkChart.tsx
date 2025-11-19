@@ -158,7 +158,7 @@ export default function WorkChart({ data }: WorkScoreChartProps) {
             }
             activeDot={{
               r: 6,
-              fill: "currentColor",
+              fill: "#86efac",
               fillOpacity: 1,
               strokeWidth: 0,
             }}

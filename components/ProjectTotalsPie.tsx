@@ -116,7 +116,7 @@ export default function ProjectTotalsPie({
   }));
 
   return (
-    <div className="divide-border flex h-full flex-col divide-y">
+    <div className="divide-border flex h-full flex-col divide-y outline-none focus:outline-none">
       <div className="flex h-14 items-center justify-between px-4">
         <p className="text-sm font-medium">Project Breakdown</p>
         <p className="text-secondary text-xs">

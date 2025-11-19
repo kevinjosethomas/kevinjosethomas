@@ -5,7 +5,6 @@ import {
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
@@ -182,11 +181,6 @@ export default function SleepMetricsChart({
             data={chartData}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
-            <CartesianGrid
-              strokeDasharray="0"
-              stroke="currentColor"
-              strokeOpacity={0.1}
-            />
             <XAxis dataKey="index" hide />
             <YAxis hide domain={[0, 600]} />
             <Tooltip
@@ -208,6 +202,7 @@ export default function SleepMetricsChart({
               fill={pastelPurple}
               fillOpacity={0.8}
               isAnimationActive={false}
+              activeDot={false}
             />
             <Area
               type="monotone"
@@ -219,6 +214,7 @@ export default function SleepMetricsChart({
               fill={pastelBlue}
               fillOpacity={0.8}
               isAnimationActive={false}
+              activeDot={false}
             />
             <Area
               type="monotone"
@@ -230,6 +226,7 @@ export default function SleepMetricsChart({
               fill={pastelCyan}
               fillOpacity={0.8}
               isAnimationActive={false}
+              activeDot={false}
             />
           </AreaChart>
         </ResponsiveContainer>

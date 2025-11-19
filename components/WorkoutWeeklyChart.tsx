@@ -5,7 +5,6 @@ import {
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
@@ -278,11 +277,6 @@ export default function WorkoutWeeklyChart({
             data={chartData}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
-            <CartesianGrid
-              strokeDasharray="0"
-              stroke="currentColor"
-              strokeOpacity={0.1}
-            />
             <XAxis dataKey="weekLabel" hide />
             <YAxis hide />
             <Tooltip

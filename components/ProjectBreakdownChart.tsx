@@ -5,7 +5,6 @@ import {
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
@@ -203,7 +202,7 @@ export default function ProjectBreakdownChart({
   const avgMins = Math.round(avgWorkMinutes % 60);
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col outline-none focus:outline-none">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
         <p className="text-sm font-medium">Work Trends</p>
         <p className="text-secondary text-xs">
@@ -216,11 +215,6 @@ export default function ProjectBreakdownChart({
             data={chartData}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
-            <CartesianGrid
-              strokeDasharray="0"
-              stroke="currentColor"
-              strokeOpacity={0.1}
-            />
             <XAxis dataKey="index" hide />
             <YAxis
               tickCount={6}
@@ -243,6 +237,7 @@ export default function ProjectBreakdownChart({
                 fillOpacity={0.4}
                 strokeWidth={0}
                 isAnimationActive={false}
+                activeDot={false}
               />
             ))}
           </AreaChart>

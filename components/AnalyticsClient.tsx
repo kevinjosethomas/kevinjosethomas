@@ -225,6 +225,12 @@ export default function AnalyticsClient({
                 strokeWidth={3}
                 fill="url(#heroGradient)"
                 dot={{ fill: "#86efac", r: 5, fillOpacity: 1, strokeWidth: 0 }}
+                activeDot={{
+                  fill: "#86efac",
+                  r: 6,
+                  fillOpacity: 1,
+                  strokeWidth: 0,
+                }}
                 isAnimationActive={false}
               />
             </AreaChart>

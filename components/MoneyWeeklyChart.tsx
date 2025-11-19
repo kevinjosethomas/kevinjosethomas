@@ -5,7 +5,6 @@ import {
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
@@ -249,7 +248,7 @@ export default function MoneyWeeklyChart({
   const moneyTagsArray = Array.from(moneyTags).sort();
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col outline-none focus:outline-none">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
         <p className="text-sm font-medium">Spending Trends</p>
         <p className="text-secondary text-xs">
@@ -262,11 +261,6 @@ export default function MoneyWeeklyChart({
             data={chartData}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
-            <CartesianGrid
-              strokeDasharray="0"
-              stroke="currentColor"
-              strokeOpacity={0.1}
-            />
             <XAxis dataKey="weekLabel" hide />
             <YAxis hide />
             <Tooltip
