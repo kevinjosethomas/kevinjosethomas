@@ -160,11 +160,6 @@ export async function fetchWorkSessions(
     limit,
   });
 
-  if (rows.length > 0) {
-    console.log("First row keys:", Object.keys(rows[0]));
-    console.log("First row data:", rows[0]);
-  }
-
   const mappedRows = rows.map((row) => ({
     name: (row.Task as string) || "",
     subject: (row.Subject as string) || "",
@@ -175,8 +170,6 @@ export async function fetchWorkSessions(
     duration: (row.Time as string) || "",
     date: (row.Date as string) || "",
   }));
-
-  console.log("First mapped row:", mappedRows[0]);
 
   return mappedRows;
 }
