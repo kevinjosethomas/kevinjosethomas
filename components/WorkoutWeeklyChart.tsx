@@ -14,6 +14,7 @@ import type { WorkoutData } from "@/lib/sheets";
 type WorkoutWeeklyChartProps = {
   data: WorkoutData[];
   days?: number;
+  todayTimestamp: number;
 };
 
 type CustomTooltipProps = {
@@ -134,9 +135,9 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
 export default function WorkoutWeeklyChart({
   data,
   days = 90,
+  todayTimestamp,
 }: WorkoutWeeklyChartProps) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const today = new Date(todayTimestamp);
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 

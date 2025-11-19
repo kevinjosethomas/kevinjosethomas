@@ -28,6 +28,7 @@ type AnalyticsClientProps = {
   overviewData: OverviewData[];
   workoutData: WorkoutData[];
   moneyData: MoneyData[];
+  todayTimestamp: number;
 };
 
 function parseTimeToMinutes(timeStr: string): number {
@@ -49,10 +50,9 @@ export default function AnalyticsClient({
   overviewData,
   workoutData,
   moneyData,
+  todayTimestamp,
 }: AnalyticsClientProps) {
-  // Filter out today's data - only include data up to yesterday
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const today = new Date(todayTimestamp);
 
   const filteredWorkDataAll = workData.dailyData.filter((d) => {
     const dataDate = new Date(d.date);
@@ -87,8 +87,6 @@ export default function AnalyticsClient({
   const hasData = filteredWorkDataAll.length > 0;
   const defaultDays = hasData ? Math.min(90, filteredWorkDataAll.length) : 0;
   const [days, setDays] = useState(defaultDays);
-  const [showWorkRating, setShowWorkRating] = useState(false);
-  const [showSleepRating, setShowSleepRating] = useState(false);
 
   const isAllTime = days === filteredWorkDataAll.length;
 
@@ -191,8 +189,6 @@ export default function AnalyticsClient({
             data={filteredWorkDataAll}
             overviewData={filteredOverviewDataAll}
             days={days}
-            showRating={showWorkRating}
-            onToggleRating={() => setShowWorkRating(!showWorkRating)}
           />
         </div>
         <div className="border-border border-b">
@@ -206,10 +202,18 @@ export default function AnalyticsClient({
 
       <div className="divide-border grid w-full grid-cols-4 divide-x">
         <div className="border-border col-span-2 border-b">
-          <WorkoutWeeklyChart data={filteredWorkoutDataAll} days={days} />
+          <WorkoutWeeklyChart
+            data={filteredWorkoutDataAll}
+            days={days}
+            todayTimestamp={todayTimestamp}
+          />
         </div>
         <div className="border-border col-span-2 border-b">
-          <MoneyWeeklyChart data={filteredMoneyDataAll} days={days} />
+          <MoneyWeeklyChart
+            data={filteredMoneyDataAll}
+            days={days}
+            todayTimestamp={todayTimestamp}
+          />
         </div>
       </div>
 
@@ -219,8 +223,6 @@ export default function AnalyticsClient({
             data={filteredSleepDataAll}
             overviewData={filteredOverviewDataAll}
             days={days}
-            showRating={showSleepRating}
-            onToggleRating={() => setShowSleepRating(!showSleepRating)}
           />
         </div>
         <div className="border-border border-b">

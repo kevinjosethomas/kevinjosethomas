@@ -14,6 +14,7 @@ import type { MoneyData } from "@/lib/sheets";
 type MoneyWeeklyChartProps = {
   data: MoneyData[];
   days?: number;
+  todayTimestamp: number;
 };
 
 type CustomTooltipProps = {
@@ -116,9 +117,9 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
 export default function MoneyWeeklyChart({
   data,
   days = 90,
+  todayTimestamp,
 }: MoneyWeeklyChartProps) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const today = new Date(todayTimestamp);
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 

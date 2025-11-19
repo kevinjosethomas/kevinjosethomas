@@ -1,14 +1,13 @@
 "use client";
 
-import { Tooltip } from "recharts";
 import {
-  ComposedChart,
+  AreaChart,
   Area,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
 } from "recharts";
 import type { DailyWorkData } from "@/lib/work";
 import type { OverviewData } from "@/lib/sheets";
@@ -17,8 +16,6 @@ type ProjectBreakdownChartProps = {
   data: DailyWorkData[];
   overviewData: OverviewData[];
   days?: number;
-  showRating?: boolean;
-  onToggleRating?: () => void;
 };
 
 type CustomTooltipProps = {
@@ -28,6 +25,9 @@ type CustomTooltipProps = {
     dataKey: string;
     color: string;
     name: string;
+    payload?: {
+      rawRating?: number;
+    };
   }>;
   label?: string;
 };
@@ -36,6 +36,7 @@ type ChartDataPoint = {
   index: number;
   date: string;
   day: string;
+  rawRating: number;
   [key: string]: number | string;
 };
 
@@ -78,20 +79,19 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     const sortedPayload = [...payload].sort((a, b) => b.value - a.value);
 
-    const totalMinutes = payload
-      .filter((entry) => entry.dataKey !== "rating")
-      .reduce((sum, entry) => sum + entry.value, 0);
+    const totalMinutes = payload.reduce((sum, entry) => sum + entry.value, 0);
     const totalHours = Math.floor(totalMinutes / 60);
     const totalMins = Math.round(totalMinutes % 60);
 
     const firstPayload = payload[0] as {
-      payload?: { date?: string };
+      payload?: { date?: string; rawRating?: number };
       value: number;
       dataKey: string;
       color: string;
       name: string;
     };
     const fullDate = firstPayload?.payload?.date || "";
+    const rawRating = firstPayload?.payload?.rawRating;
     const dateParts = fullDate.split(",");
     const dayOfWeek = dateParts[0]?.trim() || "";
     const dateWithYear = dateParts[1]?.trim() || "";
@@ -101,33 +101,16 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
     return (
       <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
         <p className="text-secondary mb-2 text-xs">{formattedDate}</p>
-        <div className="mb-2 flex items-center gap-2 border-b border-white/10 pb-2">
-          <p className="text-secondary text-xs">Total:</p>
-          <p className="text-xs font-medium">
-            {totalHours}h {totalMins}m
-          </p>
+        <div className="-mx-3 mb-2 border-b border-white/10 px-3 pb-2">
+          <div className="flex items-center gap-2">
+            <p className="text-secondary text-xs">Total:</p>
+            <p className="text-xs font-medium">
+              {totalHours}h {totalMins}m
+            </p>
+          </div>
         </div>
         {sortedPayload.map((entry, index) => {
           if (entry.value === 0) return null;
-
-          if (entry.dataKey === "rating") {
-            const actualRating = (entry.value / 600) * 7;
-            const ratingLabel = getRatingLabel(actualRating);
-            if (!ratingLabel) return null;
-            return (
-              <div
-                key={index}
-                className="mt-2 flex items-center gap-2 border-t border-white/10 pt-2"
-              >
-                <div
-                  className="h-2 w-2"
-                  style={{ backgroundColor: entry.color }}
-                />
-                <p className="text-secondary text-xs">{entry.name}:</p>
-                <p className="text-xs font-medium">{ratingLabel}</p>
-              </div>
-            );
-          }
 
           const hours = Math.floor(entry.value / 60);
           const mins = Math.round(entry.value % 60);
@@ -144,6 +127,11 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
             </div>
           );
         })}
+        {rawRating !== undefined && rawRating > 0 && (
+          <div className="-mx-3 mt-2 border-t border-white/10 px-3 pt-2">
+            <p className="text-xs font-medium">{getRatingLabel(rawRating)}</p>
+          </div>
+        )}
       </div>
     );
   }
@@ -154,8 +142,6 @@ export default function ProjectBreakdownChart({
   data,
   overviewData,
   days = 7,
-  showRating = false,
-  onToggleRating,
 }: ProjectBreakdownChartProps) {
   if (!data || data.length === 0) return null;
 
@@ -193,13 +179,12 @@ export default function ProjectBreakdownChart({
     const formattedDate = `${dayOfWeek}, ${dateStr}`;
 
     const rating = ratingMap.get(d.date) || 0;
-    const scaledRating = rating > 0 ? (rating / 7) * 600 : 0;
 
     const dataPoint: ChartDataPoint = {
       index,
       date: formattedDate,
       day: dayOfWeek.slice(0, 3),
-      rating: scaledRating,
+      rawRating: rating,
     };
 
     projectArray.forEach((project) => {
@@ -217,30 +202,17 @@ export default function ProjectBreakdownChart({
   const avgHours = Math.floor(avgWorkMinutes / 60);
   const avgMins = Math.round(avgWorkMinutes % 60);
 
-  const deepBlue = "#3b82f6";
-
   return (
     <div className="flex h-full flex-col">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
         <p className="text-sm font-medium">Work Trends</p>
-        <div className="flex items-center gap-3">
-          <p className="text-secondary text-xs">
-            Avg: {avgHours}h {avgMins}m
-          </p>
-          {onToggleRating && (
-            <button
-              onClick={onToggleRating}
-              className="border-border cursor-pointer border px-2 py-1 text-xs transition-colors hover:bg-white/10"
-              title={showRating ? "Hide rating" : "Show rating"}
-            >
-              {showRating ? "Hide Rating" : "Show Rating"}
-            </button>
-          )}
-        </div>
+        <p className="text-secondary text-xs">
+          Avg: {avgHours}h {avgMins}m
+        </p>
       </div>
       <div className="min-h-[200px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart
+          <AreaChart
             data={chartData}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
@@ -273,18 +245,7 @@ export default function ProjectBreakdownChart({
                 isAnimationActive={false}
               />
             ))}
-            {showRating && (
-              <Line
-                type="monotone"
-                dataKey="rating"
-                name="Rating"
-                stroke={deepBlue}
-                strokeWidth={2}
-                dot={false}
-                isAnimationActive={false}
-              />
-            )}
-          </ComposedChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
       <div className="border-border grid h-[140px] grid-cols-2 gap-4 border-y p-4 md:grid-cols-6 md:p-6">

@@ -21,6 +21,10 @@ export default async function AnalyticsPage() {
       fetchMoney(2000),
     ]);
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayTimestamp = today.getTime();
+
   return (
     <AnalyticsClient
       workData={workData}
@@ -29,6 +33,7 @@ export default async function AnalyticsPage() {
       overviewData={sheetsData.overview}
       workoutData={workoutData}
       moneyData={moneyData}
+      todayTimestamp={todayTimestamp}
     />
   );
 }

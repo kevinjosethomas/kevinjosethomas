@@ -1,9 +1,8 @@
 "use client";
 
 import {
-  ComposedChart,
+  AreaChart,
   Area,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -16,8 +15,6 @@ type SleepMetricsChartProps = {
   data: SleepData[];
   overviewData: OverviewData[];
   days?: number;
-  showRating?: boolean;
-  onToggleRating?: () => void;
 };
 
 type CustomTooltipProps = {
@@ -79,9 +76,11 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
       <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
         <p className="text-secondary mb-2 text-xs">{date}</p>
         {score && (
-          <div className="mb-2 flex items-center gap-2 border-b border-white/10 pb-2">
-            <p className="text-secondary text-xs">Score:</p>
-            <p className="text-xs font-medium">{score}</p>
+          <div className="-mx-3 mb-2 border-b border-white/10 px-3 pb-2">
+            <div className="flex items-center gap-2">
+              <p className="text-secondary text-xs">Score:</p>
+              <p className="text-xs font-medium">{score}</p>
+            </div>
           </div>
         )}
         {payload.map((entry, index) => {
@@ -102,9 +101,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
           );
         })}
         {rawRating !== undefined && rawRating > 0 && (
-          <div className="mt-2 flex items-center gap-2 border-t border-white/10 pt-2">
-            <div className="h-2 w-2" style={{ backgroundColor: "#3b82f6" }} />
-            <p className="text-secondary text-xs">Rating:</p>
+          <div className="-mx-3 mt-2 border-t border-white/10 px-3 pt-2">
             <p className="text-xs font-medium">{getRatingLabel(rawRating)}</p>
           </div>
         )}
@@ -118,8 +115,6 @@ export default function SleepMetricsChart({
   data,
   overviewData,
   days = 14,
-  showRating = false,
-  onToggleRating,
 }: SleepMetricsChartProps) {
   if (!data || data.length === 0) {
     return (
@@ -172,30 +167,18 @@ export default function SleepMetricsChart({
   const pastelPurple = "#5F4D71";
   const pastelBlue = "#474D70";
   const pastelCyan = "#476B70";
-  const deepBlue = "#3b82f6";
 
   return (
     <div className="flex h-full flex-col">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
         <p className="text-sm font-medium">Sleep Trends</p>
-        <div className="flex items-center gap-3">
-          <p className="text-secondary text-xs">
-            Avg: {avgHours}h {avgMins}m
-          </p>
-          {onToggleRating && (
-            <button
-              onClick={onToggleRating}
-              className="border-border cursor-pointer border px-2 py-1 text-xs transition-colors hover:bg-white/10"
-              title={showRating ? "Hide rating" : "Show rating"}
-            >
-              {showRating ? "Hide Rating" : "Show Rating"}
-            </button>
-          )}
-        </div>
+        <p className="text-secondary text-xs">
+          Avg: {avgHours}h {avgMins}m
+        </p>
       </div>
       <div className="min-h-[200px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart
+          <AreaChart
             data={chartData}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
@@ -248,18 +231,7 @@ export default function SleepMetricsChart({
               fillOpacity={0.8}
               isAnimationActive={false}
             />
-            {showRating && (
-              <Line
-                type="monotone"
-                dataKey="rating"
-                name="Rating"
-                stroke={deepBlue}
-                strokeWidth={2}
-                dot={false}
-                isAnimationActive={false}
-              />
-            )}
-          </ComposedChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
     </div>
