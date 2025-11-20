@@ -21,6 +21,3 @@ export default function ArrowIcon({ className = "h-4 w-4" }: ArrowIconProps) {
   );
 }
 
-
-
-

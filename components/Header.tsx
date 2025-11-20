@@ -29,6 +29,11 @@ export default function Header() {
           <Link href="/projects">
             <h3 className="text-secondary hidden text-xl md:block">projects</h3>
           </Link>
+          <Link href="/analytics">
+            <h3 className="text-secondary hidden text-xl md:block">
+              analytics
+            </h3>
+          </Link>
           <Link href="https://knowledge.kevinjosethomas.com" target="_blank">
             <h3 className="text-secondary hidden text-xl md:block">writing</h3>
           </Link>
@@ -96,6 +101,9 @@ export default function Header() {
             </Link>
             <Link href="/projects" onClick={() => setIsMenuOpen(false)}>
               <h3 className="text-secondary text-xl md:block">projects</h3>
+            </Link>
+            <Link href="/analytics" onClick={() => setIsMenuOpen(false)}>
+              <h3 className="text-secondary text-xl md:block">analytics</h3>
             </Link>
             <Link
               href="https://knowledge.kevinjosethomas.com"

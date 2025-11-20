@@ -3,12 +3,7 @@
 import { useState } from "react";
 import * as React from "react";
 import InfoTooltip from "./InfoTooltip";
-
-type SleepData = {
-  date: string;
-  start: string;
-  end: string;
-};
+import type { SleepData } from "@/lib/sheets";
 
 type SleepChartProps = {
   data: SleepData[];
@@ -229,49 +224,49 @@ export default function SleepChart({ data }: SleepChartProps) {
       </div>
 
       {/* Tooltip */}
-      {tooltip && (() => {
-        // Calculate smart positioning to prevent overflow
-        const tooltipWidth = 128; // w-32 = 8rem = 128px
-        const containerRect = document.querySelector('.sleep-chart-outer')?.getBoundingClientRect();
-        if (!containerRect) return null;
-        
-        const absoluteLeft = containerRect.left + tooltip.x;
-        const viewportWidth = window.innerWidth;
-        const tooltipHalfWidth = tooltipWidth / 2;
-        
-        let transform = "translate(-50%, -120%)";
-        let adjustedX = tooltip.x;
+      {tooltip &&
+        (() => {
+          const tooltipWidth = 128;
+          const containerRect = document
+            .querySelector(".sleep-chart-outer")
+            ?.getBoundingClientRect();
+          if (!containerRect) return null;
 
-        // Check if tooltip would overflow on the left
-        if (absoluteLeft - tooltipHalfWidth < 16) {
-          const offset = 16 - (absoluteLeft - tooltipHalfWidth);
-          adjustedX = tooltip.x + offset;
-          transform = "translate(-50%, -120%)";
-        }
-        // Check if tooltip would overflow on the right
-        else if (absoluteLeft + tooltipHalfWidth > viewportWidth - 16) {
-          const offset = (absoluteLeft + tooltipHalfWidth) - (viewportWidth - 16);
-          adjustedX = tooltip.x - offset;
-          transform = "translate(-50%, -120%)";
-        }
+          const absoluteLeft = containerRect.left + tooltip.x;
+          const viewportWidth = window.innerWidth;
+          const tooltipHalfWidth = tooltipWidth / 2;
 
-        return (
-          <div
-            className="border-border pointer-events-none absolute z-50 flex w-32 flex-col border bg-black px-2 py-1 text-sm"
-            style={{
-              left: `${adjustedX}px`,
-              top: `${tooltip.y}px`,
-              transform,
-            }}
-          >
-            <p className="text-secondary text-xs">{tooltip.date}</p>
-            <p className="font-medium">{tooltip.duration}</p>
-            <p className="text-secondary text-xs">
-              {tooltip.start} - {tooltip.end}
-            </p>
-          </div>
-        );
-      })()}
+          let transform = "translate(-50%, -120%)";
+          let adjustedX = tooltip.x;
+
+          if (absoluteLeft - tooltipHalfWidth < 16) {
+            const offset = 16 - (absoluteLeft - tooltipHalfWidth);
+            adjustedX = tooltip.x + offset;
+            transform = "translate(-50%, -120%)";
+          } else if (absoluteLeft + tooltipHalfWidth > viewportWidth - 16) {
+            const offset =
+              absoluteLeft + tooltipHalfWidth - (viewportWidth - 16);
+            adjustedX = tooltip.x - offset;
+            transform = "translate(-50%, -120%)";
+          }
+
+          return (
+            <div
+              className="border-border pointer-events-none absolute z-50 flex w-32 flex-col border bg-black px-2 py-1 text-sm"
+              style={{
+                left: `${adjustedX}px`,
+                top: `${tooltip.y}px`,
+                transform,
+              }}
+            >
+              <p className="text-secondary text-xs">{tooltip.date}</p>
+              <p className="font-medium">{tooltip.duration}</p>
+              <p className="text-secondary text-xs">
+                {tooltip.start} - {tooltip.end}
+              </p>
+            </div>
+          );
+        })()}
     </div>
   );
 }
