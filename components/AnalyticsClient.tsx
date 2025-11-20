@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   AreaChart,
   Area,
@@ -8,7 +8,6 @@ import {
   YAxis,
   CartesianGrid,
   ResponsiveContainer,
-  Tooltip as RechartsTooltip,
 } from "recharts";
 import ProjectBreakdownChart from "@/components/ProjectBreakdownChart";
 import ProjectTotalsPie from "@/components/ProjectTotalsPie";
@@ -97,6 +96,59 @@ export default function AnalyticsClient({
   const hasData = filteredWorkDataAll.length > 0;
   const defaultDays = hasData ? Math.min(90, filteredWorkDataAll.length) : 0;
   const [days, setDays] = useState(defaultDays);
+  const chartRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const cursorTargetRef = useRef<number | null>(null);
+  const cursorCurrentRef = useRef(50);
+  const cursorAnimationFrameRef = useRef<number | null>(null);
+  const clipRectRef = useRef<SVGRectElement | null>(null);
+
+  const updateClipWidth = useCallback((percent: number) => {
+    if (!clipRectRef.current) return;
+    const normalized = Math.min(1, Math.max(0, percent / 100));
+    clipRectRef.current.setAttribute("width", normalized.toString());
+  }, []);
+
+  const animateCursor = () => {
+    if (!cursorRef.current || cursorTargetRef.current === null) {
+      cursorAnimationFrameRef.current = null;
+      return;
+    }
+
+    const current = cursorCurrentRef.current;
+    const target = cursorTargetRef.current;
+    const delta = target - current;
+
+    if (Math.abs(delta) < 0.1) {
+      cursorCurrentRef.current = target;
+      cursorRef.current.style.left = `${target}%`;
+      updateClipWidth(target);
+      cursorAnimationFrameRef.current = null;
+      return;
+    }
+
+    const next = current + delta * 0.2;
+    cursorCurrentRef.current = next;
+    cursorRef.current.style.left = `${next}%`;
+    updateClipWidth(next);
+    cursorAnimationFrameRef.current = requestAnimationFrame(animateCursor);
+  };
+
+  const requestCursorAnimation = () => {
+    if (cursorAnimationFrameRef.current === null) {
+      cursorAnimationFrameRef.current = requestAnimationFrame(animateCursor);
+    }
+  };
+
+  useEffect(() => {
+    updateClipWidth(cursorCurrentRef.current);
+
+    return () => {
+      if (cursorAnimationFrameRef.current !== null) {
+        cancelAnimationFrame(cursorAnimationFrameRef.current);
+      }
+    };
+  }, [updateClipWidth]);
 
   const isAllTime = days === filteredWorkDataAll.length;
 
@@ -168,8 +220,46 @@ export default function AnalyticsClient({
     <div className="flex min-h-screen w-full flex-col overflow-x-hidden bg-black text-white">
       {/* Hero Section */}
       <div className="border-border relative flex flex-col items-start justify-center overflow-hidden border-b px-8 py-10 text-left md:px-20 md:py-32 xl:py-48">
+        {/* Cursor line */}
+        <div
+          ref={cursorRef}
+          className="pointer-events-none absolute top-0 z-20 h-full"
+          style={{
+            transform: "translateX(-50%)",
+            left: "50%",
+            opacity: 0,
+            width: "1px",
+            backgroundImage:
+              "linear-gradient(180deg, rgba(255,255,255,0.9), rgba(17,24,39,0.35))",
+            transition: "opacity 150ms ease",
+          }}
+        />
         {/* Decorative line graph with grid */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-15 md:opacity-30">
+        <div
+          ref={chartRef}
+          className="absolute inset-0 flex items-center justify-center"
+          onMouseMove={(e) => {
+            if (chartRef.current && cursorRef.current) {
+              const rect = chartRef.current.getBoundingClientRect();
+              if (rect.width <= 0) return;
+              const relativeX = ((e.clientX - rect.left) / rect.width) * 100;
+              const clampedX = Math.min(100, Math.max(0, relativeX));
+              cursorTargetRef.current = clampedX;
+              cursorRef.current.style.opacity = "1";
+              requestCursorAnimation();
+            }
+          }}
+          onMouseLeave={() => {
+            cursorTargetRef.current = null;
+            if (cursorAnimationFrameRef.current !== null) {
+              cancelAnimationFrame(cursorAnimationFrameRef.current);
+              cursorAnimationFrameRef.current = null;
+            }
+            if (cursorRef.current) {
+              cursorRef.current.style.opacity = "0";
+            }
+          }}
+        >
           <ResponsiveContainer width="100%" height="100%" aspect={1.5}>
             <AreaChart
               data={[
@@ -188,14 +278,28 @@ export default function AnalyticsClient({
             >
               <defs>
                 <linearGradient id="heroGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#86efac" stopOpacity={0.6} />
-                  <stop offset="100%" stopColor="#86efac" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#DC4A15" stopOpacity={0.3} />
+                  <stop offset="100%" stopColor="#DC4A15" stopOpacity={0} />
                 </linearGradient>
+                <clipPath
+                  id="heroGradientClip"
+                  clipPathUnits="objectBoundingBox"
+                >
+                  <rect
+                    ref={(node) => {
+                      clipRectRef.current = node;
+                    }}
+                    x="0"
+                    y="0"
+                    width="0.5"
+                    height="1"
+                  />
+                </clipPath>
               </defs>
               <CartesianGrid
                 strokeDasharray="0"
                 stroke="white"
-                strokeOpacity={0.25}
+                strokeOpacity={0.1}
               />
               <XAxis
                 dataKey="x"
@@ -210,25 +314,30 @@ export default function AnalyticsClient({
                 domain={[0, 6]}
                 ticks={[0, 1, 2, 3, 4, 5, 6]}
               />
-              <RechartsTooltip
-                cursor={{
-                  stroke: "#86efac",
-                  strokeWidth: 2,
-                }}
-                content={() => null}
+              <Area
+                type="linear"
+                dataKey="y"
+                stroke="none"
+                fill="url(#heroGradient)"
+                clipPath="url(#heroGradientClip)"
                 isAnimationActive={false}
               />
               <Area
                 type="linear"
                 dataKey="y"
-                stroke="#86efac"
-                strokeWidth={3}
-                fill="url(#heroGradient)"
-                dot={{ fill: "#86efac", r: 5, fillOpacity: 1, strokeWidth: 0 }}
-                activeDot={{
-                  fill: "#86efac",
-                  r: 6,
+                stroke="#DC4A15"
+                strokeWidth={2.5}
+                fill="none"
+                dot={{
+                  fill: "#DC4A15",
+                  r: 5,
                   fillOpacity: 1,
+                  strokeWidth: 0,
+                }}
+                activeDot={{
+                  fill: "#DC4A15",
+                  r: 6,
+                  fillOpacity: 0.8,
                   strokeWidth: 0,
                 }}
                 isAnimationActive={false}
@@ -236,7 +345,7 @@ export default function AnalyticsClient({
             </AreaChart>
           </ResponsiveContainer>
         </div>
-        <div className="relative z-10 flex max-w-lg flex-col items-start gap-2 md:gap-4">
+        <div className="pointer-events-none relative z-10 flex max-w-lg flex-col items-start gap-2 md:gap-4">
           <h1 className="text-2xl font-bold tracking-tight md:text-6xl">
             Analytics
           </h1>
