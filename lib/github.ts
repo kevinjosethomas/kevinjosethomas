@@ -29,7 +29,7 @@ function parseDateString(dateStr: string): Date {
 async function fetchContributionsForYear(
   from: string,
   to: string,
-): Promise<{ totalContributions: number; weeks: ContributionWeek[] }> {
+): Promise<{ totalContributions: number; weeks: ContributionWeek[] } | null> {
   const query = `
     query($username: String!, $from: DateTime!, $to: DateTime!) {
       user(login: $username) {
@@ -49,35 +49,40 @@ async function fetchContributionsForYear(
     }
   `;
 
-  const response = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query,
-      variables: { username: GITHUB_USERNAME, from, to },
-    }),
-    next: { revalidate: 3600 },
-  });
+  try {
+    const response = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables: { username: GITHUB_USERNAME, from, to },
+      }),
+      next: { revalidate: 3600 },
+    });
 
-  if (!response.ok) {
-    throw new Error(`GitHub API error: ${response.status}`);
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json();
+
+    if (data.errors) {
+      return null;
+    }
+
+    const calendar =
+      data.data.user.contributionsCollection.contributionCalendar;
+
+    return {
+      totalContributions: calendar.totalContributions,
+      weeks: calendar.weeks,
+    };
+  } catch {
+    return null;
   }
-
-  const data = await response.json();
-
-  if (data.errors) {
-    throw new Error(data.errors[0]?.message || "GraphQL error");
-  }
-
-  const calendar = data.data.user.contributionsCollection.contributionCalendar;
-
-  return {
-    totalContributions: calendar.totalContributions,
-    weeks: calendar.weeks,
-  };
 }
 
 async function getAccountCreationDate(): Promise<Date> {
@@ -147,10 +152,15 @@ export async function fetchGitHubContributions(): Promise<GitHubContributionsDat
       years.map(({ from, to }) => fetchContributionsForYear(from, to)),
     );
 
+    const validResults = results.filter(
+      (r): r is { totalContributions: number; weeks: ContributionWeek[] } =>
+        r !== null,
+    );
+
     const daysByDate = new Map<string, ContributionDay>();
     let totalContributions = 0;
 
-    for (const result of results.reverse()) {
+    for (const result of validResults.reverse()) {
       totalContributions += result.totalContributions;
       for (const week of result.weeks) {
         for (const day of week.contributionDays) {
