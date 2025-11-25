@@ -184,27 +184,28 @@ export default function WorkoutWeeklyChart({
     }
   };
 
-  // Find earliest workout date
-  let earliestDataDate: Date | null = null;
+  const validDates: Date[] = [];
   data.forEach((workout) => {
     if (workout.date && workout.time) {
       const parsed = parseWorkoutDate(workout.date);
       if (parsed && !isNaN(parsed.getTime())) {
-        if (!earliestDataDate || parsed < earliestDataDate) {
-          earliestDataDate = parsed;
-        }
+        validDates.push(parsed);
       }
     }
   });
+  const earliestDataDate =
+    validDates.length > 0
+      ? new Date(Math.min(...validDates.map((d) => d.getTime())))
+      : null;
 
   const requestedStart = new Date(yesterday);
   requestedStart.setDate(requestedStart.getDate() - days + 1);
   requestedStart.setHours(0, 0, 0, 0);
 
-  const startDate =
-    earliestDataDate && earliestDataDate > requestedStart
-      ? earliestDataDate
-      : requestedStart;
+  let startDate = requestedStart;
+  if (earliestDataDate && earliestDataDate > requestedStart) {
+    startDate = earliestDataDate;
+  }
 
   const allWeekKeys = new Set<string>();
   const currentDate = new Date(startDate);
