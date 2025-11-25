@@ -14,6 +14,7 @@ type SleepMetricsChartProps = {
   data: SleepData[];
   overviewData: OverviewData[];
   days?: number;
+  todayTimestamp: number;
 };
 
 type CustomTooltipProps = {
@@ -110,20 +111,51 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
   return null;
 }
 
+function formatDateKey(date: Date): string {
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const dayOfWeek = days[date.getDay()];
+  const month = months[date.getMonth()];
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${dayOfWeek}, ${month} ${day}, ${year}`;
+}
+
 export default function SleepMetricsChart({
   data,
   overviewData,
   days = 14,
+  todayTimestamp,
 }: SleepMetricsChartProps) {
-  if (!data || data.length === 0) {
-    return (
-      <div className="text-secondary flex h-full items-center justify-center text-sm">
-        No sleep data.
-      </div>
-    );
-  }
+  const today = new Date(todayTimestamp);
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
 
-  const recentDays = data.slice(0, days).reverse();
+  const sleepDataMap = new Map<string, SleepData>();
+  data.forEach((d) => {
+    sleepDataMap.set(d.date, d);
+  });
+
+  const allDates: Date[] = [];
+  for (let i = 0; i < days; i++) {
+    const date = new Date(yesterday);
+    date.setDate(yesterday.getDate() - i);
+    allDates.push(date);
+  }
+  allDates.reverse();
 
   const ratingMap = new Map<string, number>();
   overviewData.forEach((d) => {
@@ -133,19 +165,22 @@ export default function SleepMetricsChart({
     }
   });
 
-  const chartData = recentDays.map((d, index) => {
-    const totalMinutes = parseTimeToMinutes(d.time);
-    const remMinutes = parseTimeToMinutes(d.rem);
-    const deepMinutes = parseTimeToMinutes(d.deep);
+  const chartData = allDates.map((date, index) => {
+    const dateKey = formatDateKey(date);
+    const dayData = sleepDataMap.get(dateKey);
+
+    const totalMinutes = dayData ? parseTimeToMinutes(dayData.time) : 0;
+    const remMinutes = dayData ? parseTimeToMinutes(dayData.rem) : 0;
+    const deepMinutes = dayData ? parseTimeToMinutes(dayData.deep) : 0;
     const lightMinutes = Math.max(0, totalMinutes - remMinutes - deepMinutes);
 
-    const rating = ratingMap.get(d.date) || 0;
+    const rating = ratingMap.get(dateKey) || 0;
     const scaledRating = rating > 0 ? (rating / 7) * 600 : 0;
 
     return {
       index,
-      date: d.date,
-      score: d.score,
+      date: dateKey,
+      score: dayData?.score || "",
       total: totalMinutes,
       rem: remMinutes,
       deep: deepMinutes,
@@ -155,10 +190,8 @@ export default function SleepMetricsChart({
     };
   });
 
-  const avgTotal =
-    chartData.length > 0
-      ? chartData.reduce((sum, d) => sum + d.total, 0) / chartData.length
-      : 0;
+  const totalSleepMinutes = chartData.reduce((sum, d) => sum + d.total, 0);
+  const avgTotal = days > 0 ? totalSleepMinutes / days : 0;
 
   const avgHours = Math.floor(avgTotal / 60);
   const avgMins = Math.round(avgTotal % 60);
@@ -185,7 +218,7 @@ export default function SleepMetricsChart({
             <YAxis hide domain={[0, 600]} />
             <Tooltip
               cursor={{
-                stroke: pastelPurple,
+                stroke: "#a5b4fc",
                 strokeWidth: 1,
                 strokeOpacity: 0.3,
               }}

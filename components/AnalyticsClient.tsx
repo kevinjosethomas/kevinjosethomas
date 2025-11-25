@@ -394,6 +394,7 @@ export default function AnalyticsClient({
             data={filteredWorkDataAll}
             overviewData={filteredOverviewDataAll}
             days={days}
+            todayTimestamp={todayTimestamp}
           />
         </div>
         <div className="border-border border-b">
@@ -428,6 +429,7 @@ export default function AnalyticsClient({
             data={filteredSleepDataAll}
             overviewData={filteredOverviewDataAll}
             days={days}
+            todayTimestamp={todayTimestamp}
           />
         </div>
         <div className="border-border border-b">
