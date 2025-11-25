@@ -65,5 +65,6 @@ export const WORKOUT_COLORS: Record<string, string> = {
   Pickleball: "#909878",
   Soccer: "#a87878",
   Ultimate: "#9890a8",
-  "No Data": "#687888",
+  Trek: "#687888",
+  "No Data": "#0f0f0f",
 };

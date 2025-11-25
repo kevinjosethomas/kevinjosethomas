@@ -96,6 +96,7 @@ export default function AnalyticsClient({
   const hasData = filteredWorkDataAll.length > 0;
   const defaultDays = hasData ? Math.min(90, filteredWorkDataAll.length) : 0;
   const [days, setDays] = useState(defaultDays);
+  const [isAllTime, setIsAllTime] = useState(false);
   const chartRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const cursorTargetRef = useRef<number | null>(null);
@@ -150,8 +151,6 @@ export default function AnalyticsClient({
     };
   }, [updateClipWidth]);
 
-  const isAllTime = days === filteredWorkDataAll.length;
-
   const cutoffDate = new Date("2025-04-06");
   let workDataToUse = filteredWorkDataAll;
 
@@ -169,6 +168,14 @@ export default function AnalyticsClient({
     Object.entries(d.projects).forEach(([project, minutes]) => {
       filteredProjectTotals[project] =
         (filteredProjectTotals[project] || 0) + minutes;
+    });
+  });
+
+  const pieProjectTotals: Record<string, number> = {};
+  const pieWorkData = isAllTime ? filteredWorkDataAll : filteredWorkData;
+  pieWorkData.forEach((d) => {
+    Object.entries(d.projects).forEach(([project, minutes]) => {
+      pieProjectTotals[project] = (pieProjectTotals[project] || 0) + minutes;
     });
   });
 
@@ -211,8 +218,10 @@ export default function AnalyticsClient({
   const handlePresetClick = (preset: TimePreset) => {
     if (preset.days === "all") {
       setDays(10000);
+      setIsAllTime(true);
     } else {
       setDays(preset.days);
+      setIsAllTime(false);
     }
   };
 
@@ -368,8 +377,8 @@ export default function AnalyticsClient({
           {presets.map((preset) => {
             const isActive =
               preset.days === "all"
-                ? days === filteredWorkDataAll.length
-                : days === preset.days;
+                ? isAllTime
+                : !isAllTime && days === preset.days;
             return (
               <button
                 key={preset.label}
@@ -399,7 +408,7 @@ export default function AnalyticsClient({
         </div>
         <div className="border-border border-b">
           <ProjectTotalsPie
-            projectTotals={filteredProjectTotals}
+            projectTotals={pieProjectTotals}
             sleepMinutes={sleepMinutes}
             screenMinutes={screenMinutes}
           />
