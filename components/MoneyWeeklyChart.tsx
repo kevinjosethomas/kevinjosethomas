@@ -67,7 +67,8 @@ function getWeekLabel(weekKey: string): string {
   const formatDate = (d: Date) => {
     const month = d.toLocaleString("en-US", { month: "short" });
     const day = d.getDate();
-    return `${month} ${day}`;
+    const year = d.getFullYear();
+    return `${month} ${day}, ${year}`;
   };
 
   return `${formatDate(startOfWeek)} - ${formatDate(endOfWeek)}`;
@@ -122,23 +123,6 @@ export default function MoneyWeeklyChart({
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 
-  const startDate = new Date(yesterday);
-  startDate.setDate(startDate.getDate() - days + 1);
-
-  const allWeekKeys = new Set<string>();
-  const currentDate = new Date(startDate);
-  while (currentDate <= yesterday) {
-    allWeekKeys.add(getWeekKey(currentDate));
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  const weekMap = new Map<string, Map<string, number>>();
-  const moneyTags = new Set<string>();
-
-  allWeekKeys.forEach((weekKey) => {
-    weekMap.set(weekKey, new Map());
-  });
-
   const parseMoneyDate = (dateStr: string): Date | null => {
     try {
       const parts = dateStr.split(",").map((p) => p.trim());
@@ -185,6 +169,53 @@ export default function MoneyWeeklyChart({
       return null;
     }
   };
+
+  // Hard cutoff - don't show data before this date
+  const cutoffDate = new Date("2022-09-01");
+  cutoffDate.setHours(0, 0, 0, 0);
+
+  // Find earliest transaction date after the cutoff
+  const validDates: Date[] = [];
+  data.forEach((transaction) => {
+    if (transaction.date && transaction.amount) {
+      const parsed = parseMoneyDate(transaction.date);
+      if (parsed && !isNaN(parsed.getTime()) && parsed >= cutoffDate) {
+        validDates.push(parsed);
+      }
+    }
+  });
+  const earliestDataDate =
+    validDates.length > 0
+      ? new Date(Math.min(...validDates.map((d) => d.getTime())))
+      : null;
+
+  const requestedStart = new Date(yesterday);
+  requestedStart.setDate(requestedStart.getDate() - days + 1);
+  requestedStart.setHours(0, 0, 0, 0);
+
+  // Ensure we don't go before cutoff date
+  const effectiveRequestedStart =
+    requestedStart < cutoffDate ? cutoffDate : requestedStart;
+
+  // Start from the earliest transaction date (after cutoff) or the requested start
+  let startDate = effectiveRequestedStart;
+  if (earliestDataDate && earliestDataDate > effectiveRequestedStart) {
+    startDate = earliestDataDate;
+  }
+
+  const allWeekKeys = new Set<string>();
+  const currentDate = new Date(startDate);
+  while (currentDate <= yesterday) {
+    allWeekKeys.add(getWeekKey(currentDate));
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  const weekMap = new Map<string, Map<string, number>>();
+  const moneyTags = new Set<string>();
+
+  allWeekKeys.forEach((weekKey) => {
+    weekMap.set(weekKey, new Map());
+  });
 
   data.forEach((transaction) => {
     if (!transaction.date || !transaction.amount) return;

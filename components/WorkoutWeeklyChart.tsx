@@ -77,7 +77,8 @@ function getWeekLabel(date: Date): string {
   const formatDate = (d: Date) => {
     const month = d.toLocaleString("en-US", { month: "short" });
     const day = d.getDate();
-    return `${month} ${day}`;
+    const year = d.getFullYear();
+    return `${month} ${day}, ${year}`;
   };
 
   return `${formatDate(startOfWeek)} - ${formatDate(endOfWeek)}`;
@@ -140,23 +141,6 @@ export default function WorkoutWeeklyChart({
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 
-  const startDate = new Date(yesterday);
-  startDate.setDate(startDate.getDate() - days + 1);
-
-  const allWeekKeys = new Set<string>();
-  const currentDate = new Date(startDate);
-  while (currentDate <= yesterday) {
-    allWeekKeys.add(getWeekKey(currentDate));
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  const weekMap = new Map<string, Map<string, number>>();
-  const workoutTypes = new Set<string>();
-
-  allWeekKeys.forEach((weekKey) => {
-    weekMap.set(weekKey, new Map());
-  });
-
   const parseWorkoutDate = (dateStr: string): Date | null => {
     try {
       const parts = dateStr.split(",");
@@ -199,6 +183,42 @@ export default function WorkoutWeeklyChart({
       return null;
     }
   };
+
+  // Find earliest workout date
+  let earliestDataDate: Date | null = null;
+  data.forEach((workout) => {
+    if (workout.date && workout.time) {
+      const parsed = parseWorkoutDate(workout.date);
+      if (parsed && !isNaN(parsed.getTime())) {
+        if (!earliestDataDate || parsed < earliestDataDate) {
+          earliestDataDate = parsed;
+        }
+      }
+    }
+  });
+
+  const requestedStart = new Date(yesterday);
+  requestedStart.setDate(requestedStart.getDate() - days + 1);
+  requestedStart.setHours(0, 0, 0, 0);
+
+  const startDate =
+    earliestDataDate && earliestDataDate > requestedStart
+      ? earliestDataDate
+      : requestedStart;
+
+  const allWeekKeys = new Set<string>();
+  const currentDate = new Date(startDate);
+  while (currentDate <= yesterday) {
+    allWeekKeys.add(getWeekKey(currentDate));
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  const weekMap = new Map<string, Map<string, number>>();
+  const workoutTypes = new Set<string>();
+
+  allWeekKeys.forEach((weekKey) => {
+    weekMap.set(weekKey, new Map());
+  });
 
   data.forEach((workout) => {
     if (!workout.date || !workout.time) return;

@@ -210,9 +210,9 @@ export default function AnalyticsClient({
 
   const handlePresetClick = (preset: TimePreset) => {
     if (preset.days === "all") {
-      setDays(filteredWorkDataAll.length);
+      setDays(10000);
     } else {
-      setDays(Math.min(preset.days, filteredWorkDataAll.length));
+      setDays(preset.days);
     }
   };
 

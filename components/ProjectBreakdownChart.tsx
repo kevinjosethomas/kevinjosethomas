@@ -98,9 +98,11 @@ function CustomTooltip({ active, payload, colorMap }: CustomTooltipProps) {
     const rawRating = firstPayload?.payload?.rawRating;
     const dateParts = fullDate.split(",");
     const dayOfWeek = dateParts[0]?.trim() || "";
-    const dateWithYear = dateParts[1]?.trim() || "";
-    const monthDay = dateWithYear.split(" ").slice(0, 2).join(" ");
-    const formattedDate = `${dayOfWeek}, ${monthDay}`;
+    const monthDay = dateParts[1]?.trim() || "";
+    const year = dateParts[2]?.trim() || "";
+    const formattedDate = year
+      ? `${dayOfWeek}, ${monthDay}, ${year}`
+      : `${dayOfWeek}, ${monthDay}`;
 
     return (
       <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
@@ -228,7 +230,8 @@ export default function ProjectBreakdownChart({
     const dateParts = dateKey.split(",");
     const dayOfWeek = dateParts[0];
     const dateStr = dateParts[1]?.trim();
-    const formattedDate = `${dayOfWeek}, ${dateStr}`;
+    const year = dateParts[2]?.trim();
+    const formattedDate = `${dayOfWeek}, ${dateStr}, ${year}`;
 
     const rating = ratingMap.get(dateKey) || 0;
 

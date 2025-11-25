@@ -144,18 +144,41 @@ export default function SleepMetricsChart({
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 
+  const validDates: Date[] = [];
+  data.forEach((d) => {
+    if (d.date && d.time) {
+      const parsed = new Date(d.date);
+      if (!isNaN(parsed.getTime())) {
+        validDates.push(parsed);
+      }
+    }
+  });
+  const earliestDataDate =
+    validDates.length > 0
+      ? new Date(Math.min(...validDates.map((d) => d.getTime())))
+      : null;
+
   const sleepDataMap = new Map<string, SleepData>();
   data.forEach((d) => {
     sleepDataMap.set(d.date, d);
   });
 
-  const allDates: Date[] = [];
-  for (let i = 0; i < days; i++) {
-    const date = new Date(yesterday);
-    date.setDate(yesterday.getDate() - i);
-    allDates.push(date);
+  const requestedStart = new Date(yesterday);
+  requestedStart.setDate(yesterday.getDate() - days + 1);
+  requestedStart.setHours(0, 0, 0, 0);
+
+  let startDate = requestedStart;
+  if (earliestDataDate && earliestDataDate > requestedStart) {
+    startDate = earliestDataDate;
   }
-  allDates.reverse();
+
+  const allDates: Date[] = [];
+  const currentDate = new Date(startDate);
+  currentDate.setHours(0, 0, 0, 0);
+  while (currentDate <= yesterday) {
+    allDates.push(new Date(currentDate));
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
 
   const ratingMap = new Map<string, number>();
   overviewData.forEach((d) => {
@@ -191,7 +214,8 @@ export default function SleepMetricsChart({
   });
 
   const totalSleepMinutes = chartData.reduce((sum, d) => sum + d.total, 0);
-  const avgTotal = days > 0 ? totalSleepMinutes / days : 0;
+  const avgTotal =
+    allDates.length > 0 ? totalSleepMinutes / allDates.length : 0;
 
   const avgHours = Math.floor(avgTotal / 60);
   const avgMins = Math.round(avgTotal % 60);
