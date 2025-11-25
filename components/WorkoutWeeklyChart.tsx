@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import type { WorkoutData } from "@/lib/sheets";
+import { WORKOUT_COLORS } from "@/lib/colors";
 
 type WorkoutWeeklyChartProps = {
   data: WorkoutData[];
@@ -31,23 +32,6 @@ type WeekData = {
   week: string;
   weekLabel: string;
   [key: string]: number | string;
-};
-
-const COLORS: Record<string, string> = {
-  Cardio: "#fca5a5",
-  Strength: "#a5b4fc",
-  Flexibility: "#86efac",
-  Sports: "#fde68a",
-  Walking: "#d8b4fe",
-  Cycling: "#f9a8d4",
-  Swimming: "#a5f3fc",
-  Running: "#fdba74",
-  Yoga: "#c7d2fe",
-  Weights: "#a7f3d0",
-  Hike: "#d9f99d",
-  Run: "#fca5a5",
-  Other: "#cbd5e1",
-  "No Data": "#64748b",
 };
 
 function parseTimeToMinutes(timeStr: string): number {
@@ -77,7 +61,8 @@ function getWeekLabel(date: Date): string {
   const formatDate = (d: Date) => {
     const month = d.toLocaleString("en-US", { month: "short" });
     const day = d.getDate();
-    return `${month} ${day}`;
+    const year = d.getFullYear();
+    return `${month} ${day}, ${year}`;
   };
 
   return `${formatDate(startOfWeek)} - ${formatDate(endOfWeek)}`;
@@ -140,23 +125,6 @@ export default function WorkoutWeeklyChart({
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 
-  const startDate = new Date(yesterday);
-  startDate.setDate(startDate.getDate() - days + 1);
-
-  const allWeekKeys = new Set<string>();
-  const currentDate = new Date(startDate);
-  while (currentDate <= yesterday) {
-    allWeekKeys.add(getWeekKey(currentDate));
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  const weekMap = new Map<string, Map<string, number>>();
-  const workoutTypes = new Set<string>();
-
-  allWeekKeys.forEach((weekKey) => {
-    weekMap.set(weekKey, new Map());
-  });
-
   const parseWorkoutDate = (dateStr: string): Date | null => {
     try {
       const parts = dateStr.split(",");
@@ -199,6 +167,43 @@ export default function WorkoutWeeklyChart({
       return null;
     }
   };
+
+  const validDates: Date[] = [];
+  data.forEach((workout) => {
+    if (workout.date && workout.time) {
+      const parsed = parseWorkoutDate(workout.date);
+      if (parsed && !isNaN(parsed.getTime())) {
+        validDates.push(parsed);
+      }
+    }
+  });
+  const earliestDataDate =
+    validDates.length > 0
+      ? new Date(Math.min(...validDates.map((d) => d.getTime())))
+      : null;
+
+  const requestedStart = new Date(yesterday);
+  requestedStart.setDate(requestedStart.getDate() - days + 1);
+  requestedStart.setHours(0, 0, 0, 0);
+
+  let startDate = requestedStart;
+  if (earliestDataDate && earliestDataDate > requestedStart) {
+    startDate = earliestDataDate;
+  }
+
+  const allWeekKeys = new Set<string>();
+  const currentDate = new Date(startDate);
+  while (currentDate <= yesterday) {
+    allWeekKeys.add(getWeekKey(currentDate));
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  const weekMap = new Map<string, Map<string, number>>();
+  const workoutTypes = new Set<string>();
+
+  allWeekKeys.forEach((weekKey) => {
+    weekMap.set(weekKey, new Map());
+  });
 
   data.forEach((workout) => {
     if (!workout.date || !workout.time) return;
@@ -289,8 +294,8 @@ export default function WorkoutWeeklyChart({
                 key={type}
                 dataKey={type}
                 stackId="workout"
-                fill={COLORS[type] || COLORS.Other}
-                fillOpacity={0.3}
+                fill={WORKOUT_COLORS[type] || WORKOUT_COLORS.Other}
+                fillOpacity={0.8}
                 isAnimationActive={false}
               />
             ))}

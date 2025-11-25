@@ -2,6 +2,7 @@
 
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import type { ProjectTimeData } from "@/lib/work";
+import { PROJECT_COLORS, CHART_COLORS } from "@/lib/colors";
 
 type ProjectTotalsPieProps = {
   projectTotals: ProjectTimeData;
@@ -23,19 +24,6 @@ type CustomTooltipProps = {
   active?: boolean;
   payload?: TooltipPayload[];
 };
-
-const COLORS = [
-  "#a5b4fc",
-  "#fca5a5",
-  "#86efac",
-  "#fde68a",
-  "#d8b4fe",
-  "#f9a8d4",
-  "#a5f3fc",
-  "#fdba74",
-  "#c7d2fe",
-  "#d9f99d",
-];
 
 function CustomTooltip({ active, payload }: CustomTooltipProps) {
   if (active && payload && payload.length) {
@@ -109,11 +97,21 @@ export default function ProjectTotalsPie({
     filteredData.push({ name: "Other", value: otherTotal });
   }
 
-  const dataWithColors = filteredData.map((entry, idx) => ({
-    ...entry,
-    color: COLORS[idx % COLORS.length],
-    total: totalMinutes,
-  }));
+  let fallbackIdx = 0;
+  const dataWithColors = filteredData.map((entry) => {
+    let color: string;
+    if (PROJECT_COLORS[entry.name]) {
+      color = PROJECT_COLORS[entry.name];
+    } else {
+      color = CHART_COLORS[fallbackIdx % CHART_COLORS.length];
+      fallbackIdx++;
+    }
+    return {
+      ...entry,
+      color,
+      total: totalMinutes,
+    };
+  });
 
   return (
     <div className="divide-border flex h-full flex-col divide-y outline-none focus:outline-none">
@@ -171,7 +169,7 @@ export default function ProjectTotalsPie({
               }}
             >
               {dataWithColors.map((entry) => (
-                <Cell key={entry.name} fill={entry.color} fillOpacity={0.4} />
+                <Cell key={entry.name} fill={entry.color} fillOpacity={0.8} />
               ))}
             </Pie>
             <Tooltip content={<CustomTooltip />} />
