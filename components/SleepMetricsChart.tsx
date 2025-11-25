@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import type { SleepData, OverviewData } from "@/lib/sheets";
+import { SLEEP_COLORS } from "@/lib/colors";
 
 type SleepMetricsChartProps = {
   data: SleepData[];
@@ -220,10 +221,6 @@ export default function SleepMetricsChart({
   const avgHours = Math.floor(avgTotal / 60);
   const avgMins = Math.round(avgTotal % 60);
 
-  const pastelPurple = "#5F4D71";
-  const pastelBlue = "#474D70";
-  const pastelCyan = "#476B70";
-
   return (
     <div className="flex h-full flex-col">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
@@ -254,9 +251,9 @@ export default function SleepMetricsChart({
               dataKey="deep"
               name="Deep"
               stackId="1"
-              stroke={pastelPurple}
+              stroke={SLEEP_COLORS.deep}
               strokeWidth={0}
-              fill={pastelPurple}
+              fill={SLEEP_COLORS.deep}
               fillOpacity={0.8}
               isAnimationActive={false}
               activeDot={false}
@@ -266,9 +263,9 @@ export default function SleepMetricsChart({
               dataKey="rem"
               name="REM"
               stackId="1"
-              stroke={pastelBlue}
+              stroke={SLEEP_COLORS.rem}
               strokeWidth={0}
-              fill={pastelBlue}
+              fill={SLEEP_COLORS.rem}
               fillOpacity={0.8}
               isAnimationActive={false}
               activeDot={false}
@@ -278,9 +275,9 @@ export default function SleepMetricsChart({
               dataKey="light"
               name="Light"
               stackId="1"
-              stroke={pastelCyan}
+              stroke={SLEEP_COLORS.light}
               strokeWidth={0}
-              fill={pastelCyan}
+              fill={SLEEP_COLORS.light}
               fillOpacity={0.8}
               isAnimationActive={false}
               activeDot={false}

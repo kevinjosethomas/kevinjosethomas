@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import type { MoneyData } from "@/lib/sheets";
+import { SPENDING_COLORS } from "@/lib/colors";
 
 type MoneyWeeklyChartProps = {
   data: MoneyData[];
@@ -31,28 +32,6 @@ type WeekData = {
   week: string;
   weekLabel: string;
   [key: string]: number | string;
-};
-
-const COLORS: Record<string, string> = {
-  Food: "#fca5a5",
-  Transportation: "#a5b4fc",
-  Entertainment: "#86efac",
-  Shopping: "#fde68a",
-  Bills: "#d8b4fe",
-  Healthcare: "#f9a8d4",
-  Education: "#a5f3fc",
-  Travel: "#fdba74",
-  Groceries: "#c7d2fe",
-  Subscriptions: "#a7f3d0",
-  Gifts: "#d9f99d",
-  Personal: "#fbbf24",
-  Utilities: "#c084fc",
-  Insurance: "#fb923c",
-  Fitness: "#34d399",
-  Dining: "#f87171",
-  Gas: "#60a5fa",
-  Other: "#e9d5ff",
-  "No Data": "#94a3b8",
 };
 
 function getWeekLabel(weekKey: string): string {
@@ -304,8 +283,8 @@ export default function MoneyWeeklyChart({
                 key={tag}
                 dataKey={tag}
                 stackId="money"
-                fill={COLORS[tag] || COLORS.Other}
-                fillOpacity={0.3}
+                fill={SPENDING_COLORS[tag] || SPENDING_COLORS.Other}
+                fillOpacity={0.8}
                 isAnimationActive={false}
               />
             ))}

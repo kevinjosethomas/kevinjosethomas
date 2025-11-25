@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import type { DailyWorkData } from "@/lib/work";
 import type { OverviewData } from "@/lib/sheets";
+import { PROJECT_COLORS, CHART_COLORS } from "@/lib/colors";
 
 type ProjectBreakdownChartProps = {
   data: DailyWorkData[];
@@ -62,22 +63,6 @@ function getRatingLabel(rating: number): string {
       return "";
   }
 }
-
-const PROJECT_COLORS: Record<string, string> = {
-  "K-Scale": "#fca5a5",
-  CSSLab: "#a5b4fc",
-  Scrapyard: "#fde68a",
-};
-
-const FALLBACK_COLORS = [
-  "#86efac", // pastel green
-  "#d8b4fe", // pastel violet
-  "#f9a8d4", // pastel pink
-  "#a5f3fc", // pastel cyan
-  "#fdba74", // pastel orange
-  "#c7d2fe", // pastel indigo
-  "#d9f99d", // pastel lime
-];
 
 function CustomTooltip({ active, payload, colorMap }: CustomTooltipProps) {
   if (active && payload && payload.length) {
@@ -264,7 +249,7 @@ export default function ProjectBreakdownChart({
     if (PROJECT_COLORS[project]) {
       colorMap[project] = PROJECT_COLORS[project];
     } else {
-      colorMap[project] = FALLBACK_COLORS[fallbackIdx % FALLBACK_COLORS.length];
+      colorMap[project] = CHART_COLORS[fallbackIdx % CHART_COLORS.length];
       fallbackIdx++;
     }
   });
@@ -302,7 +287,7 @@ export default function ProjectBreakdownChart({
                 dataKey={project}
                 stackId="1"
                 fill={colorMap[project]}
-                fillOpacity={0.4}
+                fillOpacity={0.8}
                 strokeWidth={0}
                 isAnimationActive={false}
                 activeDot={false}

@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import type { WorkoutData } from "@/lib/sheets";
+import { WORKOUT_COLORS } from "@/lib/colors";
 
 type WorkoutWeeklyChartProps = {
   data: WorkoutData[];
@@ -31,23 +32,6 @@ type WeekData = {
   week: string;
   weekLabel: string;
   [key: string]: number | string;
-};
-
-const COLORS: Record<string, string> = {
-  Cardio: "#fca5a5",
-  Strength: "#a5b4fc",
-  Flexibility: "#86efac",
-  Sports: "#fde68a",
-  Walking: "#d8b4fe",
-  Cycling: "#f9a8d4",
-  Swimming: "#a5f3fc",
-  Running: "#fdba74",
-  Yoga: "#c7d2fe",
-  Weights: "#a7f3d0",
-  Hike: "#d9f99d",
-  Run: "#fca5a5",
-  Other: "#cbd5e1",
-  "No Data": "#64748b",
 };
 
 function parseTimeToMinutes(timeStr: string): number {
@@ -310,8 +294,8 @@ export default function WorkoutWeeklyChart({
                 key={type}
                 dataKey={type}
                 stackId="workout"
-                fill={COLORS[type] || COLORS.Other}
-                fillOpacity={0.3}
+                fill={WORKOUT_COLORS[type] || WORKOUT_COLORS.Other}
+                fillOpacity={0.8}
                 isAnimationActive={false}
               />
             ))}

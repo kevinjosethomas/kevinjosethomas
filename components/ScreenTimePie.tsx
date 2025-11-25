@@ -2,6 +2,7 @@
 
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import type { ScreenTimeData } from "@/lib/sheets";
+import { CHART_COLORS } from "@/lib/colors";
 
 type ScreenTimePieProps = {
   data: ScreenTimeData[];
@@ -22,19 +23,6 @@ type CustomTooltipProps = {
   active?: boolean;
   payload?: TooltipPayload[];
 };
-
-const COLORS = [
-  "#a5b4fc",
-  "#fca5a5",
-  "#86efac",
-  "#fde68a",
-  "#d8b4fe",
-  "#f9a8d4",
-  "#a5f3fc",
-  "#fdba74",
-  "#c7d2fe",
-  "#d9f99d",
-];
 
 function parseTimeToMinutes(timeStr: string): number {
   if (!timeStr || timeStr.trim() === "") return 0;
@@ -152,7 +140,7 @@ export default function ScreenTimePie({ data, days = 14 }: ScreenTimePieProps) {
 
   const dataWithColors = filteredCategories.map((entry, idx) => ({
     ...entry,
-    color: COLORS[idx % COLORS.length],
+    color: CHART_COLORS[idx % CHART_COLORS.length],
     total: totalMinutes,
   }));
 
@@ -213,7 +201,7 @@ export default function ScreenTimePie({ data, days = 14 }: ScreenTimePieProps) {
               }}
             >
               {dataWithColors.map((entry) => (
-                <Cell key={entry.name} fill={entry.color} fillOpacity={0.4} />
+                <Cell key={entry.name} fill={entry.color} fillOpacity={0.8} />
               ))}
             </Pie>
             <Tooltip content={<CustomTooltip />} />
