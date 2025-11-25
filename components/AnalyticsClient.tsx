@@ -19,10 +19,12 @@ import type {
   WorkoutData,
   MoneyData,
 } from "@/lib/sheets";
+import type { GitHubContributionsData } from "@/lib/github";
 import SleepMetricsChart from "@/components/SleepMetricsChart";
 import ScreenTimePie from "@/components/ScreenTimePie";
 import WorkoutWeeklyChart from "@/components/WorkoutWeeklyChart";
 import MoneyWeeklyChart from "@/components/MoneyWeeklyChart";
+import GitHubContributionsChart from "@/components/GitHubContributionsChart";
 import Tooltip from "@/components/Tooltip";
 
 type TimePreset = {
@@ -37,6 +39,7 @@ type AnalyticsClientProps = {
   overviewData: OverviewData[];
   workoutData: WorkoutData[];
   moneyData: MoneyData[];
+  githubData: GitHubContributionsData;
   todayTimestamp: number;
 };
 
@@ -59,6 +62,7 @@ export default function AnalyticsClient({
   overviewData,
   workoutData,
   moneyData,
+  githubData,
   todayTimestamp,
 }: AnalyticsClientProps) {
   const today = new Date(todayTimestamp);
@@ -429,6 +433,12 @@ export default function AnalyticsClient({
             days={days}
             todayTimestamp={todayTimestamp}
           />
+        </div>
+      </div>
+
+      <div className="divide-border grid w-full grid-cols-1">
+        <div className="border-border border-b">
+          <GitHubContributionsChart data={githubData} />
         </div>
       </div>
 
