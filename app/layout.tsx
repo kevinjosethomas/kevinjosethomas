@@ -4,6 +4,7 @@ import { Karla } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PostHogClient from "@/lib/posthog";
+import { Analytics } from "@vercel/analytics/next";
 
 const karla = Karla({
   variable: "--font-karla",
@@ -47,6 +48,7 @@ export default async function RootLayout({
           <Footer />
         </div>
       </body>
+      <Analytics />
     </html>
   );
 }
