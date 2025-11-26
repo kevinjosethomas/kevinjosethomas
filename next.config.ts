@@ -21,9 +21,19 @@ const nextConfig: NextConfig = {
         source: "/relay-mgKa/:path*",
         destination: "https://us.i.posthog.com/:path*",
       },
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
     ];
   },
   skipProxyUrlNormalize: true,
+  // This is required to support PostHog trailing slash API requests
+  skipTrailingSlashRedirect: true,
 };
 
 const withMDX = createMDX({
