@@ -9,8 +9,8 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import ProjectBreakdownChart from "@/components/ProjectBreakdownChart";
-import ProjectTotalsPie from "@/components/ProjectTotalsPie";
+import ProjectsChart from "@/components/Analytics/ProjectsChart";
+import ProjectsPieChart from "@/components/Analytics/ProjectsPieChart";
 import type { ProcessedWorkData } from "@/lib/work";
 import type {
   SleepData,
@@ -19,27 +19,27 @@ import type {
   WorkoutData,
   MoneyData,
 } from "@/lib/sheets";
-import type { GitHubContributionsData } from "@/lib/github";
-import SleepMetricsChart from "@/components/SleepMetricsChart";
-import ScreenTimePie from "@/components/ScreenTimePie";
-import WorkoutWeeklyChart from "@/components/WorkoutWeeklyChart";
-import MoneyWeeklyChart from "@/components/MoneyWeeklyChart";
-import GitHubContributionsChart from "@/components/GitHubContributionsChart";
-import Tooltip from "@/components/Tooltip";
+import type { ContributionsData } from "@/lib/github";
+import SleepTrendsChart from "@/components/Analytics/SleepTrendsChart";
+import ScreenTimePieChart from "@/components/Analytics/ScreenTimePieChart";
+import WorkoutsChart from "@/components/Analytics/WorkoutsChart";
+import ExpenditureChart from "@/components/Analytics/ExpenditureChart";
+import ContributionsChart from "@/components/Analytics/ContributionsChart";
+import Tooltip from "@/components/Common/Tooltip";
 
 type TimePreset = {
   label: string;
   days: number | "all";
 };
 
-type AnalyticsClientProps = {
+type AnalyticsProps = {
   workData: ProcessedWorkData;
   sleepData: SleepData[];
   screenTimeData: ScreenTimeData[];
   overviewData: OverviewData[];
   workoutData: WorkoutData[];
   moneyData: MoneyData[];
-  githubData: GitHubContributionsData;
+  githubData: ContributionsData;
   todayTimestamp: number;
 };
 
@@ -55,7 +55,7 @@ function parseTimeToMinutes(timeStr: string): number {
   return hours * 60 + minutes;
 }
 
-export default function AnalyticsClient({
+export default function Analytics({
   workData,
   sleepData,
   screenTimeData,
@@ -64,7 +64,7 @@ export default function AnalyticsClient({
   moneyData,
   githubData,
   todayTimestamp,
-}: AnalyticsClientProps) {
+}: AnalyticsProps) {
   const today = new Date(todayTimestamp);
 
   const filteredWorkDataAll = workData.dailyData.filter((d) => {
@@ -403,7 +403,7 @@ export default function AnalyticsClient({
       {/* First Row: Work Sessions */}
       <div className="divide-border grid w-full grid-cols-1 md:grid-cols-4 md:divide-x">
         <div className="border-border flex flex-col border-b md:col-span-3 md:border-b-0">
-          <ProjectBreakdownChart
+          <ProjectsChart
             data={filteredWorkDataAll}
             overviewData={filteredOverviewDataAll}
             days={days}
@@ -411,7 +411,7 @@ export default function AnalyticsClient({
           />
         </div>
         <div className="border-border border-b">
-          <ProjectTotalsPie
+          <ProjectsPieChart
             projectTotals={pieProjectTotals}
             sleepMinutes={sleepMinutes}
             screenMinutes={screenMinutes}
@@ -421,14 +421,14 @@ export default function AnalyticsClient({
 
       <div className="divide-border grid w-full grid-cols-1 md:grid-cols-4 md:divide-x">
         <div className="border-border border-b md:col-span-2">
-          <WorkoutWeeklyChart
+          <WorkoutsChart
             data={filteredWorkoutDataAll}
             days={days}
             todayTimestamp={todayTimestamp}
           />
         </div>
         <div className="border-border border-b md:col-span-2">
-          <MoneyWeeklyChart
+          <ExpenditureChart
             data={filteredMoneyDataAll}
             days={days}
             todayTimestamp={todayTimestamp}
@@ -438,13 +438,13 @@ export default function AnalyticsClient({
 
       <div className="divide-border grid w-full grid-cols-1">
         <div className="border-border border-b">
-          <GitHubContributionsChart data={githubData} />
+          <ContributionsChart data={githubData} />
         </div>
       </div>
 
       <div className="divide-border grid w-full grid-cols-1 md:grid-cols-4 md:divide-x">
         <div className="border-border border-b md:col-span-3">
-          <SleepMetricsChart
+          <SleepTrendsChart
             data={filteredSleepDataAll}
             overviewData={filteredOverviewDataAll}
             days={days}
@@ -452,7 +452,7 @@ export default function AnalyticsClient({
           />
         </div>
         <div className="border-border border-b">
-          <ScreenTimePie data={filteredScreenTimeDataAll} days={days} />
+          <ScreenTimePieChart data={filteredScreenTimeDataAll} days={days} />
         </div>
       </div>
     </div>

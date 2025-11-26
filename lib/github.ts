@@ -13,7 +13,7 @@ export type ContributionWeek = {
   contributionDays: ContributionDay[];
 };
 
-export type GitHubContributionsData = {
+export type ContributionsData = {
   totalContributions: number;
   weeks: ContributionWeek[];
 };
@@ -120,7 +120,7 @@ async function getAccountCreationDate(): Promise<Date> {
   return new Date(data.data.user.createdAt);
 }
 
-export async function fetchGitHubContributions(): Promise<GitHubContributionsData> {
+export async function fetchGitHubContributions(): Promise<ContributionsData> {
   if (!GITHUB_TOKEN) {
     console.warn("GITHUB_TOKEN not set, returning empty contributions");
     return { totalContributions: 0, weeks: [] };

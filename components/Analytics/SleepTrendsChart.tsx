@@ -11,7 +11,7 @@ import {
 import type { SleepData, OverviewData } from "@/lib/sheets";
 import { SLEEP_COLORS } from "@/lib/colors";
 
-type SleepMetricsChartProps = {
+type SleepTrendsChartProps = {
   data: SleepData[];
   overviewData: OverviewData[];
   days?: number;
@@ -135,12 +135,12 @@ function formatDateKey(date: Date): string {
   return `${dayOfWeek}, ${month} ${day}, ${year}`;
 }
 
-export default function SleepMetricsChart({
+export default function SleepTrendsChart({
   data,
   overviewData,
   days = 14,
   todayTimestamp,
-}: SleepMetricsChartProps) {
+}: SleepTrendsChartProps) {
   const today = new Date(todayTimestamp);
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);

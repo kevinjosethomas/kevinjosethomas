@@ -4,7 +4,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import type { ProjectTimeData } from "@/lib/work";
 import { PROJECT_COLORS, CHART_COLORS } from "@/lib/colors";
 
-type ProjectTotalsPieProps = {
+type ProejctsPieChartProps = {
   projectTotals: ProjectTimeData;
   sleepMinutes?: number;
   screenMinutes?: number;
@@ -50,11 +50,11 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
   return null;
 }
 
-export default function ProjectTotalsPie({
+export default function ProjectsPieChart({
   projectTotals,
   sleepMinutes = 0,
   screenMinutes = 0,
-}: ProjectTotalsPieProps) {
+}: ProejctsPieChartProps) {
   const totalMinutes = Object.values(projectTotals).reduce(
     (sum, minutes) => sum + minutes,
     0,

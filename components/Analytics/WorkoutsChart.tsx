@@ -8,11 +8,11 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import type { MoneyData } from "@/lib/sheets";
-import { SPENDING_COLORS } from "@/lib/colors";
+import type { WorkoutData } from "@/lib/sheets";
+import { WORKOUT_COLORS } from "@/lib/colors";
 
-type MoneyWeeklyChartProps = {
-  data: MoneyData[];
+type WorkoutsChartProps = {
+  data: WorkoutData[];
   days?: number;
   todayTimestamp: number;
 };
@@ -34,14 +34,29 @@ type WeekData = {
   [key: string]: number | string;
 };
 
-function getWeekLabel(weekKey: string): string {
-  const parts = weekKey.split("-");
-  const year = parseInt(parts[0], 10);
-  const month = parseInt(parts[1], 10) - 1;
-  const day = parseInt(parts[2], 10);
+function parseTimeToMinutes(timeStr: string): number {
+  if (!timeStr || timeStr.trim() === "") return 0;
 
-  const startOfWeek = new Date(year, month, day);
-  const endOfWeek = new Date(year, month, day + 6);
+  const hourMatch = timeStr.match(/(\d+)h/);
+  const minuteMatch = timeStr.match(/(\d+)m/);
+  const secondMatch = timeStr.match(/(\d+)s/);
+
+  const hours = hourMatch ? parseInt(hourMatch[1], 10) : 0;
+  const minutes = minuteMatch ? parseInt(minuteMatch[1], 10) : 0;
+  const seconds = secondMatch ? parseInt(secondMatch[1], 10) : 0;
+
+  return hours * 60 + minutes + Math.round(seconds / 60);
+}
+
+function getWeekLabel(date: Date): string {
+  const startOfWeek = new Date(date);
+  const day = startOfWeek.getDay();
+  const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1);
+  startOfWeek.setDate(diff);
+  startOfWeek.setHours(0, 0, 0, 0);
+
+  const endOfWeek = new Date(startOfWeek);
+  endOfWeek.setDate(startOfWeek.getDate() + 6);
 
   const formatDate = (d: Date) => {
     const month = d.toLocaleString("en-US", { month: "short" });
@@ -65,17 +80,23 @@ function getWeekKey(date: Date): string {
 function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     const sortedPayload = [...payload].sort((a, b) => b.value - a.value);
-    const totalAmount = payload.reduce((sum, entry) => sum + entry.value, 0);
+    const totalMinutes = payload.reduce((sum, entry) => sum + entry.value, 0);
+    const totalHours = Math.floor(totalMinutes / 60);
+    const totalMins = Math.round(totalMinutes % 60);
 
     return (
       <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
         <p className="text-secondary mb-2 text-xs">{label}</p>
         <div className="mb-2 flex items-center gap-2 border-b border-white/10 pb-2">
           <p className="text-secondary text-xs">Total:</p>
-          <p className="text-xs font-medium">${totalAmount.toFixed(2)}</p>
+          <p className="text-xs font-medium">
+            {totalHours}h {totalMins}m
+          </p>
         </div>
         {sortedPayload.map((entry, index) => {
           if (entry.value === 0) return null;
+          const hours = Math.floor(entry.value / 60);
+          const mins = Math.round(entry.value % 60);
           return (
             <div key={index} className="flex items-center gap-2">
               <div
@@ -83,7 +104,9 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
                 style={{ backgroundColor: entry.color }}
               />
               <p className="text-secondary text-xs">{entry.name}:</p>
-              <p className="text-xs font-medium">${entry.value.toFixed(2)}</p>
+              <p className="text-xs font-medium">
+                {hours}h {mins}m
+              </p>
             </div>
           );
         })}
@@ -93,26 +116,25 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   return null;
 }
 
-export default function MoneyWeeklyChart({
+export default function WorkoutsChart({
   data,
   days = 90,
   todayTimestamp,
-}: MoneyWeeklyChartProps) {
+}: WorkoutsChartProps) {
   const today = new Date(todayTimestamp);
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 
-  const parseMoneyDate = (dateStr: string): Date | null => {
+  const parseWorkoutDate = (dateStr: string): Date | null => {
     try {
-      const parts = dateStr.split(",").map((p) => p.trim());
+      const parts = dateStr.split(",");
       if (parts.length < 2) return null;
 
-      const dateComponents = parts[1].split(" ");
-      if (dateComponents.length < 2) return null;
+      const monthDay = parts[1].trim().split(" ");
+      if (monthDay.length < 2) return null;
 
-      const month = dateComponents[0];
-      const day = parseInt(dateComponents[1], 10);
-      const year = parts.length >= 3 ? parseInt(parts[2], 10) : null;
+      const month = monthDay[0];
+      const day = parseInt(monthDay[1], 10);
 
       const monthMap: Record<string, number> = {
         Jan: 0,
@@ -132,33 +154,25 @@ export default function MoneyWeeklyChart({
       const monthNum = monthMap[month];
       if (monthNum === undefined) return null;
 
-      let finalYear: number;
-      if (year) {
-        finalYear = year;
-      } else {
-        const currentYear = today.getFullYear();
-        const testDate = new Date(currentYear, monthNum, day);
-        finalYear = testDate > today ? currentYear - 1 : currentYear;
+      const currentYear = today.getFullYear();
+      let workoutDate = new Date(currentYear, monthNum, day);
+
+      if (workoutDate > today) {
+        workoutDate = new Date(currentYear - 1, monthNum, day);
       }
 
-      const moneyDate = new Date(finalYear, monthNum, day);
-      moneyDate.setHours(0, 0, 0, 0);
-      return moneyDate;
+      workoutDate.setHours(0, 0, 0, 0);
+      return workoutDate;
     } catch {
       return null;
     }
   };
 
-  // Hard cutoff - don't show data before this date
-  const cutoffDate = new Date("2022-09-01");
-  cutoffDate.setHours(0, 0, 0, 0);
-
-  // Find earliest transaction date after the cutoff
   const validDates: Date[] = [];
-  data.forEach((transaction) => {
-    if (transaction.date && transaction.amount) {
-      const parsed = parseMoneyDate(transaction.date);
-      if (parsed && !isNaN(parsed.getTime()) && parsed >= cutoffDate) {
+  data.forEach((workout) => {
+    if (workout.date && workout.time) {
+      const parsed = parseWorkoutDate(workout.date);
+      if (parsed && !isNaN(parsed.getTime())) {
         validDates.push(parsed);
       }
     }
@@ -172,13 +186,8 @@ export default function MoneyWeeklyChart({
   requestedStart.setDate(requestedStart.getDate() - days + 1);
   requestedStart.setHours(0, 0, 0, 0);
 
-  // Ensure we don't go before cutoff date
-  const effectiveRequestedStart =
-    requestedStart < cutoffDate ? cutoffDate : requestedStart;
-
-  // Start from the earliest transaction date (after cutoff) or the requested start
-  let startDate = effectiveRequestedStart;
-  if (earliestDataDate && earliestDataDate > effectiveRequestedStart) {
+  let startDate = requestedStart;
+  if (earliestDataDate && earliestDataDate > requestedStart) {
     startDate = earliestDataDate;
   }
 
@@ -190,52 +199,52 @@ export default function MoneyWeeklyChart({
   }
 
   const weekMap = new Map<string, Map<string, number>>();
-  const moneyTags = new Set<string>();
+  const workoutTypes = new Set<string>();
 
   allWeekKeys.forEach((weekKey) => {
     weekMap.set(weekKey, new Map());
   });
 
-  data.forEach((transaction) => {
-    if (!transaction.date || !transaction.amount) return;
+  data.forEach((workout) => {
+    if (!workout.date || !workout.time) return;
 
-    const moneyDate = parseMoneyDate(transaction.date);
+    const workoutDate = parseWorkoutDate(workout.date);
 
-    if (!moneyDate || isNaN(moneyDate.getTime())) return;
+    if (!workoutDate || isNaN(workoutDate.getTime())) return;
 
-    if (moneyDate >= startDate && moneyDate <= yesterday) {
-      const weekKey = getWeekKey(moneyDate);
-      const tag = transaction.tag || "Other";
-      const amount = parseFloat(transaction.amount.replace(/[^0-9.-]/g, ""));
+    if (workoutDate >= startDate && workoutDate <= yesterday) {
+      const weekKey = getWeekKey(workoutDate);
+      const workoutType = workout.type || "Other";
+      const minutes = parseTimeToMinutes(workout.time);
 
-      if (isNaN(amount) || amount === 0) return;
-      if (tag === "Investments") return;
+      if (minutes === 0) return;
 
-      moneyTags.add(tag);
+      workoutTypes.add(workoutType);
 
       if (!weekMap.has(weekKey)) {
         weekMap.set(weekKey, new Map());
       }
 
-      const tagMap = weekMap.get(weekKey)!;
-      tagMap.set(tag, (tagMap.get(tag) || 0) + Math.abs(amount));
+      const typeMap = weekMap.get(weekKey)!;
+      typeMap.set(workoutType, (typeMap.get(workoutType) || 0) + minutes);
     }
   });
 
-  if (moneyTags.size === 0) {
-    moneyTags.add("No Data");
+  if (workoutTypes.size === 0) {
+    workoutTypes.add("No Data");
   }
 
   const weeks = Array.from(weekMap.entries())
-    .map(([weekKey, tagMap]) => {
-      const weekLabel = getWeekLabel(weekKey);
+    .map(([weekKey, typeMap]) => {
+      const weekDate = new Date(weekKey);
+      const weekLabel = getWeekLabel(weekDate);
       const weekData: WeekData = {
         week: weekKey,
         weekLabel,
       };
 
-      tagMap.forEach((amount, tag) => {
-        weekData[tag] = amount;
+      typeMap.forEach((minutes, type) => {
+        weekData[type] = minutes;
       });
 
       return weekData;
@@ -244,25 +253,27 @@ export default function MoneyWeeklyChart({
 
   const chartData = weeks;
 
-  const totalSpent = chartData.reduce((sum, week) => {
+  const totalMinutes = chartData.reduce((sum, week) => {
     return (
       sum +
-      Array.from(moneyTags).reduce((weekSum, tag) => {
-        return weekSum + ((week[tag] as number) || 0);
+      Array.from(workoutTypes).reduce((weekSum, type) => {
+        return weekSum + ((week[type] as number) || 0);
       }, 0)
     );
   }, 0);
 
-  const avgSpent = chartData.length > 0 ? totalSpent / chartData.length : 0;
+  const avgMinutes = chartData.length > 0 ? totalMinutes / chartData.length : 0;
+  const avgHours = Math.floor(avgMinutes / 60);
+  const avgMins = Math.round(avgMinutes % 60);
 
-  const moneyTagsArray = Array.from(moneyTags).sort();
+  const workoutTypesArray = Array.from(workoutTypes).sort();
 
   return (
-    <div className="flex h-full flex-col outline-none focus:outline-none">
+    <div className="flex h-full flex-col">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
-        <p className="text-sm font-medium">Spending Trends</p>
+        <p className="text-sm font-medium">Workout Trends</p>
         <p className="text-secondary text-xs">
-          Avg: ${avgSpent.toFixed(2)}/week
+          Avg: {avgHours}h {avgMins}m/week
         </p>
       </div>
       <div className="min-h-[300px] flex-1">
@@ -278,12 +289,12 @@ export default function MoneyWeeklyChart({
               content={<CustomTooltip />}
               isAnimationActive={false}
             />
-            {moneyTagsArray.map((tag) => (
+            {workoutTypesArray.map((type) => (
               <Bar
-                key={tag}
-                dataKey={tag}
-                stackId="money"
-                fill={SPENDING_COLORS[tag] || SPENDING_COLORS.Other}
+                key={type}
+                dataKey={type}
+                stackId="workout"
+                fill={WORKOUT_COLORS[type] || WORKOUT_COLORS.Other}
                 fillOpacity={0.8}
                 isAnimationActive={false}
               />

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/types";
-import Stack from "@/components/Stack";
-import Charts from "@/components/Charts";
-import Geometry from "@/components/Geometry";
-import Tooltip from "@/components/Tooltip";
+import Stack from "@/components/Home/Stack";
+import Charts from "@/components/Home/Charts";
+import Geometry from "@/components/Home/Geometry";
+import Tooltip from "@/components/Common/Tooltip";
 import { projects } from "@/data/projects";
-import Highlight from "@/components/Highlight";
-import ProjectCard from "@/components/ProjectCard";
+import Highlight from "@/components/Home/Highlight";
+import ProjectCard from "@/components/Common/ProjectCard";
 
 export default async function Home() {
   const featuredArticles = [

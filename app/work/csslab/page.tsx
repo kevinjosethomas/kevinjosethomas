@@ -1,5 +1,5 @@
-import ExperienceLayout from "@/components/ExperienceLayout";
-import DotsPattern from "@/components/patterns/DotsPattern";
+import ExperienceLayout from "@/components/Work/ExperienceLayout";
+import GridPattern from "@/components/Work/GridPattern";
 
 export default function CSSLab() {
   return (
@@ -9,7 +9,7 @@ export default function CSSLab() {
       title="CSSLab"
       dateRange="JUL 2024 - PRESENT"
       siteUrl="https://csslab.cs.toronto.edu"
-      backgroundPattern={<DotsPattern />}
+      backgroundPattern={<GridPattern />}
       associatedProjectIds={["maia"]}
     >
       <p>

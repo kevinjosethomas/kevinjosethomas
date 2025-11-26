@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ReactNode } from "react";
-import ArrowIcon from "./ArrowIcon";
+import ArrowIcon from "@/components/Common/ArrowIcon";
 
 interface ProjectLayoutProps {
   bannerImage: string;
@@ -41,8 +41,6 @@ function CTA({ href, icon, text, borderClass }: CallToActionProps) {
 }
 
 export default function ProjectLayout({
-  bannerImage,
-  bannerAlt,
   title,
   dateRange,
   github,

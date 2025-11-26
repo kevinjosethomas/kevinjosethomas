@@ -106,7 +106,7 @@ export default function Geometry() {
       <div className="relative flex h-full flex-col items-center justify-center py-16">
         {/* Content */}
         <div
-          className="group border-border/60 bg-background/70 focus:ring-border/80 relative flex aspect-square h-full w-full items-center justify-center overflow-hidden border transition-colors duration-500 ease-out focus:ring-2 focus:outline-none"
+          className="group border-border/60 bg-background/70 relative flex aspect-square h-full w-full items-center justify-center overflow-hidden border transition-colors duration-500 ease-out focus:outline-none"
           onMouseEnter={startCycling}
           onMouseLeave={stopCycling}
           onFocus={startCycling}

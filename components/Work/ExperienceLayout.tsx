@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { projects } from "@/data/projects";
-import ProjectCard from "@/components/ProjectCard";
 import { ReactNode } from "react";
-import ArrowIcon from "./ArrowIcon";
+import { projects } from "@/data/projects";
+import ProjectCard from "@/components/Common/ProjectCard";
+import ArrowIcon from "@/components/Common/ArrowIcon";
 
 interface ExperienceLayoutProps {
   bannerImage: string;

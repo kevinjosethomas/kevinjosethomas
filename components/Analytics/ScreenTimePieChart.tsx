@@ -4,7 +4,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import type { ScreenTimeData } from "@/lib/sheets";
 import { CHART_COLORS } from "@/lib/colors";
 
-type ScreenTimePieProps = {
+type ScreenTimePieChartProps = {
   data: ScreenTimeData[];
   days?: number;
 };
@@ -61,7 +61,10 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
   return null;
 }
 
-export default function ScreenTimePie({ data, days = 14 }: ScreenTimePieProps) {
+export default function ScreenTimePieChart({
+  data,
+  days = 14,
+}: ScreenTimePieChartProps) {
   const dateSet = new Set<string>();
   const filteredData: ScreenTimeData[] = [];
 

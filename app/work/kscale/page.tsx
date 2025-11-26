@@ -1,5 +1,5 @@
-import ExperienceLayout from "@/components/ExperienceLayout";
-import GridPattern from "@/components/patterns/GridPattern";
+import GridPattern from "@/components/Work/GridPattern";
+import ExperienceLayout from "@/components/Work/ExperienceLayout";
 
 export default function KScale() {
   return (

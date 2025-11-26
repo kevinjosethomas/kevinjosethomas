@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
-import ProjectLayout from "@/components/ProjectLayout";
+import ProjectLayout from "@/components/Work/ProjectLayout";
 
 interface PageProps {
   params: Promise<{

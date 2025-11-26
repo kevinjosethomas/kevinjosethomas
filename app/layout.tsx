@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Karla } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/Common/Header";
+import Footer from "@/components/Common/Footer";
 import PostHogClient from "@/lib/posthog";
 import { Analytics } from "@vercel/analytics/next";
 

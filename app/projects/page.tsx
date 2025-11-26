@@ -1,5 +1,5 @@
 import { projects } from "@/data/projects";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectCard from "@/components/Common/ProjectCard";
 
 export default function ProjectsPage() {
   const leftColumn = projects.filter((_, index) => index % 2 === 0);

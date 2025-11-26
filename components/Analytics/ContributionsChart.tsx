@@ -1,10 +1,10 @@
 "use client";
 
+import type { ContributionsData } from "@/lib/github";
 import { useState, useMemo, useRef, useEffect } from "react";
-import type { GitHubContributionsData } from "@/lib/github";
 
-type GitHubContributionsChartProps = {
-  data: GitHubContributionsData;
+type ContributionsChartProps = {
+  data: ContributionsData;
 };
 
 const LEVEL_COLORS: Record<string, string> = {
@@ -20,9 +20,7 @@ function parseDateString(dateStr: string): Date {
   return new Date(year, month - 1, day);
 }
 
-export default function GitHubContributionsChart({
-  data,
-}: GitHubContributionsChartProps) {
+export default function ContributionsChart({ data }: ContributionsChartProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [hoveredDay, setHoveredDay] = useState<{
     date: string;

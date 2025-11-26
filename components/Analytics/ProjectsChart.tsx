@@ -12,7 +12,7 @@ import type { DailyWorkData } from "@/lib/work";
 import type { OverviewData } from "@/lib/sheets";
 import { PROJECT_COLORS, CHART_COLORS } from "@/lib/colors";
 
-type ProjectBreakdownChartProps = {
+type ProjectsChartProps = {
   data: DailyWorkData[];
   overviewData: OverviewData[];
   days?: number;
@@ -153,12 +153,12 @@ function formatDateKey(date: Date): string {
   return `${dayOfWeek}, ${month} ${day}, ${year}`;
 }
 
-export default function ProjectBreakdownChart({
+export default function ProjectsChart({
   data,
   overviewData,
   days = 7,
   todayTimestamp,
-}: ProjectBreakdownChartProps) {
+}: ProjectsChartProps) {
   const today = new Date(todayTimestamp);
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
@@ -180,7 +180,7 @@ export default function ProjectBreakdownChart({
       allDates.push(date);
     }
   }
-  allDates.reverse(); // Oldest first
+  allDates.reverse();
 
   const ratingMap = new Map<string, number>();
   overviewData.forEach((d) => {
@@ -190,7 +190,6 @@ export default function ProjectBreakdownChart({
     }
   });
 
-  // Collect all projects that appear in any day
   const projectTotals = new Map<string, number>();
   allDates.forEach((date) => {
     const dateKey = formatDateKey(date);
