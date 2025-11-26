@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Karla } from "next/font/google";
 import Header from "@/components/Common/Header";
 import Footer from "@/components/Common/Footer";
@@ -47,8 +48,10 @@ export default async function RootLayout({
           <main className="border-border w-full border">{children}</main>
           <Footer />
         </div>
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
       </body>
-      <Analytics />
     </html>
   );
 }
