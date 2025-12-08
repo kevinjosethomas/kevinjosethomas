@@ -7,6 +7,7 @@ export const projects: Project[] = [
     date: "2025",
     href: "/project/emx",
     image: "/projects/emx.png",
+    wireframeImage: "/projects/emx-wireframe.png",
     github: "https://github.com/kevinjosethomas/emx",
     images: [
       "/projects/images/emx-1.png",
@@ -21,6 +22,7 @@ export const projects: Project[] = [
     date: "2025",
     href: "/project/kos",
     image: "/projects/kos.png",
+    wireframeImage: "/projects/kos-wireframe.png",
     github: "https://github.com/kscalelabs/kos-zbot",
     images: [
       "/projects/images/kos-1.png",
