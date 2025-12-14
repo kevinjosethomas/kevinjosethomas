@@ -99,8 +99,8 @@ export default function ExpenditureChart({
   todayTimestamp,
 }: ExpenditureChartProps) {
   const today = new Date(todayTimestamp);
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
+  today.setHours(0, 0, 0, 0);
+  const endDate = new Date(today);
 
   const parseMoneyDate = (dateStr: string): Date | null => {
     try {
@@ -168,8 +168,8 @@ export default function ExpenditureChart({
       ? new Date(Math.min(...validDates.map((d) => d.getTime())))
       : null;
 
-  const requestedStart = new Date(yesterday);
-  requestedStart.setDate(requestedStart.getDate() - days + 1);
+  const requestedStart = new Date(endDate);
+  requestedStart.setDate(endDate.getDate() - days + 1);
   requestedStart.setHours(0, 0, 0, 0);
 
   // Ensure we don't go before cutoff date
@@ -184,7 +184,7 @@ export default function ExpenditureChart({
 
   const allWeekKeys = new Set<string>();
   const currentDate = new Date(startDate);
-  while (currentDate <= yesterday) {
+  while (currentDate <= endDate) {
     allWeekKeys.add(getWeekKey(currentDate));
     currentDate.setDate(currentDate.getDate() + 1);
   }
@@ -203,7 +203,7 @@ export default function ExpenditureChart({
 
     if (!moneyDate || isNaN(moneyDate.getTime())) return;
 
-    if (moneyDate >= startDate && moneyDate <= yesterday) {
+    if (moneyDate >= startDate && moneyDate <= endDate) {
       const weekKey = getWeekKey(moneyDate);
       const tag = transaction.tag || "Other";
       const amount = parseFloat(transaction.amount.replace(/[^0-9.-]/g, ""));

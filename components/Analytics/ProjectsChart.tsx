@@ -160,8 +160,8 @@ export default function ProjectsChart({
   todayTimestamp,
 }: ProjectsChartProps) {
   const today = new Date(todayTimestamp);
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
+  today.setHours(0, 0, 0, 0);
+  const endDate = new Date(today);
 
   const cutoffDate = new Date("2025-04-06");
   cutoffDate.setHours(0, 0, 0, 0);
@@ -173,8 +173,8 @@ export default function ProjectsChart({
 
   const allDates: Date[] = [];
   for (let i = 0; i < days; i++) {
-    const date = new Date(yesterday);
-    date.setDate(yesterday.getDate() - i);
+    const date = new Date(endDate);
+    date.setDate(endDate.getDate() - i);
     date.setHours(0, 0, 0, 0);
     if (date >= cutoffDate) {
       allDates.push(date);

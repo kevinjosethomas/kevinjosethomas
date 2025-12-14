@@ -122,8 +122,8 @@ export default function WorkoutsChart({
   todayTimestamp,
 }: WorkoutsChartProps) {
   const today = new Date(todayTimestamp);
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
+  today.setHours(0, 0, 0, 0);
+  const endDate = new Date(today);
 
   const parseWorkoutDate = (dateStr: string): Date | null => {
     try {
@@ -182,8 +182,8 @@ export default function WorkoutsChart({
       ? new Date(Math.min(...validDates.map((d) => d.getTime())))
       : null;
 
-  const requestedStart = new Date(yesterday);
-  requestedStart.setDate(requestedStart.getDate() - days + 1);
+  const requestedStart = new Date(endDate);
+  requestedStart.setDate(endDate.getDate() - days + 1);
   requestedStart.setHours(0, 0, 0, 0);
 
   let startDate = requestedStart;
@@ -193,7 +193,7 @@ export default function WorkoutsChart({
 
   const allWeekKeys = new Set<string>();
   const currentDate = new Date(startDate);
-  while (currentDate <= yesterday) {
+  while (currentDate <= endDate) {
     allWeekKeys.add(getWeekKey(currentDate));
     currentDate.setDate(currentDate.getDate() + 1);
   }
@@ -212,7 +212,7 @@ export default function WorkoutsChart({
 
     if (!workoutDate || isNaN(workoutDate.getTime())) return;
 
-    if (workoutDate >= startDate && workoutDate <= yesterday) {
+    if (workoutDate >= startDate && workoutDate <= endDate) {
       const weekKey = getWeekKey(workoutDate);
       const workoutType = workout.type || "Other";
       const minutes = parseTimeToMinutes(workout.time);

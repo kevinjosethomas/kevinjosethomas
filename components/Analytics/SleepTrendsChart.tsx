@@ -142,8 +142,8 @@ export default function SleepTrendsChart({
   todayTimestamp,
 }: SleepTrendsChartProps) {
   const today = new Date(todayTimestamp);
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
+  today.setHours(0, 0, 0, 0);
+  const endDate = new Date(today);
 
   const validDates: Date[] = [];
   data.forEach((d) => {
@@ -164,8 +164,8 @@ export default function SleepTrendsChart({
     sleepDataMap.set(d.date, d);
   });
 
-  const requestedStart = new Date(yesterday);
-  requestedStart.setDate(yesterday.getDate() - days + 1);
+  const requestedStart = new Date(endDate);
+  requestedStart.setDate(endDate.getDate() - days + 1);
   requestedStart.setHours(0, 0, 0, 0);
 
   let startDate = requestedStart;
@@ -176,7 +176,7 @@ export default function SleepTrendsChart({
   const allDates: Date[] = [];
   const currentDate = new Date(startDate);
   currentDate.setHours(0, 0, 0, 0);
-  while (currentDate <= yesterday) {
+  while (currentDate <= endDate) {
     allDates.push(new Date(currentDate));
     currentDate.setDate(currentDate.getDate() + 1);
   }

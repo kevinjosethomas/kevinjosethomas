@@ -65,37 +65,12 @@ export default function Analytics({
   githubData,
   todayTimestamp,
 }: AnalyticsProps) {
-  const today = new Date(todayTimestamp);
-
-  const filteredWorkDataAll = workData.dailyData.filter((d) => {
-    const dataDate = new Date(d.date);
-    return dataDate < today;
-  });
-
-  const filteredSleepDataAll = sleepData.filter((d) => {
-    const dataDate = new Date(d.date);
-    return dataDate < today;
-  });
-
-  const filteredScreenTimeDataAll = screenTimeData.filter((d) => {
-    const dataDate = new Date(d.date);
-    return dataDate < today;
-  });
-
-  const filteredOverviewDataAll = overviewData.filter((d) => {
-    const dataDate = new Date(d.date);
-    return dataDate < today;
-  });
-
-  const filteredWorkoutDataAll = workoutData.filter((d) => {
-    const dataDate = new Date(d.date);
-    return dataDate < today;
-  });
-
-  const filteredMoneyDataAll = moneyData.filter((d) => {
-    const dataDate = new Date(d.date);
-    return dataDate < today;
-  });
+  const filteredWorkDataAll = workData.dailyData;
+  const filteredSleepDataAll = sleepData;
+  const filteredScreenTimeDataAll = screenTimeData;
+  const filteredOverviewDataAll = overviewData;
+  const filteredWorkoutDataAll = workoutData;
+  const filteredMoneyDataAll = moneyData;
 
   const hasData = filteredWorkDataAll.length > 0;
   const defaultDays = hasData ? Math.min(90, filteredWorkDataAll.length) : 0;
