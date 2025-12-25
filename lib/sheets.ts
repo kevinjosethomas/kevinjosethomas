@@ -62,19 +62,19 @@ export type SleepData = {
   date: string;
   start: string;
   end: string;
-  rem: string;
-  deep: string;
-  time: string;
-  score: string;
+  rem: number;
+  deep: number;
+  time: number;
+  score: number;
 };
 
 export type OverviewData = {
   date: string;
-  rating: string;
-  overallScore: string;
-  sleepScore: string;
-  workScore: string;
-  workoutScore: string;
+  rating: number;
+  overallScore: number;
+  sleepScore: number;
+  workScore: number;
+  workoutScore: number;
   r: string;
 };
 
@@ -82,10 +82,10 @@ export type WorkSessionData = {
   name: string;
   subject: string;
   priority: string;
-  focusLevel: string;
+  focusLevel: number;
   startTime: string;
   endTime: string;
-  duration: string;
+  duration: number;
   date: string;
 };
 
@@ -93,18 +93,18 @@ export type WorkoutData = {
   date: string;
   task: string;
   type: string;
-  avgHr: string;
-  maxHr: string;
-  calories: string;
-  distance: string;
+  avgHr: number;
+  maxHr: number;
+  calories: number;
+  distance: number;
   pace: string;
-  time: string;
+  time: number;
 };
 
 export type MoneyData = {
   date: string;
   name: string;
-  amount: string;
+  amount: number;
   tag: string;
   merchant: string;
 };
@@ -112,43 +112,43 @@ export type MoneyData = {
 export type ScreenTimeData = {
   date: string;
   app: string;
-  duration: string;
+  duration: number;
   category: string;
   type: string;
 };
 
-export async function fetchBothSheets(limit = 15): Promise<{
-  sleep: SleepData[];
-  overview: OverviewData[];
+export async function fetchBothSheets(limit = 100): Promise<{
+  sleepData: SleepData[];
+  overviewData: OverviewData[];
 }> {
   const [sleepRows, overviewRows] = await Promise.all([
     fetchSheetRows({ worksheetId: SLEEP_WORKSHEET_ID, limit }),
     fetchSheetRows({ worksheetId: OVERVIEW_WORKSHEET_ID, limit }),
   ]);
 
-  const sleep: SleepData[] = sleepRows.map((row) => ({
+  const sleepData: SleepData[] = sleepRows.map((row) => ({
     date: (row.Date as string) || "",
     start: (row.Start as string) || "",
     end: (row.End as string) || "",
-    rem: (row.REM as string) || "",
-    deep: (row.Deep as string) || "",
-    time: (row.Time as string) || "",
-    score: (row.Score as string) || "",
+    rem: parseFloat((row.REM as string) || "0"),
+    deep: parseFloat((row.Deep as string) || "0"),
+    time: parseFloat((row.Time as string) || "0"),
+    score: parseFloat((row.Score as string) || "0"),
   }));
 
-  const overview: OverviewData[] = overviewRows.map((row) => ({
+  const overviewData: OverviewData[] = overviewRows.map((row) => ({
     date: (row.Date as string) || "",
-    rating: (row.Rating as string) || "",
-    overallScore: (row["Overall Score"] as string) || "",
-    sleepScore: (row["Sleep Score"] as string) || "",
-    workScore: (row["Work Score"] as string) || "",
-    workoutScore: (row["Workout Score"] as string) || "",
+    rating: parseInt((row.Rating as string) || "0"),
+    overallScore: parseFloat((row["Overall Score"] as string) || "0"),
+    sleepScore: parseFloat((row["Sleep Score"] as string) || "0"),
+    workScore: parseFloat((row["Work Score"] as string) || "0"),
+    workoutScore: parseFloat((row["Workout Score"] as string) || "0"),
     r: (row.R as string) || "",
   }));
 
   return {
-    sleep,
-    overview,
+    sleepData,
+    overviewData,
   };
 }
 
@@ -164,10 +164,10 @@ export async function fetchWorkSessions(
     name: (row.Task as string) || "",
     subject: (row.Subject as string) || "",
     priority: (row.Priority as string) || "",
-    focusLevel: (row["Focus Level"] as string) || "",
+    focusLevel: parseFloat((row["Focus Level"] as string) || "0"),
     startTime: (row.Start as string) || "",
     endTime: (row.End as string) || "",
-    duration: (row.Time as string) || "",
+    duration: parseFloat((row.Time as string) || "0"),
     date: (row.Date as string) || "",
   }));
 
@@ -184,12 +184,12 @@ export async function fetchWorkouts(limit?: number): Promise<WorkoutData[]> {
     date: (row.Date as string) || "",
     task: (row.Task as string) || "",
     type: (row.Type as string) || "",
-    avgHr: (row["Avg HR"] as string) || "",
-    maxHr: (row["Max HR"] as string) || "",
-    calories: (row.Calories as string) || "",
-    distance: (row.Distance as string) || "",
+    avgHr: parseFloat((row["Avg HR"] as string) || "0"),
+    maxHr: parseFloat((row["Max HR"] as string) || "0"),
+    calories: parseFloat((row.Calories as string) || "0"),
+    distance: parseFloat((row.Distance as string) || "0"),
     pace: (row.Pace as string) || "",
-    time: (row.Time as string) || "",
+    time: parseFloat((row.Time as string) || "0"),
   }));
 }
 
@@ -202,7 +202,7 @@ export async function fetchMoney(limit?: number): Promise<MoneyData[]> {
   return rows.map((row) => ({
     date: (row.Date as string) || "",
     name: (row.Name as string) || "",
-    amount: (row.Amount as string) || "",
+    amount: parseFloat((row.Amount as string) || "0"),
     tag: (row.Tag as string) || "",
     merchant: (row.Merchant as string) || "",
   }));
@@ -219,7 +219,7 @@ export async function fetchScreenTime(
   return rows.map((row) => ({
     date: (row.Date as string) || "",
     app: (row["App / Website"] as string) || "",
-    duration: (row.Duration as string) || "",
+    duration: parseFloat((row.Duration as string) || "0"),
     category: (row.Category as string) || "",
     type: (row.Type as string) || "",
   }));
