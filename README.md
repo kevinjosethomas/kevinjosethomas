@@ -17,10 +17,10 @@ I study CS at the University of Waterloo. Currently, I lead engineering <br />fo
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 2,576 hrs 18 mins
+Total Time: 2,576 hrs 58 mins
 
-TypeScript                 751 hrs 41 mins ███████▒░░░░░░░░░░░░░░░░░   28.80 %
-Python                     728 hrs 54 mins ███████░░░░░░░░░░░░░░░░░░   27.93 %
+TypeScript                 752 hrs 4 mins  ███████▒░░░░░░░░░░░░░░░░░   28.81 %
+Python                     728 hrs 54 mins ███████░░░░░░░░░░░░░░░░░░   27.92 %
 JavaScript                 430 hrs 52 mins ████░░░░░░░░░░░░░░░░░░░░░   16.51 %
 JSX                        198 hrs 33 mins ██░░░░░░░░░░░░░░░░░░░░░░░   07.61 %
 HTML                       137 hrs 31 mins █▒░░░░░░░░░░░░░░░░░░░░░░░   05.27 %
