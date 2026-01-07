@@ -37,6 +37,20 @@ const Highlight = ({ children, icon, href, rotate = 0 }: HighlightProps) => {
   );
 
   if (href) {
+    const isExternal = typeof href === "string" && !href.startsWith("/");
+
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          className={classes}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {content}
+        </a>
+      );
+    }
     return (
       <Link href={href} className={classes}>
         {content}

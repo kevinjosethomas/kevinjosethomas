@@ -57,15 +57,21 @@ export default async function Home() {
           <p className="font-bold tracking-wide">👋</p>
           <p>
             I&apos;m a Computer Science student at the University of Waterloo.
-            Currently, I lead engineering for the{" "}
-            <Highlight href="/work/csslab" icon="/icons/maia.png">
-              Maia Chess
-            </Highlight>
-            <Tooltip
-              number={1}
-              content="Maia is an open research project on human-AI collaboration in chess— studying how neural networks can model human behaviour. As the most-played bot on Lichess, Maia uses chess as a testbed for broader ML research."
-            />{" "}
-            project— the world&apos;s most popular chess bot.
+            Currently, I&apos;m working on{" "}
+            <span style={{ display: "inline-flex", verticalAlign: "middle" }}>
+              <Image
+                className="vertical-middle inline-block"
+                src="/icons/v0.svg"
+                alt="v0"
+                width={22}
+                height={22}
+              />
+            </span>{" "}
+            at{" "}
+            <Highlight href="https://vercel.com" icon="/icons/vercel-white.svg">
+              Vercel
+            </Highlight>{" "}
+            in San Francisco.
           </p>
           <p>
             Previously, I was a SWE intern at{" "}
@@ -73,10 +79,21 @@ export default async function Home() {
               K-Scale Labs
             </Highlight>
             <Tooltip
-              number={2}
+              number={1}
               content="K-Scale Labs is developing America's first open-source, general-purpose humanoid robot— building a complete in-house stack spanning hardware, software, RL, and simulation to enable a fully capable general-purpose humanoid."
             />{" "}
-            in Palo Alto. I also worked on{" "}
+            in Palo Alto, and led engineering for the{" "}
+            <Highlight href="/work/csslab" icon="/icons/maia.png">
+              Maia Chess
+            </Highlight>
+            <Tooltip
+              number={2}
+              content="Maia is an open research project on human-AI collaboration in chess— studying how neural networks can model human behaviour. As the most-played bot on Lichess, Maia uses chess as a testbed for broader ML research."
+            />{" "}
+            project— the world&apos;s most popular chess bot.
+          </p>
+          {/* <p>
+            I also worked on{" "}
             <Highlight href="/project/asl">
               neural sign language translation
             </Highlight>
@@ -90,7 +107,7 @@ export default async function Home() {
               number={4}
               content="I organized Hack Club Scrapyard—a global high school hackathon ($200,000 in funding) in Austin TX and 60+ cities around the world. I also founded the British Columbia Youth Developer Collective, a community of over 400 high school developers across BC."
             />
-          </p>
+          </p> */}
         </div>
 
         <Geometry />
