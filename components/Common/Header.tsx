@@ -24,7 +24,7 @@ export default function Header() {
       <header className="flex w-full items-center justify-between px-6 py-4 md:py-8 lg:px-0">
         <div className="flex items-center justify-start gap-6">
           <Link href="/">
-            <h1 className="text-2xl font-bold md:text-3xl">kevin thomas</h1>
+            <h1 className="text-2xl font-bold md:text-3xl">k3vin thomas</h1>
           </Link>
           <Link href="/projects">
             <h3 className="text-secondary hidden text-xl md:block">projects</h3>
@@ -97,7 +97,7 @@ export default function Header() {
               className="flex w-full items-start justify-start text-3xl font-semibold tracking-wide transition-colors hover:bg-white/5"
               onClick={() => setIsMenuOpen(false)}
             >
-              <h1 className="text-2xl font-bold md:text-3xl">kevin thomas</h1>
+              <h1 className="text-2xl font-bold md:text-3xl">k3vin thomas</h1>
             </Link>
             <Link href="/projects" onClick={() => setIsMenuOpen(false)}>
               <h3 className="text-secondary text-xl md:block">projects</h3>

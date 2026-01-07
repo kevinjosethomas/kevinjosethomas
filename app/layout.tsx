@@ -13,7 +13,7 @@ const karla = Karla({
 });
 
 const identity = {
-  title: "Kevin Thomas",
+  title: "k3vin thomas",
   description:
     "I'm a Computer Science student at the University of Waterloo. Currently, I lead engineering for the Maia Chess project— the world's most popular chess bot. Previously, I was a SWE intern at K-Scale Labs in Palo Alto. I also worked on  neural sign language translation, and organized for Hack Club.",
 };
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...identity,
     url: "https://kevinjosethomas.com",
-    siteName: "Kevin Thomas",
+    siteName: "k3vin thomas",
     locale: "en_US",
     type: "website",
   },
