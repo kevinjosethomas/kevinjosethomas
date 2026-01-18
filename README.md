@@ -17,17 +17,17 @@ I study CS at the University of Waterloo. Currently, I lead engineering <br />fo
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 2,598 hrs 37 mins
+Total Time: 2,603 hrs 7 mins
 
-TypeScript                 770 hrs 25 mins ███████▒░░░░░░░░░░░░░░░░░   29.26 %
-Python                     729 hrs 38 mins ███████░░░░░░░░░░░░░░░░░░   27.71 %
-JavaScript                 430 hrs 52 mins ████░░░░░░░░░░░░░░░░░░░░░   16.36 %
-JSX                        198 hrs 33 mins ██░░░░░░░░░░░░░░░░░░░░░░░   07.54 %
-HTML                       137 hrs 36 mins █▒░░░░░░░░░░░░░░░░░░░░░░░   05.23 %
+TypeScript                 774 hrs 51 mins ███████▒░░░░░░░░░░░░░░░░░   29.38 %
+Python                     729 hrs 38 mins ███████░░░░░░░░░░░░░░░░░░   27.66 %
+JavaScript                 430 hrs 52 mins ████░░░░░░░░░░░░░░░░░░░░░   16.34 %
+JSX                        198 hrs 33 mins ██░░░░░░░░░░░░░░░░░░░░░░░   07.53 %
+HTML                       137 hrs 36 mins █▒░░░░░░░░░░░░░░░░░░░░░░░   05.22 %
 JSON                       52 hrs 57 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.01 %
-CSS                        42 hrs 33 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.62 %
+CSS                        42 hrs 33 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.61 %
 Markdown                   35 hrs 14 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.34 %
-Other                      34 hrs 27 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.31 %
+Other                      34 hrs 35 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.31 %
 Java                       31 hrs 20 mins  ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.19 %
 ```
 
