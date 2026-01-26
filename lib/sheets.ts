@@ -6,9 +6,9 @@ const REQUIRED_SCOPES = [
 ];
 
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
-const SERVICE_ACCOUNT_PRIVATE_KEY = JSON.parse(
-  process.env.GOOGLE_PRIVATE_KEY as string,
-).private_key;
+const SERVICE_ACCOUNT_PRIVATE_KEY = (
+  process.env.GOOGLE_PRIVATE_KEY || ""
+).replace(/\\n/g, "\n");
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID as string;
 const SLEEP_WORKSHEET_ID = parseInt(process.env.SLEEP_WORKSHEET_ID as string);
 const OVERVIEW_WORKSHEET_ID = parseInt(
