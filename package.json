@@ -15,7 +15,7 @@
     "@vercel/analytics": "^1.5.0",
     "google-auth-library": "^10.5.0",
     "google-spreadsheet": "^5.0.2",
-    "next": "16.0.10",
+    "next": "16.1.5",
     "posthog-js": "^1.298.0",
     "posthog-node": "^5.14.0",
     "react": "^19.2.1",
