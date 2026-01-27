@@ -1,7 +1,9 @@
-import WorkChart from "./WorkChart";
-import SleepChart from "./SleepChart";
+import dynamic from "next/dynamic";
 import { cacheLife } from "next/cache";
 import { fetchBothSheets } from "@/lib/sheets";
+
+const WorkChart = dynamic(() => import("./WorkChart"), { ssr: false });
+const SleepChart = dynamic(() => import("./SleepChart"), { ssr: false });
 
 async function getSheetData() {
   try {
