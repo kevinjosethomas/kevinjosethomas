@@ -202,7 +202,7 @@ export async function fetchMoney(limit?: number): Promise<MoneyData[]> {
   return rows.map((row) => ({
     date: (row.Date as string) || "",
     name: (row.Name as string) || "",
-    amount: (row.Amount as string) || "",
+    amount: (row.CAD as string) || "",
     tag: (row.Tag as string) || "",
     merchant: (row.Merchant as string) || "",
   }));
