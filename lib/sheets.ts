@@ -104,7 +104,7 @@ export type WorkoutData = {
 export type MoneyData = {
   date: string;
   name: string;
-  amount: string;
+  cad: string;
   tag: string;
   merchant: string;
 };
@@ -202,7 +202,7 @@ export async function fetchMoney(limit?: number): Promise<MoneyData[]> {
   return rows.map((row) => ({
     date: (row.Date as string) || "",
     name: (row.Name as string) || "",
-    amount: (row.Amount as string) || "",
+    cad: (row.CAD as string) || "",
     tag: (row.Tag as string) || "",
     merchant: (row.Merchant as string) || "",
   }));
