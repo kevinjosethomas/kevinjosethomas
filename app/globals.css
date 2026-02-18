@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --border: #1f1f1f;
+  --border: #1a3a1a;
 }
 
 @theme inline {
   --color-border: var(--border);
-  --color-secondary: #aaaaaa;
+  --color-secondary: #8fbf8f;
 
   --text-xxs: 10px;
   --text-sm: 16px;

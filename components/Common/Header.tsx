@@ -86,7 +86,7 @@ export default function Header() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 min-h-[120vh] bg-black px-16 transition-transform duration-100 md:hidden ${
+        className={`fixed inset-0 z-40 min-h-[120vh] bg-[#0a1f0a] px-16 transition-transform duration-100 md:hidden ${
           isMenuOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >

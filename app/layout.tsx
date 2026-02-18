@@ -42,7 +42,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${karla.variable} bg-black antialiased`}>
+      <body className={`${karla.variable} bg-[#0a1f0a] antialiased`}>
         <div className="mx-auto flex min-h-screen max-w-[1400px] flex-col items-center">
           <Header />
           <main className="border-border w-full border">{children}</main>
