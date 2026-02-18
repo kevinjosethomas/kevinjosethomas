@@ -156,7 +156,7 @@ export default function ExpenditureChart({
   // Find earliest transaction date after the cutoff
   const validDates: Date[] = [];
   data.forEach((transaction) => {
-    if (transaction.date && transaction.amount) {
+    if (transaction.date && transaction.cad) {
       const parsed = parseMoneyDate(transaction.date);
       if (parsed && !isNaN(parsed.getTime()) && parsed >= cutoffDate) {
         validDates.push(parsed);
@@ -197,7 +197,7 @@ export default function ExpenditureChart({
   });
 
   data.forEach((transaction) => {
-    if (!transaction.date || !transaction.amount) return;
+    if (!transaction.date || !transaction.cad) return;
 
     const moneyDate = parseMoneyDate(transaction.date);
 
@@ -206,7 +206,7 @@ export default function ExpenditureChart({
     if (moneyDate >= startDate && moneyDate <= endDate) {
       const weekKey = getWeekKey(moneyDate);
       const tag = transaction.tag || "Other";
-      const amount = parseFloat(transaction.amount.replace(/[^0-9.-]/g, ""));
+      const amount = parseFloat(transaction.cad.replace(/[^0-9.-]/g, ""));
 
       if (isNaN(amount) || amount === 0) return;
       if (tag === "Investments") return;
