@@ -74,7 +74,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
     const rawRating = payload[0]?.payload?.rawRating;
 
     return (
-      <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
+      <div className="border-border flex flex-col border bg-[#0a1f0a] px-3 py-2 text-sm">
         <p className="text-secondary mb-2 text-xs">{date}</p>
         {score && (
           <div className="-mx-3 mb-2 border-b border-white/10 px-3 pb-2">

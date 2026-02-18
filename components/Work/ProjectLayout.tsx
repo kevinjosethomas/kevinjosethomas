@@ -29,7 +29,7 @@ function CTA({ href, icon, text, borderClass }: CallToActionProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`border-border group flex flex-row items-center justify-start gap-4 bg-black/20 p-6 transition-all md:flex-col md:items-start md:justify-center md:gap-8 md:p-8 ${borderClass}`}
+      className={`border-border group flex flex-row items-center justify-start gap-4 bg-[#0a1f0a]/40 p-6 transition-all md:flex-col md:items-start md:justify-center md:gap-8 md:p-8 ${borderClass}`}
     >
       {icon}
       <div className="flex items-center justify-start gap-4">
@@ -174,7 +174,7 @@ export default function ProjectLayout({
       </div>
 
       {images && images.length > 0 && (
-        <section className="md:border-border relative w-full overflow-hidden bg-black/10 md:border-t">
+        <section className="md:border-border relative w-full overflow-hidden bg-[#0a1f0a]/30 md:border-t">
           <div className="relative flex w-full flex-col items-start justify-start gap-10">
             <div className="flex w-full flex-col flex-nowrap overflow-x-auto pb-6 md:flex-row">
               {images.map((image, index) => {

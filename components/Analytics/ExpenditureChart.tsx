@@ -68,7 +68,7 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
     const totalAmount = payload.reduce((sum, entry) => sum + entry.value, 0);
 
     return (
-      <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
+      <div className="border-border flex flex-col border bg-[#0a1f0a] px-3 py-2 text-sm">
         <p className="text-secondary mb-2 text-xs">{label}</p>
         <div className="mb-2 flex items-center gap-2 border-b border-white/10 pb-2">
           <p className="text-secondary text-xs">Total:</p>

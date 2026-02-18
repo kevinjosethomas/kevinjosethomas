@@ -47,7 +47,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
     const percentage = total > 0 ? ((minutes / total) * 100).toFixed(1) : 0;
 
     return (
-      <div className="border-border flex flex-col gap-1 border bg-black px-3 py-2 text-sm">
+      <div className="border-border flex flex-col gap-1 border bg-[#0a1f0a] px-3 py-2 text-sm">
         <p className="text-secondary text-xs">{name}</p>
         <div className="flex items-center gap-2">
           <p className="text-xs font-medium">

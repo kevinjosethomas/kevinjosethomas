@@ -86,7 +86,7 @@ function CustomTooltip({ active, payload, coordinate }: CustomTooltipProps) {
 
     return (
       <div
-        className="border-border pointer-events-none flex w-24 flex-col border bg-black px-2 py-1 text-sm"
+        className="border-border pointer-events-none flex w-24 flex-col border bg-[#0a1f0a] px-2 py-1 text-sm"
         style={{
           position: "absolute",
           left: `${adjustedLeft}px`,

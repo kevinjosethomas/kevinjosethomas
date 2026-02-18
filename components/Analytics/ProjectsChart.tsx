@@ -90,7 +90,7 @@ function CustomTooltip({ active, payload, colorMap }: CustomTooltipProps) {
       : `${dayOfWeek}, ${monthDay}`;
 
     return (
-      <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
+      <div className="border-border flex flex-col border bg-[#0a1f0a] px-3 py-2 text-sm">
         <p className="text-secondary mb-2 text-xs">{formattedDate}</p>
         <div className="-mx-3 mb-2 border-b border-white/10 px-3 pb-2">
           <div className="flex items-center gap-2">

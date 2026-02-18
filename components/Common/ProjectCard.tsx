@@ -23,7 +23,7 @@ export default function ProjectCard({
         <div className="relative overflow-hidden">
           {dark > 0 && (
             <div
-              className="absolute top-0 left-0 z-10 h-full w-full bg-black transition-opacity duration-300 group-hover:opacity-0!"
+              className="absolute top-0 left-0 z-10 h-full w-full bg-[#0a1f0a] transition-opacity duration-300 group-hover:opacity-0!"
               style={{ opacity: dark / 100 }}
             />
           )}

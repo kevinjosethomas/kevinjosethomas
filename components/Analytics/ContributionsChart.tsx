@@ -187,7 +187,7 @@ export default function ContributionsChart({ data }: ContributionsChartProps) {
 
       {hoveredDay && (
         <div
-          className="border-border pointer-events-none fixed z-50 border bg-black px-3 py-2 text-sm"
+          className="border-border pointer-events-none fixed z-50 border bg-[#0a1f0a] px-3 py-2 text-sm"
           style={{
             left: hoveredDay.x,
             top: hoveredDay.y - 8,

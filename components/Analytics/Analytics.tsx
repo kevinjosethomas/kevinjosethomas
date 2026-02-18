@@ -180,7 +180,7 @@ export default function Analytics({
 
   if (!hasData) {
     return (
-      <div className="flex min-h-screen w-full items-center justify-center bg-black text-white">
+      <div className="flex min-h-screen w-full items-center justify-center bg-[#0a1f0a] text-white">
         <p className="text-secondary">No work data available.</p>
       </div>
     );
@@ -205,7 +205,7 @@ export default function Analytics({
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col overflow-x-hidden bg-black text-white">
+    <div className="flex min-h-screen w-full flex-col overflow-x-hidden bg-[#0a1f0a] text-white">
       {/* Hero Section */}
       <div className="border-border relative flex flex-col items-start justify-center overflow-hidden border-b px-8 py-10 text-left md:px-20 md:py-32 xl:py-48">
         {/* Cursor line */}
@@ -266,8 +266,8 @@ export default function Analytics({
             >
               <defs>
                 <linearGradient id="heroGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#DC4A15" stopOpacity={0.3} />
-                  <stop offset="100%" stopColor="#DC4A15" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#22c55e" stopOpacity={0.3} />
+                  <stop offset="100%" stopColor="#22c55e" stopOpacity={0} />
                 </linearGradient>
                 <clipPath
                   id="heroGradientClip"
@@ -313,17 +313,17 @@ export default function Analytics({
               <Area
                 type="linear"
                 dataKey="y"
-                stroke="#DC4A15"
+                stroke="#22c55e"
                 strokeWidth={2.5}
                 fill="none"
                 dot={{
-                  fill: "#DC4A15",
+                  fill: "#22c55e",
                   r: 5,
                   fillOpacity: 1,
                   strokeWidth: 0,
                 }}
                 activeDot={{
-                  fill: "#DC4A15",
+                  fill: "#22c55e",
                   r: 6,
                   fillOpacity: 0.8,
                   strokeWidth: 0,
@@ -364,8 +364,8 @@ export default function Analytics({
                 onClick={() => handlePresetClick(preset)}
                 className={`border-border cursor-pointer border px-2 py-1 text-xs transition-colors ${
                   isActive
-                    ? "bg-white text-black"
-                    : "text-secondary bg-black hover:bg-white/10"
+                    ? "bg-white text-[#0a1f0a]"
+                    : "text-secondary bg-[#0a1f0a] hover:bg-white/10"
                 }`}
               >
                 {preset.label}

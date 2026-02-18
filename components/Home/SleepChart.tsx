@@ -179,7 +179,7 @@ export default function SleepChart({ data }: SleepChartProps) {
               <div key={i} className="relative flex-1">
                 {/* Sleep bars */}
                 <div
-                  className={`sleep-bar-${i} absolute right-2 left-2 overflow-hidden bg-black transition-all ${
+                  className={`sleep-bar-${i} absolute right-2 left-2 overflow-hidden bg-[#0a1f0a] transition-all ${
                     focusedIndex === i
                       ? "border border-white/60"
                       : "border border-white/30"
@@ -252,7 +252,7 @@ export default function SleepChart({ data }: SleepChartProps) {
 
           return (
             <div
-              className="border-border pointer-events-none absolute z-50 flex w-32 flex-col border bg-black px-2 py-1 text-sm"
+              className="border-border pointer-events-none absolute z-50 flex w-32 flex-col border bg-[#0a1f0a] px-2 py-1 text-sm"
               style={{
                 left: `${adjustedX}px`,
                 top: `${tooltip.y}px`,
