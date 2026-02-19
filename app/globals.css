@@ -27,6 +27,29 @@ body {
   font-family: var(--font-micro5);
 }
 
+/* Prose content styling for experience pages */
+.prose-content > h2 {
+  margin-top: 2rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.prose-content > h2:first-child {
+  margin-top: 0;
+}
+
+.prose-content > p {
+  color: #aaaaaa;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.prose-content > p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
 .highlight-icon {
   transition: transform 200ms;
   transform: rotate(0deg);
