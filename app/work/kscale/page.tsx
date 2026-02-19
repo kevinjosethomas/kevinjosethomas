@@ -4,7 +4,7 @@ import ExperienceLayout from "@/components/Work/ExperienceLayout";
 export default function KScale() {
   return (
     <ExperienceLayout
-      bannerImage="/experience/banners/k-scale.png"
+      bannerImage="/experience/banners/k-scale.webp"
       bannerAlt="K-Scale Labs"
       title="K-Scale Labs"
       dateRange="JAN - APR 2025"
