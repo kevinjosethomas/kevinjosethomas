@@ -28,26 +28,27 @@ body {
 }
 
 /* Prose content styling for experience pages */
-.prose-content > h2 {
-  margin-top: 2rem;
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.prose-content > h2:first-child {
-  margin-top: 0;
-}
-
-.prose-content > p {
+.prose-content p {
   color: #aaaaaa;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.75;
 }
 
-.prose-content > p strong {
+.prose-content p strong {
   color: #ffffff;
   font-weight: 600;
+}
+
+.prose-content a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  transition: text-decoration-color 150ms;
+}
+
+.prose-content a:hover {
+  text-decoration-color: rgba(255, 255, 255, 0.8);
 }
 
 .highlight-icon {

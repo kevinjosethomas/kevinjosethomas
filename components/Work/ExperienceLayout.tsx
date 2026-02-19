@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { projects } from "@/data/projects";
@@ -6,8 +5,6 @@ import ProjectCard from "@/components/Common/ProjectCard";
 import ArrowIcon from "@/components/Common/ArrowIcon";
 
 interface ExperienceLayoutProps {
-  bannerImage: string;
-  bannerAlt: string;
   title: string;
   subtitle: string;
   dateRange: string;
@@ -21,8 +18,6 @@ interface ExperienceLayoutProps {
 }
 
 export default function ExperienceLayout({
-  bannerImage,
-  bannerAlt,
   title,
   subtitle,
   dateRange,
@@ -41,7 +36,7 @@ export default function ExperienceLayout({
   return (
     <div className="flex w-full flex-col items-center">
       {/* Top navigation */}
-      <div className="flex w-full max-w-[680px] items-center justify-between px-6 pt-8 pb-12 md:px-0">
+      <nav className="flex w-full max-w-[680px] items-center justify-between px-6 pt-8 pb-16 md:px-0">
         <Link
           href="/"
           className="text-secondary group flex items-center gap-2 text-sm transition-colors hover:text-white"
@@ -70,37 +65,22 @@ export default function ExperienceLayout({
           Website
           <ArrowIcon className="h-3 w-3" />
         </a>
-      </div>
+      </nav>
 
       {/* Title section */}
-      <div className="flex w-full flex-col items-center gap-2 px-6 pb-12 md:px-0">
-        <h1 className="text-center text-4xl font-bold italic md:text-5xl">
+      <header className="flex w-full max-w-[680px] flex-col items-center gap-2 px-6 pb-16 md:px-0">
+        <h1 className="text-center text-4xl font-bold italic tracking-tight md:text-5xl">
           {title}
         </h1>
         <p className="text-secondary text-center text-base">
           {subtitle}, {dateRange}
         </p>
-      </div>
-
-      {/* Hero banner image */}
-      <div className="w-full max-w-[900px] px-6 pb-16 md:px-0">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
-          <Image
-            draggable={false}
-            className="h-full w-full object-cover select-none"
-            src={bannerImage}
-            alt={bannerAlt}
-            width={900}
-            height={506}
-            priority
-          />
-        </div>
-      </div>
+      </header>
 
       {/* Metadata section */}
       {(timeline || overview || role || tools) && (
-        <div className="flex w-full max-w-[680px] flex-col gap-8 px-6 pb-16 md:flex-row md:gap-16 md:px-0">
-          <div className="flex flex-col gap-6 md:w-1/3">
+        <div className="flex w-full max-w-[680px] flex-col gap-8 px-6 pb-12 md:flex-row md:gap-16 md:px-0">
+          <div className="flex flex-col gap-6 md:w-2/5">
             {timeline && (
               <div className="flex flex-col gap-1">
                 <h3 className="text-sm font-semibold">Timeline</h3>
@@ -111,16 +91,6 @@ export default function ExperienceLayout({
               <div className="flex flex-col gap-1">
                 <h3 className="text-sm font-semibold">Role</h3>
                 <p className="text-secondary text-sm">{role}</p>
-              </div>
-            )}
-          </div>
-          <div className="flex flex-col gap-6 md:w-2/3">
-            {overview && (
-              <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold">Overview</h3>
-                <p className="text-secondary text-sm leading-relaxed">
-                  {overview}
-                </p>
               </div>
             )}
             {tools && tools.length > 0 && (
@@ -136,11 +106,23 @@ export default function ExperienceLayout({
               </div>
             )}
           </div>
+          <div className="flex flex-col gap-6 md:w-3/5">
+            {overview && (
+              <div className="flex flex-col gap-1">
+                <h3 className="text-sm font-semibold">Overview</h3>
+                <p className="text-secondary text-sm leading-relaxed">
+                  {overview}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
       {/* Divider */}
-      <div className="border-border w-full max-w-[680px] border-t px-6 md:px-0" />
+      <div className="w-full max-w-[680px] px-6 md:px-0">
+        <div className="border-border border-t" />
+      </div>
 
       {/* Prose content */}
       <article className="prose-content flex w-full max-w-[680px] flex-col gap-6 px-6 py-16 md:px-0">
@@ -150,7 +132,9 @@ export default function ExperienceLayout({
       {/* Associated projects */}
       {associatedProjects.length > 0 && (
         <>
-          <div className="border-border w-full border-t" />
+          <div className="w-full max-w-[680px] px-6 md:px-0">
+            <div className="border-border border-t" />
+          </div>
           <div className="flex w-full max-w-[680px] flex-col gap-8 px-6 py-16 md:px-0">
             <h2 className="text-2xl font-semibold">Projects</h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
