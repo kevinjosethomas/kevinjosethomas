@@ -22,22 +22,37 @@ const SERVICE_ACCOUNT_PRIVATE_KEY = (() => {
     // Direct parse failed
   }
 
-  // The env var is double-escaped: \\\" for quotes and \\n for newlines.
-  // We need to fully unescape all double-escaped sequences before JSON.parse.
-  // Replace \\" with ", \\\\ with \\, and \\n with \n (the JSON escape sequence).
-  const unescaped = raw
-    .replace(/\\\\/g, "\\")  // \\\\ -> \\
-    .replace(/\\"/g, '"');    // \\" -> "
+  // The env var is double-escaped: \" for quotes.
+  // After unescaping quotes, we also need to ensure \\n sequences are valid for JSON.
+  // In the raw string, newlines in the PEM key appear as \\n (4 chars in raw: \ \ n).
+  // After unescaping quotes only, these remain as \\n which JSON interprets as literal \n char - that's wrong.
+  // We need to check what's actually at position ~165 (inside the private key value).
+  const unescaped = raw.replace(/\\"/g, '"');
+  console.log("[v0] chars around pos 160-175:", JSON.stringify(unescaped.substring(155, 180)));
   try {
     const parsed = JSON.parse(unescaped);
     if (typeof parsed === "object" && parsed.private_key) {
-      return parsed.private_key.replace(/\\n/g, "\n");
+      return parsed.private_key;
     }
     if (typeof parsed === "string") {
-      return parsed.replace(/\\n/g, "\n");
+      return parsed;
     }
-  } catch {
-    // Second parse also failed
+  } catch (e) {
+    console.log("[v0] parse after unescape failed:", (e as Error).message);
+    // Try also normalizing \\n to \\n (keeping it as valid JSON escape for newline)
+    // The issue might be that \n in the env var is a single backslash + n,
+    // which is not a valid JSON escape on its own outside of \\n
+    const doubleFixed = unescaped.replace(/(?<!\\)\\n/g, "\\n");
+    console.log("[v0] doubleFixed chars around pos 160-175:", JSON.stringify(doubleFixed.substring(155, 180)));
+    try {
+      const parsed2 = JSON.parse(doubleFixed);
+      if (typeof parsed2 === "object" && parsed2.private_key) {
+        console.log("[v0] doubleFixed parse succeeded!");
+        return parsed2.private_key;
+      }
+    } catch (e2) {
+      console.log("[v0] doubleFixed parse also failed:", (e2 as Error).message);
+    }
   }
 
   // Last resort: treat as raw PEM string
