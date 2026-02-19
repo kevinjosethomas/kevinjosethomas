@@ -8,20 +8,25 @@ const REQUIRED_SCOPES = [
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const SERVICE_ACCOUNT_PRIVATE_KEY = (() => {
   const raw = process.env.GOOGLE_PRIVATE_KEY as string;
+  // Strip surrounding quotes if the env var is wrapped in them
+  const cleaned = raw.startsWith('"') && raw.endsWith('"')
+    ? raw.slice(1, -1).replace(/\\"/g, '"').replace(/\\n/g, "\n")
+    : raw;
   try {
-    // If stored as a JSON object like {"private_key": "-----BEGIN..."}
-    const parsed = JSON.parse(raw);
+    const parsed = JSON.parse(cleaned);
     if (typeof parsed === "object" && parsed.private_key) {
+      console.log("[v0] Parsed private key from JSON object, length:", parsed.private_key.length);
       return parsed.private_key;
     }
-    // If stored as a JSON string like "\"-----BEGIN...\\n...\""
     if (typeof parsed === "string") {
+      console.log("[v0] Parsed private key from JSON string, length:", parsed.length);
       return parsed.replace(/\\n/g, "\n");
     }
-  } catch {
-    // Not valid JSON — treat as raw PEM string
+  } catch (e) {
+    console.log("[v0] JSON.parse failed, treating as raw PEM. Error:", (e as Error).message);
+    console.log("[v0] First 80 chars of cleaned value:", cleaned.substring(0, 80));
   }
-  return raw.replace(/\\n/g, "\n");
+  return cleaned.replace(/\\n/g, "\n");
 })();
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID as string;
 const SLEEP_WORKSHEET_ID = parseInt(process.env.SLEEP_WORKSHEET_ID as string);
