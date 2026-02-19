@@ -8,58 +8,35 @@ const REQUIRED_SCOPES = [
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const SERVICE_ACCOUNT_PRIVATE_KEY = (() => {
   const raw = process.env.GOOGLE_PRIVATE_KEY as string;
-  console.log("[v0] GOOGLE_PRIVATE_KEY raw type:", typeof raw);
-  console.log("[v0] GOOGLE_PRIVATE_KEY raw length:", raw?.length);
-  console.log("[v0] GOOGLE_PRIVATE_KEY first 50 chars:", JSON.stringify(raw?.substring(0, 50)));
-  console.log("[v0] GOOGLE_PRIVATE_KEY last 50 chars:", JSON.stringify(raw?.substring(raw.length - 50)));
 
-  // Try JSON.parse directly first
+  // Try parsing as-is first
   try {
     const parsed = JSON.parse(raw);
-    console.log("[v0] Direct JSON.parse succeeded, type:", typeof parsed);
     if (typeof parsed === "object" && parsed.private_key) {
-      const key = parsed.private_key;
-      console.log("[v0] Got private_key from object, starts with:", key.substring(0, 30));
-      console.log("[v0] Key contains real newlines:", key.includes("\n"));
-      console.log("[v0] Key contains escaped newlines:", key.includes("\\n"));
-      return key;
+      return parsed.private_key;
     }
     if (typeof parsed === "string") {
-      console.log("[v0] Parsed as string, starts with:", parsed.substring(0, 30));
       return parsed.replace(/\\n/g, "\n");
     }
-  } catch (e1) {
-    console.log("[v0] Direct JSON.parse failed:", (e1 as Error).message);
-
-    // Try stripping surrounding quotes and unescaping
-    const cleaned = raw.startsWith('"') && raw.endsWith('"')
-      ? raw.slice(1, -1).replace(/\\"/g, '"')
-      : raw.startsWith("'") && raw.endsWith("'")
-        ? raw.slice(1, -1)
-        : raw;
-
-    console.log("[v0] Cleaned first 50 chars:", JSON.stringify(cleaned.substring(0, 50)));
-
-    try {
-      const parsed2 = JSON.parse(cleaned);
-      console.log("[v0] Second JSON.parse succeeded, type:", typeof parsed2);
-      if (typeof parsed2 === "object" && parsed2.private_key) {
-        const key = parsed2.private_key;
-        console.log("[v0] Got private_key from cleaned object, starts with:", key.substring(0, 30));
-        return key;
-      }
-      if (typeof parsed2 === "string") {
-        return parsed2.replace(/\\n/g, "\n");
-      }
-    } catch (e2) {
-      console.log("[v0] Second JSON.parse also failed:", (e2 as Error).message);
-    }
-
-    // Last resort: treat as raw PEM
-    console.log("[v0] Falling back to raw PEM treatment");
-    return cleaned.replace(/\\n/g, "\n");
+  } catch {
+    // JSON.parse failed — likely due to escaped quotes like {\"key\": \"value\"}
   }
 
+  // Unescape \" to " and try again (common when env vars double-escape JSON)
+  const unescaped = raw.replace(/\\"/g, '"');
+  try {
+    const parsed = JSON.parse(unescaped);
+    if (typeof parsed === "object" && parsed.private_key) {
+      return parsed.private_key;
+    }
+    if (typeof parsed === "string") {
+      return parsed.replace(/\\n/g, "\n");
+    }
+  } catch {
+    // Still failed
+  }
+
+  // Last resort: treat as raw PEM string
   return raw.replace(/\\n/g, "\n");
 })();
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID as string;
