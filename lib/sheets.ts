@@ -8,53 +8,40 @@ const REQUIRED_SCOPES = [
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const SERVICE_ACCOUNT_PRIVATE_KEY = (() => {
   const raw = process.env.GOOGLE_PRIVATE_KEY as string;
-  console.log("[v0] raw first 60:", JSON.stringify(raw.substring(0, 60)));
-  console.log("[v0] raw last 60:", JSON.stringify(raw.substring(raw.length - 60)));
 
-  // Ensure escaped newlines are converted to real newlines in the final key
-  const fixNewlines = (key: string) => key.replace(/\\n/g, "\n");
-
-  // Try parsing as-is first
+  // Try parsing as-is first (in case env var is clean JSON)
   try {
     const parsed = JSON.parse(raw);
-    console.log("[v0] direct parse succeeded, type:", typeof parsed);
     if (typeof parsed === "object" && parsed.private_key) {
-      const key = fixNewlines(parsed.private_key);
-      console.log("[v0] key starts:", JSON.stringify(key.substring(0, 40)));
-      console.log("[v0] key ends:", JSON.stringify(key.substring(key.length - 40)));
-      console.log("[v0] key length:", key.length);
-      return key;
+      return parsed.private_key.replace(/\\n/g, "\n");
     }
     if (typeof parsed === "string") {
-      return fixNewlines(parsed);
+      return parsed.replace(/\\n/g, "\n");
     }
-  } catch (e) {
-    console.log("[v0] direct parse failed:", (e as Error).message);
+  } catch {
+    // Direct parse failed
   }
 
-  // Unescape \" to " and try again (common when env vars double-escape JSON)
-  const unescaped = raw.replace(/\\"/g, '"');
-  console.log("[v0] unescaped first 60:", JSON.stringify(unescaped.substring(0, 60)));
+  // The env var is double-escaped: \\\" for quotes and \\n for newlines.
+  // We need to fully unescape all double-escaped sequences before JSON.parse.
+  // Replace \\" with ", \\\\ with \\, and \\n with \n (the JSON escape sequence).
+  const unescaped = raw
+    .replace(/\\\\/g, "\\")  // \\\\ -> \\
+    .replace(/\\"/g, '"');    // \\" -> "
   try {
     const parsed = JSON.parse(unescaped);
-    console.log("[v0] second parse succeeded, type:", typeof parsed);
     if (typeof parsed === "object" && parsed.private_key) {
-      const key = fixNewlines(parsed.private_key);
-      console.log("[v0] key starts:", JSON.stringify(key.substring(0, 40)));
-      console.log("[v0] key ends:", JSON.stringify(key.substring(key.length - 40)));
-      console.log("[v0] key length:", key.length);
-      return key;
+      return parsed.private_key.replace(/\\n/g, "\n");
     }
     if (typeof parsed === "string") {
-      return fixNewlines(parsed);
+      return parsed.replace(/\\n/g, "\n");
     }
-  } catch (e) {
-    console.log("[v0] second parse failed:", (e as Error).message);
+  } catch {
+    // Second parse also failed
   }
 
   // Last resort: treat as raw PEM string
-  console.log("[v0] falling back to raw PEM");
-  return fixNewlines(raw);
+  return raw.replace(/\\n/g, "\n");
 })();
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID as string;
 const SLEEP_WORKSHEET_ID = parseInt(process.env.SLEEP_WORKSHEET_ID as string);
