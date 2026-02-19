@@ -9,14 +9,17 @@ const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const SERVICE_ACCOUNT_PRIVATE_KEY = (() => {
   const raw = process.env.GOOGLE_PRIVATE_KEY as string;
 
+  // Ensure escaped newlines are converted to real newlines in the final key
+  const fixNewlines = (key: string) => key.replace(/\\n/g, "\n");
+
   // Try parsing as-is first
   try {
     const parsed = JSON.parse(raw);
     if (typeof parsed === "object" && parsed.private_key) {
-      return parsed.private_key;
+      return fixNewlines(parsed.private_key);
     }
     if (typeof parsed === "string") {
-      return parsed.replace(/\\n/g, "\n");
+      return fixNewlines(parsed);
     }
   } catch {
     // JSON.parse failed — likely due to escaped quotes like {\"key\": \"value\"}
@@ -27,17 +30,17 @@ const SERVICE_ACCOUNT_PRIVATE_KEY = (() => {
   try {
     const parsed = JSON.parse(unescaped);
     if (typeof parsed === "object" && parsed.private_key) {
-      return parsed.private_key;
+      return fixNewlines(parsed.private_key);
     }
     if (typeof parsed === "string") {
-      return parsed.replace(/\\n/g, "\n");
+      return fixNewlines(parsed);
     }
   } catch {
     // Still failed
   }
 
   // Last resort: treat as raw PEM string
-  return raw.replace(/\\n/g, "\n");
+  return fixNewlines(raw);
 })();
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID as string;
 const SLEEP_WORKSHEET_ID = parseInt(process.env.SLEEP_WORKSHEET_ID as string);
