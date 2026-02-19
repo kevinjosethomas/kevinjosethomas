@@ -4,7 +4,7 @@ import GridPattern from "@/components/Work/GridPattern";
 export default function CSSLab() {
   return (
     <ExperienceLayout
-      bannerImage="/experience/banners/csslab.png"
+      bannerImage="/experience/banners/csslab.webp"
       bannerAlt="CSSLab"
       title="CSSLab"
       dateRange="JUL 2024 - PRESENT"

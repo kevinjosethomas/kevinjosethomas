@@ -83,7 +83,7 @@ export default async function Home() {
               content="K-Scale Labs is developing America's first open-source, general-purpose humanoid robot— building a complete in-house stack spanning hardware, software, RL, and simulation to enable a fully capable general-purpose humanoid."
             />{" "}
             in Palo Alto, and led engineering for the{" "}
-            <Highlight href="/work/csslab" icon="/icons/maia.png">
+            <Highlight href="/work/csslab" icon="/icons/maia.webp">
               Maia Chess
             </Highlight>
             <Tooltip
@@ -120,7 +120,7 @@ export default async function Home() {
             <Image
               draggable={false}
               className="h-full w-full object-cover select-none"
-              src="/experience/k-scale.png"
+              src="/experience/k-scale.webp"
               alt="K-Scale Labs"
               width={592}
               height={350}
@@ -140,7 +140,7 @@ export default async function Home() {
             <Image
               draggable={false}
               className="h-full w-full object-cover select-none"
-              src="/experience/csslab.png"
+              src="/experience/csslab.webp"
               alt="CSSLab"
               width={592}
               height={350}
