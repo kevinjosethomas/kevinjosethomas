@@ -5,16 +5,19 @@ export default function KScale() {
   return (
     <ExperienceLayout
       title="K-Scale Labs"
-      subtitle="Work"
-      dateRange="2025"
       siteUrl="https://kscale.dev"
       associatedProjectIds={["emx", "kos"]}
-      timeline="January - April 2025"
+      timeline="Jan - Apr 2025"
       overview="At K-Scale Labs, I led the engineering effort on EMX and contributed to kos-sdk and RL walking policies for our humanoid robots."
       bannerImage="/experience/k-scale.webp"
       bannerLogo={{ src: "/experience/k-scale-logo.svg", width: 160, height: 34 }}
       team={[
-        { name: "K-Scale Labs", href: "https://kscale.dev" },
+        { name: "Chris Thomas", href: "https://chris.vg/" },
+        { name: "Wesley Maa", href: "https://wesleymaa.com/" },
+        { name: "Aaron Xie", href: "https://aaronxie.com/" },
+        { name: "Michael Lutz", href: "https://michael-lutz.github.io/" },
+        { name: "Ian Dyke", href: "https://www.linkedin.com/in/ian-dyke-09405521b/" },
+        { name: "Jingxiang Mo", href: "https://jingxiangmo.com/" },
       ]}
     >
       <Section title="Emotional Matrix (EMX)">

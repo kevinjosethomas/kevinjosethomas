@@ -12,8 +12,6 @@ interface TeamMember {
 
 interface ExperienceLayoutProps {
   title: string;
-  subtitle: string;
-  dateRange: string;
   siteUrl: string;
   children: ReactNode;
   associatedProjectIds: string[];
@@ -27,8 +25,6 @@ interface ExperienceLayoutProps {
 
 export default function ExperienceLayout({
   title,
-  subtitle,
-  dateRange,
   siteUrl,
   children,
   associatedProjectIds,
@@ -79,12 +75,9 @@ export default function ExperienceLayout({
 
       {/* Title section */}
       <header className="flex w-full max-w-3xl flex-col items-center gap-2 px-6 pb-12">
-        <h1 className="text-center text-4xl font-bold italic tracking-tight md:text-5xl">
+        <h1 className="text-center text-4xl font-bold tracking-tight md:text-5xl">
           {title}
         </h1>
-        <p className="text-secondary text-center text-base">
-          {subtitle}, {dateRange}
-        </p>
       </header>
 
       {/* Banner image */}

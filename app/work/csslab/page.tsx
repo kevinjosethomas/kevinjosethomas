@@ -5,11 +5,9 @@ export default function CSSLab() {
   return (
     <ExperienceLayout
       title="CSSLab"
-      subtitle="Research"
-      dateRange="2024 - Present"
       siteUrl="https://csslab.cs.toronto.edu"
       associatedProjectIds={["maia"]}
-      timeline="July 2024 - Present"
+      timeline="Jul 2024 - Present"
       overview="I lead engineering for the Maia Chess project at the University of Toronto's Computational Social Science Lab, building the platform for the world's most popular chess bot."
       bannerImage="/experience/csslab.webp"
       bannerLogoText="CSSLab"
