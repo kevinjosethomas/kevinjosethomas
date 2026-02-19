@@ -6,9 +6,45 @@ const REQUIRED_SCOPES = [
 ];
 
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
-const SERVICE_ACCOUNT_PRIVATE_KEY = JSON.parse(
-  process.env.GOOGLE_PRIVATE_KEY as string,
-).private_key;
+const SERVICE_ACCOUNT_PRIVATE_KEY = (() => {
+  const raw = process.env.GOOGLE_PRIVATE_KEY as string;
+
+  // Try parsing as-is first (in case env var is clean JSON)
+  try {
+    const parsed = JSON.parse(raw);
+    if (typeof parsed === "object" && parsed.private_key) {
+      return parsed.private_key;
+    }
+    if (typeof parsed === "string") {
+      return parsed.replace(/\\n/g, "\n");
+    }
+  } catch {
+    // Direct parse failed
+  }
+
+  // The env var has escaped quotes (\") and the env system has converted
+  // the \\n sequences into a literal backslash + real newline character.
+  // We need to:
+  // 1. Unescape \" to "
+  // 2. Replace \ + real newline back to \\n (valid JSON newline escape)
+  const unescaped = raw
+    .replace(/\\"/g, '"')
+    .replace(/\\\n/g, "\\n");
+  try {
+    const parsed = JSON.parse(unescaped);
+    if (typeof parsed === "object" && parsed.private_key) {
+      return parsed.private_key;
+    }
+    if (typeof parsed === "string") {
+      return parsed;
+    }
+  } catch {
+    // Still failed
+  }
+
+  // Last resort: treat as raw PEM string
+  return raw.replace(/\\n/g, "\n");
+})();
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID as string;
 const SLEEP_WORKSHEET_ID = parseInt(process.env.SLEEP_WORKSHEET_ID as string);
 const OVERVIEW_WORKSHEET_ID = parseInt(
