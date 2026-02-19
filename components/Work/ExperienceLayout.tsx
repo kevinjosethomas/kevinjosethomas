@@ -1,8 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ReactNode } from "react";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/Common/ProjectCard";
 import ArrowIcon from "@/components/Common/ArrowIcon";
+
+interface TeamMember {
+  name: string;
+  href?: string;
+}
 
 interface ExperienceLayoutProps {
   title: string;
@@ -13,8 +19,10 @@ interface ExperienceLayoutProps {
   associatedProjectIds: string[];
   timeline?: string;
   overview?: string;
-  role?: string;
-  tools?: string[];
+  team?: TeamMember[];
+  bannerImage?: string;
+  bannerLogo?: { src: string; width: number; height: number };
+  bannerLogoText?: string;
 }
 
 export default function ExperienceLayout({
@@ -26,8 +34,10 @@ export default function ExperienceLayout({
   associatedProjectIds,
   timeline,
   overview,
-  role,
-  tools,
+  team,
+  bannerImage,
+  bannerLogo,
+  bannerLogoText,
 }: ExperienceLayoutProps) {
   const associatedProjects = projects.filter((project) =>
     associatedProjectIds.includes(project.id),
@@ -35,8 +45,8 @@ export default function ExperienceLayout({
 
   return (
     <div className="flex w-full flex-col items-center">
-      {/* Top navigation */}
-      <nav className="flex w-full max-w-[680px] items-center justify-between px-6 pt-8 pb-16 md:px-0">
+      {/* Top navigation - aligned with content */}
+      <nav className="flex w-full max-w-3xl items-center justify-between px-6 pt-8 pb-12">
         <Link
           href="/"
           className="text-secondary group flex items-center gap-2 text-sm transition-colors hover:text-white"
@@ -68,7 +78,7 @@ export default function ExperienceLayout({
       </nav>
 
       {/* Title section */}
-      <header className="flex w-full max-w-[680px] flex-col items-center gap-2 px-6 pb-16 md:px-0">
+      <header className="flex w-full max-w-3xl flex-col items-center gap-2 px-6 pb-12">
         <h1 className="text-center text-4xl font-bold italic tracking-tight md:text-5xl">
           {title}
         </h1>
@@ -77,9 +87,39 @@ export default function ExperienceLayout({
         </p>
       </header>
 
+      {/* Banner image */}
+      {bannerImage && (
+        <div className="relative w-full max-w-3xl px-6 pb-12">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
+            <Image
+              src={bannerImage}
+              alt={title}
+              fill
+              className="object-cover"
+              priority
+            />
+            {bannerLogo && (
+              <Image
+                src={bannerLogo.src}
+                alt={title}
+                width={bannerLogo.width}
+                height={bannerLogo.height}
+                className="absolute right-5 bottom-5 select-none"
+                draggable={false}
+              />
+            )}
+            {bannerLogoText && (
+              <p className="absolute right-5 bottom-4 text-2xl font-bold tracking-tight">
+                {bannerLogoText}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Metadata section */}
-      {(timeline || overview || role || tools) && (
-        <div className="flex w-full max-w-[680px] flex-col gap-8 px-6 pb-12 md:flex-row md:gap-16 md:px-0">
+      {(timeline || overview || team) && (
+        <div className="flex w-full max-w-3xl flex-col gap-8 px-6 pb-12 md:flex-row md:gap-16">
           <div className="flex flex-col gap-6 md:w-2/5">
             {timeline && (
               <div className="flex flex-col gap-1">
@@ -87,55 +127,59 @@ export default function ExperienceLayout({
                 <p className="text-secondary text-sm">{timeline}</p>
               </div>
             )}
-            {role && (
+            {team && team.length > 0 && (
               <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold">Role</h3>
-                <p className="text-secondary text-sm">{role}</p>
-              </div>
-            )}
-            {tools && tools.length > 0 && (
-              <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold">Tools</h3>
+                <h3 className="text-sm font-semibold">Team</h3>
                 <div className="flex flex-col">
-                  {tools.map((tool) => (
-                    <p key={tool} className="text-secondary text-sm">
-                      {tool}
-                    </p>
-                  ))}
+                  {team.map((member) =>
+                    member.href ? (
+                      <a
+                        key={member.name}
+                        href={member.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-secondary text-sm underline underline-offset-2 decoration-white/30 transition-colors hover:text-white hover:decoration-white/80"
+                      >
+                        {member.name}
+                      </a>
+                    ) : (
+                      <p key={member.name} className="text-secondary text-sm">
+                        {member.name}
+                      </p>
+                    ),
+                  )}
                 </div>
               </div>
             )}
           </div>
-          <div className="flex flex-col gap-6 md:w-3/5">
-            {overview && (
-              <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold">Overview</h3>
-                <p className="text-secondary text-sm leading-relaxed">
-                  {overview}
-                </p>
-              </div>
-            )}
-          </div>
+          {overview && (
+            <div className="flex flex-col gap-1 md:w-3/5">
+              <h3 className="text-sm font-semibold">Overview</h3>
+              <p className="text-secondary text-sm leading-relaxed">
+                {overview}
+              </p>
+            </div>
+          )}
         </div>
       )}
 
       {/* Divider */}
-      <div className="w-full max-w-[680px] px-6 md:px-0">
+      <div className="w-full max-w-3xl px-6">
         <div className="border-border border-t" />
       </div>
 
       {/* Prose content */}
-      <article className="prose-content flex w-full max-w-[680px] flex-col gap-6 px-6 py-16 md:px-0">
+      <article className="prose-content flex w-full max-w-3xl flex-col gap-6 px-6 py-16">
         {children}
       </article>
 
       {/* Associated projects */}
       {associatedProjects.length > 0 && (
         <>
-          <div className="w-full max-w-[680px] px-6 md:px-0">
+          <div className="w-full max-w-3xl px-6">
             <div className="border-border border-t" />
           </div>
-          <div className="flex w-full max-w-[680px] flex-col gap-8 px-6 py-16 md:px-0">
+          <div className="flex w-full max-w-3xl flex-col gap-8 px-6 py-16">
             <h2 className="text-2xl font-semibold">Projects</h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {associatedProjects.map((project) => (

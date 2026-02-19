@@ -10,15 +10,12 @@ export default function CSSLab() {
       siteUrl="https://csslab.cs.toronto.edu"
       associatedProjectIds={["maia"]}
       timeline="July 2024 - Present"
-      role="Lead Engineer, Maia Chess"
-      overview="At the University of Toronto's Computational Social Science Lab, I work closely with Dr. Ashton Anderson to lead engineering for the Maia Chess project — a research platform studying human decision-making through chess. Maia is currently the most-played chess bot in the world."
-      tools={[
-        "TypeScript",
-        "React",
-        "Next.js",
-        "Python",
-        "PyTorch",
-        "ONNX Runtime",
+      overview="I lead engineering for the Maia Chess project at the University of Toronto's Computational Social Science Lab, building the platform for the world's most popular chess bot."
+      bannerImage="/experience/csslab.webp"
+      bannerLogoText="CSSLab"
+      team={[
+        { name: "Dr. Ashton Anderson", href: "https://www.cs.toronto.edu/~ashton/" },
+        { name: "CSSLab", href: "https://csslab.cs.toronto.edu" },
       ]}
     >
       <Section title="Building the Platform">

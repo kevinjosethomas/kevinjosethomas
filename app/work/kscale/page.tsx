@@ -9,16 +9,12 @@ export default function KScale() {
       dateRange="2025"
       siteUrl="https://kscale.dev"
       associatedProjectIds={["emx", "kos"]}
-      timeline="4 Months, January - April 2025"
-      role="Software Engineer Intern"
-      overview="At K-Scale Labs, I led the engineering effort on building EMX, our expressive multimodal interface for generating lifelike conversational behavior and facial expressions for our humanoids. I also contributed to kos-sdk and explored RL for walking policies."
-      tools={[
-        "Python",
-        "TypeScript",
-        "React",
-        "PyTorch",
-        "OpenAI Realtime API",
-        "Google MediaPipe",
+      timeline="January - April 2025"
+      overview="At K-Scale Labs, I led the engineering effort on EMX and contributed to kos-sdk and RL walking policies for our humanoid robots."
+      bannerImage="/experience/k-scale.webp"
+      bannerLogo={{ src: "/experience/k-scale-logo.svg", width: 160, height: 34 }}
+      team={[
+        { name: "K-Scale Labs", href: "https://kscale.dev" },
       ]}
     >
       <Section title="Emotional Matrix (EMX)">
