@@ -8,7 +8,7 @@ export default function KScale() {
       siteUrl="https://kscale.dev"
       associatedProjectIds={["emx", "kos"]}
       timeline="Winter 2025, Palo Alto"
-      overview="At K-Scale Labs, I led the engineering effort on EMX and contributed to kos-sdk and RL walking policies for our humanoid robots."
+      overview="Building expressive AI systems and open-source tooling for America's first open-source humanoid robots."
       bannerImage="/experience/banners/k-scale.webp"
       team={[
         { name: "Chris Thomas", href: "https://chris.vg/" },

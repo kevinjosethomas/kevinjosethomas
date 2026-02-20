@@ -8,7 +8,7 @@ export default function CSSLab() {
       siteUrl="https://csslab.cs.toronto.edu"
       associatedProjectIds={["maia"]}
       timeline="Jul 2024 - Present"
-      overview="I lead engineering for the Maia Chess project at the University of Toronto's Computational Social Science Lab, building the platform for the world's most popular chess bot."
+      overview="Leading engineering on Maia Chess -- the world's most human-like chess AI and the platform millions play on."
       bannerImage="/experience/banners/csslab.webp"
       bannerLogoText="CSSLab"
       team={[
