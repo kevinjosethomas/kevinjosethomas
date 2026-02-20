@@ -83,12 +83,14 @@ export default function ExperienceLayout({
       {/* Banner image */}
       {bannerImage && (
         <div className="relative w-full max-w-3xl px-6 pb-12">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
+          <div className="relative w-full overflow-hidden rounded-lg">
             <Image
               src={bannerImage}
               alt={title}
-              fill
-              className="object-cover"
+              width={1280}
+              height={300}
+              className="h-auto w-full select-none object-cover"
+              draggable={false}
               priority
             />
             {bannerLogo && (
