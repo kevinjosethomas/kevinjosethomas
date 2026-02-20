@@ -9,7 +9,7 @@ export default function CSSLab() {
       associatedProjectIds={["maia"]}
       timeline="Jul 2024 - Present"
       overview="I lead engineering for the Maia Chess project at the University of Toronto's Computational Social Science Lab, building the platform for the world's most popular chess bot."
-      bannerImage="/experience/csslab.webp"
+      bannerImage="/experience/banners/csslab.webp"
       bannerLogoText="CSSLab"
       team={[
         { name: "Dr. Ashton Anderson", href: "https://www.cs.toronto.edu/~ashton/" },
