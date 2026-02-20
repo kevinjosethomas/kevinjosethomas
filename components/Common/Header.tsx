@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex w-full items-center justify-between px-6 py-4 md:px-16 md:py-8">
+      <header className="flex w-full items-center justify-between px-6 py-4 md:py-8 lg:px-0">
         <div className="flex items-center justify-start gap-6">
           <Link href="/">
             <h1 className="text-2xl font-bold md:text-3xl">kevin thomas</h1>
