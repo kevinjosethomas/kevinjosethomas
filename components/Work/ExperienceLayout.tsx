@@ -135,14 +135,14 @@ export default function ExperienceLayout({
                         href={member.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-secondary text-sm underline underline-offset-2 decoration-white/30 transition-colors hover:text-white hover:decoration-white/80"
+                        className="text-secondary w-fit text-sm underline-offset-2 decoration-white/30 transition-colors hover:text-white hover:underline hover:decoration-white/80"
                       >
                         {member.name}
                       </a>
                     ) : (
-                      <p key={member.name} className="text-secondary text-sm">
+                      <span key={member.name} className="text-secondary w-fit text-sm">
                         {member.name}
-                      </p>
+                      </span>
                     ),
                   )}
                   {teamSuffix && (
