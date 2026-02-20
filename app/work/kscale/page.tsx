@@ -10,7 +10,6 @@ export default function KScale() {
       timeline="Jan - Apr 2025"
       overview="At K-Scale Labs, I led the engineering effort on EMX and contributed to kos-sdk and RL walking policies for our humanoid robots."
       bannerImage="/experience/banners/k-scale.webp"
-      bannerLogo={{ src: "/experience/k-scale-logo.svg", width: 160, height: 34 }}
       team={[
         { name: "Chris Thomas", href: "https://chris.vg/" },
         { name: "Wesley Maa", href: "https://wesleymaa.com/" },
