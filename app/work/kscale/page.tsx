@@ -16,9 +16,8 @@ export default function KScale() {
         { name: "Wesley Maa", href: "https://wesleymaa.com/" },
         { name: "Aaron Xie", href: "https://aaronxie.com/" },
         { name: "Michael Lutz", href: "https://michael-lutz.github.io/" },
-        { name: "Ian Dyke", href: "https://www.linkedin.com/in/ian-dyke-09405521b/" },
-        { name: "Jingxiang Mo", href: "https://jingxiangmo.com/" },
       ]}
+      teamSuffix="& more..."
     >
       <Section title="Emotional Matrix (EMX)">
         <p>

@@ -18,6 +18,7 @@ interface ExperienceLayoutProps {
   timeline?: string;
   overview?: string;
   team?: TeamMember[];
+  teamSuffix?: string;
   bannerImage?: string;
   bannerLogo?: { src: string; width: number; height: number };
   bannerLogoText?: string;
@@ -31,6 +32,7 @@ export default function ExperienceLayout({
   timeline,
   overview,
   team,
+  teamSuffix,
   bannerImage,
   bannerLogo,
   bannerLogoText,
@@ -142,6 +144,9 @@ export default function ExperienceLayout({
                         {member.name}
                       </p>
                     ),
+                  )}
+                  {teamSuffix && (
+                    <p className="text-secondary text-sm">{teamSuffix}</p>
                   )}
                 </div>
               </div>
