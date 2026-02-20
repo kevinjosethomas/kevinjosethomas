@@ -7,7 +7,7 @@ export default function KScale() {
       title="K-Scale Labs"
       siteUrl="https://kscale.dev"
       associatedProjectIds={["emx", "kos"]}
-      timeline="Jan - Apr 2025"
+      timeline="Winter 2025, Palo Alto"
       overview="At K-Scale Labs, I led the engineering effort on EMX and contributed to kos-sdk and RL walking policies for our humanoid robots."
       bannerImage="/experience/banners/k-scale.webp"
       team={[

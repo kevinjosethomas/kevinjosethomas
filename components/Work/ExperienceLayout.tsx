@@ -75,16 +75,9 @@ export default function ExperienceLayout({
         </a>
       </nav>
 
-      {/* Title section */}
-      <header className="flex w-full max-w-3xl flex-col items-center gap-2 px-6 pb-12">
-        <h1 className="text-center text-4xl font-bold tracking-tight md:text-5xl">
-          {title}
-        </h1>
-      </header>
-
       {/* Banner image */}
       {bannerImage && (
-        <div className="relative w-full max-w-3xl px-6 pb-12">
+        <div className="relative w-full max-w-3xl pb-12">
           <div className="relative w-full overflow-hidden">
             <Image
               src={bannerImage}
@@ -113,6 +106,13 @@ export default function ExperienceLayout({
           </div>
         </div>
       )}
+
+      {/* Title */}
+      <header className="w-full max-w-3xl px-6 pb-12">
+        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+          {title}
+        </h1>
+      </header>
 
       {/* Metadata section */}
       {(timeline || overview || team) && (
