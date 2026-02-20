@@ -143,7 +143,7 @@ function WaterlooWebring() {
 
 export default function Footer() {
   return (
-    <footer className="flex w-full flex-col gap-4 px-6 py-4 md:relative md:flex-row md:items-center md:justify-between md:gap-0 md:px-0 md:py-6">
+    <footer className="flex w-full flex-col gap-4 py-4 md:relative md:flex-row md:items-center md:justify-between md:gap-0 md:py-6">
       <div className="flex w-full items-center justify-between md:contents">
         <span>kjthomas [at] uwaterloo [dot] ca</span>
         <div className="flex items-center justify-end gap-4">
