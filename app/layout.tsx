@@ -41,7 +41,7 @@ export default async function RootLayout({
   await posthog.shutdown();
 
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${karla.variable} bg-black antialiased`}>
         <div className="mx-auto flex min-h-screen max-w-[1400px] flex-col items-center px-6 md:px-16">
           <Header />
