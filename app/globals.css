@@ -18,9 +18,14 @@
   --text-4xl: 48px;
 }
 
+html {
+  color-scheme: dark;
+}
+
 body {
   font-family: var(--font-karla);
   color: #ffffff;
+  background-color: #000000;
 }
 
 .font-micro5 {
