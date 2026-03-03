@@ -53,7 +53,7 @@ export default async function Home() {
     <div className="flex w-full flex-col items-start justify-start">
       {/* Hero Section */}
       <div className="border-border relative flex w-full flex-col items-center border-b md:grid md:grid-cols-6 md:grid-rows-1">
-        <div className="text-secondary flex w-full flex-col gap-8 p-6 text-lg md:col-span-4 md:w-auto md:max-w-2xl md:p-16">
+        <div className="text-green-500 flex w-full flex-col gap-8 p-6 text-lg md:col-span-4 md:w-auto md:max-w-2xl md:p-16">
           <p className="font-bold tracking-wide">👋</p>
           <p>
             I&apos;m a Computer Science student at the University of Waterloo.
