@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import type { MoneyData } from "@/lib/sheets";
 import { SPENDING_COLORS } from "@/lib/colors";
+import InfoTooltip from "@/components/Home/InfoTooltip";
 
 type ExpenditureChartProps = {
   data: MoneyData[];
@@ -83,14 +84,14 @@ function CustomTooltip({ active, payload, label, grandTotal }: CustomTooltipProp
                 style={{ backgroundColor: entry.color }}
               />
               <p className="text-secondary text-xs">{entry.name}:</p>
-              <p className="text-xs font-medium">{pct}%</p>
+              <p className="text-xs font-medium">{pct}▲</p>
             </div>
           );
         })}
         {grandTotal && grandTotal > 0 && (
           <div className="mt-2 flex items-center gap-2 border-t border-white/10 pt-2">
             <p className="text-secondary text-xs">Week total:</p>
-            <p className="text-xs font-medium">{((weekTotal / grandTotal) * 100).toFixed(1)}%</p>
+            <p className="text-xs font-medium">{((weekTotal / grandTotal) * 100).toFixed(1)}▲</p>
           </div>
         )}
       </div>
@@ -267,6 +268,7 @@ export default function ExpenditureChart({
     <div className="flex h-full flex-col outline-none focus:outline-none">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
         <p className="text-sm font-medium">Spending Trends</p>
+        <InfoTooltip content="Spending values are shown as proportional units relative to the median transaction — actual amounts are not displayed. Each bar segment shows what percentage of the total spend over the selected period comes from that category." />
       </div>
       <div className="min-h-[300px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
