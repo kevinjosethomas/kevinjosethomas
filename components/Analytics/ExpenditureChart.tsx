@@ -268,7 +268,7 @@ export default function ExpenditureChart({
     <div className="flex h-full flex-col outline-none focus:outline-none">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
         <p className="text-sm font-medium">Spending Trends</p>
-        <InfoTooltip content="Spending values are shown as proportional units relative to the median transaction — actual amounts are not displayed. Each bar segment shows what percentage of the total spend over the selected period comes from that category." />
+        <InfoTooltip content="Spending shown as proportional units to protect privacy. Bars indicate each category's % of total spend." />
       </div>
       <div className="min-h-[300px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
