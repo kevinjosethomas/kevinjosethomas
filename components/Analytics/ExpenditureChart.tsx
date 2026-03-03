@@ -72,7 +72,7 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
         <p className="text-secondary mb-2 text-xs">{label}</p>
         <div className="mb-2 flex items-center gap-2 border-b border-white/10 pb-2">
           <p className="text-secondary text-xs">Total:</p>
-          <p className="text-xs font-medium">${totalAmount.toFixed(2)}</p>
+          <p className="text-xs font-medium">{totalAmount.toFixed(1)}u</p>
         </div>
         {sortedPayload.map((entry, index) => {
           if (entry.value === 0) return null;
@@ -83,7 +83,7 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
                 style={{ backgroundColor: entry.color }}
               />
               <p className="text-secondary text-xs">{entry.name}:</p>
-              <p className="text-xs font-medium">${entry.value.toFixed(2)}</p>
+              <p className="text-xs font-medium">{entry.value.toFixed(1)}u</p>
             </div>
           );
         })}
@@ -260,9 +260,9 @@ export default function ExpenditureChart({
   return (
     <div className="flex h-full flex-col outline-none focus:outline-none">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
-        <p className="text-sm font-medium">Spending Trends</p>
+        <p className="text-sm font-medium">Spending Trends (relative)</p>
         <p className="text-secondary text-xs">
-          Avg: ${avgSpent.toFixed(2)}/week
+          Avg: {avgSpent.toFixed(1)}u/week
         </p>
       </div>
       <div className="min-h-[300px] flex-1">
