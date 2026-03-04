@@ -260,8 +260,6 @@ export default function ExpenditureChart({
     );
   }, 0);
 
-  const avgSpent = chartData.length > 0 ? totalSpent / chartData.length : 0;
-
   const moneyTagsArray = Array.from(moneyTags).sort();
 
   return (
