@@ -235,13 +235,33 @@ export async function fetchMoney(limit?: number): Promise<MoneyData[]> {
     limit,
   });
 
-  return rows.map((row) => ({
+  const parsed = rows.map((row) => ({
     date: (row.Date as string) || "",
     name: (row.Name as string) || "",
     cad: (row.CAD as string) || "",
     tag: (row.Tag as string) || "",
     merchant: (row.Merchant as string) || "",
   }));
+
+  // Normalize CAD values proportionally so real amounts are never exposed.
+  // The median non-zero absolute value becomes 1.0 unit; everything scales
+  // relative to it.
+  const amounts = parsed
+    .map((r) => Math.abs(parseFloat(r.cad.replace(/[^0-9.-]/g, ""))))
+    .filter((n) => !isNaN(n) && n > 0);
+
+  if (amounts.length === 0) return parsed;
+
+  const sorted = [...amounts].sort((a, b) => a - b);
+  const medianValue = sorted[Math.floor(sorted.length / 2)];
+
+  return parsed.map((row) => {
+    const raw = parseFloat(row.cad.replace(/[^0-9.-]/g, ""));
+    if (isNaN(raw) || raw === 0) return { ...row, cad: "0" };
+    const sign = raw < 0 ? -1 : 1;
+    const normalized = (Math.abs(raw) / medianValue) * sign;
+    return { ...row, cad: normalized.toFixed(2) };
+  });
 }
 
 export async function fetchScreenTime(

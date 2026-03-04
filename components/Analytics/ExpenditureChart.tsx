@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import type { MoneyData } from "@/lib/sheets";
 import { SPENDING_COLORS } from "@/lib/colors";
+import InfoTooltip from "@/components/Home/InfoTooltip";
 
 type ExpenditureChartProps = {
   data: MoneyData[];
@@ -26,6 +27,7 @@ type CustomTooltipProps = {
     name: string;
   }>;
   label?: string;
+  grandTotal?: number;
 };
 
 type WeekData = {
@@ -62,20 +64,19 @@ function getWeekKey(date: Date): string {
   return startOfWeek.toISOString().split("T")[0];
 }
 
-function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
+function CustomTooltip({ active, payload, label, grandTotal }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     const sortedPayload = [...payload].sort((a, b) => b.value - a.value);
-    const totalAmount = payload.reduce((sum, entry) => sum + entry.value, 0);
+    const weekTotal = payload.reduce((sum, entry) => sum + entry.value, 0);
 
     return (
       <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
         <p className="text-secondary mb-2 text-xs">{label}</p>
-        <div className="mb-2 flex items-center gap-2 border-b border-white/10 pb-2">
-          <p className="text-secondary text-xs">Total:</p>
-          <p className="text-xs font-medium">${totalAmount.toFixed(2)}</p>
-        </div>
         {sortedPayload.map((entry, index) => {
           if (entry.value === 0) return null;
+          const pct = grandTotal && grandTotal > 0
+            ? ((entry.value / grandTotal) * 100).toFixed(1)
+            : "0";
           return (
             <div key={index} className="flex items-center gap-2">
               <div
@@ -83,10 +84,16 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
                 style={{ backgroundColor: entry.color }}
               />
               <p className="text-secondary text-xs">{entry.name}:</p>
-              <p className="text-xs font-medium">${entry.value.toFixed(2)}</p>
+              <p className="text-xs font-medium">{pct}▲</p>
             </div>
           );
         })}
+        {grandTotal && grandTotal > 0 && (
+          <div className="mt-2 flex items-center gap-2 border-t border-white/10 pt-2">
+            <p className="text-secondary text-xs">Week total:</p>
+            <p className="text-xs font-medium">{((weekTotal / grandTotal) * 100).toFixed(1)}▲</p>
+          </div>
+        )}
       </div>
     );
   }
@@ -253,17 +260,13 @@ export default function ExpenditureChart({
     );
   }, 0);
 
-  const avgSpent = chartData.length > 0 ? totalSpent / chartData.length : 0;
-
   const moneyTagsArray = Array.from(moneyTags).sort();
 
   return (
     <div className="flex h-full flex-col outline-none focus:outline-none">
       <div className="border-border flex h-14 items-center justify-between border-b px-4">
         <p className="text-sm font-medium">Spending Trends</p>
-        <p className="text-secondary text-xs">
-          Avg: ${avgSpent.toFixed(2)}/week
-        </p>
+        <InfoTooltip content="▲ = proportional unit. Each bar segment shows % of total period spend." />
       </div>
       <div className="min-h-[300px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
@@ -275,7 +278,7 @@ export default function ExpenditureChart({
             <YAxis hide />
             <Tooltip
               cursor={{ fill: "currentColor", fillOpacity: 0.05 }}
-              content={<CustomTooltip />}
+              content={<CustomTooltip grandTotal={totalSpent} />}
               isAnimationActive={false}
             />
             {moneyTagsArray.map((tag) => (
