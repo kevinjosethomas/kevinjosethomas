@@ -64,8 +64,8 @@ export default function ProjectCard({
           )}
         </div>
         <div className="flex items-center justify-between p-4">
-          <div className="flex items-center gap-2">
-            <p className="text-sm">{project.name}</p>
+          <div className="flex min-w-0 items-center gap-2">
+            <p className="truncate text-sm">{project.name}</p>
             <svg
               className="text-secondary h-4 w-4"
               fill="none"

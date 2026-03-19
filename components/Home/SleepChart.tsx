@@ -217,7 +217,7 @@ export default function SleepChart({ data }: SleepChartProps) {
           })}
         </div>
       </div>
-      <div className="border-border flex items-center justify-between border-t px-4 py-2">
+      <div className="border-border flex items-center justify-between border-y px-4 py-2 md:border-b-0">
         <div />
         <p className="text-secondary text-sm">Time Spent Asleep (7d)</p>
         <InfoTooltip content="This chart visualizes my sleep habits over the last 7 days. My sleep data is sourced from my Apple Watch and is automatically synced to my tracker Google Sheet every morning." />

@@ -169,7 +169,7 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-      <div className="flex justify-center md:absolute md:left-1/2 md:-translate-x-1/2">
+      <div className="hidden justify-center md:flex md:absolute md:left-1/2 md:-translate-x-1/2">
         <WaterlooWebring />
       </div>
     </footer>
