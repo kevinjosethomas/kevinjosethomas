@@ -7,13 +7,11 @@ export default function CSSLab() {
       title="CSSLab"
       siteUrl="https://csslab.cs.toronto.edu"
       associatedProjectIds={["maia"]}
-      timeline="Jul 2024 - Present"
-      overview="Leading engineering on Maia Chess -- the world's most human-like chess AI and the platform millions play on."
-      bannerImage="/experience/banners/csslab.webp"
-      bannerLogoText="CSSLab"
+      timeline="Jul 2024 - Present, Toronto"
       team={[
-        { name: "Dr. Ashton Anderson", href: "https://www.cs.toronto.edu/~ashton/" },
-        { name: "CSSLab", href: "https://csslab.cs.toronto.edu" },
+        { name: "Ashton Anderson", href: "https://www.cs.toronto.edu/~ashton/" },
+        { name: "Dmitriy Prokopchuk", href: "https://prokopchukdim.github.io/" },
+        { name: "George Eilender" },
       ]}
     >
       <Section title="Building the Platform">

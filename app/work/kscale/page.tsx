@@ -8,15 +8,13 @@ export default function KScale() {
       siteUrl="https://kscale.dev"
       associatedProjectIds={["emx", "kos"]}
       timeline="Winter 2025, Palo Alto"
-      overview="Building expressive AI systems and open-source tooling for America's first open-source humanoid robots."
-      bannerImage="/experience/banners/k-scale.webp"
       team={[
         { name: "Chris Thomas", href: "https://chris.vg/" },
         { name: "Wesley Maa", href: "https://wesleymaa.com/" },
         { name: "Aaron Xie", href: "https://aaronxie.com/" },
         { name: "Michael Lutz", href: "https://michael-lutz.github.io/" },
       ]}
-      teamSuffix="& more..."
+      teamSuffix="..."
     >
       <Section title="Emotional Matrix (EMX)">
         <p>

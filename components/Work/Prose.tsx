@@ -15,7 +15,7 @@ export function WideImage({
   caption?: string;
 }) {
   return (
-    <figure className="-mx-6 my-2 md:-mx-[110px]">
+    <figure className="my-2">
       <div className="relative w-full overflow-hidden rounded-lg">
         <Image
           src={src}
@@ -77,7 +77,7 @@ export function ImageRow({
   images: { src: string; alt: string; caption?: string }[];
 }) {
   return (
-    <div className="-mx-6 my-2 grid grid-cols-1 gap-4 md:-mx-[110px] md:grid-cols-2">
+    <div className="my-2 grid grid-cols-1 gap-4 md:grid-cols-2">
       {images.map((img) => (
         <figure key={img.src}>
           <div className="relative overflow-hidden rounded-lg">

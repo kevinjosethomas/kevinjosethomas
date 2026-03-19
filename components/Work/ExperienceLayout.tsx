@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ReactNode } from "react";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/Common/ProjectCard";
@@ -16,12 +15,8 @@ interface ExperienceLayoutProps {
   children: ReactNode;
   associatedProjectIds: string[];
   timeline?: string;
-  overview?: string;
   team?: TeamMember[];
   teamSuffix?: string;
-  bannerImage?: string;
-  bannerLogo?: { src: string; width: number; height: number };
-  bannerLogoText?: string;
 }
 
 export default function ExperienceLayout({
@@ -30,12 +25,8 @@ export default function ExperienceLayout({
   children,
   associatedProjectIds,
   timeline,
-  overview,
   team,
   teamSuffix,
-  bannerImage,
-  bannerLogo,
-  bannerLogoText,
 }: ExperienceLayoutProps) {
   const associatedProjects = projects.filter((project) =>
     associatedProjectIds.includes(project.id),
@@ -43,8 +34,8 @@ export default function ExperienceLayout({
 
   return (
     <div className="flex w-full flex-col items-center">
-      {/* Top navigation - aligned with content */}
-      <nav className="flex w-full max-w-3xl items-center justify-between px-6 pt-8 pb-12">
+      {/* Top navigation */}
+      <nav className="flex w-full max-w-[1400px] items-center justify-between px-6 pt-8 pb-8 md:px-16">
         <Link
           href="/"
           className="text-secondary group flex items-center gap-2 text-sm transition-colors hover:text-white"
@@ -68,56 +59,32 @@ export default function ExperienceLayout({
           href={siteUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-secondary group flex items-center gap-1.5 text-sm transition-colors hover:text-white"
+          className="text-secondary group flex items-center gap-1.5 text-sm transition-colors hover:text-white md:hidden"
         >
           Website
           <ArrowIcon className="h-3 w-3" />
         </a>
       </nav>
 
-      {/* Banner image */}
-      {bannerImage && (
-        <div className="relative w-full max-w-3xl pb-12">
-          <div className="relative w-full overflow-hidden">
-            <Image
-              src={bannerImage}
-              alt={title}
-              width={1280}
-              height={300}
-              className="h-auto w-full select-none object-cover"
-              draggable={false}
-              priority
-            />
-            {bannerLogo && (
-              <Image
-                src={bannerLogo.src}
-                alt={title}
-                width={bannerLogo.width}
-                height={bannerLogo.height}
-                className="absolute right-5 bottom-5 select-none"
-                draggable={false}
-              />
-            )}
-            {bannerLogoText && (
-              <p className="absolute right-5 bottom-4 text-2xl font-bold tracking-tight">
-                {bannerLogoText}
-              </p>
-            )}
+      {/* Two-column layout */}
+      <div className="flex w-full max-w-[1400px] flex-col gap-12 px-6 pb-16 md:flex-row md:gap-16 md:px-16">
+        {/* Left column - sticky metadata */}
+        <aside className="flex w-full flex-col gap-8 md:sticky md:top-8 md:w-2/5 md:shrink-0 md:self-start">
+          {/* Title + website link */}
+          <div className="flex items-center gap-3">
+            <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
+            <a
+              href={siteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary group hidden items-center gap-1 text-sm transition-colors hover:text-white md:flex"
+            >
+              <ArrowIcon className="h-3.5 w-3.5" />
+            </a>
           </div>
-        </div>
-      )}
 
-      {/* Title */}
-      <header className="w-full max-w-3xl px-6 pb-12">
-        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-          {title}
-        </h1>
-      </header>
-
-      {/* Metadata section */}
-      {(timeline || overview || team) && (
-        <div className="flex w-full max-w-3xl flex-col gap-8 px-6 pb-12 md:flex-row md:gap-16">
-          <div className="flex flex-col gap-6 md:w-2/5">
+          {/* Metadata - 2 column grid */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-5">
             {timeline && (
               <div className="flex flex-col gap-1">
                 <h3 className="text-sm font-semibold">Timeline</h3>
@@ -140,7 +107,10 @@ export default function ExperienceLayout({
                         {member.name}
                       </a>
                     ) : (
-                      <span key={member.name} className="text-secondary w-fit text-sm">
+                      <span
+                        key={member.name}
+                        className="text-secondary w-fit text-sm"
+                      >
                         {member.name}
                       </span>
                     ),
@@ -152,38 +122,29 @@ export default function ExperienceLayout({
               </div>
             )}
           </div>
-          {overview && (
-            <div className="flex flex-col gap-1 md:w-3/5">
-              <h3 className="text-sm font-semibold">Overview</h3>
-              <p className="text-secondary text-sm leading-relaxed">
-                {overview}
-              </p>
+
+          {/* Associated projects */}
+          {associatedProjects.length > 0 && (
+            <div className="flex flex-col gap-4">
+              <h2 className="text-sm font-semibold">Projects</h2>
+              <div className="grid grid-cols-2 gap-3">
+                {associatedProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
             </div>
           )}
+        </aside>
+
+        {/* Right column - scrollable content */}
+        <div className="flex min-w-0 flex-1 flex-col">
+          {/* Prose content */}
+          <article className="prose-content flex flex-col gap-6">
+            {children}
+          </article>
+
         </div>
-      )}
-
-      {/* Prose content */}
-      <article className="prose-content flex w-full max-w-3xl flex-col gap-6 px-6 py-16">
-        {children}
-      </article>
-
-      {/* Associated projects */}
-      {associatedProjects.length > 0 && (
-        <>
-          <div className="w-full max-w-3xl px-6">
-            <div className="border-border border-t" />
-          </div>
-          <div className="flex w-full max-w-3xl flex-col gap-8 px-6 py-16">
-            <h2 className="text-2xl font-semibold">Projects</h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {associatedProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </div>
-        </>
-      )}
+      </div>
     </div>
   );
 }
