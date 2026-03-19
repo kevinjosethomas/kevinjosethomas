@@ -127,7 +127,7 @@ export default function ExperienceLayout({
           {associatedProjects.length > 0 && (
             <div className="flex flex-col gap-4">
               <h2 className="text-sm font-semibold">Projects</h2>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3 [&_>_a_>_div]:md:border-r">
                 {associatedProjects.map((project) => (
                   <ProjectCard key={project.id} project={project} />
                 ))}
