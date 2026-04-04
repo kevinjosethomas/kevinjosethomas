@@ -1,11 +1,35 @@
-When I joined the lab, Maia existed only as a collection of papers and Lichess bots. To help Maia reach a wider audience and to foster more direct engagement with our community, I led the engineering effort to build our in-house Maia Chess platform from the ground up.
+University of Toronto's Computational Social Science Lab primarily studies human behaviour through large-scale data, with lots of interesting work in modeling human behaviour with chess as a test domain. I joined to lead engineering on the Maia Chess platform-- building an interface for people to play and learn from the world's most popular chess bot. Maia is a family of neural network chess engines trained not to play optimally, but to play like humans at specific elo ratings. I work closely with Dr. Ashton Anderson, translating research questions into product features and keeping the platform running for tens of thousands of players at [maiachess.com](https://maiachess.com).
 
-This included complex frontend pipelines in TypeScript and React (Next.js) for live gameplay, move analysis, interactive drilling tools, mistake classification, user accounts, and real-time model inference.
+<ImageRow>
+  <img src="/projects/images/maia-1.webp" alt="Maia Chess analysis page" />
+  <img src="/projects/images/maia-2.webp" alt="Maia Chess gameplay" />
+  <img src="/projects/images/maia-3.webp" alt="Maia Chess platform" />
+</ImageRow>
 
-Maia is currently the most-played chess bot in the world, with more than four million games on Lichess and thousands of monthly users who train, analyze mistakes, drill openings, and play against it. My role is to take Maia beyond papers and training scripts and build the actual platform people interact with.
+## Maia Chess
 
-## Client-Side ML Inference
+When I joined the lab, I inherited a research prototype of the platform, and spent over a year building it out to be one of the best chess education platforms right now. Most of my work was dedicated to building novel game modes for research experiments, as well as building a phenomenal open-source platform for chess analysis, education, drills, and more.
 
-On the applied machine learning side, I restructured Maia's inference pipeline by converting our PyTorch weights to run entirely in the browser using the ONNX web runtime.
+### ONNX Inference
 
-By building a client-side inference stack that runs directly on users' machines, Maia can now **serve millions of games with sub-second latency, without costing our lab a single cent for compute**.
+While building the entire platform from scratch, some of the most interesting architectural decision work I did was to run our chess engines entirely on browser. Lacking the compute to subsidize GPU inference for thousands of users, my goal was to leverage WASM to run Stockfish and Maia inference on user browsers-- without dramatically increasing the load on our clients. Similar to platforms like Lichess, we have Stockfish running via WASM (using `lila-stockfish-web`) with varying depths to provide instant analysis without being extremely resource-intensive.
+
+Similarly, I built our pipeline to compile Maia's Pytorch weights to run on ONNX, porting our custom architecture to enable inference entirely in client-side TypeScript via WebAssembly. Models get downloaded once and cached in IndexedDB, and all analysis—Stockfish eval, Maia move predictions across nine elo bands from 1100 to 1900—happens locally with no server round-trips.
+
+### Platform
+
+Beyond analysis, I built real-time broadcast systems to consume NDJSON streams for Lichess tournament games with live Stockfish and Maia analysis. Using the same infrastructure, I set up a 24/7 Twitch stream for live Lichess games with interpretable Maia and Stockfish analysis annotating the games as they happened live.
+
+Alongside a play gamemode, I built out opening and endgame drills for personalized training, a puzzle training system, a Hand and Brain variant for studying constrained decision-making, and a chess Turing test to produce research data. Each of these doubles as both a feature people enjoy using and a data collection mechanism for the lab's research.
+
+## Experiments
+
+Alongside my work on Maia, I also regularly ran smaller experiments at the lab, exploring questions adjacent to the social consequence of AI.
+
+### Ideological Steering
+
+I spent a week seeing if you can reliably steer LLMs along a political ideology axis. I tried three approaches on Llama 3.1 8B Instruct: activation steering (injecting left-right behavior vectors into layers 15-23 during inference), LoRA fine-tuning on text I scraped from various political think tanks, and embedding-based ideology measurement with an axis built from ~5,000 Vox vs Fox News articles. Activation steering was the most fun, allowing me to dial a continuous alpha to smoothly slide the model's responses left or right, similar to Anthropic's [Golden Gate Claude](https://www.anthropic.com/news/golden-gate-claude) and Ramp Lab's [Steer AI](https://labs.ramp.com/steer-ai).
+
+### Zapper
+
+While investigating research directions in AI for long-term social good, I built a Chrome extension that replaces Twitter's feed algorithm with LLM-based content classification. You upvote and downvote tweets during a short onboarding period, and it extracts your topic preferences using Llama 3.1 8B via Groq. From there, it classifies every tweet in real-time-- zapping out content you don't want to see and highlighting what you care about. I batched tweets in groups of 10 with an 800ms debounce to keep API calls reasonable, and everything stays on-device via Chrome's local storage.

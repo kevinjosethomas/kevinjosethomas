@@ -100,7 +100,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     ImageRow: ({ children }: { children: React.ReactNode }) => (
       <div className="mt-12 mb-2 md:-mr-[calc((100vw-720px)/2-3rem)]">
-        <div className="flex gap-4 overflow-x-auto pr-4 [&_img]:my-0 [&_img]:h-56 [&_img]:max-h-56">
+        <div className="flex gap-4 overflow-x-auto pr-4 [&_img]:my-0 [&_img]:h-56 [&_img]:max-h-56 [&_img]:w-auto [&_img]:shrink-0">
           {children}
         </div>
       </div>

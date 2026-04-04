@@ -79,6 +79,10 @@ export default function Stack() {
       icon: "/icons/vercel.svg",
     },
     {
+      name: "Datadog",
+      icon: "/icons/datadog.svg",
+    },
+    {
       name: "Ubuntu",
       icon: "/icons/ubuntu.svg",
     },
@@ -93,10 +97,6 @@ export default function Stack() {
     {
       name: "PostHog",
       icon: "/icons/posthog.svg",
-    },
-    {
-      name: "Obsidian",
-      icon: "/icons/obsidian.svg",
     },
   ];
 
