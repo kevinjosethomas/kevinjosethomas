@@ -48,7 +48,7 @@ export const projects: Project[] = [
     id: "minecraft",
     name: "minecraft.global",
     date: "2021",
-    href: "/project/minecraft",
+    href: "/work/minecraft",
     image: "/projects/minecraft.webp",
     images: [
       "/projects/images/minecraft.webp",

@@ -1,0 +1,31 @@
+In 2021, I started building minecraft.global with a long-time collaborator after we noticed the biggest Minecraft server list sites were outdated, poorly designed, and still making over $60k/month through ads. Their entire business model relied on SEO manipulation—bot-generated backlink networks and keyword stuffing—rather than a solid product. So we decided to build a better one.
+
+<ImageRow>
+  <img
+    src="/projects/images/minecraft-1.webp"
+    alt="minecraft.global homepage"
+  />
+  <img
+    src="/projects/images/minecraft-2.webp"
+    alt="minecraft.global server page"
+  />
+  <img src="/projects/images/minecraft-3.webp" alt="minecraft.global search" />
+</ImageRow>
+
+## Platform
+
+Over a year, I designed and built two full versions of the frontend in Next.js with Tailwind, each adapting to the growing needs of our hundreds of servers and thousands of visitors. The app was a thin client with all data coming from our own REST API, with all pages server-rendered for SEO and embeds. Google and Discord OAuth for accounts, Stripe for premium subscriptions, and reCAPTCHA on votes to prevent abuse.
+
+### Votifier
+
+The whole server list model runs on a Pavlovian loop. Players vote for their favourite server on our site, and in return, the server gives them in-game rewards-- diamonds, coins, crate keys, etc. The server owner gets higher rankings and visibility on our platform, we get daily returning traffic and SEO juice from thousands of repeat visits, and the player gets their loot. Everyone's incentives align, and it's self-reinforcing: players come back every day to vote again because the rewards reset.
+
+Under the hood, this works through a protocol called Votifier. When a player votes on our site, we connect to the server's Votifier instance, negotiate the protocol version, and send a structured vote packet so the server knows who voted and can distribute the reward automatically. Milo and I built the full integration-- precenting spam while handling connection errors, unsupported Votifier versions, and timeouts gracefully.
+
+### Advertising
+
+We also built our entire advertising platform from scratch: real-time auctions, bidding, and subscriptions. Server owners could bid on banner ad slots through a weekly auction system: you'd place a bid on a specific slot and location, and at the end of each cycle the highest bidders won placement for the next week. Winners got a dashboard with weekly analytics breakdowns by location, impression counts, and click-through data so they could track performance and decide whether to rebid. All payments ran through Stripe, and the whole flow—browsing available slots, placing bids, managing active campaigns, viewing historical analytics—lived in a single dashboard.
+
+### Scale
+
+Throughout the project, our goal was to introduce features no other server list had at the time (most were rather obsolete): real-time server analytics, proper search and filtering with tags, verified profiles, a mobile-first UI, and ranking that wasn't pay-to-win. From 2021 to 2024, the site served over 300,000 users and connected more than 200 servers to about 20,000 new players. We generated revenue but didn't have the capital to advertise or partner with larger Minecraft networks, so minecraft.global stayed pretty niche. While one of the first large-scale projects I built, it was a great lesson in how building the better product is rarely ever enough.

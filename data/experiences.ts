@@ -36,4 +36,16 @@ export const experiences: Experience[] = [
       { name: "George Eilender" },
     ],
   },
+  {
+    id: "minecraft",
+    title: "minecraft.global",
+    siteUrl: "https://minecraft.global",
+    timeline: "2021 - 2024",
+    overview:
+      "Minecraft server listing platform that served 300,000+ users and connected 200+ servers to 20,000 new players.",
+    associatedProjectIds: ["minecraft"],
+    team: [
+      { name: "Milo Weinberg", href: "https://github.com/iapetus-11" },
+    ],
+  },
 ];
