@@ -60,7 +60,7 @@ export default function ExperienceLayout({
       </nav>
 
       {/* Full-width hero */}
-      <div className="flex min-h-[50vh] w-full flex-col items-center justify-end pb-16 pt-32">
+      <div className="flex min-h-[40vh] w-full flex-col items-center justify-end pt-16 pb-16">
         <div className="flex flex-col items-center gap-3">
           <h1 className="text-5xl font-bold tracking-tight md:text-7xl">
             {title}

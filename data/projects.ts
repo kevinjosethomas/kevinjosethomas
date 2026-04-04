@@ -34,7 +34,7 @@ export const projects: Project[] = [
     id: "maia",
     name: "Maia Chess",
     date: "2024-",
-    href: "/project/maia",
+    href: "/work/csslab#maia-chess",
     image: "/projects/maia.webp",
     github: "https://github.com/CSSLab/maia-platform-frontend",
     website: "https://maiachess.com",

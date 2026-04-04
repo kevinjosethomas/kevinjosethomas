@@ -22,7 +22,7 @@ export const experiences: Experience[] = [
     siteUrl: "https://csslab.cs.toronto.edu",
     timeline: "Jul 2024 - Present, Toronto",
     overview:
-      "Computational Social Science Lab at the University of Toronto, studying human behavior through chess.",
+      "Building the world's most popular chess bot, and running experiments for long-term social good in a world with AI.",
     associatedProjectIds: ["maia"],
     team: [
       {
