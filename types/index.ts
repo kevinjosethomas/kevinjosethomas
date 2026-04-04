@@ -1,3 +1,19 @@
+export interface TeamMember {
+  name: string;
+  href?: string;
+}
+
+export interface Experience {
+  id: string;
+  title: string;
+  siteUrl: string;
+  timeline: string;
+  overview: string;
+  associatedProjectIds: string[];
+  team: TeamMember[];
+  teamSuffix?: string;
+}
+
 export interface Project {
   id: string;
   name: string;

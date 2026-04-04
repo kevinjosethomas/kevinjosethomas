@@ -45,7 +45,7 @@ export default async function RootLayout({
       <body className={`${karla.variable} bg-black antialiased`}>
         <div className="mx-auto flex min-h-screen max-w-[1400px] flex-col items-center md:px-16">
           <Header />
-          <main className="border-border w-full md:border">{children}</main>
+          <main className="border-border w-full overflow-x-clip md:border">{children}</main>
           <Footer />
         </div>
         <Suspense fallback={null}>

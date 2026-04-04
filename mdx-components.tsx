@@ -1,4 +1,25 @@
 import type { MDXComponents } from "mdx/types";
+import { highlight } from "sugar-high";
+import { ReactNode } from "react";
+import {
+  FeatureGrid,
+  Feature,
+  VoiceIcon,
+  VisionIcon,
+  EmotionIcon,
+} from "@/components/MDX/FeatureGrid";
+
+function slugify(children: ReactNode): string {
+  const text = typeof children === "string"
+    ? children
+    : Array.isArray(children)
+      ? children.map((c) => (typeof c === "string" ? c : "")).join("")
+      : "";
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -9,17 +30,23 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: (props) => (
       <h1 className="mt-8 text-3xl font-bold text-white first:mt-0" {...props} />
     ),
-    h2: (props) => (
+    h2: ({ children, ...props }) => (
       <h2
-        className="mt-8 text-2xl font-semibold text-white first:mt-0"
+        id={slugify(children)}
+        className="mt-20 text-2xl font-semibold text-white first:mt-0"
         {...props}
-      />
+      >
+        {children}
+      </h2>
     ),
-    h3: (props) => (
+    h3: ({ children, ...props }) => (
       <h3
-        className="mt-6 text-xl font-semibold text-white first:mt-0"
+        id={slugify(children)}
+        className="mt-6 text-xl font-semibold text-white/50 first:mt-0"
         {...props}
-      />
+      >
+        {children}
+      </h3>
     ),
     ul: (props) => <ul className="list-disc pl-6" {...props} />,
     ol: (props) => <ol className="list-decimal pl-6" {...props} />,
@@ -32,12 +59,33 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
-    code: (props) => (
-      <code
-        className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm"
+    pre: (props) => (
+      <pre
+        className="overflow-x-auto rounded-lg border border-white/10 bg-[#0d1117] p-4 text-sm leading-snug"
         {...props}
       />
     ),
+    code: ({ children, className, ...props }) => {
+      const isInline = !className?.includes("language-");
+      if (isInline) {
+        return (
+          <code
+            className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm"
+            {...props}
+          >
+            {children}
+          </code>
+        );
+      }
+      const codeHTML = highlight(String(children));
+      return (
+        <code
+          className="font-mono"
+          dangerouslySetInnerHTML={{ __html: codeHTML }}
+          {...props}
+        />
+      );
+    },
     strong: (props) => <strong className="font-semibold text-white" {...props} />,
     blockquote: (props) => (
       <blockquote
@@ -46,5 +94,21 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     hr: () => <hr className="border-border my-4 border-t" />,
+    img: (props) => (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img className="my-4 h-56 w-auto shrink-0 rounded-lg object-cover" alt="" {...props} />
+    ),
+    ImageRow: ({ children }: { children: React.ReactNode }) => (
+      <div className="mt-12 mb-2 md:-mr-[min(calc((100vw-600px)/2-5rem),calc((1400px-600px-128px)/2-1rem))]">
+        <div className="flex gap-4 overflow-x-auto pr-4 [&_img]:my-0 [&_img]:h-56 [&_img]:max-h-56">
+          {children}
+        </div>
+      </div>
+    ),
+    FeatureGrid,
+    Feature,
+    VoiceIcon,
+    VisionIcon,
+    EmotionIcon,
   };
 }

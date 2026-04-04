@@ -1,0 +1,97 @@
+K-Scale Labs was an open-source humanoid robotics startup in Palo Alto-- building two flagship humanoids, along with their entire end-to-end stack in-house: hardware, OS, sim, and RL infra. The K-Scale team was a small deeply technical team, living and working out of a house in Atherton-- insanely quick timelines, lots of robot corpses, and many fantastic open-source events.
+
+<ImageRow>
+  <img
+    src="/projects/images/emx-2.webp"
+    alt="EMX robot eyes - dark background"
+  />
+  <img
+    src="/projects/images/emx-1.webp"
+    alt="EMX robot eyes - orange background"
+  />
+  <img src="/projects/images/emx-3.webp" alt="EMX on K-Scale robot" />
+</ImageRow>
+
+## Emotional Matrix
+
+My first month at K-Scale was primarily dedicated to building EMX, a modular library for multimodal agent interaction-- allowing our robots, and anyone building on them, to access a suite of detectors, sensors, and modalities to build naturalistic agent behaviours. Essentially, an interface that lets any hobbyist working with our robots to leverage perceptive context (vision, speech, memory, and more) so our robots can engage with their environment the way a person would: through facial expressions, conversation, and reactive awareness.
+
+### Architecture
+
+EMX is three subsystems (Voice, Vision, Emotion) coordinated by a central `Robot` class. The Robot wires cross-subsystem callbacks, manages idle state, and maps voice emotions to facial expressions. Each subsystem is an async event emitter running concurrently via `asyncio.gather`. They don't know each other exist-- the Robot sits in between, forwarding and mapping events across boundaries.
+
+<FeatureGrid>
+  <Feature
+    icon={<VoiceIcon />}
+    title="Voice"
+    description="Full-duplex conversation via OpenAI Realtime with local emotion2vec+ classification."
+  />
+  <Feature
+    icon={<VisionIcon />}
+    title="Vision"
+    description="OpenCV capture with MediaPipe face detection and GPT-4o scene understanding."
+  />
+  <Feature
+    icon={<EmotionIcon />}
+    title="Emotion"
+    description="Procedurally animated polygon eyes via pygame at 120fps with idle behaviors."
+  />
+</FeatureGrid>
+
+### Voice
+
+After iterating through ElevenLabs and Hume AI's EVI, I landed on OpenAI's Realtime API for full-duplex conversation with server-side VAD. Emotion classification runs locally via a FunASR emotion2vec+ model on every ~330ms of buffered response audio. When an emotion is detected, the Robot maps it to a facial expression-- happiness, surprise, fear, sadness, anger each get their own expression with randomized scale and position offsets.
+
+### Vision
+
+Built around a `BaseDetector` abstraction with three methods (setup, process frame, cleanup) and an event emitter. Face detection ships via MediaPipe. Scene understanding runs through Florence-2 locally or GPT-4o-mini in the cloud, powering a tool that lets the LLM see through the camera on demand. The abstraction is open for gesture recognition, object detection, pose estimation, and any other vision perception modalities. The whole pipeline runs from a single OpenCV capture loop yielding every 10ms.
+
+### Emotion
+
+Procedurally animated polygon eyes rendered via pygame at 120fps. Each expression defines keyframes as 24 normalized vertex coordinates (12 per eye) with configurable easing, duration, and stickiness. The system queues and interpolates between expressions automatically, and an idle manager tracks activity across all subsystems and falls back to blinks and random micro-movements when nothing is happening. All coordinates are normalized so they work at any resolution.
+
+<ImageRow>
+  <img src="/projects/images/kos-1.webp" alt="KOS SDK" />
+  <img src="/projects/images/kos-3.webp" alt="KOS SDK" />
+</ImageRow>
+
+## kos-sdk
+
+The second half of my time at K-Scale was focused on the Python SDK-- a wrapper around KOS, the Rust-based operating system we built in-house for our robots. The goal was to make ZBot (and eventually all K-Scale robots) accessible to anyone who knows Python. Actuator control, demo scripts, policy execution, telemetry, tuner utilities-- all from one library, designed to be as portable and modular as possible.
+
+Portability mattered because we were planning to build an app store where people could download libraries and extensions for the SDK directly to the robot, over WiFi or USB serial. Everything needed to be self-contained and composable so third-party packages could slot in cleanly.
+
+### Tuner
+
+I spent a lot of time on our internal Tuner utility-- a tool for creating and managing scripted animations for the robot. It let you move the robot physically, keyframe actuator positions, sequence movements, and play them back in real-time.
+
+<ImageRow>
+  <img
+    src="/projects/images/kos-tuner.png"
+    alt="KOS Tuner - keyframe system for actuator control"
+  />
+  <img src="/projects/images/kos-mujoco.gif" alt="MuJoCo simulation of ZBot" />
+</ImageRow>
+
+### Mujoco
+
+The SDK also integrated with MuJoCo for simulation, so you could prototype and demo scripts entirely in simulation before running them on hardware. Animations built in the tuner could be tested against the simulated z-bot first, then transferred directly to the real robot with no code changes. This made iteration significantly faster: you could keyframe a full movement sequence, validate it in MuJoCo, and deploy to the physical robot in one workflow.
+
+<ImageRow>
+  <img src="/projects/images/ksim-1.gif" alt="ksim RL training" />
+  <img src="/projects/images/ksim-2.gif" alt="ksim RL training" />
+</ImageRow>
+
+## ksim-gym
+
+Toward the end of my time at K-Scale, I started working with ksim– our open-source gym environment and leaderboard for training robots in simulation via reinforcement learning. The platform let anyone submit RL policies trained against our robot models, with a public leaderboard tracking performance across tasks. My role here was mostly experimentation: dogfooding the training libraries and environments, validating that the gym interface worked smoothly end-to-end, and surfacing rough edges before external contributors hit them.
+
+<ImageRow>
+  <img
+    src="/projects/images/kscale-team-2.png"
+    alt="K-Scale robot photoshoot"
+  />
+  <img src="/projects/images/kscale-team-1.png" alt="K-Scale team photo" />
+  <img src="/projects/images/kscale-team-3.png" alt="K-Scale full team" />
+  <img src="/projects/images/kscale-team-4.png" alt="K-Scale robot internals" />
+</ImageRow>

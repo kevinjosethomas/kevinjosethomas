@@ -1,20 +1,15 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import { projects } from "@/data/projects";
-import ProjectCard from "@/components/Common/ProjectCard";
+import type { TeamMember } from "@/types";
 import ArrowIcon from "@/components/Common/ArrowIcon";
-
-interface TeamMember {
-  name: string;
-  href?: string;
-}
+import TableOfContents from "@/components/Work/TableOfContents";
 
 interface ExperienceLayoutProps {
   title: string;
   siteUrl: string;
   children: ReactNode;
-  associatedProjectIds: string[];
-  timeline?: string;
+  timeline: string;
+  overview: string;
   team?: TeamMember[];
   teamSuffix?: string;
 }
@@ -23,19 +18,15 @@ export default function ExperienceLayout({
   title,
   siteUrl,
   children,
-  associatedProjectIds,
   timeline,
+  overview,
   team,
   teamSuffix,
 }: ExperienceLayoutProps) {
-  const associatedProjects = projects.filter((project) =>
-    associatedProjectIds.includes(project.id),
-  );
-
   return (
     <div className="flex w-full flex-col items-center">
-      {/* Top navigation */}
-      <nav className="flex w-full max-w-[1400px] items-center justify-between px-6 pt-8 pb-8 md:px-16">
+      {/* Top navigation - full width to anchor to borders */}
+      <nav className="flex w-full items-center justify-between px-6 pt-8 pb-12 md:px-8">
         <Link
           href="/"
           className="text-secondary group flex items-center gap-2 text-sm transition-colors hover:text-white"
@@ -59,91 +50,79 @@ export default function ExperienceLayout({
           href={siteUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-secondary group flex items-center gap-1.5 text-sm transition-colors hover:text-white md:hidden"
+          className="text-secondary group flex items-center gap-1.5 text-sm transition-colors hover:text-white"
         >
           Website
           <ArrowIcon className="h-3 w-3" />
         </a>
       </nav>
 
-      {/* Two-column layout */}
-      <div className="flex w-full max-w-[1400px] flex-col gap-12 px-6 pb-16 md:flex-row md:gap-16 md:px-16">
-        {/* Left column - sticky metadata */}
-        <aside className="flex w-full flex-col gap-8 md:sticky md:top-8 md:w-2/5 md:shrink-0 md:self-start">
-          {/* Title + website link */}
-          <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
-            <a
-              href={siteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary group hidden items-center gap-1 text-sm transition-colors hover:text-white md:flex"
-            >
-              <ArrowIcon className="h-3.5 w-3.5" />
-            </a>
-          </div>
+      {/* Centered title block */}
+      <div className="flex flex-col items-center gap-2 pb-12">
+        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+          {title}
+        </h1>
+        <p className="text-secondary text-sm">{timeline}</p>
+      </div>
 
-          {/* Metadata - 2 column grid */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-5">
-            {timeline && (
-              <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold">Timeline</h3>
-                <p className="text-secondary text-sm">{timeline}</p>
-              </div>
-            )}
-            {team && team.length > 0 && (
-              <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold">Team</h3>
-                <div className="flex flex-col">
-                  {team.map((member) =>
-                    member.href ? (
-                      <a
-                        key={member.name}
-                        href={member.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-secondary w-fit text-sm underline-offset-2 decoration-white/30 transition-colors hover:text-white hover:underline hover:decoration-white/80"
-                      >
-                        {member.name}
-                      </a>
-                    ) : (
-                      <span
-                        key={member.name}
-                        className="text-secondary w-fit text-sm"
-                      >
-                        {member.name}
-                      </span>
-                    ),
-                  )}
-                  {teamSuffix && (
-                    <p className="text-secondary text-sm">{teamSuffix}</p>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Associated projects */}
-          {associatedProjects.length > 0 && (
-            <div className="flex flex-col gap-4">
-              <h2 className="text-sm font-semibold">Projects</h2>
-              <div className="grid grid-cols-2 gap-3 [&_>_a_>_div]:md:border-r">
-                {associatedProjects.map((project) => (
-                  <ProjectCard key={project.id} project={project} />
-                ))}
+      {/* Two-column metadata */}
+      <div className="mb-16 grid w-full max-w-[600px] grid-cols-1 gap-8 px-6 md:grid-cols-2 md:gap-16 md:px-0">
+        {/* Left column - Team */}
+        <div className="flex flex-col gap-6">
+          {team && team.length > 0 && (
+            <div className="flex flex-col gap-1.5">
+              <h3 className="text-sm font-medium">Team</h3>
+              <div className="flex flex-col">
+                {team.map((member) =>
+                  member.href ? (
+                    <a
+                      key={member.name}
+                      href={member.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-secondary w-fit text-sm underline decoration-white/20 underline-offset-2 transition-colors hover:text-white hover:decoration-white/60"
+                    >
+                      {member.name}
+                    </a>
+                  ) : (
+                    <span
+                      key={member.name}
+                      className="text-secondary w-fit text-sm"
+                    >
+                      {member.name}
+                    </span>
+                  ),
+                )}
+                {teamSuffix && (
+                  <p className="text-secondary text-sm">{teamSuffix}</p>
+                )}
               </div>
             </div>
           )}
-        </aside>
-
-        {/* Right column - scrollable content */}
-        <div className="flex min-w-0 flex-1 flex-col">
-          {/* Prose content */}
-          <article className="prose-content flex flex-col gap-6">
-            {children}
-          </article>
-
         </div>
+
+        {/* Right column - Overview */}
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-1.5">
+            <h3 className="text-sm font-medium">Overview</h3>
+            <p className="text-secondary text-sm leading-relaxed">{overview}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="relative w-full max-w-[600px] px-6 pb-16 md:px-0">
+        <div
+          className="absolute top-0 right-full hidden h-full xl:block"
+          style={{ width: "calc((100vw - 700px) / 2)" }}
+        >
+          <div className="sticky top-10 flex justify-center">
+            <TableOfContents />
+          </div>
+        </div>
+        <article className="prose-content flex flex-col">
+          {children}
+        </article>
       </div>
     </div>
   );
