@@ -99,7 +99,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <img className="my-4 h-56 w-auto shrink-0 rounded-lg object-cover" alt="" {...props} />
     ),
     ImageRow: ({ children }: { children: React.ReactNode }) => (
-      <div className="mt-12 mb-2 md:-mr-[min(calc((100vw-600px)/2-5rem),calc((1400px-600px-128px)/2-1rem))]">
+      <div className="mt-12 mb-2 md:-mr-[calc((100vw-720px)/2-3rem)]">
         <div className="flex gap-4 overflow-x-auto pr-4 [&_img]:my-0 [&_img]:h-56 [&_img]:max-h-56">
           {children}
         </div>

@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import type { TeamMember } from "@/types";
 import ArrowIcon from "@/components/Common/ArrowIcon";
 import TableOfContents from "@/components/Work/TableOfContents";
+import HashScroll from "@/components/Work/HashScroll";
 
 interface ExperienceLayoutProps {
   title: string;
@@ -25,11 +26,12 @@ export default function ExperienceLayout({
 }: ExperienceLayoutProps) {
   return (
     <div className="flex w-full flex-col items-center">
-      {/* Top navigation - full width to anchor to borders */}
-      <nav className="flex w-full items-center justify-between px-6 pt-8 pb-12 md:px-8">
+      <HashScroll />
+      {/* Minimal floating nav */}
+      <nav className="fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-6 py-5 md:px-10">
         <Link
           href="/"
-          className="text-secondary group flex items-center gap-2 text-sm transition-colors hover:text-white"
+          className="text-secondary group flex items-center gap-2 text-sm backdrop-blur-sm transition-colors hover:text-white"
         >
           <svg
             className="h-4 w-4 transition-transform group-hover:-translate-x-0.5"
@@ -50,23 +52,25 @@ export default function ExperienceLayout({
           href={siteUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-secondary group flex items-center gap-1.5 text-sm transition-colors hover:text-white"
+          className="text-secondary group flex items-center gap-1.5 text-sm backdrop-blur-sm transition-colors hover:text-white"
         >
           Website
           <ArrowIcon className="h-3 w-3" />
         </a>
       </nav>
 
-      {/* Centered title block */}
-      <div className="flex flex-col items-center gap-2 pb-12">
-        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-          {title}
-        </h1>
-        <p className="text-secondary text-sm">{timeline}</p>
+      {/* Full-width hero */}
+      <div className="flex min-h-[50vh] w-full flex-col items-center justify-end pb-16 pt-32">
+        <div className="flex flex-col items-center gap-3">
+          <h1 className="text-5xl font-bold tracking-tight md:text-7xl">
+            {title}
+          </h1>
+          <p className="text-secondary text-sm tracking-wide">{timeline}</p>
+        </div>
       </div>
 
-      {/* Two-column metadata */}
-      <div className="mb-16 grid w-full max-w-[600px] grid-cols-1 gap-8 px-6 md:grid-cols-2 md:gap-16 md:px-0">
+      {/* Two-column metadata — wider */}
+      <div className="mb-20 grid w-full max-w-[720px] grid-cols-1 gap-8 px-6 md:grid-cols-2 md:gap-16 md:px-0">
         {/* Left column - Team */}
         <div className="flex flex-col gap-6">
           {team && team.length > 0 && (
@@ -110,19 +114,17 @@ export default function ExperienceLayout({
         </div>
       </div>
 
-      {/* Main content */}
-      <div className="relative w-full max-w-[600px] px-6 pb-16 md:px-0">
+      {/* Main content — wider */}
+      <div className="relative w-full max-w-[720px] px-6 pb-24 md:px-0">
         <div
           className="absolute top-0 right-full hidden h-full xl:block"
-          style={{ width: "calc((100vw - 700px) / 2)" }}
+          style={{ width: "calc((100vw - 820px) / 2)" }}
         >
           <div className="sticky top-10 flex justify-center">
             <TableOfContents />
           </div>
         </div>
-        <article className="prose-content flex flex-col">
-          {children}
-        </article>
+        <article className="prose-content flex flex-col">{children}</article>
       </div>
     </div>
   );
