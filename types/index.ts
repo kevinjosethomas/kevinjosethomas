@@ -3,15 +3,23 @@ export interface TeamMember {
   href?: string;
 }
 
+export interface ExperienceLink {
+  label: string;
+  href: string;
+  icon: "website" | "github" | "arxiv" | "youtube";
+}
+
 export interface Experience {
   id: string;
   title: string;
   siteUrl: string;
+  links?: ExperienceLink[];
   timeline: string;
   overview: string;
   associatedProjectIds: string[];
   team: TeamMember[];
   teamSuffix?: string;
+  tools?: string[];
 }
 
 export interface Project {

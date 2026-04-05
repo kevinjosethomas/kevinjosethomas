@@ -42,10 +42,12 @@ export default async function ExperiencePage({ params }: PageProps) {
     <ExperienceLayout
       title={experience.title}
       siteUrl={experience.siteUrl}
+      links={experience.links}
       timeline={experience.timeline}
       overview={experience.overview}
       team={experience.team}
       teamSuffix={experience.teamSuffix}
+      tools={experience.tools}
     >
       <Content />
     </ExperienceLayout>
