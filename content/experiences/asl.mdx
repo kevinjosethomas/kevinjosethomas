@@ -1,0 +1,60 @@
+My high school, Burnaby South, was home to the only Deaf high school in British Columbia. Having taken ASL for over three years, I saw firsthand how much communication between Deaf and hearing students still depended on typing on phones or waiting for interpreters. Most existing tools stopped at speech-to-text or fingerspelling and assumed the burden of translation lay on Deaf users. I wanted to build a two-way system that respected ASL as a complete language rather than a visual form of English-- allowing someone signing to be understood in spoken English, and someone speaking to be understood visually in ASL, without forcing either to switch languages.
+
+<ImageRow>
+  <img
+    src="/projects/images/receptive-flow.png"
+    alt="Fingerspell recognition pipeline"
+  />
+  <img
+    src="/projects/images/recognition-flow.png"
+    alt="Recognition pipeline flow"
+  />
+</ImageRow>
+
+## Interpreting ASL
+
+The receptive pipeline translates ASL fingerspelling into spoken English in real-time. The key decision was to not train on images directly-- a model trained on raw video frames would break the moment lighting, skin tone, background, or hand size changed. Instead, I used MediaPipe to extract 21 three-dimensional hand landmarks per frame. Each frame becomes a structured point cloud of 63 values, normalized relative to the hand's bounding box to remove bias from camera distance or hand size. This makes the model invariant to all the visual noise that would break an image classifier.
+
+### Models
+
+I preprocessed about 250,000 images from three Kaggle ASL datasets down to ~150,000 usable landmark arrays (after filtering frames where MediaPipe couldn't detect all 21 landmarks), and removed the dynamic letters J and Z since they require motion. I trained two classifiers: a custom 2D CNN with two convolutional blocks, dense layers, and dropout (99.7% validation accuracy), and a PointNet implementation that treats the landmarks as a 3D point cloud with permutation-invariant max pooling.
+
+<ImageRow>
+  <img
+    src="/projects/images/recognition-training.png"
+    alt="Recognition training flow"
+  />
+</ImageRow>
+
+### Synthesis
+
+Raw frame-by-frame classification is noisy: you get repeated letters, misclassifications from similar hand shapes, and no word boundaries. I built a synthesis layer on top of the classifier to make the output legible. The system requires temporal consistency across multiple consecutive frames before accepting a character, uses hand-crafted geometry rules to disambiguate commonly confused letters (A/T based on thumb position, D/I, F/W based on finger ordering), and detects word boundaries when the hand leaves the frame. Once a word is completed, a Neuspell BERT model runs asynchronously to correct spelling errors without blocking the capture loop.
+
+<ImageRow>
+  <img
+    src="/projects/images/production-flow.png"
+    alt="Pose retrieval infrastructure"
+  />
+</ImageRow>
+
+## Producing ASL
+
+The expressive pipeline goes the other direction: spoken English to ASL signing. This was harder because there's no large-scale dataset mapping English sentences to ASL pose sequences. I had to build the whole data pipeline from scratch.
+
+### Pose Database
+
+I scraped roughly 9,500 sign language videos from various sign language services, ran them through MediaPipe Pose and Hands to extract skeletal landmarks per frame, and stored each sign as a time-series animation of body and hand positions. Each sign's English label was embedded into a 384-dimensional vector space using MiniLM, and I stored everything-- embeddings, glosses, and pose sequences-- in PostgreSQL with pgvector for fast cosine similarity queries.
+
+### Gloss Translation
+
+ASL has its own grammar that differs significantly from English-- different word order, dropped articles, different verb conjugation. I used GPT-4o to translate spoken English into ASL gloss (a written representation of ASL signs), rearranging word order and dropping unnecessary words. Each gloss token is then embedded with MiniLM and queried against the pose database. If the cosine similarity passes a 0.70 threshold, the system retrieves and plays back the matching pose animation. If not, it falls back to fingerspelling the word letter by letter.
+
+### Avatar
+
+The retrieved pose sequences are stitched together and rendered as a 2D signing avatar in real-time using Three.js. The avatar draws skeleton lines for limbs and hands with translucent fills for the torso and head. Pauses between signs are handled by holding the last frame for a configurable duration.
+
+## Interface
+
+The whole system is packaged as a Flask server with a WebSocket API, so the recognition and production modules can be accessed independently by any frontend. I built a Next.js client that shows the webcam stream with annotated fingerspelling on one side and the Three.js signing avatar on the other. Speech input comes from the browser's SpeechRecognition API with a 2-second silence debounce before sending to the server.
+
+While the prototype worked well enough for real-time communication between Deaf and hearing students at my high school, it doesn't come close to capturing the full nuance of ASL-- facial expressions, non-manual signals, classifier predicates, and a lot more. But it was designed as a modular SDK that could be extended, and I applied it to a few follow-up projects including a Chrome extension for real-time ASL interpretation of YouTube videos. I also published the work as a [paper on arXiv](https://arxiv.org/abs/2408.09311).
