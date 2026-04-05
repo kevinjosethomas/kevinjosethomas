@@ -58,25 +58,17 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
         </div>
       </div>
 
-      {years.map((year) => (
-        <div key={year} className="mb-10 w-full max-w-[900px]">
-          <p className="text-secondary mb-4 text-xs font-medium tracking-wide">
-            {year}
-          </p>
+      <div className="flex w-full flex-col gap-4 md:hidden">
+        {filtered.map((project) => (
+          <ProjectCard key={project.id} project={project} compact showYear />
+        ))}
+      </div>
 
-          <div className="flex w-full flex-col gap-4 md:hidden">
-            {grouped[year].map((project) => (
-              <ProjectCard key={project.id} project={project} compact />
-            ))}
-          </div>
-
-          <div className="hidden grid-cols-3 gap-4 md:grid">
-            {grouped[year].map((project) => (
-              <ProjectCard key={project.id} project={project} compact />
-            ))}
-          </div>
-        </div>
-      ))}
+      <div className="hidden w-full grid-cols-4 gap-4 md:grid">
+        {filtered.map((project) => (
+          <ProjectCard key={project.id} project={project} compact showYear />
+        ))}
+      </div>
     </div>
   );
 }

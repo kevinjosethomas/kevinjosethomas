@@ -9,6 +9,7 @@ interface ProjectCardProps {
   dark?: number;
   saturate?: number;
   compact?: boolean;
+  showYear?: boolean;
 }
 
 export default function ProjectCard({
@@ -16,6 +17,7 @@ export default function ProjectCard({
   dark = 0,
   saturate = 100,
   compact = false,
+  showYear = false,
 }: ProjectCardProps) {
   const hasWireframe = !!project.wireframeImage;
 
@@ -68,7 +70,12 @@ export default function ProjectCard({
         <div className={compact ? "flex flex-col gap-1 p-3" : "flex items-center justify-between p-4"}>
           {compact ? (
             <>
-              <p className="truncate text-xs font-medium">{project.name}</p>
+              <div className="flex items-center justify-between">
+                <p className="truncate text-xs font-medium">{project.name}</p>
+                {showYear && (
+                  <span className="text-secondary shrink-0 text-[10px]">{project.date}</span>
+                )}
+              </div>
               {project.description && (
                 <p className="text-secondary text-xs leading-relaxed">
                   {project.description}
