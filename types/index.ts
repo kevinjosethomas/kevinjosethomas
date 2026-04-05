@@ -22,12 +22,16 @@ export interface Experience {
   tools?: string[];
 }
 
+export type ProjectTag = "Engineering" | "Research" | "Community";
+
 export interface Project {
   id: string;
   name: string;
+  description: string;
   date: string;
   href: string;
   image: string;
+  tags: ProjectTag[];
   wireframeImage?: string;
   github?: string;
   website?: string;

@@ -4,9 +4,12 @@ export const projects: Project[] = [
   {
     id: "emx",
     name: "Emotional Matrix",
+    description:
+      "Multimodal emotion recognition system for humanoid robots using voice, vision, and language.",
     date: "2025",
     href: "/work/kscale#emotional-matrix",
     image: "/projects/emx.webp",
+    tags: ["Engineering"],
     wireframeImage: "/projects/emx-wireframe.webp",
     github: "https://github.com/kevinjosethomas/emx",
     images: [
@@ -19,9 +22,12 @@ export const projects: Project[] = [
   {
     id: "kos",
     name: "kos-sdk",
+    description:
+      "Python SDK wrapping a Rust robot OS for actuator control, scripted animations, and simulation.",
     date: "2025",
     href: "/work/kscale#kos-sdk",
     image: "/projects/kos.webp",
+    tags: ["Engineering"],
     wireframeImage: "/projects/kos-wireframe.webp",
     github: "https://github.com/kscalelabs/kos-zbot",
     images: [
@@ -33,9 +39,12 @@ export const projects: Project[] = [
   {
     id: "maia",
     name: "Maia Chess",
-    date: "2024-",
+    description:
+      "Chess platform with human-like neural engines running client-side via ONNX and WebAssembly.",
+    date: "2024",
     href: "/work/csslab#maia-chess",
     image: "/projects/maia.webp",
+    tags: ["Engineering"],
     github: "https://github.com/CSSLab/maia-platform-frontend",
     website: "https://maiachess.com",
     images: [
@@ -47,9 +56,12 @@ export const projects: Project[] = [
   {
     id: "minecraft",
     name: "minecraft.global",
+    description:
+      "Minecraft server listing platform with voting, real-time server analytics, and a built-in ad auction system for server owners.",
     date: "2021",
     href: "/work/minecraft",
     image: "/projects/minecraft.webp",
+    tags: ["Engineering"],
     images: [
       "/projects/images/minecraft.webp",
       "/projects/images/minecraft-1.webp",
@@ -64,13 +76,15 @@ export const projects: Project[] = [
     github: "https://github.com/kevinjosethomas/minecraft.global",
     website: "https://minecraft.global",
   },
-
   {
     id: "asl",
     name: "Neural Sign Language Translation",
+    description:
+      "Two-way ASL-English translation using pose estimation, PointNet classification, and semantic retrieval.",
     date: "2024",
     href: "/work/asl",
     image: "/projects/asl.webp",
+    tags: ["Engineering", "Research"],
     github: "https://github.com/kevinjosethomas/sign-language-processing",
     arxiv: "https://arxiv.org/abs/2408.09311",
     youtube: "https://www.youtube.com/watch?v=uuPxMWQRoXc",
@@ -86,18 +100,24 @@ export const projects: Project[] = [
   {
     id: "valorant",
     name: "Valorant Store Scanner",
+    description:
+      "Reverse-engineered Valorant's private store API so users could check daily skins without launching the game.",
     date: "2021",
     href: "/work/valorant",
     image: "/projects/valorant.webp",
+    tags: ["Engineering"],
     github: "https://github.com/kevinjosethomas/valorant-store-scanner",
     images: ["/projects/images/valorant-1.webp"],
   },
   {
     id: "scrapyard",
     name: "Hack Club Scrapyard",
-    date: "2024",
+    description:
+      "Global high school hackathon with $200,000 in funding, 4,500+ students across 60+ cities, organized through Hack Club.",
+    date: "2025",
     href: "/work/scrapyard",
     image: "/projects/scrapyard.webp",
+    tags: ["Community"],
     github: "https://github.com/hackclub/scrapyard",
     youtube: "https://www.youtube.com/watch?v=8iM1W8kXrQA",
     blog: "https://knowledge.kevinjosethomas.com/Thoughts/Reflecting-on-Scrapyard-—-What-We-Did-in-Austin-TX-and-60+-Cities-around-the-World",
@@ -109,28 +129,36 @@ export const projects: Project[] = [
   {
     id: "chromeai",
     name: "ChromeAI",
+    description:
+      "Chrome extension that brings GPT to any selected text on the web through a right-click context menu.",
     date: "2023",
     href: "/work/chromeai",
     image: "/projects/chromeai.webp",
+    tags: ["Engineering"],
     website: "https://chrome-ai.vercel.app",
     images: ["/projects/images/chromeai-1.webp"],
   },
   {
     id: "turbo",
     name: "Turbo Browser",
+    description:
+      "Developer-focused web browser built on Electron with tab management and an integrated devtools layer.",
     date: "2021",
     href: "/work/turbo",
     image: "/projects/turbo.webp",
+    tags: ["Engineering"],
     github: "https://github.com/kevinjosethomas/turbo",
     images: ["/projects/images/turbo-1.webp", "/projects/images/turbo-2.webp"],
   },
-
   {
     id: "disbots",
     name: "disbots.gg",
+    description:
+      "Discord bot listing platform with voting, categorized search, and canvas-rendered embed widgets.",
     date: "2020",
     href: "/work/disbots",
     image: "/projects/disbots.webp",
+    tags: ["Engineering"],
     images: ["/projects/images/disbots-1.webp"],
   },
 ];

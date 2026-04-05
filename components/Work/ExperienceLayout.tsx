@@ -55,6 +55,7 @@ export default function ExperienceLayout({
   return (
     <div className="flex w-full flex-col items-center">
       <HashScroll />
+
       {/* Minimal floating nav */}
       <nav className="fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-6 py-5 md:px-10">
         <BackButton />

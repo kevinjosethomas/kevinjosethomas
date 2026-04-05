@@ -142,7 +142,7 @@ export const experiences: Experience[] = [
     ],
     timeline: "Community, 2024",
     overview:
-      "Global high school hackathon with 4,500+ students across 60+ cities, organized through Hack Club.",
+      "Global high school hackathon with $200,000 in funding, 4,500+ students across 60+ cities, organized through Hack Club.",
     associatedProjectIds: ["scrapyard"],
     team: [
       { name: "Ruby Ke" },
