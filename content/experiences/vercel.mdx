@@ -1,0 +1,53 @@
+v0 is Vercel's generative UI product-- a chat interface that lets you generate, iterate on, and deploy full-stack web applications through conversation with an AI agent. The codebase is a massive Next.js monorepo: the chat app, a marketing site, a sandboxed iframe renderer, a React Native mobile app, a CLI, E2E tests, and dozens of shared internal packages. I joined the v0 team at the start of 2026, touching everything from the AI model layer to billing infrastructure to deployment protection.
+
+## v0 Auto
+
+The biggest project I owned was v0 Auto, an intelligent model routing system that automatically selects the best model tier (v0 Mini, v0 Pro, or v0 Max) for each prompt based on perceived complexity. The idea was simple: most users don't know which model to pick, and choosing wrong either wastes credits on easy tasks or produces bad output on hard ones. Rather than making everyone guess, v0 Auto figures it out for them.
+
+### Classifier
+
+The routing runs server-side with minimal latency. When a user selects v0 Auto in the model picker, the server embeds their prompt using OpenAI's `text-embedding-3-small`, then runs it through a pre-trained 3-layer MLP classifier that resolves to one of the three model tiers near-instantly after embedding. The resolved model is what actually gets sent to the provider, but billing and tracking both record the distinction between the user's selection (v0 Auto) and the resolved tier (e.g. v0 Pro).
+
+### Training Pipeline
+
+I also brought the full training pipeline into the monorepo as `@internal/model-router`, so the team could retrain and iterate without needing a separate repo. The package includes labeling scripts that use Claude Haiku via AI Gateway to classify prompt complexity, a Python training pipeline with embedding caching and tier bias sweeps, an eval benchmark, and the TypeScript inference code that runs in production. Training data and weights are gitignored, but all the tooling and the eval dataset are checked in.
+
+### Rollout
+
+The rollout involved a feature announcement dialog, a Datadog dashboard tracking routing distributions and dialog conversion rates, and extensive tracking events across model selection, routing decisions, and retries. I also handled edge cases like empty prompts (route to v0 Max as default), retry with model override, and crashes during routing that needed graceful fallbacks.
+
+## Enterprise
+
+I built the enterprise admin settings for model management. Enterprise workspace owners can set a default model (e.g. v0 Auto) for their team and disable specific models from the model switcher entirely. The system enforces this both client-side in the model picker and server-side in `submit-chat-data`, so if an admin disables a model after a user has already selected it, they're automatically switched to the team default. Server-side validation rejects disabled models at submit time as a safety net.
+
+## Deployment Protection
+
+I owned the full lifecycle of deployment protection settings in v0. It started with adding password protection to the settings modal, supporting both the old RBAC system and Vercel's newer developer/admin/member roles. Over the next few weeks I iterated on this significantly: splitting visibility (Everyone / Team Only) and password protection into independent controls, adding confirmation dialogs for all visibility changes, and eventually redesigning the entire visibility dropdown into four options (Everyone, Team, Team or Password, Password) each with icons and descriptions. The confirmation dialog renders as an inline modal overlay on top of the settings dialog rather than replacing it, which preserves context while the user confirms.
+
+## MCP Route Explorer
+
+I built the VM MCP client infrastructure for communicating with Next.js MCP endpoints from the sandbox, and shipped a route explorer that displays all available routes from the user's Next.js app directly in the VM panel's URL bar. The initial version was a dropdown with path parameter support, and I later moved it into a popover integrated into the URL bar itself. The explorer parses the app's route tree, handles dynamic segments, and lets you navigate between routes without having to type URLs manually. The entire MCP layer -- client, types, and the API route that proxies requests to the VM -- was new infrastructure.
+
+## GitHub Import
+
+I worked on making GitHub integration smoother across several PRs. The most significant was allowing users to paste GitHub URLs anywhere on the home page to trigger the import dialog, with auto-filtering that detects the matching namespace and pre-selects the right organization in the repo list. I also wrote E2E tests for this flow, fixed regressions around URL paste detection, and built a custom card component for the GitHub import entry point. Smaller fixes included keeping the git import modal open until navigation completes rather than closing it eagerly, and preventing the `v0-builder` org from being used when deploying non-git-synced chats.
+
+## Billing and Onboarding
+
+I touched billing infrastructure in several places. During the v0 v1 launch, I built the promotional coupon system for the Free0 launch, where new subscribers got 90% off Premium, Teams, and Business plans for a limited window. This involved wiring up automatic coupon application in the subscription creation flow and building promotional pricing displays across the marketing pages and upgrade dialogs. I also decoupled free plan provisioning from terms and conditions acceptance, fixing a bug where new users would hit an "out of credits" modal if they started onboarding with a chat message before accepting the ToS.
+
+## Session Management
+
+I built the zombie session detection system after identifying that when users logged out of vercel.com, v0's token was silently invalidated but v0 never detected this. Users appeared logged in but nothing worked. I added a `POST /api/auth/validate` endpoint and a client-side `onAuthError()` hook that triggers on 401/403 responses, validates the token server-side, and redirects to login if the token is dead. The system also skips validation for CSE impersonation sessions to avoid breaking internal tooling.
+
+## Snowflake Integration
+
+I worked on v0's Snowflake integration, specifically improving the agent's ability to write correct SQL against connected warehouses. The core issue was that the agent hallucinated column names because the skill didn't enforce schema discovery. I added a mandatory schema discovery section to the Snowflake skill with ordered steps: list schemas, list tables, `DESCRIBE TABLE` to get exact column names, sample rows, then write code. I also built form submission improvements that let users submit query parameters while the agent is still streaming, and fixed UX issues in the publish popover.
+
+## Chat and Project Management
+
+Across many smaller PRs, I improved how v0 handles chat titles, project organization, and the overall editing experience. Chat titles are now deduplicated within a project using `(2)`, `(3)` suffixes, and git branch names stay in sync with chat titles via a `toHyphenatedTitle()` conversion. I added a search bar to the environment variables sidebar, built a design system search and filter bar, added copy-link buttons for changelog entries, and fixed various UI inconsistencies like duplicate "Duplicate" buttons and misleading sidebar resize handles.
+
+## Infrastructure
+
+On the infrastructure side, I fixed a deployment-blocking issue where serverless functions exceeded Vercel's 250 MB size limit. The fix involved adding `outputFileTracingExcludes` to strip unnecessary binaries (like sharp's libvips) from every function bundle, converting static imports of PGlite to dynamic imports so the file tracer wouldn't pull in the full database engine for routes that never use it, and enabling per-function size diagnostics on every deploy. I also fixed double-slash 404 errors, download-zip failures for git-synced projects, and a `global-error.tsx` injection bug for projects using `src/app/` directory structures.
