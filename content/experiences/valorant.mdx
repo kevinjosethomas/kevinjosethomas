@@ -1,0 +1,25 @@
+In 2021, I was annoyed by having to launch Valorant and wait for it to load just to check if any of my favourite skins were in the daily store. After weeks of this, I decided to build a tool that could check my store without opening the game at all.
+
+The problem was that Valorant's in-game store API wasn't public. So I spent a few days doing network monitoring, capturing traffic from the game client, and piecing together how Riot's auth flow and storefront endpoints actually worked.
+
+<ImageRow>
+  <img src="/projects/images/valorant-1.webp" alt="Valorant Store Scanner" />
+  <img
+    src="/projects/images/valorant-2.png"
+    alt="Valorant daily store offers"
+  />
+</ImageRow>
+
+## Reverse Engineering
+
+The auth flow has three steps, all reverse-engineered from the game client's network traffic. First, you create a session against `auth.riotgames.com` using the same `client_id` as Riot's official web client (`play-valorant-web-prod`). Then you send credentials to get an access token back in a redirect URI. Finally, you hit the entitlements endpoint to get a JWT that grants access to the game's platform APIs.
+
+To make Riot's servers accept the requests, I had to impersonate the game client: matching the exact User-Agent string (`RiotClient/43.0.1... rso-auth`) and restricting TLS ciphers to the same suite the client uses (`TLS_CHACHA20_POLY1305_SHA256`, etc.). Without the right cipher list, the requests would just get rejected.
+
+Once authenticated, the actual store data comes from Riot's player data platform at `pd.{region}.a.pvp.net/store/v2/storefront/{player_id}`. This is an endpoint the game client calls internally-- completely undocumented. It returns the four daily offer UUIDs and the time remaining before rotation. I then mapped those UUIDs to skin names and images by cross-referencing Riot's official Content API with a local catalog I built from scraped skin data.
+
+## Stack
+
+I built it as a monorepo with Yarn workspaces: a Fastify API that handles the auth flow and store fetching, and a Next.js frontend where you log in and see your daily store with a countdown timer. Skin images were scraped and served statically from the API.
+
+After posting the app on [r/VALORANT](https://www.reddit.com/r/VALORANT/comments/ri645u/i_made_an_app_that_allows_you_to_see_your_daily/), it reached over 80,000 people before Riot's team took it down for using undocumented APIs. Over the next few months, I focused on building out the web app, which was used daily by hundreds of players.
