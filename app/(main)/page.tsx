@@ -114,7 +114,31 @@ export default async function Home() {
       </div>
 
       {/* Experience Section */}
-      <div className="border-border grid w-full grid-rows-2 border-b md:grid-cols-2 md:grid-rows-1">
+      <div className="border-border grid w-full grid-cols-1 border-b md:grid-cols-2">
+        <Link href="https://primeintellect.ai">
+          <div className="relative transition-all duration-300 hover:saturate-150">
+            <Image
+              draggable={false}
+              className="h-full w-full object-cover select-none"
+              src="/experience/prime-intellect.png"
+              alt="Prime Intellect"
+              width={1184}
+              height={700}
+            />
+          </div>
+        </Link>
+        <Link href="/work/vercel">
+          <div className="relative transition-all duration-300 hover:saturate-150">
+            <Image
+              draggable={false}
+              className="h-full w-full object-cover select-none"
+              src="/experience/vercel.png"
+              alt="Vercel"
+              width={1184}
+              height={700}
+            />
+          </div>
+        </Link>
         <Link href="/work/kscale">
           <div className="relative transition-all duration-300 hover:saturate-150">
             <Image
