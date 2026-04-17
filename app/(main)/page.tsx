@@ -57,41 +57,46 @@ export default async function Home() {
           <p className="font-bold tracking-wide">👋</p>
           <p>
             I&apos;m a Computer Science student at the University of Waterloo.
-            Currently, I&apos;m working on{" "}
-            <span style={{ display: "inline-flex", verticalAlign: "middle" }}>
-              <Image
-                className="vertical-middle inline-block"
-                src="/icons/v0.svg"
-                alt="v0"
-                width={22}
-                height={22}
-              />
-            </span>{" "}
-            at{" "}
-            <Highlight href="https://vercel.com" icon="/icons/vercel-white.svg">
-              Vercel
+            Currently, I&apos;m a Member of Technical Staff at{" "}
+            <Highlight
+              href="https://primeintellect.ai"
+              icon="/icons/prime-intellect.png"
+            >
+              Prime Intellect
             </Highlight>{" "}
             in San Francisco.
           </p>
-          <p>
-            Previously, I was a SWE intern at{" "}
-            <Highlight href="/work/kscale" icon="/icons/kscale.svg" rotate={1}>
-              K-Scale Labs
-            </Highlight>
-            <Tooltip
-              number={1}
-              content="K-Scale Labs is developing America's first open-source, general-purpose humanoid robot— building a complete in-house stack spanning hardware, software, RL, and simulation to enable a fully capable general-purpose humanoid."
-            />{" "}
-            in Palo Alto, and led engineering for the{" "}
-            <Highlight href="/work/csslab" icon="/icons/maia.webp">
-              Maia Chess
-            </Highlight>
-            <Tooltip
-              number={2}
-              content="Maia is an open research project on human-AI collaboration in chess— studying how neural networks can model human behaviour. As the most-played bot on Lichess, Maia uses chess as a testbed for broader ML research."
-            />{" "}
-            project— the world&apos;s most popular chess bot.
-          </p>
+          <div>
+            Previously,
+            <br />
+            <span className="inline-flex flex-wrap items-center gap-x-6">
+              <Highlight href="/work/vercel" icon="/icons/vercel-white.svg">
+                Vercel
+              </Highlight>
+              <span className="inline-flex items-center">
+                <Highlight
+                  href="/work/kscale"
+                  icon="/icons/kscale.svg"
+                  rotate={1}
+                >
+                  K-Scale Labs
+                </Highlight>
+                <Tooltip
+                  number={1}
+                  content="K-Scale Labs is developing America's first open-source, general-purpose humanoid robot— building a complete in-house stack spanning hardware, software, RL, and simulation to enable a fully capable general-purpose humanoid."
+                />
+              </span>
+              <span className="inline-flex items-center">
+                <Highlight href="/work/csslab" icon="/icons/maia.webp">
+                  Maia Chess
+                </Highlight>
+                <Tooltip
+                  number={2}
+                  content="Maia is an open research project on human-AI collaboration in chess— studying how neural networks can model human behaviour. As the most-played bot on Lichess, Maia uses chess as a testbed for broader ML research."
+                />
+              </span>
+            </span>
+          </div>
           {/* <p>
             I also worked on{" "}
             <Highlight href="/project/asl">
@@ -115,8 +120,8 @@ export default async function Home() {
 
       {/* Experience Section */}
       <div className="border-border grid w-full grid-cols-1 border-b md:grid-cols-2">
-        <Link href="https://primeintellect.ai">
-          <div className="relative transition-all duration-300 hover:saturate-150">
+        <Link href="https://primeintellect.ai" target="_blank">
+          <div className="relative transition-all duration-300 hover:brightness-125">
             <Image
               draggable={false}
               className="h-full w-full object-cover select-none"
