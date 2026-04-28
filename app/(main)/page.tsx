@@ -4,7 +4,6 @@ import type { Project } from "@/types";
 import Stack from "@/components/Home/Stack";
 import Charts from "@/components/Home/Charts";
 import Geometry from "@/components/Home/Geometry";
-import Tooltip from "@/components/Common/Tooltip";
 import { projects } from "@/data/projects";
 import Highlight from "@/components/Home/Highlight";
 import ProjectCard from "@/components/Common/ProjectCard";
@@ -29,12 +28,12 @@ export default async function Home() {
   ];
 
   const spotlightedProjectIds = [
+    "v0",
     "emx",
     "maia",
-    "asl",
     "kos",
+    "asl",
     "minecraft",
-    "valorant",
   ];
 
   const spotlightedProjects = spotlightedProjectIds.map(
@@ -53,11 +52,11 @@ export default async function Home() {
     <div className="flex w-full flex-col items-start justify-start">
       {/* Hero Section */}
       <div className="border-border relative flex w-full flex-col items-center border-b md:grid md:grid-cols-6 md:grid-rows-1">
-        <div className="text-secondary flex w-full flex-col gap-8 p-6 text-lg md:col-span-4 md:w-auto md:max-w-2xl md:p-16">
+        <div className="text-secondary flex w-full flex-col gap-8 p-6 text-lg md:col-span-4 md:w-auto md:max-w-xl md:p-16">
           <p className="font-bold tracking-wide">👋</p>
           <p>
-            I&apos;m a Computer Science student at the University of Waterloo.
-            Currently, I&apos;m working on{" "}
+            I study CS at the University of Waterloo. Most recently, I worked
+            on{" "}
             <span style={{ display: "inline-flex", verticalAlign: "middle" }}>
               <Image
                 className="vertical-middle inline-block"
@@ -68,30 +67,27 @@ export default async function Home() {
               />
             </span>{" "}
             at{" "}
-            <Highlight href="https://vercel.com" icon="/icons/vercel-white.svg">
+            <Highlight href="/work/vercel" icon="/icons/vercel-white.svg">
               Vercel
             </Highlight>{" "}
             in San Francisco.
           </p>
-          <p>
-            Previously, I was a SWE intern at{" "}
-            <Highlight href="/work/kscale" icon="/icons/kscale.svg" rotate={1}>
-              K-Scale Labs
-            </Highlight>
-            <Tooltip
-              number={1}
-              content="K-Scale Labs is developing America's first open-source, general-purpose humanoid robot— building a complete in-house stack spanning hardware, software, RL, and simulation to enable a fully capable general-purpose humanoid."
-            />{" "}
-            in Palo Alto, and led engineering for the{" "}
-            <Highlight href="/work/csslab" icon="/icons/maia.webp">
-              Maia Chess
-            </Highlight>
-            <Tooltip
-              number={2}
-              content="Maia is an open research project on human-AI collaboration in chess— studying how neural networks can model human behaviour. As the most-played bot on Lichess, Maia uses chess as a testbed for broader ML research."
-            />{" "}
-            project— the world&apos;s most popular chess bot.
-          </p>
+          <div>
+            Previously,
+            <br />
+            <span className="inline-flex flex-wrap items-center gap-x-6">
+              <Highlight
+                href="/work/kscale"
+                icon="/icons/kscale.svg"
+                rotate={1}
+              >
+                K-Scale Labs
+              </Highlight>
+              <Highlight href="/work/csslab" icon="/icons/maia.webp">
+                Maia Chess
+              </Highlight>
+            </span>
+          </div>
           {/* <p>
             I also worked on{" "}
             <Highlight href="/project/asl">
@@ -114,7 +110,31 @@ export default async function Home() {
       </div>
 
       {/* Experience Section */}
-      <div className="border-border grid w-full grid-rows-2 border-b md:grid-cols-2 md:grid-rows-1">
+      <div className="border-border grid w-full grid-cols-1 border-b md:grid-cols-2">
+        {/*<Link href="https://primeintellect.ai" target="_blank">
+          <div className="relative transition-all duration-300 hover:brightness-125">
+            <Image
+              draggable={false}
+              className="h-full w-full object-cover select-none"
+              src="/experience/prime-intellect.webp"
+              alt="Prime Intellect"
+              width={1184}
+              height={700}
+            />
+          </div>
+        </Link>
+        <Link href="/work/vercel">
+          <div className="relative transition-all duration-300 hover:saturate-150">
+            <Image
+              draggable={false}
+              className="h-full w-full object-cover select-none"
+              src="/experience/vercel.webp"
+              alt="Vercel"
+              width={1184}
+              height={700}
+            />
+          </div>
+        </Link>*/}
         <Link href="/work/kscale">
           <div className="relative transition-all duration-300 hover:saturate-150">
             <Image

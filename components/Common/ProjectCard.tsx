@@ -22,9 +22,9 @@ export default function ProjectCard({
   const hasWireframe = !!project.wireframeImage;
 
   return (
-    <Link href={project.href} className="group">
+    <Link href={project.href} className="group block w-full">
       <div className={`border-border flex w-full flex-col border transition-colors hover:border-white/20 ${compact ? "" : "md:border-r-0"}`}>
-        <div className="relative overflow-hidden">
+        <div className="relative aspect-video overflow-hidden">
           {dark > 0 && (
             <div
               className="absolute top-0 left-0 z-10 h-full w-full bg-black transition-opacity duration-300 group-hover:opacity-0!"

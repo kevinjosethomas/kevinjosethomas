@@ -2,6 +2,20 @@ import type { Experience } from "@/types";
 
 export const experiences: Experience[] = [
   {
+    id: "vercel",
+    title: "v0, Vercel",
+    siteUrl: "https://v0.dev",
+    timeline: "Winter 2026, San Francisco",
+    overview:
+      "One of the largest AI coding products on the internet, used by millions of developers, designers, and founders to ship full-stack web apps through a chat interface.",
+    associatedProjectIds: [],
+    team: [
+      { name: "Max Leiter", href: "https://maxleiter.com/" },
+      { name: "Bani Singh", href: "https://www.banisingh.com/" },
+      { name: "Gaspar Garcia" },
+    ],
+  },
+  {
     id: "kscale",
     title: "K-Scale Labs",
     siteUrl: "https://kscale.dev",
