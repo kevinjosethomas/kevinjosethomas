@@ -105,6 +105,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </div>
       </div>
     ),
+    FullWidthImage: ({ src, alt }: { src: string; alt: string }) => (
+      <div className="my-12">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt}
+          className="block w-full select-none rounded-lg"
+          draggable={false}
+        />
+      </div>
+    ),
     FeatureGrid,
     Feature,
     VoiceIcon,

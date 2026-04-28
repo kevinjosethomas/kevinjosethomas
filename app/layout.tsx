@@ -13,7 +13,7 @@ const karla = Karla({
 const identity = {
   title: "Kevin Thomas",
   description:
-    "I'm a Computer Science student at the University of Waterloo. Currently, I lead engineering for the Maia Chess project— the world's most popular chess bot. Previously, I was a SWE intern at K-Scale Labs in Palo Alto. I also worked on  neural sign language translation, and organized for Hack Club.",
+    "I study Computer Science at the University of Waterloo. Currently, I lead engineering for the Maia Chess project— the world's most popular chess bot. Previously, I was a SWE intern at K-Scale Labs in Palo Alto. I also worked on  neural sign language translation, and organized for Hack Club.",
 };
 
 export const metadata: Metadata = {

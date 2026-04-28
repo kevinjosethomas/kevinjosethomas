@@ -2,6 +2,16 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    id: "v0",
+    name: "v0.app",
+    description:
+      "Vercel's generative UI product, shipping full-stack web apps through a chat interface powered by AI.",
+    date: "2026",
+    href: "/work/vercel",
+    image: "/projects/v0.webp",
+    tags: ["Engineering"],
+  },
+  {
     id: "emx",
     name: "Emotional Matrix",
     description:
@@ -96,18 +106,6 @@ export const projects: Project[] = [
       "/projects/images/asl-5.webp",
       "/projects/images/asl-6.webp",
     ],
-  },
-  {
-    id: "valorant",
-    name: "Valorant Store Scanner",
-    description:
-      "Reverse-engineered Valorant's private store API so users could check daily skins without launching the game.",
-    date: "2021",
-    href: "/work/valorant",
-    image: "/projects/valorant.webp",
-    tags: ["Engineering"],
-    github: "https://github.com/kevinjosethomas/valorant-store-scanner",
-    images: ["/projects/images/valorant-1.webp"],
   },
   {
     id: "scrapyard",

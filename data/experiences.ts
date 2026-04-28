@@ -7,7 +7,7 @@ export const experiences: Experience[] = [
     siteUrl: "https://v0.dev",
     timeline: "Winter 2026, San Francisco",
     overview:
-      "Vercel's generative UI product. Ship full-stack web apps through a chat interface powered by AI.",
+      "One of the largest AI coding products on the internet, used by millions of developers, designers, and founders to ship full-stack web apps through a chat interface.",
     associatedProjectIds: [],
     team: [
       { name: "Max Leiter", href: "https://maxleiter.com/" },

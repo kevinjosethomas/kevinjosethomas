@@ -4,6 +4,7 @@ import BackButton from "@/components/Work/BackButton";
 import ArrowIcon from "@/components/Common/ArrowIcon";
 import TableOfContents from "@/components/Work/TableOfContents";
 import HashScroll from "@/components/Work/HashScroll";
+import TeamList from "@/components/Work/TeamList";
 
 function LinkIcon({ type }: { type: ExperienceLink["icon"] }) {
   switch (type) {
@@ -105,31 +106,7 @@ export default function ExperienceLayout({
           {team && team.length > 0 && (
             <div className="flex flex-col gap-1.5">
               <h3 className="text-sm font-medium">Team</h3>
-              <div className="flex flex-col">
-                {team.map((member) =>
-                  member.href ? (
-                    <a
-                      key={member.name}
-                      href={member.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-secondary w-fit text-sm leading-relaxed underline decoration-white/20 underline-offset-2 transition-colors hover:text-white hover:decoration-white/60"
-                    >
-                      {member.name}
-                    </a>
-                  ) : (
-                    <span
-                      key={member.name}
-                      className="text-secondary w-fit text-sm leading-relaxed"
-                    >
-                      {member.name}
-                    </span>
-                  ),
-                )}
-                {teamSuffix && (
-                  <p className="text-secondary text-sm leading-relaxed">{teamSuffix}</p>
-                )}
-              </div>
+              <TeamList team={team} teamSuffix={teamSuffix} />
             </div>
           )}
           {tools && tools.length > 0 && (
