@@ -1,11 +1,11 @@
 "use client";
 
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import type { ScreenTimeData } from "@/lib/sheets";
+import type { DailyScreenTimeAggregate } from "@/lib/analytics-data";
 import { CHART_COLORS } from "@/lib/colors";
 
 type ScreenTimePieChartProps = {
-  data: ScreenTimeData[];
+  data: DailyScreenTimeAggregate[];
   days?: number;
 };
 
@@ -23,18 +23,6 @@ type CustomTooltipProps = {
   active?: boolean;
   payload?: TooltipPayload[];
 };
-
-function parseTimeToMinutes(timeStr: string): number {
-  if (!timeStr || timeStr.trim() === "") return 0;
-
-  const hourMatch = timeStr.match(/(\d+)h/);
-  const minuteMatch = timeStr.match(/(\d+)m/);
-
-  const hours = hourMatch ? parseInt(hourMatch[1], 10) : 0;
-  const minutes = minuteMatch ? parseInt(minuteMatch[1], 10) : 0;
-
-  return hours * 60 + minutes;
-}
 
 function CustomTooltip({ active, payload }: CustomTooltipProps) {
   if (active && payload && payload.length) {
@@ -66,7 +54,7 @@ export default function ScreenTimePieChart({
   days = 14,
 }: ScreenTimePieChartProps) {
   const dateSet = new Set<string>();
-  const filteredData: ScreenTimeData[] = [];
+  const filteredData: DailyScreenTimeAggregate[] = [];
 
   for (const entry of data) {
     if (!dateSet.has(entry.date)) {
@@ -80,9 +68,10 @@ export default function ScreenTimePieChart({
 
   const categoryTotals = new Map<string, number>();
   filteredData.forEach((entry) => {
-    const category = entry.category || "Other";
-    const minutes = parseTimeToMinutes(entry.duration);
-    categoryTotals.set(category, (categoryTotals.get(category) || 0) + minutes);
+    categoryTotals.set(
+      entry.category,
+      (categoryTotals.get(entry.category) || 0) + entry.minutes,
+    );
   });
 
   const totalMinutes = Array.from(categoryTotals.values()).reduce(
@@ -129,7 +118,6 @@ export default function ScreenTimePieChart({
     { filteredCategories: [], otherTotal: 0 },
   );
 
-  // Add small categories to existing "Other" or create new one
   if (otherTotal > 0) {
     const existingOtherIndex = filteredCategories.findIndex(
       (c) => c.name === "Other",

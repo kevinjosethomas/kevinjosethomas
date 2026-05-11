@@ -8,6 +8,13 @@ import {
   fetchMoney,
 } from "@/lib/sheets";
 import { fetchGitHubContributions } from "@/lib/github";
+import {
+  aggregateMoneyData,
+  aggregateRatings,
+  aggregateScreenTimeData,
+  aggregateSleepData,
+  aggregateWorkoutData,
+} from "@/lib/analytics-data";
 
 export default async function AnalyticsPage() {
   "use cache";
@@ -16,9 +23,9 @@ export default async function AnalyticsPage() {
   const [
     workData,
     sheetsData,
-    screenTimeData,
-    workoutData,
-    moneyData,
+    rawScreenTimeData,
+    rawWorkoutData,
+    rawMoneyData,
     githubData,
   ] = await Promise.all([
     getWorkData(2000),
@@ -33,12 +40,18 @@ export default async function AnalyticsPage() {
   today.setHours(0, 0, 0, 0);
   const todayTimestamp = today.getTime();
 
+  const ratingData = aggregateRatings(sheetsData.overview);
+  const sleepData = aggregateSleepData(sheetsData.sleep, sheetsData.overview);
+  const screenTimeData = aggregateScreenTimeData(rawScreenTimeData);
+  const workoutData = aggregateWorkoutData(rawWorkoutData, todayTimestamp);
+  const moneyData = aggregateMoneyData(rawMoneyData, todayTimestamp);
+
   return (
     <AnalyticsClient
       workData={workData}
-      sleepData={sheetsData.sleep}
+      ratingData={ratingData}
+      sleepData={sleepData}
       screenTimeData={screenTimeData}
-      overviewData={sheetsData.overview}
       workoutData={workoutData}
       moneyData={moneyData}
       githubData={githubData}

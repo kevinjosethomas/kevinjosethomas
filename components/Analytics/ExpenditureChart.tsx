@@ -8,12 +8,12 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import type { MoneyData } from "@/lib/sheets";
+import type { WeeklySeriesData } from "@/lib/analytics-data";
 import { SPENDING_COLORS } from "@/lib/colors";
 import InfoTooltip from "@/components/Home/InfoTooltip";
 
 type ExpenditureChartProps = {
-  data: MoneyData[];
+  data: WeeklySeriesData[];
   days?: number;
   todayTimestamp: number;
 };
@@ -30,41 +30,12 @@ type CustomTooltipProps = {
   grandTotal?: number;
 };
 
-type WeekData = {
-  week: string;
-  weekLabel: string;
-  [key: string]: number | string;
-};
-
-function getWeekLabel(weekKey: string): string {
-  const parts = weekKey.split("-");
-  const year = parseInt(parts[0], 10);
-  const month = parseInt(parts[1], 10) - 1;
-  const day = parseInt(parts[2], 10);
-
-  const startOfWeek = new Date(year, month, day);
-  const endOfWeek = new Date(year, month, day + 6);
-
-  const formatDate = (d: Date) => {
-    const month = d.toLocaleString("en-US", { month: "short" });
-    const day = d.getDate();
-    const year = d.getFullYear();
-    return `${month} ${day}, ${year}`;
-  };
-
-  return `${formatDate(startOfWeek)} - ${formatDate(endOfWeek)}`;
-}
-
-function getWeekKey(date: Date): string {
-  const startOfWeek = new Date(date);
-  const day = startOfWeek.getDay();
-  const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1);
-  startOfWeek.setDate(diff);
-  startOfWeek.setHours(0, 0, 0, 0);
-  return startOfWeek.toISOString().split("T")[0];
-}
-
-function CustomTooltip({ active, payload, label, grandTotal }: CustomTooltipProps) {
+function CustomTooltip({
+  active,
+  payload,
+  label,
+  grandTotal,
+}: CustomTooltipProps) {
   if (active && payload && payload.length) {
     const sortedPayload = [...payload].sort((a, b) => b.value - a.value);
     const weekTotal = payload.reduce((sum, entry) => sum + entry.value, 0);
@@ -74,9 +45,10 @@ function CustomTooltip({ active, payload, label, grandTotal }: CustomTooltipProp
         <p className="text-secondary mb-2 text-xs">{label}</p>
         {sortedPayload.map((entry, index) => {
           if (entry.value === 0) return null;
-          const pct = grandTotal && grandTotal > 0
-            ? ((entry.value / grandTotal) * 100).toFixed(1)
-            : "0";
+          const pct =
+            grandTotal && grandTotal > 0
+              ? ((entry.value / grandTotal) * 100).toFixed(1)
+              : "0";
           return (
             <div key={index} className="flex items-center gap-2">
               <div
@@ -91,7 +63,9 @@ function CustomTooltip({ active, payload, label, grandTotal }: CustomTooltipProp
         {grandTotal && grandTotal > 0 && (
           <div className="mt-2 flex items-center gap-2 border-t border-white/10 pt-2">
             <p className="text-secondary text-xs">Week total:</p>
-            <p className="text-xs font-medium">{((weekTotal / grandTotal) * 100).toFixed(1)}▲</p>
+            <p className="text-xs font-medium">
+              {((weekTotal / grandTotal) * 100).toFixed(1)}▲
+            </p>
           </div>
         )}
       </div>
@@ -100,156 +74,39 @@ function CustomTooltip({ active, payload, label, grandTotal }: CustomTooltipProp
   return null;
 }
 
+function getStartDate(todayTimestamp: number, days: number): Date {
+  const today = new Date(todayTimestamp);
+  today.setHours(0, 0, 0, 0);
+  const startDate = new Date(today);
+  startDate.setDate(today.getDate() - days + 1);
+  startDate.setHours(0, 0, 0, 0);
+  return startDate;
+}
+
 export default function ExpenditureChart({
   data,
   days = 90,
   todayTimestamp,
 }: ExpenditureChartProps) {
-  const today = new Date(todayTimestamp);
-  today.setHours(0, 0, 0, 0);
-  const endDate = new Date(today);
-
-  const parseMoneyDate = (dateStr: string): Date | null => {
-    try {
-      const parts = dateStr.split(",").map((p) => p.trim());
-      if (parts.length < 2) return null;
-
-      const dateComponents = parts[1].split(" ");
-      if (dateComponents.length < 2) return null;
-
-      const month = dateComponents[0];
-      const day = parseInt(dateComponents[1], 10);
-      const year = parts.length >= 3 ? parseInt(parts[2], 10) : null;
-
-      const monthMap: Record<string, number> = {
-        Jan: 0,
-        Feb: 1,
-        Mar: 2,
-        Apr: 3,
-        May: 4,
-        Jun: 5,
-        Jul: 6,
-        Aug: 7,
-        Sep: 8,
-        Oct: 9,
-        Nov: 10,
-        Dec: 11,
-      };
-
-      const monthNum = monthMap[month];
-      if (monthNum === undefined) return null;
-
-      let finalYear: number;
-      if (year) {
-        finalYear = year;
-      } else {
-        const currentYear = today.getFullYear();
-        const testDate = new Date(currentYear, monthNum, day);
-        finalYear = testDate > today ? currentYear - 1 : currentYear;
-      }
-
-      const moneyDate = new Date(finalYear, monthNum, day);
-      moneyDate.setHours(0, 0, 0, 0);
-      return moneyDate;
-    } catch {
-      return null;
-    }
-  };
-
-  // Hard cutoff - don't show data before this date
+  const startDate = getStartDate(todayTimestamp, days);
   const cutoffDate = new Date("2022-09-01");
   cutoffDate.setHours(0, 0, 0, 0);
+  const effectiveStart = startDate < cutoffDate ? cutoffDate : startDate;
 
-  // Find earliest transaction date after the cutoff
-  const validDates: Date[] = [];
-  data.forEach((transaction) => {
-    if (transaction.date && transaction.cad) {
-      const parsed = parseMoneyDate(transaction.date);
-      if (parsed && !isNaN(parsed.getTime()) && parsed >= cutoffDate) {
-        validDates.push(parsed);
-      }
-    }
-  });
-  const earliestDataDate =
-    validDates.length > 0
-      ? new Date(Math.min(...validDates.map((d) => d.getTime())))
-      : null;
+  const chartData = data.filter((week) => new Date(week.week) >= effectiveStart);
 
-  const requestedStart = new Date(endDate);
-  requestedStart.setDate(endDate.getDate() - days + 1);
-  requestedStart.setHours(0, 0, 0, 0);
-
-  // Ensure we don't go before cutoff date
-  const effectiveRequestedStart =
-    requestedStart < cutoffDate ? cutoffDate : requestedStart;
-
-  // Start from the earliest transaction date (after cutoff) or the requested start
-  let startDate = effectiveRequestedStart;
-  if (earliestDataDate && earliestDataDate > effectiveRequestedStart) {
-    startDate = earliestDataDate;
-  }
-
-  const allWeekKeys = new Set<string>();
-  const currentDate = new Date(startDate);
-  while (currentDate <= endDate) {
-    allWeekKeys.add(getWeekKey(currentDate));
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  const weekMap = new Map<string, Map<string, number>>();
   const moneyTags = new Set<string>();
-
-  allWeekKeys.forEach((weekKey) => {
-    weekMap.set(weekKey, new Map());
-  });
-
-  data.forEach((transaction) => {
-    if (!transaction.date || !transaction.cad) return;
-
-    const moneyDate = parseMoneyDate(transaction.date);
-
-    if (!moneyDate || isNaN(moneyDate.getTime())) return;
-
-    if (moneyDate >= startDate && moneyDate <= endDate) {
-      const weekKey = getWeekKey(moneyDate);
-      const tag = transaction.tag || "Other";
-      const amount = parseFloat(transaction.cad.replace(/[^0-9.-]/g, ""));
-
-      if (isNaN(amount) || amount === 0) return;
-      if (tag === "Investments") return;
-
-      moneyTags.add(tag);
-
-      if (!weekMap.has(weekKey)) {
-        weekMap.set(weekKey, new Map());
+  chartData.forEach((week) => {
+    Object.entries(week).forEach(([key, value]) => {
+      if (key !== "week" && key !== "weekLabel" && typeof value === "number") {
+        moneyTags.add(key);
       }
-
-      const tagMap = weekMap.get(weekKey)!;
-      tagMap.set(tag, (tagMap.get(tag) || 0) + Math.abs(amount));
-    }
+    });
   });
 
   if (moneyTags.size === 0) {
     moneyTags.add("No Data");
   }
-
-  const weeks = Array.from(weekMap.entries())
-    .map(([weekKey, tagMap]) => {
-      const weekLabel = getWeekLabel(weekKey);
-      const weekData: WeekData = {
-        week: weekKey,
-        weekLabel,
-      };
-
-      tagMap.forEach((amount, tag) => {
-        weekData[tag] = amount;
-      });
-
-      return weekData;
-    })
-    .sort((a, b) => new Date(a.week).getTime() - new Date(b.week).getTime());
-
-  const chartData = weeks;
 
   const totalSpent = chartData.reduce((sum, week) => {
     return (
