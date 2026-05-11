@@ -95,7 +95,6 @@ export default function Analytics({
   }
 
   const presets: TimePreset[] = [
-    { label: "14d", days: 14 },
     { label: "1m", days: 30 },
     { label: "3m", days: 90 },
     { label: "6m", days: 180 },
