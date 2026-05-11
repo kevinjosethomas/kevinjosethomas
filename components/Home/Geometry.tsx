@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ShapeId = "circle" | "diamond" | "triangle";
 
@@ -79,7 +79,6 @@ const renderShape = (shape: ShapeId) => {
 export default function Geometry() {
   const [shape, setShape] = useState<ShapeId>("diamond");
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const meshPatternId = `mesh-${useId()}`;
 
   const stopCycling = () => {
     if (timerRef.current) {

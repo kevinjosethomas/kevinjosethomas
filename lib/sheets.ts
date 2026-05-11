@@ -7,7 +7,7 @@ const REQUIRED_SCOPES = [
 
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const SERVICE_ACCOUNT_PRIVATE_KEY = (() => {
-  const raw = process.env.GOOGLE_PRIVATE_KEY as string;
+  const raw = process.env.GOOGLE_PRIVATE_KEY || "";
 
   // Try parsing as-is first (in case env var is clean JSON)
   try {

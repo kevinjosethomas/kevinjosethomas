@@ -38,7 +38,6 @@ export default function ContributionsChart({ data }: ContributionsChartProps) {
 
   const {
     totalContributions,
-    avgPerDay,
     currentStreak,
     longestStreak,
     totalDays,
@@ -46,7 +45,6 @@ export default function ContributionsChart({ data }: ContributionsChartProps) {
     if (!data.weeks || data.weeks.length === 0) {
       return {
         totalContributions: 0,
-        avgPerDay: 0,
         currentStreak: 0,
         longestStreak: 0,
         totalDays: 0,
@@ -56,8 +54,6 @@ export default function ContributionsChart({ data }: ContributionsChartProps) {
     const allDays = data.weeks.flatMap((week) => week.contributionDays);
 
     const total = allDays.reduce((sum, day) => sum + day.contributionCount, 0);
-    const avg = allDays.length > 0 ? total / allDays.length : 0;
-
     const allDaysSorted = [...allDays].sort(
       (a, b) =>
         parseDateString(b.date).getTime() - parseDateString(a.date).getTime(),
@@ -91,7 +87,6 @@ export default function ContributionsChart({ data }: ContributionsChartProps) {
 
     return {
       totalContributions: total,
-      avgPerDay: avg,
       currentStreak: current,
       longestStreak: longest,
       totalDays: allDays.length,

@@ -53,23 +53,23 @@ export default function TableOfContents() {
   }, [updateActiveHeading]);
 
   useEffect(() => {
-    collectHeadings();
-    updateActiveHeading();
+    const refresh = () => {
+      requestAnimationFrame(() => {
+        collectHeadings();
+        updateActiveHeading();
+      });
+    };
 
-    const observer = new MutationObserver(() => {
-      collectHeadings();
-      updateActiveHeading();
-    });
+    refresh();
+
+    const observer = new MutationObserver(refresh);
 
     const article = document.querySelector(".prose-content");
     if (article) {
       observer.observe(article, { childList: true, subtree: true });
     }
 
-    const timer = setTimeout(() => {
-      collectHeadings();
-      updateActiveHeading();
-    }, 500);
+    const timer = setTimeout(refresh, 500);
 
     window.addEventListener("scroll", onScroll, { passive: true });
 
