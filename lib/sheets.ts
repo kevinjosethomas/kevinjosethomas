@@ -7,7 +7,7 @@ const REQUIRED_SCOPES = [
 
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const SERVICE_ACCOUNT_PRIVATE_KEY = (() => {
-  const raw = process.env.GOOGLE_PRIVATE_KEY as string;
+  const raw = process.env.GOOGLE_PRIVATE_KEY || "";
 
   // Try parsing as-is first (in case env var is clean JSON)
   try {
@@ -69,6 +69,10 @@ export type FetchSheetRowsOptions = {
 };
 
 async function loadWorksheet(worksheetId: number) {
+  if (!SERVICE_ACCOUNT_EMAIL || !SERVICE_ACCOUNT_PRIVATE_KEY || !SPREADSHEET_ID) {
+    return null;
+  }
+
   const auth = new JWT({
     email: SERVICE_ACCOUNT_EMAIL,
     key: SERVICE_ACCOUNT_PRIVATE_KEY,
@@ -78,7 +82,7 @@ async function loadWorksheet(worksheetId: number) {
   const document = new GoogleSpreadsheet(SPREADSHEET_ID, auth);
   await document.loadInfo();
 
-  return document.sheetsById[worksheetId];
+  return document.sheetsById[worksheetId] || null;
 }
 
 export async function fetchSheetRows(
@@ -87,6 +91,10 @@ export async function fetchSheetRows(
   const worksheetId = options.worksheetId as number;
   const worksheet = await loadWorksheet(worksheetId);
   const { limit } = options;
+
+  if (!worksheet) {
+    return [];
+  }
 
   await worksheet.loadHeaderRow();
   const rows = await worksheet.getRows(limit ? { limit } : undefined);

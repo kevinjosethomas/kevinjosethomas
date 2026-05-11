@@ -8,12 +8,11 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import type { SleepData, OverviewData } from "@/lib/sheets";
+import type { DailySleepAggregate } from "@/lib/analytics-data";
 import { SLEEP_COLORS } from "@/lib/colors";
 
 type SleepTrendsChartProps = {
-  data: SleepData[];
-  overviewData: OverviewData[];
+  data: DailySleepAggregate[];
   days?: number;
   todayTimestamp: number;
 };
@@ -32,18 +31,6 @@ type CustomTooltipProps = {
     };
   }>;
 };
-
-function parseTimeToMinutes(timeStr: string): number {
-  if (!timeStr || timeStr.trim() === "") return 0;
-
-  const hourMatch = timeStr.match(/(\d+)h/);
-  const minuteMatch = timeStr.match(/(\d+)m/);
-
-  const hours = hourMatch ? parseInt(hourMatch[1], 10) : 0;
-  const minutes = minuteMatch ? parseInt(minuteMatch[1], 10) : 0;
-
-  return hours * 60 + minutes;
-}
 
 function getRatingLabel(rating: number): string {
   const roundedRating = Math.round(rating);
@@ -112,111 +99,29 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
   return null;
 }
 
-function formatDateKey(date: Date): string {
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const dayOfWeek = days[date.getDay()];
-  const month = months[date.getMonth()];
-  const day = date.getDate();
-  const year = date.getFullYear();
-  return `${dayOfWeek}, ${month} ${day}, ${year}`;
+function getStartDate(todayTimestamp: number, days: number): Date {
+  const today = new Date(todayTimestamp);
+  today.setHours(0, 0, 0, 0);
+  const startDate = new Date(today);
+  startDate.setDate(today.getDate() - days + 1);
+  startDate.setHours(0, 0, 0, 0);
+  return startDate;
 }
 
 export default function SleepTrendsChart({
   data,
-  overviewData,
   days = 14,
   todayTimestamp,
 }: SleepTrendsChartProps) {
-  const today = new Date(todayTimestamp);
-  today.setHours(0, 0, 0, 0);
-  const endDate = new Date(today);
-
-  const validDates: Date[] = [];
-  data.forEach((d) => {
-    if (d.date && d.time) {
-      const parsed = new Date(d.date);
-      if (!isNaN(parsed.getTime())) {
-        validDates.push(parsed);
-      }
-    }
-  });
-  const earliestDataDate =
-    validDates.length > 0
-      ? new Date(Math.min(...validDates.map((d) => d.getTime())))
-      : null;
-
-  const sleepDataMap = new Map<string, SleepData>();
-  data.forEach((d) => {
-    sleepDataMap.set(d.date, d);
-  });
-
-  const requestedStart = new Date(endDate);
-  requestedStart.setDate(endDate.getDate() - days + 1);
-  requestedStart.setHours(0, 0, 0, 0);
-
-  let startDate = requestedStart;
-  if (earliestDataDate && earliestDataDate > requestedStart) {
-    startDate = earliestDataDate;
-  }
-
-  const allDates: Date[] = [];
-  const currentDate = new Date(startDate);
-  currentDate.setHours(0, 0, 0, 0);
-  while (currentDate <= endDate) {
-    allDates.push(new Date(currentDate));
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  const ratingMap = new Map<string, number>();
-  overviewData.forEach((d) => {
-    const rating = parseFloat(d.r);
-    if (!isNaN(rating)) {
-      ratingMap.set(d.date, rating);
-    }
-  });
-
-  const chartData = allDates.map((date, index) => {
-    const dateKey = formatDateKey(date);
-    const dayData = sleepDataMap.get(dateKey);
-
-    const totalMinutes = dayData ? parseTimeToMinutes(dayData.time) : 0;
-    const remMinutes = dayData ? parseTimeToMinutes(dayData.rem) : 0;
-    const deepMinutes = dayData ? parseTimeToMinutes(dayData.deep) : 0;
-    const lightMinutes = Math.max(0, totalMinutes - remMinutes - deepMinutes);
-
-    const rating = ratingMap.get(dateKey) || 0;
-    const scaledRating = rating > 0 ? (rating / 7) * 600 : 0;
-
-    return {
-      index,
-      date: dateKey,
-      score: dayData?.score || "",
-      total: totalMinutes,
-      rem: remMinutes,
-      deep: deepMinutes,
-      light: lightMinutes,
-      rating: scaledRating,
-      rawRating: rating,
-    };
-  });
+  const startDate = getStartDate(todayTimestamp, days);
+  const chartData = data
+    .filter((entry) => new Date(entry.date) >= startDate)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .map((entry, index) => ({ ...entry, index }));
 
   const totalSleepMinutes = chartData.reduce((sum, d) => sum + d.total, 0);
   const avgTotal =
-    allDates.length > 0 ? totalSleepMinutes / allDates.length : 0;
+    chartData.length > 0 ? totalSleepMinutes / chartData.length : 0;
 
   const avgHours = Math.floor(avgTotal / 60);
   const avgMins = Math.round(avgTotal % 60);

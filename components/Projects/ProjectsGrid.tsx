@@ -6,10 +6,6 @@ import ProjectCard from "@/components/Common/ProjectCard";
 
 const TAGS: ProjectTag[] = ["Engineering", "Research", "Community"];
 
-function getYear(date: string): string {
-  return date.match(/\d{4}/)?.[0] || "0";
-}
-
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
   const [activeTags, setActiveTags] = useState<Set<ProjectTag>>(new Set());
 
@@ -26,15 +22,6 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
     activeTags.size > 0
       ? projects.filter((p) => p.tags.some((t) => activeTags.has(t)))
       : projects;
-
-  const grouped = filtered.reduce<Record<string, Project[]>>((acc, project) => {
-    const year = getYear(project.date);
-    if (!acc[year]) acc[year] = [];
-    acc[year].push(project);
-    return acc;
-  }, {});
-
-  const years = Object.keys(grouped).sort((a, b) => parseInt(b) - parseInt(a));
 
   return (
     <div className="flex w-full flex-col items-start justify-start p-6 md:p-16">

@@ -4,14 +4,13 @@ import { useState } from "react";
 import ProjectsChart from "@/components/Analytics/ProjectsChart";
 import ProjectsPieChart from "@/components/Analytics/ProjectsPieChart";
 import type { ProcessedWorkData } from "@/lib/work";
-import type {
-  SleepData,
-  ScreenTimeData,
-  OverviewData,
-  WorkoutData,
-  MoneyData,
-} from "@/lib/sheets";
 import type { ContributionsData } from "@/lib/github";
+import type {
+  DailyRatingData,
+  DailyScreenTimeAggregate,
+  DailySleepAggregate,
+  WeeklySeriesData,
+} from "@/lib/analytics-data";
 import SleepTrendsChart from "@/components/Analytics/SleepTrendsChart";
 import ScreenTimePieChart from "@/components/Analytics/ScreenTimePieChart";
 import WorkoutsChart from "@/components/Analytics/WorkoutsChart";
@@ -25,43 +24,26 @@ type TimePreset = {
 
 type AnalyticsProps = {
   workData: ProcessedWorkData;
-  sleepData: SleepData[];
-  screenTimeData: ScreenTimeData[];
-  overviewData: OverviewData[];
-  workoutData: WorkoutData[];
-  moneyData: MoneyData[];
+  ratingData: DailyRatingData[];
+  sleepData: DailySleepAggregate[];
+  screenTimeData: DailyScreenTimeAggregate[];
+  workoutData: WeeklySeriesData[];
+  moneyData: WeeklySeriesData[];
   githubData: ContributionsData;
   todayTimestamp: number;
 };
 
-function parseTimeToMinutes(timeStr: string): number {
-  if (!timeStr || timeStr.trim() === "") return 0;
-
-  const hourMatch = timeStr.match(/(\d+)h/);
-  const minuteMatch = timeStr.match(/(\d+)m/);
-
-  const hours = hourMatch ? parseInt(hourMatch[1], 10) : 0;
-  const minutes = minuteMatch ? parseInt(minuteMatch[1], 10) : 0;
-
-  return hours * 60 + minutes;
-}
-
 export default function Analytics({
   workData,
+  ratingData,
   sleepData,
   screenTimeData,
-  overviewData,
   workoutData,
   moneyData,
   githubData,
   todayTimestamp,
 }: AnalyticsProps) {
   const filteredWorkDataAll = workData.dailyData;
-  const filteredSleepDataAll = sleepData;
-  const filteredScreenTimeDataAll = screenTimeData;
-  const filteredOverviewDataAll = overviewData;
-  const filteredWorkoutDataAll = workoutData;
-  const filteredMoneyDataAll = moneyData;
 
   const hasData = filteredWorkDataAll.length > 0;
   const defaultDays = hasData ? Math.min(90, filteredWorkDataAll.length) : 0;
@@ -80,14 +62,6 @@ export default function Analytics({
 
   const filteredWorkData = workDataToUse.slice(0, days);
 
-  const filteredProjectTotals: Record<string, number> = {};
-  filteredWorkData.forEach((d) => {
-    Object.entries(d.projects).forEach(([project, minutes]) => {
-      filteredProjectTotals[project] =
-        (filteredProjectTotals[project] || 0) + minutes;
-    });
-  });
-
   const pieProjectTotals: Record<string, number> = {};
   const pieWorkData = isAllTime ? filteredWorkDataAll : filteredWorkData;
   pieWorkData.forEach((d) => {
@@ -96,25 +70,21 @@ export default function Analytics({
     });
   });
 
-  const filteredSleepData = filteredSleepDataAll.slice(0, days);
-  const sleepMinutes = filteredSleepData.reduce((sum, entry) => {
-    return sum + parseTimeToMinutes(entry.time);
-  }, 0);
+  const sleepMinutes = sleepData
+    .slice(0, days)
+    .reduce((sum, entry) => sum + entry.total, 0);
 
   const screenDateSet = new Set<string>();
-  const filteredScreenData: ScreenTimeData[] = [];
-  for (const entry of filteredScreenTimeDataAll) {
+  let screenMinutes = 0;
+  for (const entry of screenTimeData) {
     if (!screenDateSet.has(entry.date)) {
       if (screenDateSet.size >= days) break;
       screenDateSet.add(entry.date);
     }
     if (screenDateSet.has(entry.date)) {
-      filteredScreenData.push(entry);
+      screenMinutes += entry.minutes;
     }
   }
-  const screenMinutes = filteredScreenData.reduce((sum, entry) => {
-    return sum + parseTimeToMinutes(entry.duration);
-  }, 0);
 
   if (!hasData) {
     return (
@@ -125,7 +95,6 @@ export default function Analytics({
   }
 
   const presets: TimePreset[] = [
-    { label: "14d", days: 14 },
     { label: "1m", days: 30 },
     { label: "3m", days: 90 },
     { label: "6m", days: 180 },
@@ -175,7 +144,7 @@ export default function Analytics({
         <div className="border-border flex flex-col border-b md:col-span-3 md:border-b-0">
           <ProjectsChart
             data={filteredWorkDataAll}
-            overviewData={filteredOverviewDataAll}
+            ratingData={ratingData}
             days={days}
             todayTimestamp={todayTimestamp}
           />
@@ -192,14 +161,14 @@ export default function Analytics({
       <div className="divide-border grid w-full grid-cols-1 md:grid-cols-4 md:divide-x">
         <div className="border-border border-b md:col-span-2">
           <WorkoutsChart
-            data={filteredWorkoutDataAll}
+            data={workoutData}
             days={days}
             todayTimestamp={todayTimestamp}
           />
         </div>
         <div className="border-border border-b md:col-span-2">
           <ExpenditureChart
-            data={filteredMoneyDataAll}
+            data={moneyData}
             days={days}
             todayTimestamp={todayTimestamp}
           />
@@ -215,14 +184,13 @@ export default function Analytics({
       <div className="divide-border grid w-full grid-cols-1 md:grid-cols-4 md:divide-x">
         <div className="border-border border-b md:col-span-3">
           <SleepTrendsChart
-            data={filteredSleepDataAll}
-            overviewData={filteredOverviewDataAll}
+            data={sleepData}
             days={days}
             todayTimestamp={todayTimestamp}
           />
         </div>
         <div className="border-border border-b">
-          <ScreenTimePieChart data={filteredScreenTimeDataAll} days={days} />
+          <ScreenTimePieChart data={screenTimeData} days={days} />
         </div>
       </div>
     </div>

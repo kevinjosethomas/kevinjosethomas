@@ -8,11 +8,11 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import type { WorkoutData } from "@/lib/sheets";
+import type { WeeklySeriesData } from "@/lib/analytics-data";
 import { WORKOUT_COLORS } from "@/lib/colors";
 
 type WorkoutsChartProps = {
-  data: WorkoutData[];
+  data: WeeklySeriesData[];
   days?: number;
   todayTimestamp: number;
 };
@@ -27,55 +27,6 @@ type CustomTooltipProps = {
   }>;
   label?: string;
 };
-
-type WeekData = {
-  week: string;
-  weekLabel: string;
-  [key: string]: number | string;
-};
-
-function parseTimeToMinutes(timeStr: string): number {
-  if (!timeStr || timeStr.trim() === "") return 0;
-
-  const hourMatch = timeStr.match(/(\d+)h/);
-  const minuteMatch = timeStr.match(/(\d+)m/);
-  const secondMatch = timeStr.match(/(\d+)s/);
-
-  const hours = hourMatch ? parseInt(hourMatch[1], 10) : 0;
-  const minutes = minuteMatch ? parseInt(minuteMatch[1], 10) : 0;
-  const seconds = secondMatch ? parseInt(secondMatch[1], 10) : 0;
-
-  return hours * 60 + minutes + Math.round(seconds / 60);
-}
-
-function getWeekLabel(date: Date): string {
-  const startOfWeek = new Date(date);
-  const day = startOfWeek.getDay();
-  const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1);
-  startOfWeek.setDate(diff);
-  startOfWeek.setHours(0, 0, 0, 0);
-
-  const endOfWeek = new Date(startOfWeek);
-  endOfWeek.setDate(startOfWeek.getDate() + 6);
-
-  const formatDate = (d: Date) => {
-    const month = d.toLocaleString("en-US", { month: "short" });
-    const day = d.getDate();
-    const year = d.getFullYear();
-    return `${month} ${day}, ${year}`;
-  };
-
-  return `${formatDate(startOfWeek)} - ${formatDate(endOfWeek)}`;
-}
-
-function getWeekKey(date: Date): string {
-  const startOfWeek = new Date(date);
-  const day = startOfWeek.getDay();
-  const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1);
-  startOfWeek.setDate(diff);
-  startOfWeek.setHours(0, 0, 0, 0);
-  return startOfWeek.toISOString().split("T")[0];
-}
 
 function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   if (active && payload && payload.length) {
@@ -116,142 +67,35 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   return null;
 }
 
+function getStartDate(todayTimestamp: number, days: number): Date {
+  const today = new Date(todayTimestamp);
+  today.setHours(0, 0, 0, 0);
+  const startDate = new Date(today);
+  startDate.setDate(today.getDate() - days + 1);
+  startDate.setHours(0, 0, 0, 0);
+  return startDate;
+}
+
 export default function WorkoutsChart({
   data,
   days = 90,
   todayTimestamp,
 }: WorkoutsChartProps) {
-  const today = new Date(todayTimestamp);
-  today.setHours(0, 0, 0, 0);
-  const endDate = new Date(today);
+  const startDate = getStartDate(todayTimestamp, days);
+  const chartData = data.filter((week) => new Date(week.week) >= startDate);
 
-  const parseWorkoutDate = (dateStr: string): Date | null => {
-    try {
-      const parts = dateStr.split(",");
-      if (parts.length < 2) return null;
-
-      const monthDay = parts[1].trim().split(" ");
-      if (monthDay.length < 2) return null;
-
-      const month = monthDay[0];
-      const day = parseInt(monthDay[1], 10);
-
-      const monthMap: Record<string, number> = {
-        Jan: 0,
-        Feb: 1,
-        Mar: 2,
-        Apr: 3,
-        May: 4,
-        Jun: 5,
-        Jul: 6,
-        Aug: 7,
-        Sep: 8,
-        Oct: 9,
-        Nov: 10,
-        Dec: 11,
-      };
-
-      const monthNum = monthMap[month];
-      if (monthNum === undefined) return null;
-
-      const currentYear = today.getFullYear();
-      let workoutDate = new Date(currentYear, monthNum, day);
-
-      if (workoutDate > today) {
-        workoutDate = new Date(currentYear - 1, monthNum, day);
-      }
-
-      workoutDate.setHours(0, 0, 0, 0);
-      return workoutDate;
-    } catch {
-      return null;
-    }
-  };
-
-  const validDates: Date[] = [];
-  data.forEach((workout) => {
-    if (workout.date && workout.time) {
-      const parsed = parseWorkoutDate(workout.date);
-      if (parsed && !isNaN(parsed.getTime())) {
-        validDates.push(parsed);
-      }
-    }
-  });
-  const earliestDataDate =
-    validDates.length > 0
-      ? new Date(Math.min(...validDates.map((d) => d.getTime())))
-      : null;
-
-  const requestedStart = new Date(endDate);
-  requestedStart.setDate(endDate.getDate() - days + 1);
-  requestedStart.setHours(0, 0, 0, 0);
-
-  let startDate = requestedStart;
-  if (earliestDataDate && earliestDataDate > requestedStart) {
-    startDate = earliestDataDate;
-  }
-
-  const allWeekKeys = new Set<string>();
-  const currentDate = new Date(startDate);
-  while (currentDate <= endDate) {
-    allWeekKeys.add(getWeekKey(currentDate));
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  const weekMap = new Map<string, Map<string, number>>();
   const workoutTypes = new Set<string>();
-
-  allWeekKeys.forEach((weekKey) => {
-    weekMap.set(weekKey, new Map());
-  });
-
-  data.forEach((workout) => {
-    if (!workout.date || !workout.time) return;
-
-    const workoutDate = parseWorkoutDate(workout.date);
-
-    if (!workoutDate || isNaN(workoutDate.getTime())) return;
-
-    if (workoutDate >= startDate && workoutDate <= endDate) {
-      const weekKey = getWeekKey(workoutDate);
-      const workoutType = workout.type || "Other";
-      const minutes = parseTimeToMinutes(workout.time);
-
-      if (minutes === 0) return;
-
-      workoutTypes.add(workoutType);
-
-      if (!weekMap.has(weekKey)) {
-        weekMap.set(weekKey, new Map());
+  chartData.forEach((week) => {
+    Object.entries(week).forEach(([key, value]) => {
+      if (key !== "week" && key !== "weekLabel" && typeof value === "number") {
+        workoutTypes.add(key);
       }
-
-      const typeMap = weekMap.get(weekKey)!;
-      typeMap.set(workoutType, (typeMap.get(workoutType) || 0) + minutes);
-    }
+    });
   });
 
   if (workoutTypes.size === 0) {
     workoutTypes.add("No Data");
   }
-
-  const weeks = Array.from(weekMap.entries())
-    .map(([weekKey, typeMap]) => {
-      const weekDate = new Date(weekKey);
-      const weekLabel = getWeekLabel(weekDate);
-      const weekData: WeekData = {
-        week: weekKey,
-        weekLabel,
-      };
-
-      typeMap.forEach((minutes, type) => {
-        weekData[type] = minutes;
-      });
-
-      return weekData;
-    })
-    .sort((a, b) => new Date(a.week).getTime() - new Date(b.week).getTime());
-
-  const chartData = weeks;
 
   const totalMinutes = chartData.reduce((sum, week) => {
     return (

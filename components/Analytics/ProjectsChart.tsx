@@ -9,12 +9,12 @@ import {
   Tooltip,
 } from "recharts";
 import type { DailyWorkData } from "@/lib/work";
-import type { OverviewData } from "@/lib/sheets";
+import type { DailyRatingData } from "@/lib/analytics-data";
 import { PROJECT_COLORS, CHART_COLORS } from "@/lib/colors";
 
 type ProjectsChartProps = {
   data: DailyWorkData[];
-  overviewData: OverviewData[];
+  ratingData: DailyRatingData[];
   days?: number;
   todayTimestamp: number;
 };
@@ -155,7 +155,7 @@ function formatDateKey(date: Date): string {
 
 export default function ProjectsChart({
   data,
-  overviewData,
+  ratingData,
   days = 7,
   todayTimestamp,
 }: ProjectsChartProps) {
@@ -183,11 +183,8 @@ export default function ProjectsChart({
   allDates.reverse();
 
   const ratingMap = new Map<string, number>();
-  overviewData.forEach((d) => {
-    const rating = parseFloat(d.r);
-    if (!isNaN(rating)) {
-      ratingMap.set(d.date, rating);
-    }
+  ratingData.forEach((d) => {
+    ratingMap.set(d.date, d.rating);
   });
 
   const projectTotals = new Map<string, number>();
