@@ -51,7 +51,7 @@ export default async function Home() {
   return (
     <div className="flex w-full flex-col items-start justify-start">
       {/* Hero Section */}
-      <div className="border-border relative flex w-full flex-col items-center border-b md:grid md:grid-cols-6 md:grid-rows-1">
+      <div className="border-border relative flex w-full flex-col items-center overflow-hidden border-b md:grid md:grid-cols-6 md:grid-rows-1">
         <div className="text-secondary flex w-full flex-col gap-8 p-6 text-lg md:col-span-4 md:w-auto md:max-w-xl md:p-16">
           <p className="font-bold tracking-wide">👋</p>
           <p>
@@ -108,7 +108,7 @@ export default async function Home() {
 
       {/* Experience Section */}
       <div className="border-border grid w-full grid-cols-1 border-b md:grid-cols-2">
-        <Link href="https://primeintellect.ai" target="_blank">
+        {/*<Link href="https://primeintellect.ai" target="_blank">
           <div className="relative transition-all duration-300 hover:brightness-125">
             <Image
               draggable={false}
@@ -119,7 +119,7 @@ export default async function Home() {
               height={700}
             />
           </div>
-        </Link>
+        </Link>*/}
         <Link href="/work/vercel">
           <div className="relative transition-all duration-300 hover:saturate-150">
             <Image
@@ -152,7 +152,7 @@ export default async function Home() {
             />
           </div>
         </Link>
-        <Link href="/work/csslab">
+        {/*<Link href="/work/csslab">
           <div className="relative transition-all duration-300 hover:saturate-200">
             <Image
               draggable={false}
@@ -166,7 +166,7 @@ export default async function Home() {
               CSSLab
             </p>
           </div>
-        </Link>
+        </Link>*/}
       </div>
 
       {/* Writing Section */}
