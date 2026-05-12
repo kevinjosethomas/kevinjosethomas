@@ -55,20 +55,10 @@ export default async function Home() {
         <div className="text-secondary flex w-full flex-col gap-8 p-6 text-lg md:col-span-4 md:w-auto md:max-w-xl md:p-16">
           <p className="font-bold tracking-wide">👋</p>
           <p>
-            I study CS at the University of Waterloo. Most recently, I worked
-            on{" "}
-            <span style={{ display: "inline-flex", verticalAlign: "middle" }}>
-              <Image
-                className="vertical-middle inline-block"
-                src="/icons/v0.svg"
-                alt="v0"
-                width={22}
-                height={22}
-              />
-            </span>{" "}
-            at{" "}
-            <Highlight href="/work/vercel" icon="/icons/vercel-white.svg">
-              Vercel
+            I study CS at the University of Waterloo. Currently, I&apos;m a
+            Member of Technical Staff Intern at{" "}
+            <Highlight icon="/icons/prime-intellect.webp">
+              Prime Intellect
             </Highlight>{" "}
             in San Francisco.
           </p>
@@ -76,6 +66,13 @@ export default async function Home() {
             Previously,
             <br />
             <span className="inline-flex flex-wrap items-center gap-x-6">
+              <Highlight
+                href="/work/vercel"
+                icon="/icons/vercel.svg"
+                rotate={1}
+              >
+                Vercel
+              </Highlight>
               <Highlight
                 href="/work/kscale"
                 icon="/icons/kscale.svg"
@@ -111,7 +108,7 @@ export default async function Home() {
 
       {/* Experience Section */}
       <div className="border-border grid w-full grid-cols-1 border-b md:grid-cols-2">
-        {/*<Link href="https://primeintellect.ai" target="_blank">
+        <Link href="https://primeintellect.ai" target="_blank">
           <div className="relative transition-all duration-300 hover:brightness-125">
             <Image
               draggable={false}
@@ -134,7 +131,7 @@ export default async function Home() {
               height={700}
             />
           </div>
-        </Link>*/}
+        </Link>
         <Link href="/work/kscale">
           <div className="relative transition-all duration-300 hover:saturate-150">
             <Image
