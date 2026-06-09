@@ -156,3 +156,77 @@ body {
 .highlight-icon {
   transform: rotate(0deg);
 }
+
+/* v0 Auto "Design constraints" meter: each bar peaks in turn while the other
+   two drop, so the three levels always trade off against one another. */
+.constraint-bar {
+  height: 50%;
+  animation-duration: 9s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.constraint-bar-a {
+  animation-name: constraint-a;
+}
+.constraint-bar-b {
+  animation-name: constraint-b;
+}
+.constraint-bar-c {
+  animation-name: constraint-c;
+}
+
+@keyframes constraint-a {
+  0%,
+  100% {
+    height: 50%;
+  }
+  25% {
+    height: 74%;
+  }
+  50% {
+    height: 36%;
+  }
+  75% {
+    height: 36%;
+  }
+}
+
+@keyframes constraint-b {
+  0%,
+  100% {
+    height: 50%;
+  }
+  25% {
+    height: 36%;
+  }
+  50% {
+    height: 74%;
+  }
+  75% {
+    height: 36%;
+  }
+}
+
+@keyframes constraint-c {
+  0%,
+  100% {
+    height: 50%;
+  }
+  25% {
+    height: 36%;
+  }
+  50% {
+    height: 36%;
+  }
+  75% {
+    height: 74%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .constraint-bar {
+    animation: none;
+    height: 50%;
+  }
+}

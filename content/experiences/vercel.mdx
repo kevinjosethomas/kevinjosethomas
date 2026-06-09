@@ -1,67 +1,55 @@
-v0 is Vercel's generative UI product and one of the largest AI coding products on the internet, used by millions of developers, designers, and founders to ship full-stack web apps through conversation with an AI agent. I joined the v0 team for a 16 week internship starting January 2026, where I shipped across product, ML infrastructure, billing, security, and enterprise features.
+v0 is Vercel's flagship vibecoding product and one of the largest AI coding products on the internet, used by millions of developers, designers, and founders to ship full-stack web apps through conversation with an AI agent. v0 operates very much like a startup within Vercel: short timelines, high ownership, and incredible velocity.
 
-v0 operates very much like a startup within Vercel, and most of my time was spent working across the stack the way a full-time engineer would, picking up ownership of whatever part of v0 needed someone on it that week. Model routing one week, an enterprise feature the next, a billing incident over a weekend.
+My work spanned across the product: enterprise features, prompt classification, sandbox infrastructure, model routing, billing and subscriptions, and a lot more. The v0 team was incredibly talented, supportive, and amongst the most talented teams I've had the privilege of working with.
 
-<FullWidthImage src="/projects/images/v0-auto.gif" alt="v0 Auto routing animation" />
+
+<FullWidthImage src="/projects/images/vercel-team.webp" alt="v0 team polaroid" />
+
 
 ## v0 Auto
 
-One of the more interesting projects I worked on was v0 Auto, an intelligent model router that automatically picks between our v0 Mini, v0 Pro, and v0 Max models based on prompt complexity. Most users pick one model and stick with it for everything, which means they're either burning latency and cost on simple prompts that didn't need expensive models, or getting weak output on hard prompts that small models couldn't handle. v0 Auto routes per-prompt instead.
+v0 Auto was amongst the most fun projects I worked on at Vercel: solving the decision fatigue and inconvenience of model selection. Most users picked one model and stuck with it, leading to thousands of users wasting time and tokens by using larger models for simple prompts, while others received weak output on hard prompts that smaller models couldn't handle. v0 Auto routed each chat message individually, directing messages to v0 Mini, v0 Pro, or v0 Max based on prompt complexity.
 
-### Classifier
+The project was mostly constraint solving: the router had to be small enough to serve on a Vercel Function, accurate enough to actually make model selection better, and simple enough to live inside the existing TypeScript codebase.
 
-Inference had to run in Node.js, inside v0's monorepo, on a Vercel function, which ruled out a separate Python service or any heavy runtime. TF-IDF was the obvious place to start since it was cheap and instant, but various attempts revealed that accuracy was too low for it to ever work as a real router. I wanted something closer to a real model in Node, so I spent a while trying to get a small classifier running through ONNX Runtime with `transformers.js`. It worked locally, but the bundle was too heavy for our function size limit and load times made cold starts unworkable. The version that actually shipped was simpler: a hosted embedding model called over the network, with a small three-layer MLP running on the frozen embedding inside the function. The classifier itself was tiny, the embedding call was the only network hop, and the whole thing was fast enough to deploy.
+<V0AutoConstraints />
 
-### Training
+I started with a TF-IDF bag-of-words approach because it was fast enough to run on a Vercal Function, but it was simply too naively heuristic to work as a production classifier. I then got a small classifier running locally through ONNX Runtime and `transformers.js`; while accuracy was significantly better, the bundle was too large for the 250mb serverless function size limit.
 
-The intial v0 Auto model was trained on a large number of prompts auto-labeled by a larger LLM. I ran an architecture sweep across 10 MLP configurations from 427K to 2.2M parameters, with validation accuracy plateauing at around ~75% regardless of size, largely due to how noisy the LLM classification initially was. After deploying the initial v0 Auto and monitoring performance for a week, I re-labeled with a stronger model and added a fourth class for context-dependent messages like "yes", "continue", "looks good" which the initial router was misrouting to Mini.
+Finally, the first version that I shipped used hosted embeddings, which were then fed into a tiny three-layer MLP running entirely in Node. I trained it on over 75,000 LLM-labeled prompts, swept dozens of model configurations and tier biases, and built out a recursive learning pipeline around cached embeddings, evals, TypeScript inference, and an internal bulk-classification page.
 
-I brought the entire training pipeline into the monorepo: labeling scripts, a Python trainer with embedding caching and tier bias sweeps, an eval benchmark, and the TypeScript inference code that runs in production. I also built an internal eval page for single-prompt classification and bulk runs against the full dataset. The point was for v0 Auto to keep getting better while it was running in production. The team could pull recent prompts, re-label with a stronger model, retrain on the growing dataset, and ship new weights without touching the surrounding infrastructure, so each retraining round improved on the last.
+After production data exposed noisy cases, I re-labeled with a stronger model and added a fourth context-dependent class for messages like "yes", "continue", and "looks good", which would simply route to the model based on previous prompts. At runtime, the only network hop was the embedding call; the classifier and tier adjustment stayed inside the function. By the end of my internship, v0 Auto was routing over 2M messages every month, also improving the overall training signal loop.
 
-### Local Models
-
-After the embeddings-plus-MLP version was in production, I went back to the local-model path to try to push accuracy further and drop the embedding API call entirely. I fine-tuned a few options: BERT hit a decent accuracy, TinyBERT was too small to be useful, and DeBERTa was much more accurate but came in over the serverless function size limit. We considered loading weights from blob storage at runtime but rejected it over cold start concerns.
-
-### Rollout
-
-Every classification got logged with its probabilities, the resolved tier, the user's override behavior on retries, and end-to-end latency. Retry behavior was the most useful signal since it told us when the router actually got it wrong. The same logs let us bias the router toward each tier without retraining, so we could tune live behavior in response to real usage instead of waiting on a new model. By the end of my internship, v0 Auto had routed over 1.4M chat messages.
-
-<FullWidthImage src="/projects/images/v0-snowflake.webp" alt="v0 + Snowflake integration" />
+<FullWidthImage src="/projects/images/v0-auto.gif" alt="v0 Auto routing animation" />
 
 ## Snowflake
 
-Toward the end of my internsip, I was the primary v0-side engineer for v0's Snowflake integration, a partnership that let users connect their data warehouse, query it from a chat, and deploy Snowflake Native Apps directly from v0. A lot of it was coordination work, bouncing between the Snowflake team, debugging issues live with their engineers, and aligning on partnership requirements as the integration grew.
+Toward the end of my internsip, I took over v0 Enterprise work and was the primary FDE for v0's Snowflake integration: a partnership that let users connect their data warehouse, query it from a chat, and deploy Snowflake Native Apps directly from v0. Most of my work was coordinating between the Snowflake team, debugging issues live with their engineers, and aligning on partnership requirements as the integration grew.
+
+<FullWidthImage src="/projects/images/v0-snowflake.webp" alt="v0 + Snowflake integration" />
 
 ### Agent Reliability
 
-Most of the early work was making the agent reliable when writing queries. I migrated the integration off raw REST calls onto Snowflake's official SDK with proper OAuth, then wired their CLI directly into v0's VM environment so the agent could introspect schemas live inside the sandbox before writing code.
+My early work primarily consisted of improving agent reliability when working with Snowflake data. I migrated the integration off raw REST calls onto Snowflake's official SDK with proper OAuth, then wired their CLI (snowcli) directly into v0's VM environment so the agent could introspect schemas live inside the sandbox before writing code.
 
 ### Multi-Account Migration
 
-A surprisingly involved piece of the integration was migrating it to support multiple Snowflake accounts per team. The tables were keyed in a way that locked each team to one account, and supporting more meant a zero-downtime primary key migration shipped across four sequential PRs. The follow-up was porting queries onto the new keys, rebuilding the admin UI for multi-account configuration, and adding an in-chat picker so chats with multiple accounts don't silently bind to the first one.
+A surprisingly involved piece of the Snowflake-v0 integration was supporting multiple Snowflake accounts per team. Our integration tables were keyed in a way that locked each team to one account, and supporting more meant a zero-downtime primary key migration shipped across multiple sequential PRs. The follow-up was porting queries onto the new keys, rebuilding the platform for multi-account configuration, and adding utility so chats with multiple accounts were still backwards compatible.
 
 ### Deployment
 
-Toward the end of my internship, I migrated app deployments off REST API polling onto the Snowflake CLI's native deployment flow with auto-generated configurations. Along the way I fixed a long tail of smaller issues: an OAuth scope bug breaking the connect flow, popovers blocking the entire page, soft-deleting on token expiry so chats don't lose their integration link, and a variety of bugs across the v0 integration pipeline.
-
-## Incident Response
-
-Throughout my the internship I worked on around half a dozen production incidents, primary on a few of them. Most were billing or auth flavored: race conditions in signup flows, users getting charged but not upgraded, scope-loading bugs that dropped people into broken sessions. Some were straightforward, some took days of digging.
-
-One of the more memorable incidents was one of my own doing. I had shipped a new discount flow for a recent launch and the PR had a few people working on it in parallel, and a regression slipped through that broke how subscriptions got provisioned. Users were being invoiced by Stripe without actually being upgraded to their plans. The next day was a long one: cross-referencing Stripe and our internal invoice records to find every affected user, tracing the regression back to a cache addition in the modified signup flow, coordinating with the finance team on refunds, and reaching out to affected users to make them whole with restored subscriptions and credits. While there was a lot to learn in debugging on a time crunch throughout these incidents, the customer-facing side of an outage was equally interesting, especially much of the actual work happens after the fix has already shipped.
-
-## Enterprise
-
-In late March, I moved to the v0 Enterprise team to learn more of the customer-facing engineering work. Each project typically started as a specific ask from a specific customer, but the work generalized across future enterprise contracts. This work included administrative settings, permission management, resolving issues with company browsers and VPNs, SSO bugs, and fixing security vulnerabilities for contractual compliance work.
+Toward the end of my internship, I migrated app deployments off REST API polling onto the Snowflake CLI's native deployment flow with auto-generated configurations. Along the way I fixed a long tail of smaller issues: OAuth scope bugs, popovers blocking the entire page, soft-deleting tokens on expiry so chats don't lose their integration link, and a variety of bugs across the v0 integration pipeline.
 
 ## Other Things
 
-Outside of my core v0 work, I worked on a few few smaller projects:
+With the goal of experiencing more of the FTE experience, I worked on around half a dozen production incidents, primary on a few of them. Most were billing or auth flavored: race conditions in signup flows, users getting charged but not upgraded, scope-loading bugs that dropped people into broken sessions. Some were straightforward, some took days of digging.
 
-1. The v0 changelog bot which automatically scanned all PRs in the v0 codebase, classified them as public or internal based on diffs, generated MDX content for our public changelog, and requested approval on Slack. This led to us automatically publishing a daily changelog of all our ships, without requiring someone to manually draft our dozens of daily updates.
+I also joined the Enterprise team to take over more FDE-adjacent responsibilities to learn more of the customer-facing engineering work. Each project typically started as a specific ask from a specific customer, but the work generalized across future enterprise contracts. This work included administrative settings, permission management, resolving issues with company browsers and VPNs, SSO bugs, and fixing security vulnerabilities for contractual compliance work.
+
+Outside of my core v0 work, I also worked on a few few smaller projects:
+
+1. The v0 changelog bot, which automatically scanned all PRs in the v0 codebase, classified them as public or internal based on diffs, generated MDX content for our public changelog, and requested approval on Slack. This led to us automatically publishing a daily changelog of all our ships, without requiring someone to manually draft our dozens of daily updates.
 
 2. The v0 MCP route explorer, which let users see all routes from their Next.js app directly in the VM panel's URL bar. The bigger lift was the underlying VM MCP client infrastructure, which abstracted away MCP infra within our sandboxes.
 
-3. The VM size limit issue which was a deployment-blocker: dozens of serverless functions had blown past the 250 MB uncompressed limit. The fix was excluding unnecessary binaries from the function trace and converting static database imports to dynamic ones so the file tracer wouldn't pull the full database engine into routes that never used it. Build times dropped by about a minute.
-
-<FullWidthImage src="/projects/images/vercel-team.webp" alt="v0 team polaroid" />
+3. Improving v0 builds and deployment soeeds when dozens of serverless functions had blown past the 250 MB uncompressed limit. My primary fix was excluding unnecessary binaries from the function trace and converting static database imports to dynamic ones so the file tracer wouldn't pull the full database engine into routes that never used it. Build times dropped by about a minute.

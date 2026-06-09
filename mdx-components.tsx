@@ -8,6 +8,7 @@ import {
   VisionIcon,
   EmotionIcon,
 } from "@/components/MDX/FeatureGrid";
+import { V0AutoConstraints } from "@/components/MDX/V0AutoConstraints";
 
 function slugify(children: ReactNode): string {
   const text = typeof children === "string"
@@ -121,5 +122,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     VoiceIcon,
     VisionIcon,
     EmotionIcon,
+    V0AutoConstraints,
   };
 }
