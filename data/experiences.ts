@@ -4,16 +4,47 @@ export const experiences: Experience[] = [
   {
     id: "vercel",
     title: "v0, Vercel",
-    siteUrl: "https://v0.dev",
+    siteUrl: "https://v0.app",
     timeline: "Winter 2026, San Francisco",
     overview:
-      "One of the largest AI coding products on the internet, used by millions of developers, designers, and founders to ship full-stack web apps through a chat interface.",
+      "I joined v0 as an Engineering Intern in my freshman year, working across enterprise, billing, model routing, and more",
     associatedProjectIds: [],
     team: [
       { name: "Max Leiter", href: "https://maxleiter.com/" },
       { name: "Bani Singh", href: "https://www.banisingh.com/" },
-      { name: "Gaspar Garcia" },
+      {
+        name: "Zeb Hermann",
+        href: "https://www.linkedin.com/in/peterzebhermann/",
+      },
+      { name: "Fernando Rojo", href: "https://fernandorojo.co/" },
+      {
+        name: "Gaspar Garcia",
+        href: "https://www.linkedin.com/in/gaspargarcia/",
+      },
+      {
+        name: "Nicolas Montone",
+        href: "https://nicolasmontone.com/",
+      },
+      {
+        name: "Alex Grover",
+        href: "https://www.linkedin.com/in/alex-grover/",
+      },
+      {
+        name: "Rickey McGregor",
+        href: "https://www.linkedin.com/in/rickey-mcgregor/",
+      },
     ],
+  },
+  {
+    id: "intellect",
+    title: "Intellect",
+    siteUrl: "https://dashboard.kevinjosethomas.com",
+    timeline: "Project, 2026",
+    overview:
+      "A personal analytics dashboard that pulls my sleep, work, workouts, spending, and time with people into one place, fully automated end to end.",
+    associatedProjectIds: ["analytics"],
+    team: [],
+    tools: ["Google Apps Script", "Next.js", "Recharts"],
   },
   {
     id: "kscale",
@@ -58,9 +89,7 @@ export const experiences: Experience[] = [
     overview:
       "Minecraft server listing platform that served 300,000+ users and connected 200+ servers to 20,000 new players.",
     associatedProjectIds: ["minecraft"],
-    team: [
-      { name: "Milo Weinberg", href: "https://github.com/iapetus-11" },
-    ],
+    team: [{ name: "Milo Weinberg", href: "https://github.com/iapetus-11" }],
   },
   {
     id: "valorant",

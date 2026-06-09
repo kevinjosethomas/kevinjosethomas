@@ -9,6 +9,7 @@ import {
   EmotionIcon,
 } from "@/components/MDX/FeatureGrid";
 import { V0AutoConstraints } from "@/components/MDX/V0AutoConstraints";
+import { ZoomableImage } from "@/components/MDX/ZoomableImage";
 
 function slugify(children: ReactNode): string {
   const text = typeof children === "string"
@@ -95,9 +96,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     hr: () => <hr className="border-border my-4 border-t" />,
-    img: (props) => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img className="my-4 h-56 w-auto shrink-0 rounded-lg object-cover" alt="" {...props} />
+    img: ({ src, alt }) => (
+      <ZoomableImage
+        src={src as string}
+        alt={(alt as string) ?? ""}
+        className="my-4 h-56 w-auto shrink-0 rounded-lg object-cover"
+      />
     ),
     ImageRow: ({ children }: { children: React.ReactNode }) => (
       <div className="mt-12 mb-2 md:-mr-[calc((100vw-720px)/2-3rem)]">
@@ -107,13 +111,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </div>
     ),
     FullWidthImage: ({ src, alt }: { src: string; alt: string }) => (
-      <div className="my-12">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+      <div className="my-12 lg:-mx-24 xl:-mx-40">
+        <ZoomableImage
           src={src}
           alt={alt}
           className="block w-full select-none rounded-lg"
-          draggable={false}
         />
       </div>
     ),

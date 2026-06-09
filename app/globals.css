@@ -50,6 +50,17 @@ body {
   font-weight: 600;
 }
 
+.prose-content li {
+  color: #aaaaaa;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.prose-content ul,
+.prose-content ol {
+  margin-top: 0.5rem;
+}
+
 .prose-content a {
   color: #ffffff;
   text-decoration: underline;
