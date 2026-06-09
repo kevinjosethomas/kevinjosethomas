@@ -55,9 +55,6 @@ const WORKOUT_WORKSHEET_ID = parseInt(
   process.env.WORKOUT_WORKSHEET_ID as string,
 );
 const MONEY_WORKSHEET_ID = parseInt(process.env.MONEY_WORKSHEET_ID as string);
-const SCREENTIME_WORKSHEET_ID = parseInt(
-  process.env.SCREENTIME_WORKSHEET_ID as string,
-);
 
 type SheetRow = Record<string, unknown>;
 
@@ -151,14 +148,6 @@ export type MoneyData = {
   cad: string;
   tag: string;
   merchant: string;
-};
-
-export type ScreenTimeData = {
-  date: string;
-  app: string;
-  duration: string;
-  category: string;
-  type: string;
 };
 
 export async function fetchBothSheets(limit = 15): Promise<{
@@ -270,23 +259,6 @@ export async function fetchMoney(limit?: number): Promise<MoneyData[]> {
     const normalized = (Math.abs(raw) / medianValue) * sign;
     return { ...row, cad: normalized.toFixed(2) };
   });
-}
-
-export async function fetchScreenTime(
-  limit?: number,
-): Promise<ScreenTimeData[]> {
-  const rows = await fetchSheetRows({
-    worksheetId: SCREENTIME_WORKSHEET_ID,
-    limit,
-  });
-
-  return rows.map((row) => ({
-    date: (row.Date as string) || "",
-    app: (row["App / Website"] as string) || "",
-    duration: (row.Duration as string) || "",
-    category: (row.Category as string) || "",
-    type: (row.Type as string) || "",
-  }));
 }
 
 export const sheetScopes = REQUIRED_SCOPES;

@@ -3,11 +3,11 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import type { ProjectTimeData } from "@/lib/work";
 import { PROJECT_COLORS, CHART_COLORS } from "@/lib/colors";
+import { formatProjectName } from "@/lib/project-names";
 
 type ProejctsPieChartProps = {
   projectTotals: ProjectTimeData;
   sleepMinutes?: number;
-  screenMinutes?: number;
 };
 
 type TooltipPayload = {
@@ -37,7 +37,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 
     return (
       <div className="border-border flex flex-col gap-1 border bg-black px-3 py-2 text-sm">
-        <p className="text-secondary text-xs">{name}</p>
+        <p className="text-secondary text-xs">{formatProjectName(name)}</p>
         <div className="flex items-center gap-2">
           <p className="text-xs font-medium">
             {hours}h {mins}m
@@ -53,7 +53,6 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 export default function ProjectsPieChart({
   projectTotals,
   sleepMinutes = 0,
-  screenMinutes = 0,
 }: ProejctsPieChartProps) {
   const totalMinutes = Object.values(projectTotals).reduce(
     (sum, minutes) => sum + minutes,
@@ -158,7 +157,7 @@ export default function ProjectsPieChart({
                     fontSize={12}
                     opacity={0.7}
                   >
-                    {`${name} ${(percent * 100).toFixed(0)}%`}
+                    {`${formatProjectName(name)} ${(percent * 100).toFixed(0)}%`}
                   </text>
                 );
               }}
@@ -176,7 +175,7 @@ export default function ProjectsPieChart({
           </PieChart>
         </ResponsiveContainer>
       </div>
-      <div className="flex h-[140px] flex-col gap-2 px-4 py-3">
+      <div className="flex flex-col gap-2 px-4 py-3">
         <p>Time spent</p>
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between">
@@ -189,13 +188,6 @@ export default function ProjectsPieChart({
             <p className="text-secondary text-sm">Asleep</p>
             <p className="text-sm font-medium">
               {Math.floor(sleepMinutes / 60)}h {Math.round(sleepMinutes % 60)}m
-            </p>
-          </div>
-          <div className="flex items-center justify-between">
-            <p className="text-secondary text-sm">Screen Time</p>
-            <p className="text-sm font-medium">
-              {Math.floor(screenMinutes / 60)}h {Math.round(screenMinutes % 60)}
-              m
             </p>
           </div>
         </div>

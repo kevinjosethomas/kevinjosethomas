@@ -27,38 +27,14 @@ type CustomTooltipProps = {
     payload?: {
       date?: string;
       score?: string;
-      rawRating?: number;
     };
   }>;
 };
-
-function getRatingLabel(rating: number): string {
-  const roundedRating = Math.round(rating);
-  switch (roundedRating) {
-    case 1:
-      return "Very Unpleasant Day";
-    case 2:
-      return "Unpleasant Day";
-    case 3:
-      return "Slightly Unpleasant Day";
-    case 4:
-      return "Neutral Day";
-    case 5:
-      return "Slightly Pleasant Day";
-    case 6:
-      return "Pleasant Day";
-    case 7:
-      return "Very Pleasant Day";
-    default:
-      return "";
-  }
-}
 
 function CustomTooltip({ active, payload }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     const date = payload[0]?.payload?.date || "";
     const score = payload[0]?.payload?.score || "";
-    const rawRating = payload[0]?.payload?.rawRating;
 
     return (
       <div className="border-border flex flex-col border bg-black px-3 py-2 text-sm">
@@ -88,11 +64,6 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
             </div>
           );
         })}
-        {rawRating !== undefined && rawRating > 0 && (
-          <div className="-mx-3 mt-2 border-t border-white/10 px-3 pt-2">
-            <p className="text-xs font-medium">{getRatingLabel(rawRating)}</p>
-          </div>
-        )}
       </div>
     );
   }

@@ -21,6 +21,8 @@ export const SLEEP_COLORS = {
 
 // Project-specific colors
 export const PROJECT_COLORS: Record<string, string> = {
+  "Prime Intellect": "#B8A8D8",
+  "prime intellect": "#B8A8D8",
   "K-Scale": "#C76F50",
   CSSLab: "#5F88C9",
   Scrapyard: "#D1C179",
@@ -66,5 +68,5 @@ export const WORKOUT_COLORS: Record<string, string> = {
   Soccer: "#a87878",
   Ultimate: "#9890a8",
   Trek: "#687888",
-  "No Data": "#0f0f0f",
+  "No Data": "#687888",
 };

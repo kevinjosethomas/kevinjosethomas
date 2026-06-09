@@ -9,12 +9,11 @@ import {
   Tooltip,
 } from "recharts";
 import type { DailyWorkData } from "@/lib/work";
-import type { DailyRatingData } from "@/lib/analytics-data";
 import { PROJECT_COLORS, CHART_COLORS } from "@/lib/colors";
+import { formatProjectName } from "@/lib/project-names";
 
 type ProjectsChartProps = {
   data: DailyWorkData[];
-  ratingData: DailyRatingData[];
   days?: number;
   todayTimestamp: number;
 };
@@ -27,7 +26,7 @@ type CustomTooltipProps = {
     color: string;
     name: string;
     payload?: {
-      rawRating?: number;
+      date?: string;
     };
   }>;
   label?: string;
@@ -38,31 +37,8 @@ type ChartDataPoint = {
   index: number;
   date: string;
   day: string;
-  rawRating: number;
   [key: string]: number | string;
 };
-
-function getRatingLabel(rating: number): string {
-  const roundedRating = Math.round(rating);
-  switch (roundedRating) {
-    case 1:
-      return "Very Unpleasant Day";
-    case 2:
-      return "Unpleasant Day";
-    case 3:
-      return "Slightly Unpleasant Day";
-    case 4:
-      return "Neutral Day";
-    case 5:
-      return "Slightly Pleasant Day";
-    case 6:
-      return "Pleasant Day";
-    case 7:
-      return "Very Pleasant Day";
-    default:
-      return "";
-  }
-}
 
 function CustomTooltip({ active, payload, colorMap }: CustomTooltipProps) {
   if (active && payload && payload.length) {
@@ -73,14 +49,13 @@ function CustomTooltip({ active, payload, colorMap }: CustomTooltipProps) {
     const totalMins = Math.round(totalMinutes % 60);
 
     const firstPayload = payload[0] as {
-      payload?: { date?: string; rawRating?: number };
+      payload?: { date?: string };
       value: number;
       dataKey: string;
       color: string;
       name: string;
     };
     const fullDate = firstPayload?.payload?.date || "";
-    const rawRating = firstPayload?.payload?.rawRating;
     const dateParts = fullDate.split(",");
     const dayOfWeek = dateParts[0]?.trim() || "";
     const monthDay = dateParts[1]?.trim() || "";
@@ -112,18 +87,15 @@ function CustomTooltip({ active, payload, colorMap }: CustomTooltipProps) {
                 className="h-2 w-2"
                 style={{ backgroundColor: projectColor }}
               />
-              <p className="text-secondary text-xs">{entry.name}:</p>
+              <p className="text-secondary text-xs">
+                {formatProjectName(entry.name)}:
+              </p>
               <p className="text-xs font-medium">
                 {hours}h {mins}m
               </p>
             </div>
           );
         })}
-        {rawRating !== undefined && rawRating > 0 && (
-          <div className="-mx-3 mt-2 border-t border-white/10 px-3 pt-2">
-            <p className="text-xs font-medium">{getRatingLabel(rawRating)}</p>
-          </div>
-        )}
       </div>
     );
   }
@@ -155,7 +127,6 @@ function formatDateKey(date: Date): string {
 
 export default function ProjectsChart({
   data,
-  ratingData,
   days = 7,
   todayTimestamp,
 }: ProjectsChartProps) {
@@ -181,11 +152,6 @@ export default function ProjectsChart({
     }
   }
   allDates.reverse();
-
-  const ratingMap = new Map<string, number>();
-  ratingData.forEach((d) => {
-    ratingMap.set(d.date, d.rating);
-  });
 
   const projectTotals = new Map<string, number>();
   allDates.forEach((date) => {
@@ -214,13 +180,10 @@ export default function ProjectsChart({
     const year = dateParts[2]?.trim();
     const formattedDate = `${dayOfWeek}, ${dateStr}, ${year}`;
 
-    const rating = ratingMap.get(dateKey) || 0;
-
     const dataPoint: ChartDataPoint = {
       index,
       date: formattedDate,
       day: dayOfWeek.slice(0, 3),
-      rawRating: rating,
     };
 
     projectArray.forEach((project) => {
@@ -240,14 +203,17 @@ export default function ProjectsChart({
   const avgMins = Math.round(avgWorkMinutes % 60);
 
   const colorMap: Record<string, string> = {};
+  const gradientIdMap: Record<string, string> = {};
   let fallbackIdx = 0;
-  projectArray.forEach((project) => {
+  projectArray.forEach((project, index) => {
     if (PROJECT_COLORS[project]) {
       colorMap[project] = PROJECT_COLORS[project];
     } else {
       colorMap[project] = CHART_COLORS[fallbackIdx % CHART_COLORS.length];
       fallbackIdx++;
     }
+    gradientIdMap[project] =
+      `work-gradient-${index}-${project.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
   });
 
   return (
@@ -264,6 +230,35 @@ export default function ProjectsChart({
             data={chartData}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
+            <defs>
+              {projectArray.map((project) => (
+                <linearGradient
+                  key={project}
+                  id={gradientIdMap[project]}
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                  gradientUnits="objectBoundingBox"
+                >
+                  <stop
+                    offset="0%"
+                    stopColor={colorMap[project]}
+                    stopOpacity={0.78}
+                  />
+                  <stop
+                    offset="65%"
+                    stopColor={colorMap[project]}
+                    stopOpacity={0.48}
+                  />
+                  <stop
+                    offset="100%"
+                    stopColor={colorMap[project]}
+                    stopOpacity={0.3}
+                  />
+                </linearGradient>
+              ))}
+            </defs>
             <XAxis dataKey="index" hide />
             <YAxis
               tickCount={6}
@@ -282,8 +277,8 @@ export default function ProjectsChart({
                 type="linear"
                 dataKey={project}
                 stackId="1"
-                fill={colorMap[project]}
-                fillOpacity={0.8}
+                fill={`url(#${gradientIdMap[project]})`}
+                fillOpacity={1}
                 strokeWidth={0}
                 isAnimationActive={false}
                 activeDot={false}
@@ -305,7 +300,7 @@ export default function ProjectsChart({
                 style={{ backgroundColor: colorMap[project] }}
               />
               <div className="flex flex-col">
-                <p className="text-sm">{project}</p>
+                <p className="text-sm">{formatProjectName(project)}</p>
                 <p className="text-secondary text-xs">
                   {hours}h {mins}m
                 </p>

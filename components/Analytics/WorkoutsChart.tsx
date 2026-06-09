@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import type { WeeklySeriesData } from "@/lib/analytics-data";
-import { WORKOUT_COLORS } from "@/lib/colors";
+import { CHART_COLORS, WORKOUT_COLORS } from "@/lib/colors";
 
 type WorkoutsChartProps = {
   data: WeeklySeriesData[];
@@ -111,6 +111,15 @@ export default function WorkoutsChart({
   const avgMins = Math.round(avgMinutes % 60);
 
   const workoutTypesArray = Array.from(workoutTypes).sort();
+  let fallbackIdx = 0;
+  const workoutColorMap = Object.fromEntries(
+    workoutTypesArray.map((type) => {
+      const color =
+        WORKOUT_COLORS[type] ||
+        CHART_COLORS[fallbackIdx++ % CHART_COLORS.length];
+      return [type, color];
+    }),
+  );
 
   return (
     <div className="flex h-full flex-col">
@@ -138,7 +147,7 @@ export default function WorkoutsChart({
                 key={type}
                 dataKey={type}
                 stackId="workout"
-                fill={WORKOUT_COLORS[type] || WORKOUT_COLORS.Other}
+                fill={workoutColorMap[type]}
                 fillOpacity={0.8}
                 isAnimationActive={false}
               />

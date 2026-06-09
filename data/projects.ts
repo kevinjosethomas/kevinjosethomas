@@ -15,9 +15,9 @@ export const projects: Project[] = [
     id: "analytics",
     name: "Intellect",
     description:
-      "A personal analytics dashboard tracking my sleep, screen time, workouts, and spending in real time, sourced from a Google Sheet.",
+      "A personal analytics dashboard tracking my sleep, workouts, and spending in real time, sourced from a Google Sheet.",
     date: "2026",
-    href: "/analytics",
+    href: "/work/intellect",
     image: "/projects/dashboard.webp",
     tags: ["Engineering"],
   },

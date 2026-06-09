@@ -1,9 +1,8 @@
-import type { OverviewData, SleepData, ScreenTimeData, WorkoutData, MoneyData } from "@/lib/sheets";
-
-export type DailyRatingData = {
-  date: string;
-  rating: number;
-};
+import type {
+  SleepData,
+  WorkoutData,
+  MoneyData,
+} from "@/lib/sheets";
 
 export type DailySleepAggregate = {
   index: number;
@@ -13,13 +12,6 @@ export type DailySleepAggregate = {
   deep: number;
   light: number;
   score: string;
-  rawRating: number;
-};
-
-export type DailyScreenTimeAggregate = {
-  date: string;
-  category: string;
-  minutes: number;
 };
 
 export type WeeklySeriesData = {
@@ -83,7 +75,7 @@ function formatDateKey(date: Date): string {
   return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 }
 
-function parseSheetDate(dateStr: string, today: Date): Date | null {
+export function parseSheetDate(dateStr: string, today: Date): Date | null {
   try {
     const parts = dateStr.split(",").map((part) => part.trim());
     if (parts.length < 2) return null;
@@ -135,24 +127,36 @@ function getWeekLabel(weekKey: string): string {
   return `${formatDate(startOfWeek)} - ${formatDate(endOfWeek)}`;
 }
 
-export function aggregateRatings(overviewData: OverviewData[]): DailyRatingData[] {
-  return overviewData
-    .map((entry) => ({
-      date: entry.date,
-      rating: parseFloat(entry.r),
-    }))
-    .filter((entry) => entry.date && !Number.isNaN(entry.rating));
+// Drops rows whose date is newer than the cutoff. Dates are parsed against the
+// real `referenceToday` so year inference stays correct. Rows we can't parse are
+// dropped so public analytics never fail open.
+export function filterByCutoff<T extends { date: string }>(
+  rows: T[],
+  cutoff: Date,
+  referenceToday: Date,
+): T[] {
+  return filterByDateRange(rows, undefined, cutoff, referenceToday);
 }
 
-export function aggregateSleepData(
-  sleepData: SleepData[],
-  overviewData: OverviewData[],
-): DailySleepAggregate[] {
-  const ratingMap = new Map<string, number>();
-  for (const entry of aggregateRatings(overviewData)) {
-    ratingMap.set(entry.date, entry.rating);
-  }
+export function filterByDateRange<T extends { date: string }>(
+  rows: T[],
+  start: Date | undefined,
+  end: Date,
+  referenceToday: Date,
+): T[] {
+  const startTime = start?.getTime();
+  const endTime = end.getTime();
+  return rows.filter((row) => {
+    if (!row.date) return false;
+    const parsed = parseSheetDate(row.date, referenceToday);
+    if (!parsed) return false;
+    const time = parsed.getTime();
+    if (startTime !== undefined && time < startTime) return false;
+    return time <= endTime;
+  });
+}
 
+export function aggregateSleepData(sleepData: SleepData[]): DailySleepAggregate[] {
   return sleepData.map((entry, index) => {
     const total = parseTimeToMinutes(entry.time);
     const rem = parseTimeToMinutes(entry.rem);
@@ -167,36 +171,8 @@ export function aggregateSleepData(
       deep,
       light,
       score: entry.score,
-      rawRating: ratingMap.get(entry.date) || 0,
     };
   });
-}
-
-export function aggregateScreenTimeData(
-  screenTimeData: ScreenTimeData[],
-): DailyScreenTimeAggregate[] {
-  const totals = new Map<string, DailyScreenTimeAggregate>();
-
-  for (const entry of screenTimeData) {
-    if (!entry.date || !entry.duration) continue;
-
-    const category = entry.category || "Other";
-    const key = `${entry.date}\u0000${category}`;
-    const existing = totals.get(key);
-    const minutes = parseTimeToMinutes(entry.duration);
-
-    if (existing) {
-      existing.minutes += minutes;
-    } else {
-      totals.set(key, {
-        date: entry.date,
-        category,
-        minutes,
-      });
-    }
-  }
-
-  return Array.from(totals.values());
 }
 
 export function aggregateWorkoutData(
@@ -270,27 +246,6 @@ export function aggregateMoneyData(
   return Array.from(weeklyData.values()).sort(
     (a, b) => new Date(a.week).getTime() - new Date(b.week).getTime(),
   );
-}
-
-export function totalScreenTimeMinutes(
-  data: DailyScreenTimeAggregate[],
-  days: number,
-): number {
-  const dates = new Set<string>();
-  let total = 0;
-
-  for (const entry of data) {
-    if (!dates.has(entry.date)) {
-      if (dates.size >= days) break;
-      dates.add(entry.date);
-    }
-
-    if (dates.has(entry.date)) {
-      total += entry.minutes;
-    }
-  }
-
-  return total;
 }
 
 export function totalSleepMinutes(
