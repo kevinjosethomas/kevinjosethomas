@@ -7,7 +7,9 @@ import ProjectCard from "@/components/Common/ProjectCard";
 const TAGS: ProjectTag[] = ["Engineering", "Research", "Community"];
 
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
-  const [activeTags, setActiveTags] = useState<Set<ProjectTag>>(new Set());
+  const [activeTags, setActiveTags] = useState<Set<ProjectTag>>(
+    new Set(["Engineering", "Research"]),
+  );
 
   const toggleTag = (tag: ProjectTag) => {
     setActiveTags((prev) => {
@@ -24,10 +26,8 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
       : projects;
 
   return (
-    <div className="flex w-full flex-col items-start justify-start p-6 md:p-16">
-      <div className="mb-8 flex w-full items-center gap-3">
-        <h3 className="text-2xl font-semibold">Projects</h3>
-        <div className="flex-1" />
+    <div className="flex w-full flex-col items-start justify-start px-6 pb-6 md:px-0 md:pb-0">
+      <div className="mb-8 flex w-full justify-center md:justify-end">
         <div className="flex items-center gap-4">
           {TAGS.map((tag) => (
             <button
@@ -45,15 +45,9 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
         </div>
       </div>
 
-      <div className="flex w-full flex-col gap-4 md:hidden">
+      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         {filtered.map((project) => (
-          <ProjectCard key={project.id} project={project} compact showYear />
-        ))}
-      </div>
-
-      <div className="hidden w-full grid-cols-4 gap-4 md:grid">
-        {filtered.map((project) => (
-          <ProjectCard key={project.id} project={project} compact showYear />
+          <ProjectCard key={project.id} project={project} imageOnly />
         ))}
       </div>
     </div>

@@ -58,34 +58,36 @@ export default function ExperienceLayout({
       <HashScroll />
 
       {/* Minimal floating nav */}
-      <nav className="fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-6 py-5 md:px-10">
-        <BackButton />
-        <div className="flex items-center gap-4">
-          {links && links.length > 0 ? (
-            links.map((link) => (
+      <nav className="fixed top-0 right-0 left-0 z-50">
+        <div className="mx-auto flex w-full max-w-[720px] items-center justify-between px-6 py-5 md:px-0">
+          <BackButton />
+          <div className="flex items-center gap-4">
+            {links && links.length > 0 ? (
+              links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-secondary group flex items-center gap-1.5 text-sm backdrop-blur-sm transition-colors hover:text-white"
+                >
+                  <LinkIcon type={link.icon} />
+                  <span className="hidden sm:inline">{link.label}</span>
+                  <ArrowIcon className="h-3 w-3" />
+                </a>
+              ))
+            ) : (
               <a
-                key={link.href}
-                href={link.href}
+                href={siteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-secondary group flex items-center gap-1.5 text-sm backdrop-blur-sm transition-colors hover:text-white"
               >
-                <LinkIcon type={link.icon} />
-                <span className="hidden sm:inline">{link.label}</span>
+                Website
                 <ArrowIcon className="h-3 w-3" />
               </a>
-            ))
-          ) : (
-            <a
-              href={siteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary group flex items-center gap-1.5 text-sm backdrop-blur-sm transition-colors hover:text-white"
-            >
-              Website
-              <ArrowIcon className="h-3 w-3" />
-            </a>
-          )}
+            )}
+          </div>
         </div>
       </nav>
 
