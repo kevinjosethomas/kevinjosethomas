@@ -12,15 +12,24 @@ export const projects: Project[] = [
     tags: ["Engineering"],
   },
   {
+    id: "analytics",
+    name: "Intellect",
+    description:
+      "A personal analytics dashboard tracking my sleep, screen time, workouts, and spending in real time, sourced from a Google Sheet.",
+    date: "2026",
+    href: "/analytics",
+    image: "/projects/dashboard.webp",
+    tags: ["Engineering"],
+  },
+  {
     id: "emx",
     name: "Emotional Matrix",
     description:
       "Multimodal emotion recognition system for humanoid robots using voice, vision, and language.",
     date: "2025",
     href: "/work/kscale#emotional-matrix",
-    image: "/projects/emx.webp",
+    image: "/projects/emx-wireframe.webp",
     tags: ["Engineering"],
-    wireframeImage: "/projects/emx-wireframe.webp",
     github: "https://github.com/kevinjosethomas/emx",
     images: [
       "/projects/images/emx-1.webp",
@@ -36,9 +45,8 @@ export const projects: Project[] = [
       "Python SDK wrapping a Rust robot OS for actuator control, scripted animations, and simulation.",
     date: "2025",
     href: "/work/kscale#kos-sdk",
-    image: "/projects/kos.webp",
+    image: "/projects/kos-wireframe.webp",
     tags: ["Engineering"],
-    wireframeImage: "/projects/kos-wireframe.webp",
     github: "https://github.com/kscalelabs/kos-zbot",
     images: [
       "/projects/images/kos-1.webp",

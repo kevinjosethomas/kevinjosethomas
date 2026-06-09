@@ -32,7 +32,6 @@ export interface Project {
   href: string;
   image: string;
   tags: ProjectTag[];
-  wireframeImage?: string;
   github?: string;
   website?: string;
   images?: string[];

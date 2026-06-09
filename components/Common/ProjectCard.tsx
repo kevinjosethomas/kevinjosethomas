@@ -19,8 +19,6 @@ export default function ProjectCard({
   compact = false,
   showYear = false,
 }: ProjectCardProps) {
-  const hasWireframe = !!project.wireframeImage;
-
   return (
     <Link href={project.href} className="group block w-full">
       <div className={`border-border flex w-full flex-col border transition-colors hover:border-white/20 ${compact ? "" : "md:border-r-0"}`}>
@@ -31,41 +29,17 @@ export default function ProjectCard({
               style={{ opacity: dark / 100 }}
             />
           )}
-          {hasWireframe ? (
-            <>
-              <Image
-                className="h-full w-full object-cover select-none"
-                src={project.wireframeImage!}
-                alt={`${project.name} wireframe`}
-                width={346}
-                height={225}
-                draggable={false}
-              />
-              <Image
-                className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 ease-out select-none group-hover:opacity-100"
-                src={project.image}
-                alt={project.name}
-                width={346}
-                height={225}
-                style={{
-                  filter: `saturate(${saturate}%)`,
-                }}
-                draggable={false}
-              />
-            </>
-          ) : (
-            <Image
-              className="h-full w-full object-cover transition-all duration-300 select-none group-hover:saturate-100!"
-              src={project.image}
-              alt={project.name}
-              width={346}
-              height={225}
-              style={{
-                filter: `saturate(${saturate}%)`,
-              }}
-              draggable={false}
-            />
-          )}
+          <Image
+            className="h-full w-full object-cover transition-all duration-300 select-none group-hover:saturate-100!"
+            src={project.image}
+            alt={project.name}
+            width={346}
+            height={225}
+            style={{
+              filter: `saturate(${saturate}%)`,
+            }}
+            draggable={false}
+          />
         </div>
         <div className={compact ? "flex flex-col gap-1 p-3" : "flex items-center justify-between p-4"}>
           {compact ? (

@@ -31,9 +31,9 @@ export default async function Home() {
     "v0",
     "emx",
     "maia",
+    "analytics",
     "kos",
     "asl",
-    "minecraft",
   ];
 
   const spotlightedProjects = spotlightedProjectIds.map(
