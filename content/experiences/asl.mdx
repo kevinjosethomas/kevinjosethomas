@@ -1,60 +1,187 @@
-My high school, Burnaby South, was home to the only Deaf high school in British Columbia. Having taken ASL for over three years, I saw firsthand how much communication between Deaf and hearing students still depended on typing on phones or waiting for interpreters. Most existing tools stopped at speech-to-text or fingerspelling and assumed the burden of translation lay on Deaf users. I wanted to build a two-way system that respected ASL as a complete language rather than a visual form of English-- allowing someone signing to be understood in spoken English, and someone speaking to be understood visually in ASL, without forcing either to switch languages.
+Back in 2024, during my last year of high school, I built a prototype for two-way translation between American Sign Language (ASL) and English. Most translation tools at the time were built under the misconception that ASL is just a visual form of English, offering little more than speech-to-text for the hearing person in the conversation. I wanted something that treated ASL as the complete language it is-- with its own syntax, morphology, and grammar-- and that worked in both directions:
+
+- **ASL Fingerspelling → English:** translated fingerspelling into written English, which was then spoken aloud-- removing the need for Deaf individuals to translate their thoughts into English and write them out.
+- **English → ASL:** translated spoken English into ASL signs, performed by an animated avatar-- removing the need for Deaf individuals to read written English and translate it into visual language.
+
+It never came close to capturing the full nuance of visual language, but it was designed to respect and preserve ASL as the primary language. I recorded a [full explanation of the project](https://youtu.be/uuPxMWQRoXc) and documented the technical details in a [paper on arXiv](https://arxiv.org/abs/2408.09311).
+
+> I built this as a hearing student with limited ASL proficiency, and my perspective as a hearing person is limited. My role was to listen carefully and integrate feedback from the Deaf community, and I did my best to approach the project with a mindset of learning and understanding rather than assuming. It would not have been possible without the active involvement and advice of Deaf individuals and ASL experts who generously shared their insights.
+
+## Motivation
+
+For over eight years, I had tried learning multiple languages, from Sanskrit and Spanish to Hindi and French, yet I could barely maintain a fluent conversation in any of them. When I moved to Vancouver in 2021, I joined Burnaby South Secondary School, which shares its campus with the British Columbia Secondary School for the Deaf (BCSD). That gave me the unique opportunity to study a new kind of language-- a visual language-- in high school.
+
+ASL wasn't like any of the other languages I had attempted to learn before: it wasn't just about words or pronunciation, but about learning to fully express yourself without the tools you typically use. Over three years, our ASL class showed me how much I took communication for granted, and helped me notice the many hurdles faced by the Deaf community in our hearing-centric society. From my very first week at Burnaby South, I kept having experiences that reminded me why we learn about Deaf culture and accessibility in ASL class. The [mission](#looking-back) at the end was ultimately what I hoped to achieve with this project.
+
+## Language
+
+Below, on the left is the typical flow of conversation between two people speaking the same language. On the right is the typical flow of a conversation between two individuals who speak different languages. This features either a tool that can translate between the two languages (Google Translate) or a person who knows both languages and serves as a translator. This is also an ASL interpreter's role in a typical conversation between a Deaf and hearing individual.
 
 <ImageRow>
+  <img
+    src="/projects/images/asl-lang-same.webp"
+    alt="Conversation flow between two people speaking the same language"
+  />
+  <img
+    src="/projects/images/asl-lang-diff.webp"
+    alt="Conversation flow between two people speaking different languages, with a translator in between"
+  />
+</ImageRow>
+
+In contrast, below is the typical flow of conversation between a Deaf and hearing individual when an interpreter is not present. The most commonly utilized process is writing/typing to communicate, or using a TTS/STT tool that assists the hearing individual.
+
+<ImageRow>
+  <img
+    src="/projects/images/asl-lang-typing.webp"
+    alt="Conversation flow between a Deaf and hearing individual without an interpreter, relying on writing and typing"
+  />
+</ImageRow>
+
+The idea that ASL is merely a visual representation of English is a widespread misconception. In reality, ASL is a distinct language with its own syntax, grammar, and cultural nuances that differ significantly from spoken English. Most direct translation tools, similar to the writing/typing process visualized above, were built without this understanding, failing to capture the depth of ASL communication. Worse, they placed an even larger burden on the Deaf individual, requiring them to accommodate and adapt to meet the needs of the hearing individual.
+
+While ASL signers do have a grasp of English, it is often incredibly hard to constantly translate thoughts from ASL into English, and vice-versa. Essentially, most of these translation tools simply transcribe text, and don't serve any real "translation" purpose. They were built to assist deafness as a disability, but not as a culture or as a language.
+
+On the left is a visual of the 5 fundamental parameters that define ASL, with some examples of each (there are hundreds!). On the right is an example of the grammatical difference between the same sentence in English and in ASL. I would recommend reading about [ASL Parameters](https://www.handspeak.com/learn/397/), and also about [ASL Gloss](https://www.handspeak.com/learn/3/) & [Grammar](https://www.handspeak.com/learn/37/).
+
+<ImageRow>
+  <img
+    src="/projects/images/asl-parameters.webp"
+    alt="The five fundamental parameters of ASL with examples"
+  />
+  <img
+    src="/projects/images/asl-gloss-grammar.webp"
+    alt="Grammatical difference between the same sentence in English and in ASL"
+  />
+</ImageRow>
+
+The goal of the project was to eliminate the extra steps that Deaf people have to take because of how hearing-centric our society is. Of the 4 extra steps visualized above, the tool eliminated 3 to a sufficient degree. Here is the new flow:
+
+<ImageRow>
+  <img
+    src="/projects/images/asl-lang-newflow.webp"
+    alt="Conversation flow between a Deaf and hearing individual using this project"
+  />
+</ImageRow>
+
+## Technology
+
+The project used computer vision, machine learning, and web animation to create a two-way ASL-English translation system. There were two main components:
+
+- **Receptive:** Ability to interpret fingerspelling and express as spoken English
+- **Expressive:** Ability to interpret spoken English and express as ASL signs
+
+### Receptive
+
+The receptive component focused on translating ASL fingerspelling into English. It involved three stages:
+
+1. **Detection:** Identifying and tracking hands within the frame
+2. **Classification:** Recognizing ASL alphabets with normalized points of the hand
+3. **Synthesis:** Synthesizing singular alphabets to reduce inaccuracies and form complete sentences
+
+This is what the overall flow looked like:
+
+<ImageRow>
+  <img
+    src="/projects/images/asl-receptive-inference.webp"
+    alt="Overall inference flow of the receptive pipeline"
+  />
   <img
     src="/projects/images/receptive-flow.webp"
-    alt="Fingerspell recognition pipeline"
-  />
-  <img
-    src="/projects/images/recognition-flow.webp"
-    alt="Recognition pipeline flow"
+    alt="A hand sign converted to landmarks and classified as the letter V"
   />
 </ImageRow>
 
-## Interpreting ASL
+#### Detection
 
-The receptive pipeline translates ASL fingerspelling into spoken English in real-time. The key decision was to not train on images directly-- a model trained on raw video frames would break the moment lighting, skin tone, background, or hand size changed. Instead, I used MediaPipe to extract 21 three-dimensional hand landmarks per frame. Each frame becomes a structured point cloud of 63 values, normalized relative to the hand's bounding box to remove bias from camera distance or hand size. This makes the model invariant to all the visual noise that would break an image classifier.
-
-### Models
-
-I preprocessed about 250,000 images from three Kaggle ASL datasets down to ~150,000 usable landmark arrays (after filtering frames where MediaPipe couldn't detect all 21 landmarks), and removed the dynamic letters J and Z since they require motion. I trained two classifiers: a custom 2D CNN with two convolutional blocks, dense layers, and dropout (99.7% validation accuracy), and a PointNet implementation that treats the landmarks as a 3D point cloud with permutation-invariant max pooling.
+This stage involved the real-time identification and tracking of hand movements and positions using the Google MediaPipe Hand Landmark model. The model captures 21 3D hand key points per frame, providing detailed information on hand orientation and finger position. It also runs entirely locally and doesn't require significant computing resources in a realtime setting. Below is an image of the 21 points detected by the MediaPipe Hand Landmark model.
 
 <ImageRow>
   <img
-    src="/projects/images/recognition-training.webp"
-    alt="Recognition training flow"
+    src="/projects/images/asl-detection-points.webp"
+    alt="The 21 hand landmarks detected by the MediaPipe Hand Landmark model"
   />
 </ImageRow>
 
-### Synthesis
+By using these points instead of images of hands (like I previously tried!), the classification process became significantly more powerful:
 
-Raw frame-by-frame classification is noisy: you get repeated letters, misclassifications from similar hand shapes, and no word boundaries. I built a synthesis layer on top of the classifier to make the output legible. The system requires temporal consistency across multiple consecutive frames before accepting a character, uses hand-crafted geometry rules to disambiguate commonly confused letters (A/T based on thumb position, D/I, F/W based on finger ordering), and detects word boundaries when the hand leaves the frame. Once a word is completed, a Neuspell BERT model runs asynchronously to correct spelling errors without blocking the capture loop.
+1. It wasn't affected by different backgrounds, hand sizes, skin tones and other factors that would make a typical image classification model significantly more incapable
+2. It only needed to process a set of 63 numbers (3 for each point!) for each frame instead of an entire image, making it significantly more efficient for real-time use
+3. It looked a lot cooler
+
+To ensure that the model wasn't affected by distance from the camera, I normalized each point to be relative to the bounds of the hand itself. This provided more standardized training data that helped increase accuracy and reliability.
+
+#### Classification
+
+Once hand landmarks were captured, the data was fed into a Keras PointNet model, which I trained on over 120,000 labelled images of ASL fingerspelling. PointNet is a deep learning model architecture developed with the intent of classifying 3D point clouds, similar to how the detected hands were now represented.
+
+The PointNet model classified the input data into one of the ASL alphabet signs (except for J and Z, which include movement of the hand to properly express). Below is a demonstration of the training process of the PointNet model.
 
 <ImageRow>
   <img
-    src="/projects/images/production-flow.webp"
-    alt="Pose retrieval infrastructure"
+    src="/projects/images/asl-classification-training.webp"
+    alt="Training process of the PointNet model"
   />
 </ImageRow>
 
-## Producing ASL
+I started out by downloading multiple ASL Fingerspell datasets from Kaggle: [One](https://www.kaggle.com/datasets/lexset/synthetic-asl-alphabet) [Two](https://www.kaggle.com/datasets/danrasband/asl-alphabet-test) [Three](https://www.kaggle.com/datasets/debashishsau/aslamerican-sign-language-aplhabet-dataset)
 
-The expressive pipeline goes the other direction: spoken English to ASL signing. This was harder because there's no large-scale dataset mapping English sentences to ASL pose sequences. I had to build the whole data pipeline from scratch.
+I used MediaPipe to identify hand landmarks on every image in the three datasets. Subsequently, I normalized the landmarks and stored the point clouds in NumPy files, creating a combined augmented dataset. Below is a visualized form of the point cloud dataset.
 
-### Pose Database
+<ImageRow>
+  <img
+    src="/projects/images/asl-pointcloud-dataset.webp"
+    alt="Visualized form of the point cloud dataset"
+  />
+</ImageRow>
 
-I scraped roughly 9,500 sign language videos from various sign language services, ran them through MediaPipe Pose and Hands to extract skeletal landmarks per frame, and stored each sign as a time-series animation of body and hand positions. Each sign's English label was embedded into a 384-dimensional vector space using MiniLM, and I stored everything-- embeddings, glosses, and pose sequences-- in PostgreSQL with pgvector for fast cosine similarity queries.
+Once I had the augmented dataset, I trained a PointNet model on it. I ended up training the model around 6 times, playing with parameters, mostly adjusting epoch count, batch size, and learning rate. Here is training information from the most accurate run:
 
-### Gloss Translation
+<ImageRow>
+  <img
+    src="/projects/images/asl-training-metrics.webp"
+    alt="Training and validation accuracy and loss of the most accurate model"
+  />
+  <img
+    src="/projects/images/asl-confusion-matrix.webp"
+    alt="Confusion matrix of the most accurate model"
+  />
+</ImageRow>
 
-ASL has its own grammar that differs significantly from English-- different word order, dropped articles, different verb conjugation. I used GPT-4o to translate spoken English into ASL gloss (a written representation of ASL signs), rearranging word order and dropping unnecessary words. Each gloss token is then embedded with MiniLM and queried against the pose database. If the cosine similarity passes a 0.70 threshold, the system retrieves and plays back the matching pose animation. If not, it falls back to fingerspelling the word letter by letter.
+As seen in the confusion matrix, similar fingerspelled alphabets like K-V, U-R and E-S were often misclassified for each other. This was expected and could have been improved with additional training data. There also seems to be an issue in the validation data, as seen in a sudden spike in validation loss in one of the epochs.
 
-### Avatar
+#### Synthesis
 
-The retrieved pose sequences are stitched together and rendered as a 2D signing avatar in real-time using Three.js. The avatar draws skeleton lines for limbs and hands with translucent fills for the torso and head. Pauses between signs are handled by holding the last frame for a configurable duration.
+The final stage synthesized the classified characters into coherent words and sentences. This involved error correction to adjust for common misrecognition, as well as contextual synthesis to form sentences based on the classified letters.
 
-## Interface
+First, the program used conditionals to differentiate between commonly misrecognized letters. For instance, the letters A-T-M-N-S were commonly mistaken for each other, which could be fixed by checking the relative positioning of certain key coordinates (like the thumb). After ensuring the classified letter was accurate, the program required the recognized letter to be demonstrated for multiple consecutive frames, ensuring the alphabet was properly recognized. It also made sure the same letter wasn't recognized more than two times consecutively, preventing each individual frame from adding a letter to the synthesized text. Finally, it used an LLM to synthesize the cleaned information into a meaningful sentence, applying grammatical rules to form sentences that were syntactically correct in English.
 
-The whole system is packaged as a Flask server with a WebSocket API, so the recognition and production modules can be accessed independently by any frontend. I built a Next.js client that shows the webcam stream with annotated fingerspelling on one side and the Three.js signing avatar on the other. Speech input comes from the browser's SpeechRecognition API with a 2-second silence debounce before sending to the server.
+### Expressive
 
-While the prototype worked well enough for real-time communication between Deaf and hearing students at my high school, it doesn't come close to capturing the full nuance of ASL-- facial expressions, non-manual signals, classifier predicates, and a lot more. But it was designed as a modular SDK that could be extended, and I applied it to a few follow-up projects including a Chrome extension for real-time ASL interpretation of YouTube videos. I also published the work as a [paper on arXiv](https://arxiv.org/abs/2408.09311).
+The expressive component focused on translating spoken English into ASL, visually represented through a 2D animated avatar using ThreeJS.
+
+To begin, I created a database of over 9000+ words and their corresponding ASL signs. Once again, I used MediaPipe's Pose and Hand Landmark Models to identify body points for each frame in videos of these signs. I also used the `all-MiniLM-L6-v2` model to create embeddings for each word, and stored all words, their corresponding embeddings, and their corresponding ASL sign point animations in a PostgreSQL database using `pgvector`. Although the database only had about 9500 words, using cosine similarity for semantic search drastically increased the effective word count by substituting contextually similar signs for certain words. Here is a demonstration of how the expressive aspect of the project worked:
+
+<ImageRow>
+  <img
+    src="/projects/images/asl-expressive-demo.webp"
+    alt="Flow of the expressive pipeline from speech transcription to avatar animation"
+  />
+</ImageRow>
+
+The interface began by using `react-speech-recognition` to transcribe spoken text into words (replaceable with OpenAI Whisper for more accuracy). When the speaker stopped speaking for a certain amount of time, it transmitted the transcription to the backend through websockets. The backend iterated through the words and created embeddings for each of them. For each word, it queried the database using the cosine similarity function to fetch the animation of the sign with the closest meaning to the spoken word. If there were no similar signs in the database, it generated a fingerspelling animation using the individual letters in the word. After fetching all the animation points, it transmitted them back to the client through websockets, where ThreeJS animated the points to control the 2D avatar that signed each word correspondingly.
+
+## Looking Back
+
+### Limitations
+
+- Of the four fundamental obstacles in ASL ⭤ English translation [visualized above](#language), the project only solved three to a sufficient degree. ASL signers still needed to fingerspell words to actually communicate information-- and fingerspelling only accounts for 25-30% of signed ASL
+- The receptive model was far from perfect, and could definitely have been improved with more training data and ML expertise
+- The expressive avatar didn't convey all five parameters of ASL, and was simply a stick figure that could be hard to comprehend
+
+### Vision
+
+My goal for the project changed as I progressed. When I initially started working on simply recognizing individual ASL alphabets, I did not expect to get very far, let alone develop something capable of sustaining two-way communication between ASL and English. Regardless, I had one main goal: once the project was sufficiently capable, I wanted to set up a desk or TV somewhere between the BCSD and Burnaby South hallways, or maybe even at the main entrance to our school. I hoped that students from BCSD and Burnaby South would stop by to talk to each other without a human interpreter assisting the conversation-- that even if the project was far from capturing all expressive aspects of ASL, the novelty of the fingerspell recognition and avatar visualization would bring some students together.
+
+As the project became more capable, the vision grew with it. I wanted to run a publicly accessible instance that anyone in the world could open in a browser and mess around with, drawing more attention to ASL translation and maybe encouraging more people to consider learning the language. I also wanted to modularize the code so the receptive and expressive halves could function by themselves, seeding other accessibility tools-- like a webcam client that overlays an ASL interpreter avatar onto meetings, or a browser extension that adds an ASL option to YouTube captions.
+
+Some of that ended up happening: the system was packaged as a modular SDK, and I later built a Chrome extension for real-time ASL interpretation of YouTube videos. The harder problems-- interpreting full signs rather than just fingerspelling (perhaps with RNNs/LSTMs, or by classifying against parameter databases like [ASL-LEX](https://asl-lex.org/)), and rigging a proper 3D model instead of a 2D stick figure-- remain open, and I hope the project encourages more people to develop viable accessibility technology.

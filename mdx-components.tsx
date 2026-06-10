@@ -50,6 +50,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </h3>
     ),
+    h4: ({ children, ...props }) => (
+      <h4
+        id={slugify(children)}
+        className="mt-6 text-lg font-semibold text-white/40 first:mt-0"
+        {...props}
+      >
+        {children}
+      </h4>
+    ),
     ul: (props) => <ul className="list-disc pl-6" {...props} />,
     ol: (props) => <ol className="list-decimal pl-6" {...props} />,
     li: (props) => (
