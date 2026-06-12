@@ -11,14 +11,17 @@ import {
   Dot,
 } from "recharts";
 import InfoTooltip from "./InfoTooltip";
+import type { DailyWorkData } from "@/lib/work";
 
-type DataPoint = {
-  date: string;
-  workScore: string;
+type WorkChartProps = {
+  data: DailyWorkData[] | null;
+  todayTimestamp: number;
 };
 
-type WorkScoreChartProps = {
-  data: DataPoint[];
+type ChartDataPoint = {
+  day: string;
+  minutes: number;
+  fullDate: string;
 };
 
 type CustomTooltipProps = {
@@ -38,12 +41,11 @@ type CustomTooltipProps = {
 
 function CustomTooltip({ active, payload, coordinate }: CustomTooltipProps) {
   if (active && payload && payload.length) {
-    const score = payload[0]?.value || 0;
+    const totalMinutes = payload[0]?.value || 0;
     const fullDate = payload[0]?.payload?.fullDate || "";
 
-    const hours = (score / 100) * 4;
-    const wholeHours = Math.floor(hours);
-    const minutes = Math.round((hours - wholeHours) * 60);
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = Math.round(totalMinutes % 60);
 
     let left = coordinate?.x;
     let top = coordinate?.y;
@@ -96,7 +98,7 @@ function CustomTooltip({ active, payload, coordinate }: CustomTooltipProps) {
       >
         <p className="text-secondary text-xs">{fullDate}</p>
         <p className="font-medium">
-          {wholeHours}h {minutes}m
+          {hours}h {minutes}m
         </p>
       </div>
     );
@@ -104,21 +106,52 @@ function CustomTooltip({ active, payload, coordinate }: CustomTooltipProps) {
   return null;
 }
 
-export default function WorkChart({ data }: WorkScoreChartProps) {
-  if (!data || data.length === 0) return null;
+function formatDateKey(date: Date): string {
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
-  const last7Days = data.slice(0, 7).reverse();
+  return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
 
-  const chartData = last7Days.map((d) => {
-    const dateParts = d.date.split(",");
-    const dayOfWeek = dateParts[0];
-    const dateStr = dateParts[1]?.trim();
-    const formattedDate = `${dayOfWeek}, ${dateStr}`;
+function formatDisplayDate(dateKey: string): string {
+  const dateParts = dateKey.split(",");
+  const dayOfWeek = dateParts[0]?.trim() || "";
+  const dateStr = dateParts[1]?.trim() || "";
+
+  return `${dayOfWeek}, ${dateStr}`;
+}
+
+export default function WorkChart({ data, todayTimestamp }: WorkChartProps) {
+  if (!data) return null;
+
+  const dataByDate = new Map(data.map((day) => [day.date, day]));
+  const today = new Date(todayTimestamp);
+  today.setHours(0, 0, 0, 0);
+
+  const chartData: ChartDataPoint[] = Array.from({ length: 7 }, (_, index) => {
+    const date = new Date(today);
+    date.setDate(today.getDate() - (6 - index));
+    const dateKey = formatDateKey(date);
+    const dayData = dataByDate.get(dateKey);
+    const dayOfWeek = dateKey.split(",")[0]?.trim() || "";
 
     return {
       day: dayOfWeek.slice(0, 3),
-      score: parseInt(d.workScore) || 0,
-      fullDate: formattedDate,
+      minutes: dayData?.totalMinutes || 0,
+      fullDate: formatDisplayDate(dateKey),
     };
   });
 
@@ -149,7 +182,7 @@ export default function WorkChart({ data }: WorkScoreChartProps) {
           />
           <Area
             type="linear"
-            dataKey="score"
+            dataKey="minutes"
             stroke="currentColor"
             strokeWidth={2}
             fill="url(#colorGradient)"

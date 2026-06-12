@@ -29,11 +29,13 @@ function parseTimeToMinutes(timeStr: string): number {
 
   const hourMatch = timeStr.match(/(\d+)h/);
   const minuteMatch = timeStr.match(/(\d+)m/);
+  const secondMatch = timeStr.match(/(\d+)s/);
 
   const hours = hourMatch ? parseInt(hourMatch[1], 10) : 0;
   const minutes = minuteMatch ? parseInt(minuteMatch[1], 10) : 0;
+  const seconds = secondMatch ? parseInt(secondMatch[1], 10) : 0;
 
-  return hours * 60 + minutes;
+  return hours * 60 + minutes + Math.round(seconds / 60);
 }
 
 function formatDate(date: Date): string {
