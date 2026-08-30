@@ -2,6 +2,18 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    id: "prime-agent",
+    name: "Prime Agent",
+    description:
+      "Open-source coding and research agent built around Recursive Language Models and the Continual Harness.",
+    date: "2026",
+    href: "/work/prime-intellect#prime-agent",
+    image: "/projects/images/prime-agent-cover.png",
+    tags: ["Engineering", "Research"],
+    github: "https://github.com/PrimeIntellect-ai/prime-agent",
+    website: "https://www.primeintellect.ai/blog/prime-agent",
+  },
+  {
     id: "v0",
     name: "v0.app",
     description:

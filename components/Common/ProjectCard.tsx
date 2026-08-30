@@ -49,7 +49,7 @@ export default function ProjectCard({
           <Image
             className={
               imageOnly
-                ? "h-auto w-full transition-all duration-300 select-none group-hover:saturate-100!"
+                ? "h-auto w-full opacity-70 transition-all duration-300 select-none group-hover:opacity-100 group-hover:saturate-100!"
                 : "h-full w-full object-cover transition-all duration-300 select-none group-hover:saturate-100!"
             }
             src={project.image}

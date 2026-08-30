@@ -2,6 +2,37 @@ import type { Experience } from "@/types";
 
 export const experiences: Experience[] = [
   {
+    id: "prime-intellect",
+    title: "Prime Intellect",
+    siteUrl: "https://www.primeintellect.ai",
+    links: [
+      {
+        label: "Blog",
+        href: "https://www.primeintellect.ai/blog/prime-agent",
+        icon: "website",
+      },
+      {
+        label: "Paper",
+        href: "https://arxiv.org/abs/2608.23552",
+        icon: "arxiv",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/PrimeIntellect-ai/prime-agent",
+        icon: "github",
+      },
+    ],
+    timeline: "Summer 2026, San Francisco",
+    overview:
+      "Building Prime Agent: an open-source, self-improving RLM harness for coding, research, and long-running work.",
+    associatedProjectIds: ["prime-agent"],
+    team: [
+      { name: "Seth Karten" },
+      { name: "Alex Zhang" },
+      { name: "Sebastian Müller" },
+    ],
+  },
+  {
     id: "vercel",
     title: "v0, Vercel",
     siteUrl: "https://v0.app",

@@ -28,8 +28,8 @@ export default async function Home() {
   ];
 
   const spotlightedProjectIds = [
+    "prime-agent",
     "v0",
-    "emx",
     "maia",
     "analytics",
     "kos",
@@ -41,8 +41,9 @@ export default async function Home() {
   );
 
   const interleavedProjects: Project[] = [];
-  const leftColumn = spotlightedProjects.slice(0, 3);
-  const rightColumn = spotlightedProjects.slice(3);
+  const columnSplit = Math.ceil(spotlightedProjects.length / 2);
+  const leftColumn = spotlightedProjects.slice(0, columnSplit);
+  const rightColumn = spotlightedProjects.slice(columnSplit);
   for (let i = 0; i < Math.max(leftColumn.length, rightColumn.length); i++) {
     if (leftColumn[i]) interleavedProjects.push(leftColumn[i] as Project);
     if (rightColumn[i]) interleavedProjects.push(rightColumn[i] as Project);
@@ -56,8 +57,11 @@ export default async function Home() {
           <p className="font-bold tracking-wide">👋</p>
           <p>
             I study CS at the University of Waterloo. Currently, I&apos;m a
-            Member of Technical Staff Intern at{" "}
-            <Highlight icon="/icons/prime-intellect.webp">
+            Member of Technical Staff at{" "}
+            <Highlight
+              href="/work/prime-intellect"
+              icon="/icons/prime-intellect.webp"
+            >
               Prime Intellect
             </Highlight>{" "}
             in San Francisco.
@@ -107,8 +111,8 @@ export default async function Home() {
       </div>
 
       {/* Experience Section */}
-      <div className="border-border grid w-full grid-cols-1 border-b md:grid-cols-2">
-        {/*<Link href="https://primeintellect.ai" target="_blank">
+      <div className="border-border grid w-full grid-cols-1 border-b md:grid-cols-3">
+        <Link href="/work/prime-intellect">
           <div className="relative transition-all duration-300 hover:brightness-125">
             <Image
               draggable={false}
@@ -119,7 +123,7 @@ export default async function Home() {
               height={700}
             />
           </div>
-        </Link>*/}
+        </Link>
         <Link href="/work/vercel">
           <div className="relative transition-all duration-300 hover:saturate-150">
             <Image
@@ -213,12 +217,12 @@ export default async function Home() {
 
         {/* Desktop: Two columns */}
         <div className="border-border hidden flex-col items-center gap-6 border-x py-0 md:flex md:items-end md:py-16 md:pl-16">
-          {spotlightedProjects.slice(0, 3).map((project) => (
+          {leftColumn.map((project) => (
             <ProjectCard key={project.id} project={project} dark={20} />
           ))}
         </div>
         <div className="border-border hidden flex-col items-center gap-6 border-r py-0 md:flex md:items-end md:py-16 md:pl-16">
-          {spotlightedProjects.slice(3).map((project) => (
+          {rightColumn.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
