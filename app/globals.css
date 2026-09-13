@@ -250,3 +250,8 @@ body {
     height: 50%;
   }
 }
+
+.font-pixel {
+  font-family: var(--font-geist-pixel-square), var(--font-geist-mono),
+    monospace;
+}
