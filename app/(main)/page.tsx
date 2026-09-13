@@ -6,10 +6,7 @@ const linkClasses =
 export default function Home() {
   return (
     <section>
-      <h1 className="title mb-8 text-2xl font-semibold tracking-tighter">
-        kevin thomas
-      </h1>
-      <p className="mb-4">
+      <p>
         I study CS at the University of Waterloo. Currently, I’m a
         Member of Technical Staff at{" "}
         <Link href="/work/prime-intellect" className={linkClasses}>
