@@ -8,5 +8,12 @@ export default function ProjectsPage() {
     return yearB - yearA;
   });
 
-  return <ProjectsGrid projects={sorted} />;
+  return (
+    <section>
+      <h1 className="title mb-8 text-2xl font-semibold tracking-tighter">
+        Projects
+      </h1>
+      <ProjectsGrid projects={sorted} />
+    </section>
+  );
 }

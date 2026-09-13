@@ -26,8 +26,8 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
       : projects;
 
   return (
-    <div className="flex w-full flex-col items-start justify-start px-6 pb-6 md:px-0 md:pb-0">
-      <div className="mb-8 flex w-full justify-center md:justify-end">
+    <div className="flex w-full flex-col items-start justify-start">
+      <div className="mb-8 flex w-full justify-start">
         <div className="flex items-center gap-4">
           {TAGS.map((tag) => (
             <button
@@ -35,8 +35,8 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
               onClick={() => toggleTag(tag)}
               className={`cursor-pointer text-sm transition-colors ${
                 activeTags.has(tag)
-                  ? "text-white"
-                  : "text-white/30 hover:text-white/60"
+                  ? "text-neutral-900 dark:text-neutral-100"
+                  : "text-neutral-400 hover:text-neutral-700 dark:text-neutral-600 dark:hover:text-neutral-300"
               }`}
             >
               {tag}
@@ -45,7 +45,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
         </div>
       </div>
 
-      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mb-8 grid w-full grid-cols-1 gap-4 md:grid-cols-3">
         {filtered.map((project) => (
           <ProjectCard key={project.id} project={project} imageOnly />
         ))}

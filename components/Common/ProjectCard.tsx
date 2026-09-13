@@ -23,7 +23,7 @@ export default function ProjectCard({
   imageOnly = false,
 }: ProjectCardProps) {
   const imageSizes = imageOnly
-    ? "(min-width: 1400px) 564px, (min-width: 768px) calc((100vw - 272px) / 2), calc(100vw - 48px)"
+    ? "(min-width: 768px) 320px, calc(100vw - 48px)"
     : "(min-width: 768px) 346px, calc(100vw - 48px)";
 
   return (

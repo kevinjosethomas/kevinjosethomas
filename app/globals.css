@@ -18,19 +18,28 @@
   --text-4xl: 48px;
 }
 
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
+}
+
 html {
-  color-scheme: dark;
+  min-width: 360px;
   overflow-y: scroll;
 }
 
 body {
-  font-family: var(--font-karla);
-  color: #ffffff;
-  background-color: #000000;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-.font-micro5 {
-  font-family: var(--font-micro5);
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.title {
+  text-wrap: balance;
 }
 
 /* Prose content styling for experience pages */
