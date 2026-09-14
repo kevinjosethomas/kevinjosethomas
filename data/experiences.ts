@@ -22,14 +22,15 @@ export const experiences: Experience[] = [
         icon: "github",
       },
     ],
-    timeline: "Summer 2026, San Francisco",
+    timeline: "2026, San Francisco",
     overview:
       "Building Prime Agent: an open-source, self-improving RLM harness for coding, research, and long-running work.",
     associatedProjectIds: ["prime-agent"],
     team: [
-      { name: "Seth Karten" },
-      { name: "Alex Zhang" },
-      { name: "Sebastian Müller" },
+      { name: "Jannik Straube" },
+      { name: "Seth Karten", href: "https://sethkarten.ai/" },
+      { name: "Alex Zhang", href: "https://alexzhang13.github.io/" },
+      { name: "Sebastian Müller", href: "https://snimu.github.io/" },
     ],
   },
   {

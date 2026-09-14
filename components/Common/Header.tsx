@@ -30,31 +30,28 @@ function GitHubIcon({ className = "h-4 w-4" }: { className?: string }) {
 
 export default function Header() {
   return (
-    <header className="mb-16 flex items-center justify-between">
-      <Link
-        href="/"
-        className="font-pixel hover:opacity-80 text-xl transition-all"
-      >
-        kevin thomas
-      </Link>
-      <div className="flex items-center gap-2">
-        <nav
-          className="fade scroll-pr-6 relative flex flex-row items-center px-0 pb-0 md:relative md:overflow-auto"
-          id="nav"
+    <header className="mb-[33.6px] flex min-h-[50px] items-center justify-between tracking-[0.02em]">
+      <div className="flex items-center gap-6">
+        <Link
+          href="/"
+          className="font-pixel opacity-90 hover:opacity-100 text-xl transition-all"
         >
-          <Link
-            href="/projects"
-            className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 m-1 flex align-middle relative px-2 py-1"
-          >
-            projects
-          </Link>
-        </nav>
+          kevin thomas
+        </Link>
+        <Link
+          href="/work"
+          className="font-pixel hover:opacity-80 flex items-center text-lg text-white/60 transition-all"
+        >
+          work
+        </Link>
+      </div>
+      <div className="flex items-center gap-4">
         <a
           href="https://x.com/kevinjosethomas"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="X"
-          className="hover:opacity-70 flex items-center transition-all"
+          className="opacity-90 hover:opacity-100 flex items-center transition-all"
         >
           <XIcon />
         </a>
@@ -63,7 +60,7 @@ export default function Header() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
-          className="hover:opacity-70 flex items-center transition-all"
+          className="opacity-90 hover:opacity-100 flex items-center transition-all"
         >
           <GitHubIcon />
         </a>

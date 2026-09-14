@@ -8,7 +8,7 @@ export default function BackButton() {
   return (
     <button
       onClick={() => router.back()}
-      className="text-secondary group flex items-center gap-2 text-sm backdrop-blur-sm transition-colors hover:text-white"
+      className="text-secondary group flex cursor-pointer items-center gap-2 text-sm backdrop-blur-sm transition-colors hover:text-white"
     >
       <svg
         className="h-4 w-4 transition-transform group-hover:-translate-x-0.5"

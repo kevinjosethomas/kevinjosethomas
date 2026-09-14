@@ -6,11 +6,13 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="mx-4 mt-8 max-w-3xl tracking-[0.02em] lg:mx-auto">
-      <main className="mt-6 flex min-w-0 flex-col px-2 md:px-0">
-        <Header />
-        {children}
-      </main>
+    <div className="flex min-h-screen justify-center px-6 pt-[67.2px] pb-[42px] md:px-[42px]">
+      <div className="flex w-full max-w-[604.8px] flex-col items-start text-[15px] tracking-normal">
+        <main className="w-full">
+          <Header />
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

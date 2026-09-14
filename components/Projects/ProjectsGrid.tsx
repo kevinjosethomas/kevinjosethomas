@@ -35,8 +35,8 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
               onClick={() => toggleTag(tag)}
               className={`cursor-pointer text-sm transition-colors ${
                 activeTags.has(tag)
-                  ? "text-neutral-900 dark:text-neutral-100"
-                  : "text-neutral-400 hover:text-neutral-700 dark:text-neutral-600 dark:hover:text-neutral-300"
+                  ? "text-white"
+                  : "text-white/40 hover:text-white/55"
               }`}
             >
               {tag}
@@ -45,7 +45,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
         </div>
       </div>
 
-      <div className="mb-8 grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="mb-8 grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         {filtered.map((project) => (
           <ProjectCard key={project.id} project={project} imageOnly />
         ))}

@@ -35,12 +35,12 @@ export const projects: Project[] = [
   },
   {
     id: "emx",
-    name: "Emotional Matrix",
+    name: "EMX",
     description:
       "Multimodal emotion recognition system for humanoid robots using voice, vision, and language.",
     date: "2025",
     href: "/work/kscale#emotional-matrix",
-    image: "/projects/emx-wireframe.webp",
+    image: "/experience/k-scale.webp",
     tags: ["Engineering"],
     github: "https://github.com/kevinjosethomas/emx",
     images: [
@@ -108,7 +108,7 @@ export const projects: Project[] = [
   },
   {
     id: "asl",
-    name: "Neural Sign Language Translation",
+    name: "ASL Translation",
     description:
       "Two-way ASL-English translation using pose estimation, PointNet classification, and semantic retrieval.",
     date: "2024",

@@ -67,12 +67,12 @@ export default function ProjectCard({
             <>
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black via-black/70 to-transparent" />
               <div className="absolute bottom-3 left-3 flex max-w-[calc(100%-4.5rem)] items-end gap-1 text-white md:bottom-4 md:left-4 md:max-w-[calc(100%-5rem)]">
-                <p className="text-sm leading-tight font-medium md:text-base">
+                <p className="text-xs leading-tight font-medium text-white/75 md:text-sm">
                   {project.name}
                 </p>
-                <ArrowIcon className="mb-0.5 h-3 w-3 shrink-0 md:h-3.5 md:w-3.5" />
+                <ArrowIcon className="mb-0.5 h-2 w-2 shrink-0 md:h-2.5 md:w-2.5" />
               </div>
-              <p className="absolute right-3 bottom-3 text-sm leading-tight font-medium text-white/55 md:right-4 md:bottom-4 md:text-base">
+              <p className="absolute right-3 bottom-3 text-xs leading-tight font-medium text-white/55 md:right-4 md:bottom-4 md:text-sm">
                 {project.date}
               </p>
             </>

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { cacheLife } from "next/cache";
 import { experiences } from "@/data/experiences";
 import ExperienceLayout from "@/components/Work/ExperienceLayout";
 
@@ -25,6 +26,9 @@ export async function generateStaticParams() {
 }
 
 export default async function ExperiencePage({ params }: PageProps) {
+  "use cache";
+  cacheLife("max");
+
   const { id } = await params;
   const experience = experiences.find((e) => e.id === id);
 
