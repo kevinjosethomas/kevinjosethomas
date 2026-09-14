@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function XIcon({ className = "h-5 w-5" }: { className?: string }) {
+function XIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -14,7 +14,7 @@ function XIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-function GitHubIcon({ className = "h-5 w-5" }: { className?: string }) {
+function GitHubIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -33,11 +33,11 @@ export default function Header() {
     <header className="mb-16 flex items-center justify-between">
       <Link
         href="/"
-        className="font-pixel hover:opacity-80 m-1 px-2 py-1 text-xl transition-all"
+        className="font-pixel hover:opacity-80 text-xl transition-all"
       >
         kevin thomas
       </Link>
-      <div className="flex items-center gap-4 pr-1">
+      <div className="flex items-center gap-2">
         <nav
           className="fade scroll-pr-6 relative flex flex-row items-center px-0 pb-0 md:relative md:overflow-auto"
           id="nav"
