@@ -1,151 +1,70 @@
-"use client";
-
 import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect } from "react";
+
+function XIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M14.2341 10.162L22.9771 0H20.9051L13.3141 8.824L7.25106 0H0.258057L9.42606 13.343L0.258057 24H2.33006L10.3461 14.682L16.7491 24H23.7421L14.2341 10.162ZM11.3971 13.461L10.4681 12.132L3.07606 1.56H6.25806L12.2231 10.092L13.1521 11.421L20.9061 22.511H17.7241L11.3971 13.461Z" />
+    </svg>
+  );
+}
+
+function GitHubIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M12 0.297001C5.37 0.297001 0 5.67 0 12.297C0 17.6 3.438 22.097 8.205 23.682C8.805 23.795 9.025 23.424 9.025 23.105C9.025 22.82 9.015 22.065 9.01 21.065C5.672 21.789 4.968 19.455 4.968 19.455C4.422 18.07 3.633 17.7 3.633 17.7C2.546 16.956 3.717 16.971 3.717 16.971C4.922 17.055 5.555 18.207 5.555 18.207C6.625 20.042 8.364 19.512 9.05 19.205C9.158 18.429 9.467 17.9 9.81 17.6C7.145 17.3 4.344 16.268 4.344 11.67C4.344 10.36 4.809 9.29 5.579 8.45C5.444 8.147 5.039 6.927 5.684 5.274C5.684 5.274 6.689 4.952 8.984 6.504C9.944 6.237 10.964 6.105 11.984 6.099C13.004 6.105 14.024 6.237 14.984 6.504C17.264 4.952 18.269 5.274 18.269 5.274C18.914 6.927 18.509 8.147 18.389 8.45C19.154 9.29 19.619 10.36 19.619 11.67C19.619 16.28 16.814 17.295 14.144 17.59C14.564 17.95 14.954 18.686 14.954 19.81C14.954 21.416 14.939 22.706 14.939 23.096C14.939 23.411 15.149 23.786 15.764 23.666C20.565 22.092 24 17.592 24 12.297C24 5.67 18.627 0.297001 12 0.297001Z" />
+    </svg>
+  );
+}
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMenuOpen]);
-
   return (
-    <>
-      <header className="flex w-full items-center justify-between px-6 py-4 md:px-0 md:py-8">
-        <div className="flex items-center justify-start gap-6">
-          <Link href="/">
-            <h1 className="text-2xl font-bold md:text-3xl">kevin thomas</h1>
-          </Link>
-          <Link href="/projects">
-            <h3 className="text-secondary hidden text-xl md:block">projects</h3>
-          </Link>
-          <Link href="/analytics">
-            <h3 className="text-secondary hidden text-xl md:block">
-              analytics
-            </h3>
-          </Link>
-          <Link href="https://knowledge.kevinjosethomas.com" target="_blank">
-            <h3 className="text-secondary hidden text-xl md:block">writing</h3>
-          </Link>
-        </div>
-
-        <div className="hidden items-center justify-start gap-6 md:flex">
-          <Link href="https://x.com/kevinjosethomas" target="_blank">
-            <Image
-              src="/icons/x.svg"
-              alt="X"
-              className="select-none"
-              draggable={false}
-              width={20}
-              height={20}
-            />
-          </Link>
-          <Link href="https://github.com/kevinjosethomas" target="_blank">
-            <Image
-              src="/icons/github.svg"
-              alt="GitHub"
-              className="select-none"
-              draggable={false}
-              width={20}
-              height={20}
-            />
-          </Link>
-        </div>
-
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="z-50 flex flex-col gap-1.5 md:hidden"
-          aria-label="Toggle menu"
+    <header className="mb-[33.6px] flex min-h-[50px] items-center justify-between tracking-[0.02em]">
+      <div className="flex items-center gap-6">
+        <Link
+          href="/"
+          className="font-pixel opacity-90 hover:opacity-100 text-xl transition-all"
         >
-          <span
-            className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-              isMenuOpen ? "translate-y-2 rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-              isMenuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-              isMenuOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          />
-        </button>
-      </header>
-
-      <div
-        className={`fixed inset-0 z-40 min-h-[120vh] bg-black px-16 transition-transform duration-100 md:hidden ${
-          isMenuOpen ? "translate-y-0" : "translate-y-full"
-        }`}
-      >
-        <nav className="flex h-screen flex-col items-start justify-start gap-16 py-16">
-          <div className="flex flex-col items-start justify-start gap-4">
-            <Link
-              href="/"
-              className="flex w-full items-start justify-start text-3xl font-semibold tracking-wide transition-colors hover:bg-white/5"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <h1 className="text-2xl font-bold md:text-3xl">kevin thomas</h1>
-            </Link>
-            <Link href="/projects" onClick={() => setIsMenuOpen(false)}>
-              <h3 className="text-secondary text-xl md:block">projects</h3>
-            </Link>
-            <Link href="/analytics" onClick={() => setIsMenuOpen(false)}>
-              <h3 className="text-secondary text-xl md:block">analytics</h3>
-            </Link>
-            <Link
-              href="https://knowledge.kevinjosethomas.com"
-              target="_blank"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <h3 className="text-secondary text-xl md:block">writing</h3>
-            </Link>
-          </div>
-
-          <div className="flex w-full items-center justify-center gap-8">
-            <Link
-              href="https://x.com/kevinjosethomas"
-              target="_blank"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <Image
-                src="/icons/x.svg"
-                alt="X"
-                className="select-none"
-                draggable={false}
-                width={24}
-                height={24}
-              />
-            </Link>
-            <Link
-              href="https://github.com/kevinjosethomas"
-              target="_blank"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <Image
-                src="/icons/github.svg"
-                alt="GitHub"
-                className="select-none"
-                draggable={false}
-                width={24}
-                height={24}
-              />
-            </Link>
-          </div>
-        </nav>
+          kevin thomas
+        </Link>
+        <Link
+          href="/work"
+          className="font-pixel hover:opacity-80 flex items-center text-lg text-white/60 transition-all"
+        >
+          work
+        </Link>
       </div>
-    </>
+      <div className="flex items-center gap-4">
+        <a
+          href="https://x.com/kevinjosethomas"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="X"
+          className="opacity-90 hover:opacity-100 flex items-center transition-all"
+        >
+          <XIcon />
+        </a>
+        <a
+          href="https://github.com/kevinjosethomas"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          className="opacity-90 hover:opacity-100 flex items-center transition-all"
+        >
+          <GitHubIcon />
+        </a>
+      </div>
+    </header>
   );
 }

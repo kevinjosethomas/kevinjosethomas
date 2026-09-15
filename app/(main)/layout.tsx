@@ -1,6 +1,4 @@
 import Header from "@/components/Common/Header";
-import Footer from "@/components/Common/Footer";
-import MainContent from "@/components/Common/MainContent";
 
 export default function MainLayout({
   children,
@@ -8,10 +6,13 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="mx-auto flex min-h-screen max-w-[1400px] flex-col items-center md:px-16">
-      <Header />
-      <MainContent>{children}</MainContent>
-      <Footer />
+    <div className="flex min-h-screen justify-center px-6 pt-[67.2px] pb-[42px] md:px-[42px]">
+      <div className="flex w-full max-w-[604.8px] flex-col items-start text-[15px] tracking-normal">
+        <main className="w-full">
+          <Header />
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

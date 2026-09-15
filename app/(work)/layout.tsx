@@ -4,7 +4,7 @@ export default function WorkLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="work-enter flex min-h-screen w-full flex-col items-center overflow-x-clip">
+    <div className="work-enter flex min-h-screen w-full flex-col items-center overflow-x-clip bg-black text-white">
       {children}
     </div>
   );
