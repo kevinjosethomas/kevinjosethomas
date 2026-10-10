@@ -1,5 +1,23 @@
 import Link from "next/link";
 
+function CuriusIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M12 7v14m0-14C9 4 5 4 2 5v15c3-1 7-1 10 1 3-2 7-2 10-1V5c-3-1-7-1-10 2Z" />
+    </svg>
+  );
+}
+
 function XIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg
@@ -46,6 +64,15 @@ export default function Header() {
         </Link>
       </div>
       <div className="flex items-center gap-4">
+        <a
+          href="https://curius.app/kevin-thomas"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Curius"
+          className="opacity-90 hover:opacity-100 flex items-center transition-all"
+        >
+          <CuriusIcon />
+        </a>
         <a
           href="https://x.com/kevinjosethomas"
           target="_blank"
