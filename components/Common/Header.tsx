@@ -1,20 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 
+// Official favicon: https://curius.app/dist/favicon.ico
 function CuriusIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      xmlns="http://www.w3.org/2000/svg"
+    <Image
+      className={`${className} grayscale invert`}
+      src="/icons/curius.ico"
+      alt=""
+      width={16}
+      height={16}
+      unoptimized
       aria-hidden="true"
-    >
-      <path d="M12 7v14m0-14C9 4 5 4 2 5v15c3-1 7-1 10 1 3-2 7-2 10-1V5c-3-1-7-1-10 2Z" />
-    </svg>
+    />
   );
 }
 
