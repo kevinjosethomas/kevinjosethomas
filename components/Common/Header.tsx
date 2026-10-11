@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
-// Official favicon: https://curius.app/dist/favicon.ico
+// Official Curius mark: https://curius.app/dist/8e505ba8b5b77bfb625eb91311c15ce9.png
 function CuriusIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <Image
-      className={`${className} grayscale invert`}
-      src="/icons/curius.ico"
+      className={`${className} brightness-0 invert`}
+      src="/icons/curius.png"
       alt=""
       width={16}
       height={16}
