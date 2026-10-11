@@ -1,18 +1,23 @@
 import Link from "next/link";
-import Image from "next/image";
 
-// Official Curius mark: https://curius.app/dist/8e505ba8b5b77bfb625eb91311c15ce9.png
+// Traced from the official Curius mark, with thinner strokes for the social row:
+// https://curius.app/dist/8e505ba8b5b77bfb625eb91311c15ce9.png
 function CuriusIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
-    <Image
-      className={`${className} p-px opacity-80 brightness-0 invert`}
-      src="/icons/curius.png"
-      alt=""
-      width={16}
-      height={16}
-      unoptimized
+    <svg
+      className={className}
+      viewBox="0 0 128 128"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={12}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-    />
+    >
+      <circle cx={64} cy={64} r={58} />
+      <path d="M39 79 64 41 89 79" />
+    </svg>
   );
 }
 
