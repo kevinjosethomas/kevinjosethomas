@@ -5,7 +5,7 @@ import Image from "next/image";
 function CuriusIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <Image
-      className={`${className} brightness-0 invert`}
+      className={`${className} p-px opacity-80 brightness-0 invert`}
       src="/icons/curius.png"
       alt=""
       width={16}
