@@ -1,0 +1,52 @@
+Prime Intellect is building the open superintelligence stack: infrastructure for training, evaluating, deploying, and continuously improving AI systems. My primary work was Prime Agent, an open-source coding and research harness designed for general and long-running work.
+
+<FullWidthImage src="/projects/images/prime-agent-cover.png" alt="Prime Agent: a self-improving RLM harness" />
+
+## Prime Agent
+
+Modern agent harnesses still reflect the capabilities of earlier models. Fixed tool schemas force the model through a narrow interface, context compaction discards information, and hand-engineered prompts, skills, memory, and subagents remain static even after the agent discovers a better way to work.
+
+Prime Agent is built around two abstractions that move beyond this design: the [Recursive Language Model](https://www.primeintellect.ai/blog/rlm) treats context and subagent calls as programmable objects inside a REPL, while the Continual Harness lets the agent refine its own prompts, skills, memory, and subagent specifications from evidence in its trajectory.
+
+<FullWidthImage src="/projects/images/prime-agent-architecture.png" alt="Prime Agent architecture" />
+
+### RLM and programmatic tool calling
+
+Models in Prime Agent have one built-in tool: a persistent IPython kernel. Shell commands, file operations, skills, context management, and subagents are all Python functions inside that environment. The model can keep intermediate state in variables, run functions over its history, and compose tool calls as programs instead of serially reading every result back into context.
+
+I worked on this foundation from the first version: making IPython the default tool, building the kernel lifecycle, writing the model-agnostic RLM prompt, and connecting recursive calls back into the TypeScript agent runtime.
+
+The central primitive is `rlm(...)`. Each call creates another full Prime Agent session with its own model, kernel, context, and session tree. Calls can fan out in parallel, continue in the background, or remain persistent so the parent can message the same child later. I built the initial recursion bridge, background subagents, usage aggregation, and the interface for navigating the resulting agent tree.
+
+<FullWidthImage src="/projects/images/prime-agent-tui.png" alt="Prime Agent terminal interface running a long task with subagents" />
+
+### Background daemon and orchestration
+
+Prime Agent runs a background daemon that owns every live session. The terminal is only a client: users can detach without interrupting the agent loop, then reattach with the transcript, subagents, and IPython state intact. Each session tree runs in a recoverable worker process and can be restored from its append-only history and kernel snapshot.
+
+I worked across the daemon and worker architecture, the Agents View, process isolation, session recovery, self-updates, and the state synchronization needed to keep long-running work reliable. Goals, heartbeats, schedules, autonomous continuation, compaction, and retained subagents all build on that same foundation.
+
+The daemon also provides direct agent-to-agent messaging. Parent, sibling, and child sessions can discover and steer one another without routing every exchange through the user, turning the Agents View into a recursive map of the full orchestration tree.
+
+<FullWidthImage src="/projects/images/prime-agent-agents-view.png" alt="Prime Agent Agents View showing running, idle, and inactive sessions" />
+
+### Continual Harness
+
+The [Continual Harness paper](https://arxiv.org/abs/2605.09998) formalizes the harness as four pieces: prompt, subagents, skills, and memory. Rather than freezing these at design time, a refiner reads the agent's trajectory and applies focused create, read, update, and delete operations while the run continues.
+
+Prime Agent exposes this state directly in the persistent kernel through `rlm.harness`. The `/refine` pipeline reviews what the agent tried, identifies a reusable success or repeated failure, and applies the smallest relevant update. Planning runs in the background; applying the update is fast, recorded, and reversible. The base system prompt remains immutable.
+
+I helped ship the agent-callable refinement path and move planning into the background, making self-improvement part of the same programmatic interface as every other action in the harness.
+
+<FullWidthImage src="/projects/images/continual-harness-methodology.png" alt="Continual Harness refinement and model-harness co-learning methodology" />
+
+### Evaluation
+
+Prime Agent is both a daily coding agent and an experimental harness for long-context and long-horizon work. In the published evaluation, Prime Agent with Opus 5 reached 95.5% RHAE Best@1 on ARC-AGI-3, slightly above the reported 95.4% human-expert baseline. Across three runs it scored 95.0%, 95.2%, and 95.5%, completing all 183 levels.
+
+The result also showed the intended scaling behavior: models could spend more test-time compute through programmatic tool and subagent calls while using fewer tokens than their native harnesses to reach the same score.
+
+<ImageRow>
+  <img src="/projects/images/prime-agent-arc-scaling.svg" alt="ARC-AGI-3 score versus output tokens" />
+  <img src="/projects/images/prime-agent-arc-cost-scaling.svg" alt="ARC-AGI-3 score versus estimated API cost" />
+</ImageRow>

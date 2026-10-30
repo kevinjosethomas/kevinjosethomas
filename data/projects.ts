@@ -2,12 +2,46 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    id: "prime-agent",
+    name: "Prime Agent",
+    description:
+      "Open-source coding and research agent built around Recursive Language Models and the Continual Harness.",
+    date: "2026",
+    href: "/work/prime-intellect#prime-agent",
+    image: "/projects/images/prime-agent-cover.png",
+    tags: ["Engineering", "Research"],
+    github: "https://github.com/PrimeIntellect-ai/prime-agent",
+    website: "https://www.primeintellect.ai/blog/prime-agent",
+  },
+  {
+    id: "v0",
+    name: "v0.app",
+    description:
+      "Vercel's generative UI product, shipping full-stack web apps through a chat interface powered by AI.",
+    date: "2026",
+    href: "/work/vercel",
+    image: "/projects/v0.webp",
+    tags: ["Engineering"],
+  },
+  {
+    id: "analytics",
+    name: "Intellect",
+    description:
+      "A personal analytics dashboard tracking my sleep, workouts, and spending in real time, sourced from a Google Sheet.",
+    date: "2026",
+    href: "/work/intellect",
+    image: "/projects/dashboard.webp",
+    tags: ["Engineering"],
+  },
+  {
     id: "emx",
-    name: "Emotional Matrix",
+    name: "EMX",
+    description:
+      "Multimodal emotion recognition system for humanoid robots using voice, vision, and language.",
     date: "2025",
-    href: "/project/emx",
-    image: "/projects/emx.webp",
-    wireframeImage: "/projects/emx-wireframe.webp",
+    href: "/work/kscale#emotional-matrix",
+    image: "/experience/k-scale.webp",
+    tags: ["Engineering"],
     github: "https://github.com/kevinjosethomas/emx",
     images: [
       "/projects/images/emx-1.webp",
@@ -19,10 +53,12 @@ export const projects: Project[] = [
   {
     id: "kos",
     name: "kos-sdk",
+    description:
+      "Python SDK wrapping a Rust robot OS for actuator control, scripted animations, and simulation.",
     date: "2025",
-    href: "/project/kos",
-    image: "/projects/kos.webp",
-    wireframeImage: "/projects/kos-wireframe.webp",
+    href: "/work/kscale#kos-sdk",
+    image: "/projects/kos-wireframe.webp",
+    tags: ["Engineering"],
     github: "https://github.com/kscalelabs/kos-zbot",
     images: [
       "/projects/images/kos-1.webp",
@@ -33,9 +69,12 @@ export const projects: Project[] = [
   {
     id: "maia",
     name: "Maia Chess",
-    date: "2024-",
-    href: "/project/maia",
+    description:
+      "Chess platform with human-like neural engines running client-side via ONNX and WebAssembly.",
+    date: "2024",
+    href: "/work/csslab#maia-chess",
     image: "/projects/maia.webp",
+    tags: ["Engineering"],
     github: "https://github.com/CSSLab/maia-platform-frontend",
     website: "https://maiachess.com",
     images: [
@@ -47,9 +86,12 @@ export const projects: Project[] = [
   {
     id: "minecraft",
     name: "minecraft.global",
+    description:
+      "Minecraft server listing platform with voting, real-time server analytics, and a built-in ad auction system for server owners.",
     date: "2021",
-    href: "/project/minecraft",
+    href: "/work/minecraft",
     image: "/projects/minecraft.webp",
+    tags: ["Engineering"],
     images: [
       "/projects/images/minecraft.webp",
       "/projects/images/minecraft-1.webp",
@@ -64,13 +106,15 @@ export const projects: Project[] = [
     github: "https://github.com/kevinjosethomas/minecraft.global",
     website: "https://minecraft.global",
   },
-
   {
     id: "asl",
-    name: "Neural Sign Language Translation",
+    name: "ASL Translation",
+    description:
+      "Two-way ASL-English translation using pose estimation, PointNet classification, and semantic retrieval.",
     date: "2024",
-    href: "/project/asl",
+    href: "/work/asl",
     image: "/projects/asl.webp",
+    tags: ["Engineering", "Research"],
     github: "https://github.com/kevinjosethomas/sign-language-processing",
     arxiv: "https://arxiv.org/abs/2408.09311",
     youtube: "https://www.youtube.com/watch?v=uuPxMWQRoXc",
@@ -84,20 +128,14 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "valorant",
-    name: "Valorant Store Scanner",
-    date: "2021",
-    href: "/project/valorant",
-    image: "/projects/valorant.webp",
-    github: "https://github.com/kevinjosethomas/valorant-store-scanner",
-    images: ["/projects/images/valorant-1.webp"],
-  },
-  {
     id: "scrapyard",
     name: "Hack Club Scrapyard",
-    date: "2024",
-    href: "/project/scrapyard",
+    description:
+      "Global high school hackathon with $200,000 in funding, 4,500+ students across 60+ cities, organized through Hack Club.",
+    date: "2025",
+    href: "/work/scrapyard",
     image: "/projects/scrapyard.webp",
+    tags: ["Community"],
     github: "https://github.com/hackclub/scrapyard",
     youtube: "https://www.youtube.com/watch?v=8iM1W8kXrQA",
     blog: "https://knowledge.kevinjosethomas.com/Thoughts/Reflecting-on-Scrapyard-—-What-We-Did-in-Austin-TX-and-60+-Cities-around-the-World",
@@ -109,28 +147,36 @@ export const projects: Project[] = [
   {
     id: "chromeai",
     name: "ChromeAI",
+    description:
+      "Chrome extension that brings GPT to any selected text on the web through a right-click context menu.",
     date: "2023",
-    href: "/project/chromeai",
+    href: "/work/chromeai",
     image: "/projects/chromeai.webp",
+    tags: ["Engineering"],
     website: "https://chrome-ai.vercel.app",
     images: ["/projects/images/chromeai-1.webp"],
   },
   {
     id: "turbo",
     name: "Turbo Browser",
+    description:
+      "Developer-focused web browser built on Electron with tab management and an integrated devtools layer.",
     date: "2021",
-    href: "/project/turbo",
+    href: "/work/turbo",
     image: "/projects/turbo.webp",
+    tags: ["Engineering"],
     github: "https://github.com/kevinjosethomas/turbo",
     images: ["/projects/images/turbo-1.webp", "/projects/images/turbo-2.webp"],
   },
-
   {
     id: "disbots",
     name: "disbots.gg",
+    description:
+      "Discord bot listing platform with voting, categorized search, and canvas-rendered embed widgets.",
     date: "2020",
-    href: "/project/disbots",
+    href: "/work/disbots",
     image: "/projects/disbots.webp",
+    tags: ["Engineering"],
     images: ["/projects/images/disbots-1.webp"],
   },
 ];

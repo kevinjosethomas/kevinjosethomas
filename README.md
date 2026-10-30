@@ -2,13 +2,13 @@
 <b>👋 hey, i'm kevin!</b>
 <br />
 <br />
-I study Computer Science at the University of Waterloo. Currently, I'm<br />working on <img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/v0.svg?raw=true" height="10" /> at <a href="https://vercel.com/"><img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/vercel-white.svg?raw=true" width="14" height="14" /> Vercel</a>, Previously, I was a SWE intern at <a href="https://kscale.dev/"><img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/kscale.svg?raw=true" width="14" height="14" /> K-Scale Labs</a><br />in Palo Alto, and led engineering for the <a href="https://maiachess.com/"><img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/maia.png?raw=true" width="14" height="14" /> Maia Chess</a> project—<br />the world's most popular chess bot.
+I study CS at the University of Waterloo. Currently, I'm a Member of<br />Technical Staff at&nbsp; <a href="https://www.primeintellect.ai/"><img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/prime-intellect.webp?raw=true" width="14" height="14" /> Prime Intellect</a> in San Francisco.<br /><br />Previously:&emsp;<a href="https://kevinjosethomas.com/work/vercel"><img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/vercel-white.svg?raw=true" width="14" height="14" /> Vercel</a>&emsp;<a href="https://kevinjosethomas.com/work/kscale"><img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/kscale.svg?raw=true" width="14" height="14" /> K-Scale Labs</a>&emsp;<a href="https://kevinjosethomas.com/work/csslab"><img src="https://github.com/kevinjosethomas/kevinjosethomas/blob/main/public/icons/maia.webp?raw=true" width="14" height="14" /> Maia Chess</a>
 
 <br />
 <br />
 <br />
 
-<a href="https://kevinjosethomas.com">[Website]</a><span>&ensp;</span><a href="https://knowledgebase.kevinjosethomas.com">[Blog]</a><span>&ensp;</span><a href="https://x.com/kevinjosethomas">[X]</a>
+<a href="https://kevinjosethomas.com">[Website]</a><span>&ensp;</span><a href="https://knowledge.kevinjosethomas.com">[Blog]</a><span>&ensp;</span><a href="https://x.com/kevinjosethomas">[X]</a>
 </div>
 <br />
 <br />
@@ -17,18 +17,18 @@ I study Computer Science at the University of Waterloo. Currently, I'm<br />work
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 2,635 hrs 8 mins
+Total Time: 2,763 hrs 16 mins
 
-TypeScript                 795 hrs 47 mins       ███████▒░░░░░░░░░░░░░░░░░   29.80 %
-Python                     731 hrs 38 mins       ███████░░░░░░░░░░░░░░░░░░   27.40 %
-JavaScript                 431 hrs 18 mins       ████░░░░░░░░░░░░░░░░░░░░░   16.15 %
-JSX                        198 hrs 33 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   07.44 %
-HTML                       137 hrs 38 mins       █▒░░░░░░░░░░░░░░░░░░░░░░░   05.15 %
-JSON                       54 hrs 59 mins        ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.06 %
-CSS                        42 hrs 44 mins        ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.60 %
-Markdown                   40 hrs 54 mins        ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.53 %
-Other                      35 hrs 2 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.31 %
-Java                       31 hrs 20 mins        ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.17 %
+TypeScript                 864 hrs 36 mins       ███████▒░░░░░░░░░░░░░░░░░   29.80 %
+Python                     769 hrs 39 mins       ██████▓░░░░░░░░░░░░░░░░░░   26.53 %
+JavaScript                 432 hrs 54 mins       ███▓░░░░░░░░░░░░░░░░░░░░░   14.92 %
+JSX                        198 hrs 33 mins       █▓░░░░░░░░░░░░░░░░░░░░░░░   06.84 %
+Other                      137 hrs 58 mins       █▒░░░░░░░░░░░░░░░░░░░░░░░   04.76 %
+HTML                       137 hrs 38 mins       █▒░░░░░░░░░░░░░░░░░░░░░░░   04.74 %
+JSON                       57 hrs 28 mins        ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.98 %
+Markdown                   48 hrs 51 mins        ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.68 %
+CSS                        42 hrs 48 mins        ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.48 %
+Java                       31 hrs 5 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.07 %
 ```
 
 <!--END_SECTION:waka-->

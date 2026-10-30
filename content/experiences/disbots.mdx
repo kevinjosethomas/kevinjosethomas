@@ -1,0 +1,19 @@
+In 2020, I led a small team to build disbots.gg, a platform for discovering and promoting Discord bots. Existing listings were slow, cluttered, and relied on static upvote systems that were easy to exploit, while still generating over $100,000 a month in ad revenue. There was no good way for new bot developers to gain visibility or for server owners to search for bots based on actual functionality. Within a month of launch, the platform had over 100 bot developers and was used by more than 10,000 server owners, with a 250-member community handling bot approvals and feedback.
+
+<ImageRow>
+  <img src="/projects/images/disbots-1.webp" alt="disbots.gg" />
+</ImageRow>
+
+## Platform
+
+The platform is an Express server with PostgreSQL, Redis, and Socket.IO. Pages are server-rendered HTML shells that get hydrated through socket events on connect, with `prerender-node` for SEO. Discord OAuth for accounts, categorized search with JSONB tag filtering, paginated leaderboards, and a voting system with 12-hour cooldowns and optional webhook forwarding so bot developers could get notified when someone voted.
+
+I also built canvas-rendered PNG widgets (stats cards, like badges, server count badges) that developers could embed on their bot's GitHub or website, and a stats API where bots could POST their server counts authenticated with per-bot JWTs.
+
+## Python SDK
+
+Milo built `pydisbots`, an async Python wrapper for the disbots.gg API published on PyPI. It let bot developers fetch listings, autopost server counts on a 30-minute loop, and receive vote notifications as discord.py events through a built-in webhook server. The idea was to make integration as easy as dropping in a client with your bot token and secret, so developers didn't have to deal with raw HTTP requests to our API.
+
+## Moderation
+
+All new submissions went through a review flow. The app verified bots against the Discord API on submission to ensure the ID was valid and resolved owner information automatically. A separate Discord bot handled notifications for new submissions and moderation actions. The community had a small volunteer team that kept review times under an hour.

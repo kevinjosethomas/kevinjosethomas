@@ -1,0 +1,20 @@
+Turbo is a full web browser written in Electron and React. With the rise of developer tools like Postman, I wanted to design a browser engineered specifically for developers. The project grew from a personal experiment into a small community of nearly 300 beta testers on Discord.
+
+<ImageRow>
+  <img src="/projects/images/turbo-1.webp" alt="Turbo Browser" />
+  <img src="/projects/images/turbo-2.webp" alt="Turbo Browser tabs" />
+</ImageRow>
+
+## Architecture
+
+The browser is a Yarn monorepo with an Electron backend and a React frontend. Each tab is a `BrowserView` stacked under a fixed-height chrome bar, so page rendering happens in native Chromium while the shell UI (titlebar, toolbar, omnibox) is all React with Tailwind. The two layers communicate through a preload script that exposes an IPC API via `contextBridge` for tab management, navigation, and window controls.
+
+Tab state lives in a `Tablist` model on the main process, which tracks active views, manages a `tablog` stack (so closing a tab refocuses the last one you were on), and handles reordering via `array-move`. The tab strip uses `react-beautiful-dnd` for drag-reorder, and there's a floating popup window (a second frameless `BrowserWindow` loading the same React SPA at a different hash route) that shows a searchable tab overview.
+
+The omnibox has a URL parser that distinguishes between raw URLs, localhost addresses, IP addresses (via `ip-regex`), hostnames with known TLDs, and search queries, routing each to the right destination or falling back to Google search.
+
+## Vision
+
+My goal for Turbo was to be a platform where developer tooling was built directly into the browsing environment. I canvassed ideas for split-screen tabs, an integrated API client, localhost-to-public tunneling, a built-in terminal, Git integration, Wakatime tracking, a custom devtools layer, SEO inspection, and automatic StackOverflow prioritization in search results.
+
+Eventually, I ran into the limits of the stack. Electron is still just a Chromium wrapper, so performance and memory use could never match a real browser engine. Engineering a proper browser would have required building from a Chromium fork, which I wasn't yet experienced enough to do. The project never became production-ready, but it taught me a lot about how browsers work under the hood and introduced me to open-source software development.

@@ -1,13 +1,19 @@
 import { PostHog } from "posthog-node";
 
-export default function PostHogClient() {
-  const posthogClient = new PostHog(
-    process.env.NEXT_PUBLIC_POSTHOG_KEY as string,
-    {
-      host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-      flushAt: 1,
-      flushInterval: 0,
-    },
-  );
-  return posthogClient;
+type PostHogClient = Pick<PostHog, "shutdown">;
+
+export default function PostHogClient(): PostHogClient {
+  const apiKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+
+  if (!apiKey) {
+    return {
+      shutdown: async () => undefined,
+    };
+  }
+
+  return new PostHog(apiKey, {
+    host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+    flushAt: 1,
+    flushInterval: 0,
+  });
 }
