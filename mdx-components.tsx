@@ -120,13 +120,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </div>
     ),
     FullWidthImage: ({ src, alt }: { src: string; alt: string }) => (
-      <div className="my-12 lg:-mx-24 xl:-mx-40">
+      <span className="my-12 block lg:-mx-24 xl:-mx-40">
         <ZoomableImage
           src={src}
           alt={alt}
           className="block w-full select-none rounded-lg"
         />
-      </div>
+      </span>
     ),
     FeatureGrid,
     Feature,

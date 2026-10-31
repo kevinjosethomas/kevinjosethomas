@@ -1,0 +1,998 @@
+{
+  "profile": "openengine.graph.full/v1",
+  "initialInput": {
+    "kind": "record",
+    "fields": {
+      "task": {
+        "type": {
+          "kind": "string"
+        },
+        "required": true
+      }
+    }
+  },
+  "policy": {
+    "policy": "policy.native-v2@1",
+    "default": "deny"
+  },
+  "root": {
+    "kind": "seq",
+    "name": "run",
+    "state": {
+      "kind": "record",
+      "fields": {
+        "acceptanceFeedback": {
+          "type": {
+            "kind": "string"
+          },
+          "required": true
+        },
+        "codeFeedback": {
+          "type": {
+            "kind": "string"
+          },
+          "required": true
+        },
+        "continueItems": {
+          "type": {
+            "kind": "array",
+            "items": {
+              "kind": "null"
+            }
+          },
+          "required": true
+        },
+        "deliveryFeedback": {
+          "type": {
+            "kind": "string"
+          },
+          "required": true
+        },
+        "phase": {
+          "type": {
+            "kind": "record",
+            "fields": {
+              "after": {
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "accepted",
+                    "rejected"
+                  ]
+                },
+                "required": false
+              }
+            }
+          },
+          "required": true
+        },
+        "task": {
+          "type": {
+            "kind": "string"
+          },
+          "required": true
+        }
+      }
+    },
+    "children": [
+      {
+        "kind": "loop",
+        "name": "change_loop",
+        "state": {
+          "kind": "record",
+          "fields": {
+            "acceptanceFeedback": {
+              "type": {
+                "kind": "string"
+              },
+              "required": true
+            },
+            "codeFeedback": {
+              "type": {
+                "kind": "string"
+              },
+              "required": true
+            },
+            "continueItems": {
+              "type": {
+                "kind": "array",
+                "items": {
+                  "kind": "null"
+                }
+              },
+              "required": true
+            },
+            "deliveryFeedback": {
+              "type": {
+                "kind": "string"
+              },
+              "required": true
+            },
+            "phase": {
+              "type": {
+                "kind": "record",
+                "fields": {
+                  "after": {
+                    "type": {
+                      "kind": "enum",
+                      "values": [
+                        "accepted",
+                        "rejected"
+                      ]
+                    },
+                    "required": false
+                  }
+                }
+              },
+              "required": true
+            },
+            "task": {
+              "type": {
+                "kind": "string"
+              },
+              "required": true
+            }
+          }
+        },
+        "body": {
+          "kind": "seq",
+          "name": "change_iteration",
+          "state": {
+            "kind": "record",
+            "fields": {
+              "acceptanceFeedback": {
+                "type": {
+                  "kind": "string"
+                },
+                "required": true
+              },
+              "codeFeedback": {
+                "type": {
+                  "kind": "string"
+                },
+                "required": true
+              },
+              "continueItems": {
+                "type": {
+                  "kind": "array",
+                  "items": {
+                    "kind": "null"
+                  }
+                },
+                "required": true
+              },
+              "deliveryFeedback": {
+                "type": {
+                  "kind": "string"
+                },
+                "required": true
+              },
+              "phase": {
+                "type": {
+                  "kind": "record",
+                  "fields": {
+                    "after": {
+                      "type": {
+                        "kind": "enum",
+                        "values": [
+                          "accepted",
+                          "rejected"
+                        ]
+                      },
+                      "required": false
+                    }
+                  }
+                },
+                "required": true
+              },
+              "task": {
+                "type": {
+                  "kind": "string"
+                },
+                "required": true
+              }
+            }
+          },
+          "children": [
+            {
+              "kind": "step",
+              "name": "worker",
+              "worker": "builtin.agent.software-worker@1",
+              "instructions": "Implement or repair exactly ONE focused performance candidate. Read acceptanceFeedback and codeFeedback, fix rejected work, then rerun BOTH performance and parity evidence. Read performance/README.md. Inspect serial cold-load network waterfalls and bundle/startup/rendering costs; consult the live https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices . Preserve baseline evidence. Run npm run lint, npx tsc --noEmit, npm run perf:test, npm run perf:build. Capture candidate via npm run perf:audit into the input-designated candidate directory (use a new immutable attempt directory after rejection). Run full perf:compare with baseline. Write .performance/round-result.json containing baselineDir, candidateDir and comparisonFile. A plateau is failure; do not label parity-only evidence an optimization. Repair only supported real improvements, with raw deltas. Do not broaden scope. Follow repository guidance. Never post GitHub comments, discussion replies, reviews or bot requests. Do not commit, push, create/merge PRs, alter history, start nested agents or Zeroshot runs. Delivery belongs to the supervisor. Preserve every UI, UX, content, style, responsive state, accessibility property, image quality, external link, animation, observable UX, visible load timing, used-font preload, page navigation/prefetch behavior and analytics. Removing redundant off-route hints and never-used font variants is allowed only with full passing evidence. Never edit secrets or weaken gates/tests/config to pass. Keep evidence under ignored .performance/. Only the worker may build/own the server; reviewers use immutable evidence and pure comparator tests without browser timing or rebuilds. Read task input on every visit.",
+              "input": {
+                "kind": "record",
+                "fields": {
+                  "acceptanceFeedback": {
+                    "type": {
+                      "kind": "string"
+                    },
+                    "required": true
+                  },
+                  "codeFeedback": {
+                    "type": {
+                      "kind": "string"
+                    },
+                    "required": true
+                  },
+                  "deliveryFeedback": {
+                    "type": {
+                      "kind": "string"
+                    },
+                    "required": true
+                  },
+                  "phase": {
+                    "type": {
+                      "kind": "record",
+                      "fields": {
+                        "after": {
+                          "type": {
+                            "kind": "enum",
+                            "values": [
+                              "accepted",
+                              "rejected"
+                            ]
+                          },
+                          "required": false
+                        }
+                      }
+                    },
+                    "required": true
+                  },
+                  "task": {
+                    "type": {
+                      "kind": "string"
+                    },
+                    "required": true
+                  }
+                }
+              },
+              "output": {
+                "kind": "null"
+              },
+              "inputBindings": [
+                {
+                  "target": [
+                    "task"
+                  ],
+                  "value": {
+                    "source": "state",
+                    "path": [
+                      "task"
+                    ]
+                  }
+                },
+                {
+                  "target": [
+                    "phase"
+                  ],
+                  "value": {
+                    "source": "state",
+                    "path": [
+                      "phase"
+                    ]
+                  }
+                },
+                {
+                  "target": [
+                    "acceptanceFeedback"
+                  ],
+                  "value": {
+                    "source": "state",
+                    "path": [
+                      "acceptanceFeedback"
+                    ]
+                  }
+                },
+                {
+                  "target": [
+                    "codeFeedback"
+                  ],
+                  "value": {
+                    "source": "state",
+                    "path": [
+                      "codeFeedback"
+                    ]
+                  }
+                },
+                {
+                  "target": [
+                    "deliveryFeedback"
+                  ],
+                  "value": {
+                    "source": "state",
+                    "path": [
+                      "deliveryFeedback"
+                    ]
+                  }
+                }
+              ],
+              "writeBindings": [],
+              "attempts": 1
+            },
+            {
+              "kind": "choice",
+              "name": "worker_result",
+              "state": {
+                "kind": "record",
+                "fields": {
+                  "acceptanceFeedback": {
+                    "type": {
+                      "kind": "string"
+                    },
+                    "required": true
+                  },
+                  "codeFeedback": {
+                    "type": {
+                      "kind": "string"
+                    },
+                    "required": true
+                  },
+                  "continueItems": {
+                    "type": {
+                      "kind": "array",
+                      "items": {
+                        "kind": "null"
+                      }
+                    },
+                    "required": true
+                  },
+                  "deliveryFeedback": {
+                    "type": {
+                      "kind": "string"
+                    },
+                    "required": true
+                  },
+                  "phase": {
+                    "type": {
+                      "kind": "record",
+                      "fields": {
+                        "after": {
+                          "type": {
+                            "kind": "enum",
+                            "values": [
+                              "accepted",
+                              "rejected"
+                            ]
+                          },
+                          "required": false
+                        }
+                      }
+                    },
+                    "required": true
+                  },
+                  "task": {
+                    "type": {
+                      "kind": "string"
+                    },
+                    "required": true
+                  }
+                }
+              },
+              "branches": [
+                {
+                  "when": {
+                    "kind": "in",
+                    "value": {
+                      "name": "worker",
+                      "source": "error",
+                      "field": null
+                    },
+                    "labels": [
+                      "crash",
+                      "malformed",
+                      "refusal",
+                      "timeout"
+                    ]
+                  },
+                  "node": {
+                    "kind": "fail",
+                    "name": "worker_failed",
+                    "reason": "worker_failed"
+                  }
+                }
+              ],
+              "otherwise": {
+                "kind": "seq",
+                "name": "reviews",
+                "state": {
+                  "kind": "record",
+                  "fields": {
+                    "acceptanceFeedback": {
+                      "type": {
+                        "kind": "string"
+                      },
+                      "required": true
+                    },
+                    "codeFeedback": {
+                      "type": {
+                        "kind": "string"
+                      },
+                      "required": true
+                    },
+                    "continueItems": {
+                      "type": {
+                        "kind": "array",
+                        "items": {
+                          "kind": "null"
+                        }
+                      },
+                      "required": true
+                    },
+                    "deliveryFeedback": {
+                      "type": {
+                        "kind": "string"
+                      },
+                      "required": true
+                    },
+                    "phase": {
+                      "type": {
+                        "kind": "record",
+                        "fields": {
+                          "after": {
+                            "type": {
+                              "kind": "enum",
+                              "values": [
+                                "accepted",
+                                "rejected"
+                              ]
+                            },
+                            "required": false
+                          }
+                        }
+                      },
+                      "required": true
+                    },
+                    "task": {
+                      "type": {
+                        "kind": "string"
+                      },
+                      "required": true
+                    }
+                  }
+                },
+                "children": [
+                  {
+                    "kind": "par",
+                    "name": "parallel_reviews",
+                    "state": {
+                      "kind": "record",
+                      "fields": {
+                        "acceptanceFeedback": {
+                          "type": {
+                            "kind": "string"
+                          },
+                          "required": true
+                        },
+                        "codeFeedback": {
+                          "type": {
+                            "kind": "string"
+                          },
+                          "required": true
+                        },
+                        "continueItems": {
+                          "type": {
+                            "kind": "array",
+                            "items": {
+                              "kind": "null"
+                            }
+                          },
+                          "required": true
+                        },
+                        "deliveryFeedback": {
+                          "type": {
+                            "kind": "string"
+                          },
+                          "required": true
+                        },
+                        "phase": {
+                          "type": {
+                            "kind": "record",
+                            "fields": {
+                              "after": {
+                                "type": {
+                                  "kind": "enum",
+                                  "values": [
+                                    "accepted",
+                                    "rejected"
+                                  ]
+                                },
+                                "required": false
+                              }
+                            }
+                          },
+                          "required": true
+                        },
+                        "task": {
+                          "type": {
+                            "kind": "string"
+                          },
+                          "required": true
+                        }
+                      }
+                    },
+                    "branches": [
+                      {
+                        "kind": "verifier",
+                        "name": "acceptance",
+                        "worker": "builtin.agent.acceptance-verifier@1",
+                        "input": {
+                          "kind": "record",
+                          "fields": {
+                            "deliveryFeedback": {
+                              "type": {
+                                "kind": "string"
+                              },
+                              "required": true
+                            },
+                            "task": {
+                              "type": {
+                                "kind": "string"
+                              },
+                              "required": true
+                            }
+                          }
+                        },
+                        "output": {
+                          "kind": "null"
+                        },
+                        "inputBindings": [
+                          {
+                            "target": [
+                              "task"
+                            ],
+                            "value": {
+                              "source": "state",
+                              "path": [
+                                "task"
+                              ]
+                            }
+                          },
+                          {
+                            "target": [
+                              "deliveryFeedback"
+                            ],
+                            "value": {
+                              "source": "state",
+                              "path": [
+                                "deliveryFeedback"
+                              ]
+                            }
+                          }
+                        ],
+                        "writeBindings": [
+                          {
+                            "value": {
+                              "node": "acceptance",
+                              "channel": "signal",
+                              "path": [
+                                "verdict"
+                              ]
+                            },
+                            "target": [
+                              "phase",
+                              "after"
+                            ]
+                          },
+                          {
+                            "value": {
+                              "node": "acceptance",
+                              "channel": "diagnostic",
+                              "path": [
+                                "message"
+                              ]
+                            },
+                            "target": [
+                              "acceptanceFeedback"
+                            ]
+                          }
+                        ],
+                        "attempts": 2,
+                        "signals": {
+                          "verdict": [
+                            "accepted",
+                            "rejected"
+                          ]
+                        },
+                        "diagnostic": {
+                          "kind": "record",
+                          "fields": {
+                            "message": {
+                              "type": {
+                                "kind": "string"
+                              },
+                              "required": true
+                            }
+                          }
+                        },
+                        "instructions": "Independently gate PERFORMANCE. Inspect raw repeated timing samples, CDP network totals, production/source/browser/config provenance and medians, not agent claims. Run full npm run perf:compare using .performance/round-result.json paths; require exit 0, accepted true, optimizationEligible true, no per-route regression and at least one improvement beyond the exact configured thresholds. Verify candidate evidence matches current runtime, build and lockfile using buildStamp()/runtime() and hashes. Run focused gate tests; inspect waterfall/bundle evidence and rule out removed analytics, altered media, visible load timing or used-font preload/navigation regressions, or score gaming. Reject missing, stale, non-finite, manipulated or mismatched evidence and plateau. Do not use parity-only mode. Return actionable rejection feedback. Follow repository guidance. Never post GitHub comments, discussion replies, reviews or bot requests. Do not commit, push, create/merge PRs, alter history, start nested agents or Zeroshot runs. Delivery belongs to the supervisor. Preserve every UI, UX, content, style, responsive state, accessibility property, image quality, external link, animation, observable UX, visible load timing, used-font preload, page navigation/prefetch behavior and analytics. Removing redundant off-route hints and never-used font variants is allowed only with full passing evidence. Never edit secrets or weaken gates/tests/config to pass. Keep evidence under ignored .performance/. Only the worker may build/own the server; reviewers use immutable evidence and pure comparator tests without browser timing or rebuilds. Read task input on every visit."
+                      },
+                      {
+                        "kind": "verifier",
+                        "name": "code",
+                        "worker": "builtin.agent.code-verifier@1",
+                        "input": {
+                          "kind": "record",
+                          "fields": {
+                            "deliveryFeedback": {
+                              "type": {
+                                "kind": "string"
+                              },
+                              "required": true
+                            },
+                            "task": {
+                              "type": {
+                                "kind": "string"
+                              },
+                              "required": true
+                            }
+                          }
+                        },
+                        "output": {
+                          "kind": "null"
+                        },
+                        "inputBindings": [
+                          {
+                            "target": [
+                              "task"
+                            ],
+                            "value": {
+                              "source": "state",
+                              "path": [
+                                "task"
+                              ]
+                            }
+                          },
+                          {
+                            "target": [
+                              "deliveryFeedback"
+                            ],
+                            "value": {
+                              "source": "state",
+                              "path": [
+                                "deliveryFeedback"
+                              ]
+                            }
+                          }
+                        ],
+                        "writeBindings": [
+                          {
+                            "value": {
+                              "node": "code",
+                              "channel": "diagnostic",
+                              "path": [
+                                "message"
+                              ]
+                            },
+                            "target": [
+                              "codeFeedback"
+                            ]
+                          }
+                        ],
+                        "attempts": 2,
+                        "signals": {
+                          "verdict": [
+                            "accepted",
+                            "rejected"
+                          ]
+                        },
+                        "diagnostic": {
+                          "kind": "record",
+                          "fields": {
+                            "message": {
+                              "type": {
+                                "kind": "string"
+                              },
+                              "required": true
+                            }
+                          }
+                        },
+                        "instructions": "Independently gate UI/BEHAVIOR and code correctness. Run perf:compare --parity-only and inspect all route/desktop/mobile initial, middle and bottom PNGs plus content/link/image/metadata manifests and interaction states from .performance/round-result.json. Require strict documented per-image pixel thresholds including raw pixel-count/channel bounds, content exact and unchanged public asset hashes; only local unchanged hashed GIFs may be masked. Verify filtering, desktop keyboard palette search/arrows/enter/escape, client header navigation, detail back/hash/TOC scrolling, team expansion and zoom open/close evidence. Verify runtime source/provenance matches the candidate and inspect actual code diff for hidden UI, quality, analytics, animation, navigation or accessibility changes. Check cleanup and fail-closed gates. Reject missing evidence, unexplained changes or defects. Do not run browsers concurrently or modify files. Follow repository guidance. Never post GitHub comments, discussion replies, reviews or bot requests. Do not commit, push, create/merge PRs, alter history, start nested agents or Zeroshot runs. Delivery belongs to the supervisor. Preserve every UI, UX, content, style, responsive state, accessibility property, image quality, external link, animation, observable UX, visible load timing, used-font preload, page navigation/prefetch behavior and analytics. Removing redundant off-route hints and never-used font variants is allowed only with full passing evidence. Never edit secrets or weaken gates/tests/config to pass. Keep evidence under ignored .performance/. Only the worker may build/own the server; reviewers use immutable evidence and pure comparator tests without browser timing or rebuilds. Read task input on every visit."
+                      }
+                    ],
+                    "promotedStatePaths": [
+                      [
+                        "acceptanceFeedback"
+                      ],
+                      [
+                        "codeFeedback"
+                      ],
+                      [
+                        "phase"
+                      ]
+                    ],
+                    "join": {
+                      "kind": "all"
+                    }
+                  },
+                  {
+                    "kind": "choice",
+                    "name": "review_result",
+                    "state": {
+                      "kind": "record",
+                      "fields": {
+                        "acceptanceFeedback": {
+                          "type": {
+                            "kind": "string"
+                          },
+                          "required": true
+                        },
+                        "codeFeedback": {
+                          "type": {
+                            "kind": "string"
+                          },
+                          "required": true
+                        },
+                        "continueItems": {
+                          "type": {
+                            "kind": "array",
+                            "items": {
+                              "kind": "null"
+                            }
+                          },
+                          "required": true
+                        },
+                        "deliveryFeedback": {
+                          "type": {
+                            "kind": "string"
+                          },
+                          "required": true
+                        },
+                        "phase": {
+                          "type": {
+                            "kind": "record",
+                            "fields": {
+                              "after": {
+                                "type": {
+                                  "kind": "enum",
+                                  "values": [
+                                    "accepted",
+                                    "rejected"
+                                  ]
+                                },
+                                "required": false
+                              }
+                            }
+                          },
+                          "required": true
+                        },
+                        "task": {
+                          "type": {
+                            "kind": "string"
+                          },
+                          "required": true
+                        }
+                      }
+                    },
+                    "branches": [
+                      {
+                        "when": {
+                          "kind": "any",
+                          "guards": [
+                            {
+                              "kind": "in",
+                              "value": {
+                                "name": "acceptance",
+                                "source": "error",
+                                "field": null
+                              },
+                              "labels": [
+                                "crash",
+                                "malformed",
+                                "refusal",
+                                "timeout"
+                              ]
+                            },
+                            {
+                              "kind": "in",
+                              "value": {
+                                "name": "code",
+                                "source": "error",
+                                "field": null
+                              },
+                              "labels": [
+                                "crash",
+                                "malformed",
+                                "refusal",
+                                "timeout"
+                              ]
+                            }
+                          ]
+                        },
+                        "node": {
+                          "kind": "fail",
+                          "name": "review_failed",
+                          "reason": "review_failed"
+                        }
+                      },
+                      {
+                        "when": {
+                          "kind": "all",
+                          "guards": [
+                            {
+                              "kind": "in",
+                              "value": {
+                                "name": "acceptance",
+                                "source": "signal",
+                                "field": "verdict"
+                              },
+                              "labels": [
+                                "accepted"
+                              ]
+                            },
+                            {
+                              "kind": "in",
+                              "value": {
+                                "name": "code",
+                                "source": "signal",
+                                "field": "verdict"
+                              },
+                              "labels": [
+                                "accepted"
+                              ]
+                            }
+                          ]
+                        },
+                        "node": {
+                          "kind": "succeed",
+                          "name": "done",
+                          "output": {
+                            "kind": "null"
+                          },
+                          "bindings": []
+                        }
+                      }
+                    ],
+                    "otherwise": {
+                      "kind": "map",
+                      "name": "review_retry",
+                      "state": {
+                        "kind": "record",
+                        "fields": {
+                          "acceptanceFeedback": {
+                            "type": {
+                              "kind": "string"
+                            },
+                            "required": true
+                          },
+                          "codeFeedback": {
+                            "type": {
+                              "kind": "string"
+                            },
+                            "required": true
+                          },
+                          "continueItems": {
+                            "type": {
+                              "kind": "array",
+                              "items": {
+                                "kind": "null"
+                              }
+                            },
+                            "required": true
+                          },
+                          "deliveryFeedback": {
+                            "type": {
+                              "kind": "string"
+                            },
+                            "required": true
+                          },
+                          "phase": {
+                            "type": {
+                              "kind": "record",
+                              "fields": {
+                                "after": {
+                                  "type": {
+                                    "kind": "enum",
+                                    "values": [
+                                      "accepted",
+                                      "rejected"
+                                    ]
+                                  },
+                                  "required": false
+                                }
+                              }
+                            },
+                            "required": true
+                          },
+                          "task": {
+                            "type": {
+                              "kind": "string"
+                            },
+                            "required": true
+                          }
+                        }
+                      },
+                      "body": {
+                        "kind": "fail",
+                        "name": "review_retry_invalid",
+                        "reason": "invalid_retry_state"
+                      },
+                      "over": {
+                        "source": "state",
+                        "path": [
+                          "continueItems"
+                        ]
+                      },
+                      "maxItems": 1,
+                      "promotedStatePaths": []
+                    },
+                    "promotedStatePaths": [
+                      [
+                        "deliveryFeedback"
+                      ],
+                      [
+                        "phase"
+                      ]
+                    ]
+                  }
+                ],
+                "promotedStatePaths": [
+                  [
+                    "acceptanceFeedback"
+                  ],
+                  [
+                    "codeFeedback"
+                  ],
+                  [
+                    "phase"
+                  ],
+                  [
+                    "deliveryFeedback"
+                  ]
+                ]
+              },
+              "promotedStatePaths": [
+                [
+                  "acceptanceFeedback"
+                ],
+                [
+                  "codeFeedback"
+                ],
+                [
+                  "phase"
+                ],
+                [
+                  "deliveryFeedback"
+                ]
+              ]
+            }
+          ],
+          "promotedStatePaths": [
+            [
+              "acceptanceFeedback"
+            ],
+            [
+              "codeFeedback"
+            ],
+            [
+              "phase"
+            ],
+            [
+              "deliveryFeedback"
+            ]
+          ]
+        },
+        "maxIterations": 3,
+        "promotedStatePaths": [
+          [
+            "acceptanceFeedback"
+          ],
+          [
+            "codeFeedback"
+          ],
+          [
+            "phase"
+          ],
+          [
+            "deliveryFeedback"
+          ]
+        ]
+      },
+      {
+        "kind": "fail",
+        "name": "change_attempts_exhausted",
+        "reason": "change_attempts_exhausted"
+      }
+    ],
+    "promotedStatePaths": []
+  }
+}
