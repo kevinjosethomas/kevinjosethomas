@@ -1,0 +1,7 @@
+{
+  "harness": "codex",
+  "provider": "openai",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "sessionScope": "node_instance"
+}
