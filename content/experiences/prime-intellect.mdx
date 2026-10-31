@@ -1,6 +1,6 @@
 Prime Intellect is building the open superintelligence stack: infrastructure for training, evaluating, deploying, and continuously improving AI systems. My primary work was Prime Agent, an open-source coding and research harness designed for general and long-running work.
 
-<FullWidthImage src="/projects/images/prime-agent-cover.png" alt="Prime Agent: a self-improving RLM harness" />
+<FullWidthImage src="/projects/images/prime-agent-cover.webp" alt="Prime Agent: a self-improving RLM harness" />
 
 ## Prime Agent
 
@@ -8,7 +8,7 @@ Modern agent harnesses still reflect the capabilities of earlier models. Fixed t
 
 Prime Agent is built around two abstractions that move beyond this design: the [Recursive Language Model](https://www.primeintellect.ai/blog/rlm) treats context and subagent calls as programmable objects inside a REPL, while the Continual Harness lets the agent refine its own prompts, skills, memory, and subagent specifications from evidence in its trajectory.
 
-<FullWidthImage src="/projects/images/prime-agent-architecture.png" alt="Prime Agent architecture" />
+<FullWidthImage src="/projects/images/prime-agent-architecture.webp" alt="Prime Agent architecture" />
 
 ### RLM and programmatic tool calling
 
@@ -18,7 +18,7 @@ I worked on this foundation from the first version: making IPython the default t
 
 The central primitive is `rlm(...)`. Each call creates another full Prime Agent session with its own model, kernel, context, and session tree. Calls can fan out in parallel, continue in the background, or remain persistent so the parent can message the same child later. I built the initial recursion bridge, background subagents, usage aggregation, and the interface for navigating the resulting agent tree.
 
-<FullWidthImage src="/projects/images/prime-agent-tui.png" alt="Prime Agent terminal interface running a long task with subagents" />
+<FullWidthImage src="/projects/images/prime-agent-tui.webp" alt="Prime Agent terminal interface running a long task with subagents" />
 
 ### Background daemon and orchestration
 
@@ -28,7 +28,7 @@ I worked across the daemon and worker architecture, the Agents View, process iso
 
 The daemon also provides direct agent-to-agent messaging. Parent, sibling, and child sessions can discover and steer one another without routing every exchange through the user, turning the Agents View into a recursive map of the full orchestration tree.
 
-<FullWidthImage src="/projects/images/prime-agent-agents-view.png" alt="Prime Agent Agents View showing running, idle, and inactive sessions" />
+<FullWidthImage src="/projects/images/prime-agent-agents-view.webp" alt="Prime Agent Agents View showing running, idle, and inactive sessions" />
 
 ### Continual Harness
 
@@ -38,7 +38,7 @@ Prime Agent exposes this state directly in the persistent kernel through `rlm.ha
 
 I helped ship the agent-callable refinement path and move planning into the background, making self-improvement part of the same programmatic interface as every other action in the harness.
 
-<FullWidthImage src="/projects/images/continual-harness-methodology.png" alt="Continual Harness refinement and model-harness co-learning methodology" />
+<FullWidthImage src="/projects/images/continual-harness-methodology.webp" alt="Continual Harness refinement and model-harness co-learning methodology" />
 
 ### Evaluation
 
