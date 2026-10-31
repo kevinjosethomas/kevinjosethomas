@@ -1,12 +1,32 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import localFont from "next/font/local";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { GeistPixelSquare } from "geist/font/pixel";
 import PostHogClient from "@/lib/posthog";
 import { Analytics } from "@vercel/analytics/next";
 import CommandPalette from "@/components/Common/CommandPalette";
+
+// The pixel barrel initializes all five variants; this site only uses Square.
+const GeistPixelSquare = localFont({
+  src: "../node_modules/geist/dist/fonts/geist-pixel/GeistPixel-Square.woff2",
+  variable: "--font-geist-pixel-square",
+  weight: "500",
+  fallback: [
+    "Geist Mono",
+    "ui-monospace",
+    "SFMono-Regular",
+    "Roboto Mono",
+    "Menlo",
+    "Monaco",
+    "Liberation Mono",
+    "DejaVu Sans Mono",
+    "Courier New",
+    "monospace",
+  ],
+  adjustFontFallback: false,
+});
 
 const identity = {
   title: "Kevin Thomas",
