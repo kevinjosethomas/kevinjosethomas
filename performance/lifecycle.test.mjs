@@ -12,6 +12,7 @@ import { Cancellation } from './cancellation.mjs';
 import { collectNetwork, validateNetwork } from './network.mjs';
 import { EventEmitter } from 'node:events';
 
+fs.mkdirSync(path.join(root,'.performance'),{recursive:true});
 const dir=fs.mkdtempSync(path.join(root,'.performance/lifecycle-tests-'));
 const moduleURL=name=>pathToFileURL(path.join(root,'performance',name)).href;
 const alive=pid=>{try{process.kill(pid,0);return true;}catch(e){if(e.code==='ESRCH')return false;throw e;}};
