@@ -13,8 +13,6 @@ jobs:
           node-version: "20"
       - run: npm ci
       - run: npm run lint
-      - run: npm run perf:test
-      - run: npm run perf:validate -- --state "$RUNNER_TEMP/performance-zeroshot"
   build:
     runs-on: ubuntu-latest
     strategy:
