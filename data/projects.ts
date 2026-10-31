@@ -8,7 +8,7 @@ export const projects: Project[] = [
       "Open-source coding and research agent built around Recursive Language Models and the Continual Harness.",
     date: "2026",
     href: "/work/prime-intellect#prime-agent",
-    image: "/projects/images/prime-agent-cover.png",
+    image: "/projects/images/prime-agent-cover.webp",
     tags: ["Engineering", "Research"],
     github: "https://github.com/PrimeIntellect-ai/prime-agent",
     website: "https://www.primeintellect.ai/blog/prime-agent",
