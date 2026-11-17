@@ -1,6 +1,6 @@
 const bookingUrl = "https://calendar.notion.so/meet/kevinjosethomas/30m";
 const pageUrl = "https://kevinjosethomas.com/meet";
-const imageUrl = "https://kevinjosethomas.com/meet/og.png";
+const imageUrl = "https://kevinjosethomas.com/meet/og.png?v=2";
 
 // Serve metadata in the initial HTML so link previews do not follow an HTTP
 // redirect to Notion. Browsers navigate immediately without loading React.
@@ -23,7 +23,7 @@ export function GET() {
     <meta property="og:image" content="${imageUrl}">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:image:height" content="400">
     <meta property="og:image:alt" content="Let’s meet. Kevin Thomas — 30-minute conversation.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Meet with Kevin Thomas">
